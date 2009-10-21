@@ -1,0 +1,55 @@
+<div id="login_content">
+  <span class="title">Existing users, login...</span>
+  <% form_for :user, @user, :url => { :action => 'login', } do |f| -%>
+    <div class="login_field">
+      <label for="user_login">Username:</label>
+      <%= f.text_field :login %>
+    </div>
+
+    <div class="login_field">
+      <label for="user_password">Password:</label>
+      <%= f.text_field :password %>
+    </div>
+
+    <%= submit_tag 'Login' %>
+  <% end -%>
+</div>
+<div id="register_content">
+  <span class="title">Register a new Touhou-Shop account</span>
+  <% form_for :user, @user, :url => { :action => 'register' } do |f| %>
+    <span id="register_error"><%= error_messages_for 'user' %></span>
+
+    <div class="register_field">
+      <label for="user_login">Login: </label>
+      <%= f.text_field :login %>
+    </div>
+
+    <div class="register_field">
+      <label for="user_first_name">First name: </label>
+      <%= f.text_field :first_name %>
+    </div>
+
+    <div class="register_field">
+      <label for="user_last_name">Last name: </label>
+      <%= f.text_field :last_name %>
+    </div>
+
+    <div class="register_field">
+      <label for="user_email">E-mail: </label>
+      <%= f.text_field :email %>
+    </div>
+
+    <div class="register_field">
+      <label for="user_password">Password: </label>
+      <%= f.password_field :password %>
+    </div>
+
+    <div class="register_field">
+      <label for="user_password_confirmation">Password confirmation: </label>
+      <%= f.password_field :password_confirmation %>
+    </div>
+
+    <%= submit_tag "Signup" %>
+
+  <% end %>
+</div>

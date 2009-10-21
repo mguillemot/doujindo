@@ -1,0 +1,20 @@
+.signin_box {
+  background-color: moccasin;
+  border: black 1px solid;
+}
+
+.signin_field {
+  font-weight: bold;
+}
+
+#error {
+  color: red;
+}
+
+#notice {
+  color: darkslateblue;
+}
+
+#register_error {
+  color: red;
+}
