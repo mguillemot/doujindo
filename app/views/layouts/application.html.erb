@@ -6,15 +6,8 @@
   <%= javascript_include_tag :defaults %>
 </head>
 <body>
-<div id="header">
-  <% if !session[:user] -%>
-    <%= render :partial => 'user/signin' %>
-  <% else %>
-    <div id="user_menu">
-      <%= link_to 'Logout', :controller => 'user', :action => 'logout' %>
-    </div>
-  <% end -%>
-</div>
+<%= render :partial => 'partials/header' %>
+<%= render :partial => 'partials/sidebar' %>
 <div id="content">
   <% if flash[:notice] -%>
     <div id="notice"><%= flash[:notice] -%></div>

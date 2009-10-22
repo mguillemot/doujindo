@@ -1,10 +1,76 @@
-.signin_box {
-  background-color: moccasin;
+body {
+  margin: 0;
+  background-color: blanchedalmond;
+}
+
+#header {
+  background-color: red;
+  border: black 1px solid;
+  color: black;
+  font-size: xx-large;
+  padding: 10px;
+}
+
+a.title_link {
+  text-decoration: none;
+  color: black;
+}
+
+a:visited.title_link {
+  color: black;
+}
+
+#sidebar {
+  width: 200px;
+  height: 100%;
+  position: fixed;
+  padding: 5px;
+  background-color: lightsteelblue;
   border: black 1px solid;
 }
 
-.signin_field {
+#content {
+  left: 220px;
+  width: 100%;
+  position: fixed;
+}
+
+#navbar {
+  width: 100%;
+  background-color: white;
+  border: darkslategray 1px dotted;
+  padding: 3px;
+}
+
+a.navbar_link {
+  color: black;
+}
+
+a:visited.navbar_link {
+  color: black;
+}
+
+.menu_category {
   font-weight: bold;
+  background-color: black;
+  color: white;
+  margin-top: 10px;
+  margin-bottom: 10px;  
+}
+
+.signin_box {
+  background-color: moccasin;
+  border: black 1px solid;
+  text-align: center;
+  padding: 8px;
+}
+
+.signin_box_field {
+  font-size: small;
+}
+
+.signin_box_input {
+  width: 100px;
 }
 
 #error {
@@ -16,5 +82,5 @@
 }
 
 #register_error {
-  color: red;
+  color: darkred;
 }
