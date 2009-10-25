@@ -6,16 +6,30 @@
   <%= javascript_include_tag :defaults %>
 </head>
 <body>
-<%= render :partial => 'partials/header' %>
-<%= render :partial => 'partials/sidebar' %>
-<div id="content">
-  <% if flash[:notice] -%>
-    <div id="notice"><%= flash[:notice] -%></div>
-  <% end -%>
-  <% if flash[:error] -%>
-    <div id="error"><%= flash[:error] -%></div>
-  <% end -%>
-  <%= yield %>
+<div id="page">
+  <%= render :partial => 'partials/header' %>
+  <div class="clearfix">
+    <%= render :partial => 'partials/left_sidebar' %>
+    <div id="twocols" class="clearfix">
+      <div id="centercol">
+        <div id="content">
+          <%= render :partial => 'partials/navbar' %>
+          <% if flash[:debug] -%>
+            <div id="debug"><%= flash[:debug] -%></div>
+          <% end -%>
+          <% if flash[:notice] -%>
+            <div id="notice"><%= flash[:notice] -%></div>
+          <% end -%>
+          <% if flash[:error] -%>
+            <div id="error"><%= flash[:error] -%></div>
+          <% end -%>
+          <%= yield %>
+        </div>
+      </div>
+      <%= render :partial => 'partials/right_sidebar' %>
+    </div>
+  </div>
+  <div id="footer">Touhou Shop © 2009</div>
 </div>
 </body>
 </html>

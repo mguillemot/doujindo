@@ -1,4 +1,7 @@
-<li><%= link_to category_and_sub.title, :controller => 'category', :action => 'show', :id => category_and_sub.id -%></li>
+<li>
+  <%= link_to category_and_sub.title, :controller => 'category', :action => 'show', :id => category_and_sub.id -%>
+  (<%= category_and_sub.all_items.size -%>)
+</li>
 <% if category_and_sub.subcategories.size > 0 -%>
   <ul>
     <%= render :partial => 'partials/category_and_sub', :collection => category_and_sub.subcategories %>

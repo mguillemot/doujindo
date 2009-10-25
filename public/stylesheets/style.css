@@ -1,14 +1,106 @@
-body {
+html, body {
   margin: 0;
-  background-color: blanchedalmond;
+  padding: 0;
+  text-align: center; /* IE compatibility of centered #content */
+}
+
+#page {
+  width: 1100px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: left;
 }
 
 #header {
+  position: relative;
+  width: 100%;
+  height: 80px;
   background-color: red;
-  border: black 1px solid;
   color: black;
   font-size: xx-large;
-  padding: 10px;
+  text-align: left;
+}
+
+#left_sidebar {
+  position: relative;
+  width: 200px;
+  float: left;
+  background-color: lightsteelblue;
+}
+
+#twocols {
+  width: 900px;
+  position: relative;
+  float: right;
+}
+
+#right_sidebar {
+  position: relative;
+  width: 200px;
+  float: right;
+  background-color: lightsteelblue;
+}
+
+#centercol {
+  position: relative;
+  float: left;
+  width: 700px;
+}
+
+#content {
+  padding: 5px;
+  background-color: fuchsia;
+}
+
+#footer {
+  background-color: black;
+  height: 20px;
+  clear: both;
+  text-align: center;
+  color: white;
+}
+
+#navbar {
+  width: 680px;
+  background-color: white;
+  text-align: left;
+  border: darkslategray 1px dotted;
+  padding: 3px;
+}
+
+.clearfix:after {
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+
+.clearfix {
+  display: inline-block;
+}
+
+@media print {
+  #left_sidebar {
+    display: none;
+  }
+
+  #right_sidebar {
+    display: none;
+  }
+
+  #twocols, #content {
+    width: 100%;
+    float: none;
+  }
+}
+
+a.navbar_link {
+  color: black;
+}
+
+a:visited.navbar_link {
+  color: black;
 }
 
 a.title_link {
@@ -20,42 +112,13 @@ a:visited.title_link {
   color: black;
 }
 
-#sidebar {
-  width: 200px;
-  height: 100%;
-  position: fixed;
-  padding: 5px;
-  background-color: lightsteelblue;
-  border: black 1px solid;
-}
-
-#content {
-  left: 220px;
-  width: 100%;
-  position: fixed;
-}
-
-#navbar {
-  width: 100%;
-  background-color: white;
-  border: darkslategray 1px dotted;
-  padding: 3px;
-}
-
-a.navbar_link {
-  color: black;
-}
-
-a:visited.navbar_link {
-  color: black;
-}
-
 .menu_category {
   font-weight: bold;
   background-color: black;
   color: white;
+  text-align: center;
   margin-top: 10px;
-  margin-bottom: 10px;  
+  margin-bottom: 10px;
 }
 
 .signin_box {
@@ -81,6 +144,14 @@ a:visited.navbar_link {
   color: darkslateblue;
 }
 
+#debug {
+  color: green;
+}
+
 #register_error {
   color: darkred;
+}
+
+#cart {
+  text-align: center;
 }

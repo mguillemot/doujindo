@@ -9,28 +9,44 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091022095428) do
+ActiveRecord::Schema.define(:version => 20091022155445) do
+
+  create_table "cart_items", :force => true do |t|
+    t.integer  "cart_id"
+    t.integer  "item_id"
+    t.integer  "quantity"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "carts", :force => true do |t|
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "categories", :force => true do |t|
-    t.integer  "parent"
+    t.integer  "parent_id"
     t.string   "ident"
     t.string   "title"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "item_details", :force => true do |t|
+    t.integer  "item_id"
+    t.string   "detail_type"
+    t.text     "content"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "items", :force => true do |t|
     t.string   "ident"
-    t.integer  "category"
+    t.integer  "category_id"
     t.string   "title"
-    t.string   "description"
     t.integer  "stock"
     t.integer  "price"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "shopping_carts", :force => true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
   end

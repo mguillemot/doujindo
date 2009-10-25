@@ -1,7 +1,7 @@
 class CreateCategories < ActiveRecord::Migration
   def self.up
     create_table :categories do |t|
-      t.integer :parent
+      t.integer :parent_id
       t.string :ident
       t.string :title
       t.timestamps

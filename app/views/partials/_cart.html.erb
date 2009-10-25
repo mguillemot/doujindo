@@ -1,0 +1,14 @@
+<div id="cart">
+  <% if session[:cart] -%>
+    <ol>
+      <% session[:cart].items.each do |cartItem| -%>
+        <li><%= "#{cartItem.id} x#{cartItem.quantity}" -%></li>
+      <% end -%>
+    </ol>
+    <% form_tag({ :controller => 'cart', :action => 'summary' }) do %>
+      <%= submit_tag 'Checkout' %>
+    <% end -%>
+  <% else -%>
+    (empty)
+  <% end -%>
+</div>
