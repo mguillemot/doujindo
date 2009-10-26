@@ -3,18 +3,24 @@ class UserController < ApplicationController
 
   def home
     @title = "User home"
-    @user = User.find(session[:user]);
   end
 
   def login
     if request.post?
       user = User.authenticate(params[:user][:login], params[:user][:password])
       if user
+        user.login_count = user.login_count + 1
+        user.last_login = DateTime.now
+        if !user.cart and @cart # We have a floating cart => attach it to the user
+          user.cart = @cart
+          add_debug "Cart reattached to user"
+        end
+        user.save!  # Do not validate user, because it has no password at this point
         session[:user] = user.id
-        flash[:notice] = "Login successful"
+        add_notice "Login successful"
         redirect_to :controller => 'user', :action => 'home'
       else
-        flash[:error] = "Login failure"
+        add_error "Login failure"
         redirect_to :controller => 'home'
       end
     end
@@ -22,7 +28,7 @@ class UserController < ApplicationController
 
   def logout
     session[:user] = nil
-    flash[:notice] = "Logged out"
+    add_notice "Logged out"
     redirect_to :controller => 'home'
   end
 
@@ -32,10 +38,10 @@ class UserController < ApplicationController
       @user = User.new(params[:user])
       if @user.save
         session[:user] = @user.id
-        flash[:notice] = "User #{@user.login} created!"
+        add_notice "User #{@user.login} created!"
         redirect_to :action => 'home'
       else
-        flash[:error] = "Registration error"
+        add_error "Registration error"
         @user.password = '';
         @user.password_confirmation = '';
       end

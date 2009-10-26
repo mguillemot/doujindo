@@ -13,10 +13,9 @@
   <div>
     <%= link_to 'Register new account', :controller => 'user', :action => 'register' -%>
   </div>
+
+  <div class="menu_category">Catalog</div>
   <div>
-    Catalog
-    <ul>
-      <%= render :partial => 'partials/category_and_sub', :collection => Category.root_categories %>
-    </ul>
+    <%= render :partial => 'partials/category_and_sub', :collection => Category.root_categories %>
   </div>
 </div>

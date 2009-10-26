@@ -33,20 +33,29 @@ ActiveRecord::Schema.define(:version => 20091022155445) do
     t.datetime "updated_at"
   end
 
-  create_table "item_details", :force => true do |t|
-    t.integer  "item_id"
-    t.string   "detail_type"
-    t.text     "content"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "items", :force => true do |t|
-    t.string   "ident"
-    t.integer  "category_id"
-    t.string   "title"
-    t.integer  "stock"
-    t.integer  "price"
+    t.string   "title",                                                    :null => false
+    t.string   "ident",           :limit => 16,                            :null => false
+    t.integer  "category_id",                                              :null => false
+    t.string   "author",                                                   :null => false
+    t.string   "item_type",                                                :null => false
+    t.text     "description",                                              :null => false
+    t.string   "stock_type",                    :default => "unavailable", :null => false
+    t.integer  "current_stock"
+    t.integer  "max_purchase"
+    t.date     "reservation_end"
+    t.integer  "price",                         :default => 0,             :null => false
+    t.string   "main_picture"
+    t.string   "other_pictures"
+    t.string   "video"
+    t.string   "publisher"
+    t.text     "tracklist"
+    t.text     "test"
+    t.text     "required_config"
+    t.text     "format"
+    t.text     "warning"
+    t.text     "notes"
+    t.boolean  "show",                          :default => true,          :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

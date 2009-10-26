@@ -44,5 +44,5 @@ production:
   database: touhou-shop_production
   pool: 5
   username: root
-  password: 
+  password: hophop
   host: localhost

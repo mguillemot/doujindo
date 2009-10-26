@@ -1,0 +1,3 @@
+page.replace_html "item_#{@item.item_id}_quantity", @item.quantity
+page.replace_html "item_#{@item.item_id}_total_price", (@item.quantity * @item.item.price)
+page.replace_html "total_price", @cart.total_price

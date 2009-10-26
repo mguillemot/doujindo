@@ -1,5 +1,6 @@
 <div id="signin_section">
   <div class="signin_box">
-    <%= link_to 'Logout', :controller => 'user', :action => 'logout' %>
+    <p>Logged as <%= "#{@user.first_name} #{@user.last_name}" -%></p>
+    <p><%= link_to 'Logout', :controller => 'user', :action => 'logout' -%></p>
   </div>
 </div>

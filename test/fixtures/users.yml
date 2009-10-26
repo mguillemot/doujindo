@@ -1,7 +1,8 @@
-# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
-
-# one:
-#   column: value
-#
-# two:
-#   column: value
+erhune:
+  id: 1
+  login: erhune
+  password_hash: 0dda38e2d85f2fb8bf357972a2478d20b5e7d96d
+  password_salt: KXyibn6aNV
+  first_name: Matthieu
+  last_name: Guillemot
+  email: g@npng.org

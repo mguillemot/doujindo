@@ -1,7 +1,25 @@
-# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+pcb:
+  id: 1
+  title: Perfect Cherry Blossom
+  ident: pcb
+  category_id: 6
+  author: Team Shangai Alice
+  item_type: game
+  description: The official Touhou 7 game.
+  stock_type: canBePurchased
+  max_purchase: 100
+  price: 2000
+  show: true
 
-# one:
-#   column: value
-#
-# two:
-#   column: value
+ufo:
+  id: 2
+  title: Undefined Fantastic Object
+  ident: ufo
+  category_id: 6
+  author: Team Shangai Alice
+  item_type: game
+  description: The official Touhou 12 game.
+  stock_type: canBePurchased
+  max_purchase: 100
+  price: 2500
+  show: true

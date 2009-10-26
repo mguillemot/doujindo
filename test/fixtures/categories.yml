@@ -1,7 +1,32 @@
-# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+games:
+  id: 1
+  title: Games
 
-# one:
-#   column: value
-#
-# two:
-#   column: value
+official-games:
+  id: 2
+  parent_id: 1
+  title: Official games
+
+derivative-games:
+  id: 3
+  parent_id: 1
+  title: Derivative games
+
+goodies:
+  id: 4
+  title: Goodies
+
+figurines:
+  id: 5
+  parent_id: 4
+  title: Figurines
+
+official-stg:
+  id: 6
+  parent_id: 2
+  title: Official STG
+
+official-fight:
+  id: 7
+  parent_id: 2
+  title: Official Fighting Games

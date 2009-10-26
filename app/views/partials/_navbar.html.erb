@@ -1,6 +1,7 @@
 <div id="navbar">
-  <%= link_to 'Home', { :controller => 'home' }, { :class => 'navbar_link' } %> &gt;
+  <%= link_to 'Home', { :controller => 'home' }, { :class => 'navbar_link' } %>
   <% if @nav -%>
+    &gt;
     <% @nav.each do |nav| -%>
       <% if nav != @nav.last -%>
         <%= link_to nav[0], nav[1] %> &gt;

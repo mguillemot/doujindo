@@ -1,0 +1,42 @@
+<h1>Shopping cart summary</h1>
+<table border="1">
+  <thead>
+  <tr>
+    <th>Delete?</th>
+    <th>#</th>
+    <th>Item</th>
+    <th>Quantity</th>
+    <th>Unit price</th>
+    <th>Total price</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% i = 0; @cart.cart_items.each do |cartItem| -%>
+    <tr id="item_<%= cartItem.item_id -%>">
+      <td><%= button_to_remote 'Delete', :url => { :action => 'remove_all', :id => cartItem.item_id } -%></td>
+      <td><%= i = i + 1 -%></td>
+      <td><%= cartItem.item.title -%></td>
+      <td>
+        <%= button_to_remote '-', :url => { :action => 'remove_one', :id => cartItem.item_id } %>
+        <div id="item_<%= cartItem.item_id -%>_quantity"><%= cartItem.quantity -%></div>
+        <%= button_to_remote '+', :url => { :action => 'add_one', :id => cartItem.item_id } %>
+      </td>
+      <td><%= cartItem.item.price -%></td>
+      <td><div id="item_<%= cartItem.item_id -%>_total_price"><%= cartItem.quantity * cartItem.item.price -%></div></td>
+    </tr>
+  <% end -%>
+  <tr>
+    <td colspan="5">TOTAL</td>
+    <td><div id="total_price"><%= @cart.total_price -%></div></td>
+  </tr>
+  </tbody>
+</table>
+<p>
+  <% form_tag( :action => 'clear' ) do %>
+    <%= submit_tag 'Clear' %>
+  <% end -%>
+  <% form_tag( :action => 'checkout' ) do %>
+    <%= submit_tag 'Checkout' %>
+  <% end -%>
+</p>
+<%= link_to_remote 'Do some magic', :update => 'magic', :url => { :action => 'reload' } %><div id="magic" style="background-color: yellow">&nbsp;</div>

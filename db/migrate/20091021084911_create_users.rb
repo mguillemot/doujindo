@@ -7,7 +7,7 @@ class CreateUsers < ActiveRecord::Migration
       t.string :first_name
       t.string :last_name
       t.string :email
-      t.integer :login_count
+      t.integer :login_count, :null => false, :default => 0
       t.datetime :last_login
       t.timestamps
     end
