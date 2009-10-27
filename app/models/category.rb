@@ -4,7 +4,7 @@ class Category < ActiveRecord::Base
   belongs_to :parent, { :class_name => 'Category' }
 
   def subcategories
-    return Category.find_all_by_parent_id id
+    return Category.find_all_by_parent_id(self.id)
   end
 
   def all_items
@@ -30,6 +30,6 @@ class Category < ActiveRecord::Base
   end
 
   def self.root_categories
-    Category.find :all, :conditions => ['parent_id is null']
+    Category.find(:all, :conditions => ['parent_id is null'])
   end
 end
