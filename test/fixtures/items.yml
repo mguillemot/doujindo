@@ -6,7 +6,7 @@ pcb:
   author: Team Shangai Alice
   item_type: game
   description: The official Touhou 7 game.
-  main_picture: 001_cover_big.jpg
+  main_picture: 001_icon.jpg
   stock_left: 20
   purchase_left: 100
   price: 2000
@@ -23,7 +23,7 @@ ufo:
   author: Team Shangai Alice
   item_type: game
   description: The official Touhou 12 game.
-  main_picture: 001_cover_big.jpg
+  main_picture: 002_icon.jpg
   stock_left: 15
   purchase_left: 100
   price: 2500
@@ -40,7 +40,7 @@ figma_reimu:
   author: Griffon Enterprises
   item_type: figurine
   description: Fighto Reimu fighto!
-  main_picture: 003_fight_pose_big.jpg
+  main_picture: 003_icon.jpg
   reservation_left: 100
   reservation_end_date: 2010-01-01 23:00:00
   price: 5000

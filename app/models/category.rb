@@ -12,6 +12,7 @@ class Category < ActiveRecord::Base
     subcategories.each do |subcat|
       all.concat subcat.all_items
     end
+    all
   end
 
   def nav
