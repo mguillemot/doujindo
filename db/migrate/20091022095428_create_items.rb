@@ -7,10 +7,10 @@ class CreateItems < ActiveRecord::Migration
       t.string :author, :null => false
       t.string :item_type, :null => false
       t.text :description, :null => false
-      t.string :stock_type, :null => false, :default => 'unavailable'
-      t.integer :current_stock
-      t.integer :max_purchase
-      t.date :reservation_end
+      t.integer :stock_left
+      t.integer :purchase_left
+      t.integer :reservation_left
+      t.date :reservation_end_date
       t.integer :price, :null => false, :default => 0
       t.string :main_picture
       t.string :other_pictures

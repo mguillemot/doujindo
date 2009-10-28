@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
+  has_many :user_addresses, :dependent => :destroy
   has_one :cart
-  
+
   validates_length_of :login, :within =>  3..40
   validates_length_of :password, :within => 6..40, :on => :create
   validates_presence_of :login, :email
@@ -10,6 +11,10 @@ class User < ActiveRecord::Base
 
   attr_accessor :password, :password_confirmation
   attr_protected :password_salt
+
+  def full_name
+    "#{first_name} #{last_name}"
+  end
 
   def password=(pass)
     @password = pass

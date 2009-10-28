@@ -6,3 +6,14 @@ erhune:
   first_name: Matthieu
   last_name: Guillemot
   email: g@npng.org
+  email_confirmation_date: 2009/10/01 20:00:00
+
+a-m:
+  id: 2
+  login: A-M
+  password_hash: 30bd149c5857ed2048f37ce6276eeab5395c5292
+  password_salt: tAj51oI7Xn
+  first_name: Adrien
+  last_name: Monpeyssen
+  email: adrien-monp@wanadoo.fr
+  email_confirmation_date: 2009/10/01 20:00:00

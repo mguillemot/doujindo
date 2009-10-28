@@ -1,5 +1,5 @@
 class ItemController < ApplicationController
-  def show
+  def index
     @item = Item.find params[:id]
     @title = @item.title
     @nav = @item.nav

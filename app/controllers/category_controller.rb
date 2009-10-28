@@ -1,5 +1,5 @@
 class CategoryController < ApplicationController
-  def show
+  def index
     @category = Category.find params[:id]
     @title = @category.title
     @nav = @category.nav

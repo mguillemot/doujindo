@@ -155,3 +155,36 @@ a:visited.title_link {
 #cart {
   text-align: center;
 }
+
+.item_detail {
+  background-color: skyblue;
+  border: 1px black dashed;
+  margin-bottom: 8px;
+  padding: 3px;
+}
+
+.item_detail_name {
+  font-size: small;
+  font-weight: bold;
+}
+
+.item_detail_content {
+  position: relative;
+  left: 25px;
+}
+
+div.category_item {
+  background-color: aliceblue;
+  border: black dotted 1px;
+  padding: 10px;
+  width: 180px;
+  height: 180px;
+}
+
+a.category_item {
+  text-decoration: none;
+}
+
+img.category_item {
+  border: none;
+}

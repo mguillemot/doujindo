@@ -19,27 +19,27 @@ class ApplicationController < ActionController::Base
   end
 
   def add_notice(notice)
-    if flash[:notice]
-      flash[:notice] += '<br />' + notice
-    else
+#    if flash[:notice]
+#      flash[:notice] += '<br />' + notice
+#    else
       flash[:notice] = notice
-    end
+#    end
   end
 
   def add_error(error)
-    if flash[:error]
-      flash[:error] += '<br />' + error
-    else
+#    if flash[:error]
+#      flash[:error] += '<br />' + error
+#    else
       flash[:error] = error
-    end
+#    end
   end
 
   def add_debug(debug)
-    if flash[:debug]
-      flash[:debug] += '<br />' + debug
-    else
+#    if flash[:debug]
+#      flash[:debug] += '<br />' + debug
+#    else
       flash[:debug] = debug
-    end
+#    end
   end
 
   def get_logged_user_and_cart

@@ -1,0 +1,8 @@
+<h1>Category "<%= @category.title -%>"</h1>
+<div style="text-align: center; position: relative; left: 25px; width: 640px; height: <%= (@category.all_items.length.to_f / 3).ceil * 220 -%>px">
+  <% @category.all_items.matrix_iterate(3) do |item, i, j| -%>
+    <div class="category_item" style="position: absolute; left: <%= i * 220 -%>px; top: <%= j * 220 -%>px">
+      <%= render :partial => 'category/item', :object => item %>
+    </div>
+  <% end -%>
+</div>

@@ -1,9 +1,0 @@
-<h1><%= @item.title -%></h1>
-<p>
-  Availability: <%= @item.stock_display -%>
-  <% form_tag :controller => 'cart', :action => 'add', :id => @item.id do %>
-    <%= submit_tag 'Add to cart' %>
-  <% end -%>
-</p>
-<p>Price: <%= @item.price -%> Yens</p>
-<p><%= @item.description -%></p>

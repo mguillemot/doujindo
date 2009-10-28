@@ -1,8 +1,0 @@
-<h1>Category "<%= @category.title -%>"</h1>
-<ul>
-  <% @category.all_items.each do |item| -%>
-    <li>
-      <%= link_to item.title, :controller => 'item', :action => 'show', :id => item.id %>
-    </li>
-  <% end -%>
-</ul>

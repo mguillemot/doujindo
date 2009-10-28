@@ -7,9 +7,17 @@ class CartController < ApplicationController
   end
 
   def add
-    @cart.add params[:id], 1
-    add_notice "Item #{params[:id]} added to cart"
-    redirect_to :controller => 'item', :action => 'show', :id => params[:id]
+    begin
+      qty = Integer(params[:op][:quantity])
+    rescue ArgumentError
+      qty = 0
+    end
+    if qty < 0
+      qty = 0
+    end
+    @cart.add params[:id], qty
+    add_notice "Item #{params[:id]} x#{qty} added to cart"
+    redirect_to :controller => 'item', :action => 'index', :id => params[:id]
   end
 
   def remove_one

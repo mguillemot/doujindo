@@ -6,20 +6,43 @@ pcb:
   author: Team Shangai Alice
   item_type: game
   description: The official Touhou 7 game.
-  stock_type: canBePurchased
-  max_purchase: 100
+  main_picture: 001_cover_big.jpg
+  stock_left: 20
+  purchase_left: 100
   price: 2000
+  test: <p>(by Erhune)</p><p>This game <b>rocks</b>!</p>
+  required_config: Not-so-big PC with Windows
+  notes: Yuyu-sama x Youmu-chan 4 Ever!
   show: true
 
 ufo:
   id: 2
-  title: Undefined Fantastic Object
+  title: Undefined Fanstastic Object
   ident: ufo
   category_id: 6
   author: Team Shangai Alice
   item_type: game
   description: The official Touhou 12 game.
-  stock_type: canBePurchased
-  max_purchase: 100
+  main_picture: 001_cover_big.jpg
+  stock_left: 15
+  purchase_left: 100
   price: 2500
+  test: <p>(by Erhune)</p><p>This game <b>rocks</b> (also)!</p>
+  required_config: A-bit-bigger PC with Windows
+  notes: Utsuhou-chan 4 teh win!
+  show: true
+
+figma_reimu:
+  id: 3
+  title: Figma Hakurei Reimu
+  ident: figma_reimu
+  category_id: 5
+  author: Griffon Enterprises
+  item_type: figurine
+  description: Fighto Reimu fighto!
+  main_picture: 003_fight_pose_big.jpg
+  reservation_left: 100
+  reservation_end_date: 2010-01-01 23:00:00
+  price: 5000
+  test: <p>(by Erhune)</p><p>ね、霊夢ちゃん…結婚しない？</p>
   show: true

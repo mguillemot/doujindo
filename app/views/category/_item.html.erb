@@ -1,0 +1,4 @@
+<% link_to( { :controller => 'item', :action => 'index', :id => item.id }, :class => 'category_item') do %>
+  <div><%= image_tag "catalog/#{item.main_picture}", :alt => item.title, :size => '175x160', :class => 'category_item' %></div>
+  <div><%= item.title %></div>
+<% end -%>

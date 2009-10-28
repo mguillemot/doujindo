@@ -1,0 +1,17 @@
+yen:
+  id: 1
+  description: Japanese Yen
+  symbol: ¥
+  rate_to_yen: 1
+
+euro:
+  id: 2
+  description: Euro
+  symbol: €
+  rate_to_yen: 135
+  
+dollar:
+  id: 3
+  description: U.S. Dollar
+  symbol: $
+  rate_to_yen: 90

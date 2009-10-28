@@ -3,7 +3,8 @@
 <head>
   <title>Touhou Shop<%= " - #{@title}" if @title %></title>
   <%= stylesheet_link_tag 'style' %>
-  <%= javascript_include_tag :defaults %>
+  <%= stylesheet_link_tag 'blitzer/jquery-ui-1.7.2.custom' %>
+  <%= javascript_include_tag :all %>
 </head>
 <body>
 <div id="page">
@@ -30,6 +31,7 @@
     </div>
   </div>
   <div id="footer">Touhou Shop © 2009</div>
+  <%= render :partial => 'partials/chibi' %>
 </div>
 </body>
 </html>

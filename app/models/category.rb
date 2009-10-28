@@ -12,7 +12,6 @@ class Category < ActiveRecord::Base
     subcategories.each do |subcat|
       all.concat subcat.all_items
     end
-    all
   end
 
   def nav
@@ -21,7 +20,7 @@ class Category < ActiveRecord::Base
     if (p)
       nav = [ ];
       while (p)
-        nav << [ p.title, { :controller => 'category', :action => 'show', :id => p.id } ];
+        nav << [ p.title, { :controller => 'category', :action => 'index', :id => p.id } ];
         p = p.parent
       end
       nav = nav.reverse

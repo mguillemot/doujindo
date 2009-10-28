@@ -3,6 +3,8 @@
   <component name="Encoding" useUTFGuessing="true" native2AsciiForPropertiesFiles="false">
     <file url="file://$PROJECT_DIR$/app/views/home/index.html.erb" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/views/layouts/application.html.erb" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/test/fixtures/currencies.yml" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/test/fixtures/items.yml" charset="UTF-8" />
   </component>
 </project>
 
