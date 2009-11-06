@@ -1,5 +1,4 @@
 class Cart < ActiveRecord::Base
-  belongs_to :user
   has_many :cart_items, :dependent => :destroy
 
   validates_associated :cart_items

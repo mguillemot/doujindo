@@ -7,6 +7,7 @@ erhune:
   last_name: Guillemot
   email: g@npng.org
   email_confirmation_date: 2009/10/01 20:00:00
+  admin: true
 
 a-m:
   id: 2
@@ -17,3 +18,4 @@ a-m:
   last_name: Monpeyssen
   email: adrien-monp@wanadoo.fr
   email_confirmation_date: 2009/10/01 20:00:00
+  admin: true

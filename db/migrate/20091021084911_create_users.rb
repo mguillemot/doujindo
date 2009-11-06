@@ -9,6 +9,7 @@ class CreateUsers < ActiveRecord::Migration
       t.string :email, :null => false
       t.string :email_confirmation_key
       t.datetime :email_confirmation_date
+      t.boolean :admin, :null => false, :default => false
       t.integer :login_count, :null => false, :default => 0
       t.datetime :last_login
       t.timestamps

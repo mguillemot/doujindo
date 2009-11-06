@@ -20,7 +20,6 @@ ActiveRecord::Schema.define(:version => 20091028145928) do
   end
 
   create_table "carts", :force => true do |t|
-    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -79,15 +78,16 @@ ActiveRecord::Schema.define(:version => 20091028145928) do
   end
 
   create_table "users", :force => true do |t|
-    t.string   "login",                                  :null => false
-    t.string   "password_hash",                          :null => false
-    t.string   "password_salt",                          :null => false
-    t.string   "first_name",                             :null => false
-    t.string   "last_name",                              :null => false
-    t.string   "email",                                  :null => false
+    t.string   "login",                                      :null => false
+    t.string   "password_hash",                              :null => false
+    t.string   "password_salt",                              :null => false
+    t.string   "first_name",                                 :null => false
+    t.string   "last_name",                                  :null => false
+    t.string   "email",                                      :null => false
     t.string   "email_confirmation_key"
     t.datetime "email_confirmation_date"
-    t.integer  "login_count",             :default => 0, :null => false
+    t.boolean  "admin",                   :default => false, :null => false
+    t.integer  "login_count",             :default => 0,     :null => false
     t.datetime "last_login"
     t.datetime "created_at"
     t.datetime "updated_at"
