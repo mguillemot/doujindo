@@ -17,8 +17,18 @@ module ApplicationHelper
     session[:user] ? true : false
   end
 
+  def all_currencies
+    currencies = { }
+    Currency.all.each do |currency|
+      currencies[currency.description] = currency.id
+    end
+    currencies
+  end
+
   def current_currency
-    # TODO add other currencies support
-    Currency.find 2 # Euro
+    Currency.find session[:currency]
+  rescue ActiveRecord::RecordNotFound
+    logger.error "Invalid currency #{session[:currency]}"
+    nil
   end
 end

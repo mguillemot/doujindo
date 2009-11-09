@@ -1,48 +1,54 @@
 pcb:
   id: 1
-  title: Perfect Cherry Blossom
+  title_en: Perfect Cherry Blossom
   ident: pcb
   category_id: 6
-  author: Team Shangai Alice
-  item_type: game
-  description: The official Touhou 7 game.
+  author_en: Team Shangai Alice
+  item_type_en: game
+  item_type_fr: jeu vidéo
+  description_en: The official Touhou 7 game.
+  description_fr: Le Touhou 7 officiel.
   main_picture: 001_icon.jpg
   stock_left: 20
   purchase_left: 100
   price: 2000
-  test: <p>(by Erhune)</p><p>This game <b>rocks</b>!</p>
-  required_config: Not-so-big PC with Windows
-  notes: Yuyu-sama x Youmu-chan 4 Ever!
+  test_en: <p>(by Erhune)</p><p>This game <b>rocks</b>!</p>
+  required_config_en: Not-so-big PC with Windows
+  notes_en: Yuyu-sama x Youmu-chan 4 Ever!
   show: true
 
 ufo:
   id: 2
-  title: Undefined Fanstastic Object
+  title_en: Undefined Fanstastic Object
   ident: ufo
   category_id: 6
-  author: Team Shangai Alice
-  item_type: game
-  description: The official Touhou 12 game.
+  author_en: Team Shangai Alice
+  item_type_en: game
+  item_type_fr: jeu vidéo
+  description_en: The official Touhou 12 game.
+  description_fr: Le Touhou 12 officiel.
   main_picture: 002_icon.jpg
   stock_left: 15
   purchase_left: 100
   price: 2500
-  test: <p>(by Erhune)</p><p>This game <b>rocks</b> (also)!</p>
-  required_config: A-bit-bigger PC with Windows
-  notes: Utsuhou-chan 4 teh win!
+  test_en: <p>(by Erhune)</p><p>This game <b>rocks</b> (also)!</p>
+  required_config_en: A-bit-bigger PC with Windows
+  notes_en: Utsuhou-chan 4 teh win!
   show: true
 
 figma_reimu:
   id: 3
-  title: Figma Hakurei Reimu
+  title_en: Figma Hakurei Reimu
   ident: figma_reimu
   category_id: 5
-  author: Griffon Enterprises
-  item_type: figurine
-  description: Fighto Reimu fighto!
+  author_en: Griffon Enterprises
+  item_type_en: figure
+  item_type_fr: figurine
+  description_en: Fighto Reimu fighto!
+  description_fr: Allez Reimu, allez !!!
   main_picture: 003_icon.jpg
   reservation_left: 100
   reservation_end_date: 2010-01-01 23:00:00
   price: 5000
-  test: <p>(by Erhune)</p><p>ね、霊夢ちゃん…結婚しない？</p>
+  test_en: <p>(by Erhune)</p><p>ね、霊夢ちゃん…結婚しない？</p>
   show: true

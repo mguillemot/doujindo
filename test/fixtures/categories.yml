@@ -1,32 +1,39 @@
 games:
   id: 1
-  title: Games
+  title_en: Games
+  title_fr: Jeux
 
 official-games:
   id: 2
   parent_id: 1
-  title: Official games
+  title_en: Official games
+  title_fr: Jeux officiels
 
 derivative-games:
   id: 3
   parent_id: 1
-  title: Derivative games
+  title_en: Derivative games
+  title_fr: Jeux dérivés
 
 goodies:
   id: 4
-  title: Goodies
+  title_en: Goodies
+  title_fr: Jouets
 
 figurines:
   id: 5
   parent_id: 4
-  title: Figurines
+  title_en: Figures
+  title_fr: Figurines
 
 official-stg:
   id: 6
   parent_id: 2
-  title: Official STG
+  title_en: Official shooting
+  title_fr: Shmups officiels
 
 official-fight:
   id: 7
   parent_id: 2
-  title: Official Fighting Games
+  title_en: Official fighting
+  title_fr: Baston officiels

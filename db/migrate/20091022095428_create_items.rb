@@ -1,12 +1,16 @@
 class CreateItems < ActiveRecord::Migration
   def self.up
     create_table :items do |t|
-      t.string :title, :null => false
+      t.string :title_en
+      t.string :title_fr
       t.string :ident, :null => false, :limit => 16
       t.integer :category_id, :null => false
-      t.string :author, :null => false
-      t.string :item_type, :null => false
-      t.text :description, :null => false
+      t.string :author_en
+      t.string :author_fr
+      t.string :item_type_en
+      t.string :item_type_fr
+      t.text :description_en
+      t.text :description_fr
       t.integer :stock_left
       t.integer :purchase_left
       t.integer :reservation_left
@@ -15,13 +19,20 @@ class CreateItems < ActiveRecord::Migration
       t.string :main_picture
       t.string :other_pictures
       t.string :video
-      t.string :publisher
-      t.text :tracklist
-      t.text :test
-      t.text :required_config
-      t.text :format
-      t.text :warning
-      t.text :notes
+      t.string :publisher_en
+      t.string :publisher_fr
+      t.text :tracklist_en
+      t.text :tracklist_fr
+      t.text :test_en
+      t.text :test_fr
+      t.text :required_config_en
+      t.text :required_config_fr
+      t.text :format_en
+      t.text :format_fr
+      t.text :warning_en
+      t.text :warning_fr
+      t.text :notes_en
+      t.text :notes_fr
       t.boolean :show, :null => false, :default => true
       t.timestamps
     end

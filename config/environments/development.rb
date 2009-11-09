@@ -25,3 +25,6 @@ config.action_mailer.smtp_settings = {
         :authentication => :login
 }
 config.action_mailer.default_charset = 'utf-8'
+
+# Cookies
+DOMAIN = 'touhou-local.com'

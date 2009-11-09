@@ -1,5 +1,30 @@
-# Sample localization file for English. Add more files in this directory for other locales.
-# See http://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
-
 en:
-  hello: "Hello world"
+  home:
+    title: "Home"
+    welcome: "Welcome to our shop!"
+
+  alerts:
+    login_failure: "Login failure"  
+
+  category:
+    title: 'Category "{{title}}"'
+    empty: "(no items found)"
+
+  layout:
+    sidebar:
+      cart: "Shopping cart"
+      user_menu:
+        title: "User menu"
+        username: "Username:"
+        password: "Password:"
+        login_button: "Login"
+        logout_button: "Logout"
+      global_menu:
+        title: "Global menu"
+        register: "Create new account"
+      catalog: "Catalog"
+      language: "Language &amp; currency"
+
+  item:
+    price: "Price"
+    description: "Description"

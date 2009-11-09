@@ -36,3 +36,6 @@ config.action_mailer.default_charset = 'utf-8'
 
 # Enable threaded mode
 # config.threadsafe!
+
+# Cookies
+DOMAIN = 'touhou-shop.com'

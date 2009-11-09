@@ -1,0 +1,12 @@
+<%= select_tag 'locale', options_for_select(LANGUAGES, I18n.locale), :id => 'locale' %>
+<%= select_tag 'locale', options_for_select(all_currencies, @currency.id), :id => 'currency' %>
+<script type="text/javascript">
+    $(function() {
+        $('#locale').change(function() {
+            top.location = '<%= url_for :controller => 'user', :action => 'change_language' %>/' + $(this).val();
+        });
+        $('#currency').change(function() {
+            top.location = '<%= url_for :controller => 'user', :action => 'change_currency' %>/' + $(this).val();
+        });
+    });
+</script>

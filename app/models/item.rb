@@ -1,13 +1,20 @@
 class Item < ActiveRecord::Base
   belongs_to :category
 
+  translatable_columns :title, :author, :item_type, :description, :publisher, :tracklist, :test, :required_config, :format, :warning, :notes
+  validates_translation_of :title, :author, :item_type, :description
+
   def nav
     category.nav << [ title, { :controller => 'item', :action => 'index', :id => id } ]
   end
 
   def price_in_currency(currency)
-    exact = price / currency.rate_to_yen
-    (exact + 1).floor
+    exact = price.to_f / currency.rate_to_yen
+    if (exact - exact.floor != 0)
+      (exact + 1).floor
+    else
+      exact.floor
+    end
   end
 
   def max_order

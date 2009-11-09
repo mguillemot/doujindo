@@ -37,5 +37,18 @@ Rails::Initializer.run do |config|
 
   # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
   # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}')]
-  # config.i18n.default_locale = :de
+  config.i18n.default_locale = :en
+  #ActiveRecord::Base.translatable_columns_config.use_default = true
+  LANGUAGES = {
+          'English' => 'en',
+          'Français' => 'fr'
+  }
+  LANGUAGE_BY_SUBDOMAIN = {
+          'www' => 'en',
+          'fr' => 'fr'
+  }
+  DEFAULT_CURRENCIES = {
+          'en' => 3,
+          'fr' => 2
+  }
 end

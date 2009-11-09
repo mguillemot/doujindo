@@ -3,6 +3,9 @@ class Category < ActiveRecord::Base
   has_one :parent, { :class_name => 'Category' }
   belongs_to :parent, { :class_name => 'Category' }
 
+  translatable_columns :title
+  validates_translation_of :title
+
   def subcategories
     return Category.find_all_by_parent_id(self.id)
   end

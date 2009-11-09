@@ -1,5 +1,5 @@
 <div id="navbar">
-  <%= link_to 'Home', { :controller => 'home' }, { :class => 'navbar_link' } %>
+  <%= link_to t('home.title'), { :controller => 'home' }, { :class => 'navbar_link' } %>
   <% if @nav -%>
     &gt;
     <% @nav.each do |nav| -%>

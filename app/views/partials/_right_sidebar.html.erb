@@ -1,53 +1,11 @@
 <div id="right_sidebar">
-  <div class="menu_category">User menu</div>
-  <div>Blablabla!</div>
-  <div>Blablabla!</div>
+  <div class="menu_category"><%= t('layout.sidebar.language') -%></div>
+  <div>
+    <%= render :partial => 'partials/language_and_currency' %>
+  </div>
 
-  <div class="menu_category">User menu 2</div>
-  <div>Blablabla!</div>
-  <div>Blablabla!</div>
-  <div>Blablabla!</div>
-
-  <div class="menu_category">User menu 3</div>
-  <div>Blablabla!</div>
-  <div>Blablabla!</div>
-  <div>Blablabla!</div>
-
-  <div class="menu_category">User menu 4</div>
-  <div>Blablabla!</div>
-  <div>Blablabla!</div>
-  <div>Blablabla!</div>
-
-  <div class="menu_category">User menu 5</div>
-  <div>Blablabla!</div>
-  <div>Blablabla!</div>
-  <div>Blablabla!</div>
-  <div>Blablabla!</div>
-
-  <div class="menu_category">User menu 6</div>
-  <div>Blablabla!</div>
-  <div>Blablabla!</div>
-  <div>Blablabla!</div>
-  <div>Blablabla!</div>
-  <div>Blablabla!</div>
-  <div>Blablabla!</div>
-
-  <div class="menu_category">User menu 7</div>
-  <div>Blablabla!</div>
-  <div>Blablabla!</div>
-  <div>Blablabla!</div>
-
-  <div class="menu_category">User menu 8</div>
-  <div>Blablabla!</div>
-  <div>Blablabla!</div>
-  <div>Blablabla!</div>
-  <div>Blablabla!</div>
-  <div>Blablabla!</div>
-  <div>Blablabla!</div>
-  <div>Blablabla!</div>
-
-  <div class="menu_category">User menu 9</div>
-  <div>Blablabla!</div>
-  <div>Blablabla!</div>
-  <div>Blablabla!</div>
+  <div class="menu_category"><%= t('layout.sidebar.cart') -%></div>
+  <div>
+    <%= render :partial => 'partials/cart' %>
+  </div>
 </div>

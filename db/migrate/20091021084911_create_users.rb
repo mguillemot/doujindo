@@ -7,6 +7,8 @@ class CreateUsers < ActiveRecord::Migration
       t.string :first_name, :null => false
       t.string :last_name, :null => false
       t.string :email, :null => false
+      t.string :preferred_language
+      t.integer :preferred_currency
       t.string :email_confirmation_key
       t.datetime :email_confirmation_date
       t.boolean :admin, :null => false, :default => false

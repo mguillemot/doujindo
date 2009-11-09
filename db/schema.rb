@@ -27,26 +27,34 @@ ActiveRecord::Schema.define(:version => 20091028145928) do
   create_table "categories", :force => true do |t|
     t.integer  "parent_id"
     t.string   "ident"
-    t.string   "title"
+    t.string   "title_en"
+    t.string   "title_fr"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "currencies", :force => true do |t|
-    t.string   "description",                                              :null => false
-    t.string   "symbol",                                                   :null => false
-    t.integer  "rate_to_yen", :limit => 10, :precision => 10, :scale => 0, :null => false
+    t.string   "description_en"
+    t.string   "description_fr"
+    t.string   "symbol",                                                      :null => false
+    t.string   "format_en"
+    t.string   "format_fr"
+    t.integer  "rate_to_yen",    :limit => 10, :precision => 10, :scale => 0, :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "items", :force => true do |t|
-    t.string   "title",                                                :null => false
+    t.string   "title_en"
+    t.string   "title_fr"
     t.string   "ident",                :limit => 16,                   :null => false
     t.integer  "category_id",                                          :null => false
-    t.string   "author",                                               :null => false
-    t.string   "item_type",                                            :null => false
-    t.text     "description",                                          :null => false
+    t.string   "author_en"
+    t.string   "author_fr"
+    t.string   "item_type_en"
+    t.string   "item_type_fr"
+    t.text     "description_en"
+    t.text     "description_fr"
     t.integer  "stock_left"
     t.integer  "purchase_left"
     t.integer  "reservation_left"
@@ -55,13 +63,20 @@ ActiveRecord::Schema.define(:version => 20091028145928) do
     t.string   "main_picture"
     t.string   "other_pictures"
     t.string   "video"
-    t.string   "publisher"
-    t.text     "tracklist"
-    t.text     "test"
-    t.text     "required_config"
-    t.text     "format"
-    t.text     "warning"
-    t.text     "notes"
+    t.string   "publisher_en"
+    t.string   "publisher_fr"
+    t.text     "tracklist_en"
+    t.text     "tracklist_fr"
+    t.text     "test_en"
+    t.text     "test_fr"
+    t.text     "required_config_en"
+    t.text     "required_config_fr"
+    t.text     "format_en"
+    t.text     "format_fr"
+    t.text     "warning_en"
+    t.text     "warning_fr"
+    t.text     "notes_en"
+    t.text     "notes_fr"
     t.boolean  "show",                               :default => true, :null => false
     t.datetime "created_at"
     t.datetime "updated_at"

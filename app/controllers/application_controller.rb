@@ -8,7 +8,9 @@ class ApplicationController < ActionController::Base
   # Scrub sensitive parameters from your log
   # filter_parameter_logging :password
 
-  before_filter :get_logged_user_and_cart
+  before_filter :set_locale, :load_session
+
+  protected
 
   def login_required
     return true if session[:user]
@@ -18,45 +20,68 @@ class ApplicationController < ActionController::Base
     return false
   end
 
+  def find_subdomain_for_language(language)
+    LANGUAGE_BY_SUBDOMAIN.each do |key, val|
+      return key if val == language
+    end
+    nil
+  end
+
+  def default_currency_for(locale)
+    logger.debug locale.class
+    DEFAULT_CURRENCIES[locale.to_s || 'en']
+  end
+
   def add_notice(notice)
-#    if flash[:notice]
-#      flash[:notice] += '<br />' + notice
-#    else
-      flash[:notice] = notice
-#    end
+    flash[:notice] = notice
+    logger.info notice
   end
 
   def add_error(error)
-#    if flash[:error]
-#      flash[:error] += '<br />' + error
-#    else
-      flash[:error] = error
-#    end
+    flash[:error] = error
+    logger.error error
   end
 
   def add_debug(debug)
-#    if flash[:debug]
-#      flash[:debug] += '<br />' + debug
-#    else
-      flash[:debug] = debug
-#    end
+    flash[:debug] = debug
+    logger.debug debug
   end
 
-  def get_logged_user_and_cart
+  def set_locale
+    parsed_locale = LANGUAGE_BY_SUBDOMAIN[request.host.split('.').first]
+    if (parsed_locale)
+      I18n.locale = LANGUAGE_BY_SUBDOMAIN[parsed_locale]
+      logger.info "Locale automagically set to #{parsed_locale}"
+    end
+  end
+
+  def load_session
     if session[:user]
       begin
         @user = User.find session[:user]
-        @cart = @user.cart
       rescue ActiveRecord::RecordNotFound
-        add_error "Could not reload user #{session[:user]}"
+        add_error "Could not reload user #{session[:user]} from session"
       end
     end
-    if !@cart and session[:cart] # We have a floating cart
+    if session[:cart]
       begin
         @cart = Cart.find session[:cart]
       rescue ActiveRecord::RecordNotFound
-        add_error "Could not reload cart #{session[:cart]}"
+        add_error "Could not reload cart #{session[:cart]} from session"
       end
+    end
+    if session[:currency]
+      begin
+        @currency = Currency.find session[:currency]
+      rescue ActiveRecord::RecordNotFound
+        add_error "Could not reload currency #{session[:currency]} from session"
+      end
+    end
+    unless @currency
+      logger.info "Using default currency for #{I18n.locale}"
+      session[:currency] = default_currency_for I18n.locale
+      logger.info "Using default currency for #{session[:currency]}"
+      @currency = Currency.find session[:currency]
     end
   end
 end

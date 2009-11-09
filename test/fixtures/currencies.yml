@@ -1,17 +1,26 @@
 yen:
   id: 1
-  description: Japanese Yen
+  description_en: Japanese Yen
+  description_fr: Yen japonais
   symbol: ¥
   rate_to_yen: 1
+  format_en: "{unit}}{{price}"
+  format_fr: "{price}}{{unit}"
 
 euro:
   id: 2
-  description: Euro
+  description_en: Euro
+  description_fr: Euro
   symbol: €
   rate_to_yen: 135
-  
+  format_en: "{unit}}{{price}"
+  format_fr: "{price}}{{unit}"
+
 dollar:
   id: 3
-  description: U.S. Dollar
+  description_en: U.S. Dollar
+  description_fr: Dollar U.S.
   symbol: $
   rate_to_yen: 90
+  format_en: "{unit}}{{price}"
+  format_fr: "{price}}{{unit}"

@@ -2,8 +2,6 @@ class CartController < ApplicationController
   before_filter :cart_required
 
   def index
-    @title = "Shopping cart summary"
-    @nav = [ [ 'Shopping cart' ] ]
   end
 
   def add
