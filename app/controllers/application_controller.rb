@@ -20,16 +20,20 @@ class ApplicationController < ActionController::Base
     return false
   end
 
+  def admin_required
+    @user.admin?
+  end
+
   def find_subdomain_for_language(language)
-    LANGUAGE_BY_SUBDOMAIN.each do |key, val|
-      return key if val == language
-    end
-    nil
+    LANGUAGE_BY_SUBDOMAIN.index language
   end
 
   def default_currency_for(locale)
-    logger.debug locale.class
     DEFAULT_CURRENCIES[locale.to_s || 'en']
+  end
+
+  def prune(hash)
+    hash.delete_if { |k,v| v == '' }
   end
 
   def add_notice(notice)

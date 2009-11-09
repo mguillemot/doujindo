@@ -1,12 +1,17 @@
 <% @title = @item.title -%>
 <% @nav = @item.nav -%>
 <h1><%= @item.title -%></h1>
+<% if @user.admin? -%>
+    <div>
+      <%= button_to 'Edit', :action => 'edit', :id => @item %>
+    </div>
+<% end -%>
 <div class="item_detail">
   <div class="item_detail_name"><%= t('item.price') -%></div>
   <div class="item_detail_content"><%= @item.price_in_currency(current_currency) -%> <%= current_currency.symbol -%></div>
 </div>
 <div class="item_detail">
-  <div class="item_detail_name">Availability</div>
+  <div class="item_detail_name"><%= t('item.availability') -%></div>
   <div class="item_detail_content">
     <%= @item.stock_display -%>
     <% if @item.max_order > 0 -%>
@@ -20,63 +25,58 @@
 <div class="item_detail">
   <div class="item_detail_name"><%= t('item.description') -%></div>
   <div class="item_detail_content"><%= @item.description -%></div>
-  <% form_for :item do |f| -%>
-      <% Item.available_translatable_columns_of(:description).each do |attr| -%>
-          <%= f.text_field attr %>
-      <% end -%>
-  <% end -%>
 </div>
 <div class="item_detail">
-  <div class="item_detail_name">Author</div>
+  <div class="item_detail_name"><%= t('item.author') -%></div>
   <div class="item_detail_content"><%= @item.author -%></div>
 </div>
 <div class="item_detail">
-  <div class="item_detail_name">Type</div>
+  <div class="item_detail_name"><%= t('item.type') -%></div>
   <div class="item_detail_content"><%= @item.item_type -%></div>
 </div>
 <div class="item_detail">
-  <div class="item_detail_name">Pictures</div>
+  <div class="item_detail_name"><%= t('item.pictures') -%></div>
   <div class="item_detail_content"><%= image_tag 'catalog/001_cover_big.jpg', :alt => "#{@item.title} #1", :size => '100x100' -%></div>
 </div>
 <% unless @item.publisher.nil? -%>
     <div class="item_detail">
-      <div class="item_detail_name">Publisher</div>
+      <div class="item_detail_name"><%= t('item.publisher') -%></div>
       <div class="item_detail_content"><%= @item.publisher -%></div>
     </div>
 <% end -%>
 <% unless @item.tracklist.nil? -%>
     <div class="item_detail">
-      <div class="item_detail_name">Track List</div>
+      <div class="item_detail_name"><%= t('item.track_list') -%></div>
       <div class="item_detail_content"><%= @item.tracklist -%></div>
     </div>
 <% end -%>
 <% unless @item.test.nil? -%>
     <div class="item_detail">
-      <div class="item_detail_name">Test</div>
+      <div class="item_detail_name"><%= t('item.test') -%></div>
       <div class="item_detail_content"><%= @item.test -%></div>
     </div>
 <% end -%>
 <% unless @item.required_config.nil? -%>
     <div class="item_detail">
-      <div class="item_detail_name">Required config</div>
+      <div class="item_detail_name"><%= t('item.required_conf') -%></div>
       <div class="item_detail_content"><%= @item.required_config -%></div>
     </div>
 <% end -%>
 <% unless @item.format.nil? -%>
     <div class="item_detail">
-      <div class="item_detail_name">Format</div>
+      <div class="item_detail_name"><%= t('item.format') -%></div>
       <div class="item_detail_content"><%= @item.format -%></div>
     </div>
 <% end -%>
 <% unless @item.warning.nil? -%>
     <div class="item_detail">
-      <div class="item_detail_name">Warning</div>
+      <div class="item_detail_name"><%= t('item.warning') -%></div>
       <div class="item_detail_content"><%= @item.warning -%></div>
     </div>
 <% end -%>
 <% unless @item.notes.nil? -%>
     <div class="item_detail">
-      <div class="item_detail_name">Notes</div>
+      <div class="item_detail_name"><%= t('item.notes') -%></div>
       <div class="item_detail_content"><%= @item.notes -%></div>
     </div>
 <% end -%>

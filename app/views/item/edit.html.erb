@@ -1,0 +1,120 @@
+<% @title = @item.title -%>
+<% @nav = @item.nav -%>
+<h1><%= @item.title -%></h1>
+<% form_for :item, @item do |f| -%>
+    <div>
+      <%= f.submit 'Submit' %>
+    </div>
+    <div class="item_detail">
+      <div class="item_detail_name"><%= "Title" -%></div>
+      <div class="item_detail_content">
+        En: <%= f.text_field :title_en %>
+        <br/>
+        Fr: <%= f.text_field :title_fr %>
+      </div>
+    </div>
+    <div class="item_detail">
+      <div class="item_detail_name"><%= t('item.price') -%></div>
+      <%= f.text_field :price %>
+    </div>
+    <div class="item_detail">
+      <div class="item_detail_name">Availability</div>
+      <div class="item_detail_content">
+        Stock left: <%= f.text_field :stock_left %>
+        <br/>
+        Purchase left: <%= f.text_field :purchase_left %>
+        <br/>
+        Reservation left: <%= f.text_field :reservation_left %> end at <%= f.text_field :reservation_end_date %>
+      </div>
+    </div>
+    <div class="item_detail">
+      <div class="item_detail_name"><%= t('item.description') -%></div>
+      <div class="item_detail_content">
+        En: <%= f.text_area :description_en, :size => '70x8' %>
+        <br/>
+        Fr: <%= f.text_area :description_fr, :size => '70x8' %>
+      </div>
+    </div>
+    <div class="item_detail">
+      <div class="item_detail_name">Author</div>
+      <div class="item_detail_content">
+        En: <%= f.text_field :author_en %>
+        <br/>
+        Fr: <%= f.text_field :author_fr %>
+      </div>
+    </div>
+    <div class="item_detail">
+      <div class="item_detail_name">Type</div>
+      <div class="item_detail_content">
+        En: <%= f.text_field :item_type_en %>
+        <br/>
+        Fr: <%= f.text_field :item_type_fr %>
+      </div>
+    </div>
+    <div class="item_detail">
+      <div class="item_detail_name">Pictures</div>
+      <div class="item_detail_content">
+        Main: <%= f.text_field :main_picture %>
+        Other: <%= f.text_area :other_pictures, :size => '70x8' %>
+      </div>
+    </div>
+    <div class="item_detail">
+      <div class="item_detail_name">Publisher</div>
+      <div class="item_detail_content">
+        En: <%= f.text_field :publisher_en %>
+        <br/>
+        Fr: <%= f.text_field :publisher_fr %>
+      </div>
+    </div>
+    <div class="item_detail">
+      <div class="item_detail_name">Track List</div>
+      <div class="item_detail_content">
+        En: <%= f.text_area :tracklist_en, :size => '70x8' %>
+        <br/>
+        Fr: <%= f.text_area :tracklist_fr, :size => '70x8' %>
+      </div>
+    </div>
+    <div class="item_detail">
+      <div class="item_detail_name">Test</div>
+      <div class="item_detail_content">
+        En: <%= f.text_area :test_en, :size => '70x8' %>
+        <br/>
+        Fr: <%= f.text_area :test_fr, :size => '70x8' %>
+      </div>
+    </div>
+    <div class="item_detail">
+      <div class="item_detail_name">Required config</div>
+      <div class="item_detail_content">
+        En: <%= f.text_area :required_config_en, :size => '70x8' %>
+        <br/>
+        Fr: <%= f.text_area :required_config_fr, :size => '70x8' %>
+      </div>
+    </div>
+    <div class="item_detail">
+      <div class="item_detail_name">Format</div>
+      <div class="item_detail_content">
+        En: <%= f.text_field :format_en %>
+        <br/>
+        Fr: <%= f.text_field :format_fr %>
+      </div>
+    </div>
+    <div class="item_detail">
+      <div class="item_detail_name">Warning</div>
+      <div class="item_detail_content">
+        En: <%= f.text_area :warning_en, :size => '70x8' %>
+        <br/>
+        Fr: <%= f.text_area :warning_fr, :size => '70x8' %>
+      </div>
+    </div>
+    <div class="item_detail">
+      <div class="item_detail_name"><%= t('item.notes') -%></div>
+      <div class="item_detail_content">
+        En: <%= f.text_area :notes_en, :size => '70x8' %>
+        <br/>
+        Fr: <%= f.text_area :notes_fr, :size => '70x8' %>
+      </div>
+    </div>
+    <div>
+      <%= f.submit 'Submit' %>
+    </div>
+<% end -%>
