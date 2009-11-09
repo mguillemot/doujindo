@@ -29,7 +29,7 @@ config.action_mailer.smtp_settings = {
         :domain => '127.0.0.1',
         :port => 5025,
         :user_name => 'postmaster@touhou-shop.com',
-        :password => 'pass',
+        :password => 'Ez3p7f8gAt2N',
         :authentication => :login
 }
 config.action_mailer.default_charset = 'utf-8'
