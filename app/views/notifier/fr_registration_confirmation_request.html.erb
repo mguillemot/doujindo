@@ -1,0 +1,8 @@
+Cher <%= @user.full_name -%>,
+
+Merci de vous être enregistré sur Touhou Shop. Veuillez cliquer sur le lien suivant pour confirmer votre adresse e-mail et ainsi compléter la procédure d'ouverture de compte :
+
+http://fr.touhou-shop.com/user/confirm_email/<%= @user.email_confirmation_key %>
+
+--
+Touhou Shop

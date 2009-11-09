@@ -3,8 +3,23 @@ fr:
     title: "Accueil"
     welcome: "Bienvenue dans notre boutique!"
 
+  user:
+    register: "Créer un nouveau compte client"
+    login: "Identifiant :"
+    first_name: "Prénom :"
+    last_name: "Nom :"
+    email: "E-mail :"
+    password: "Mot de passe :"
+    password_confirmation: "Confirmation du mot de passe :"
+    signup: "S'inscrire"
+
   alerts:
     login_failure: "Erreur d'authentification"
+    please_login: "Veuillez vous identifier ou créer un compte client pour pouvoir continuer"
+    please_logout: "Veuillez vous déconnecter pour pouvoir continuer"
+    registration_error: "Echec de la création du nouveau compte client"
+    confirmation_email_sent: "Un e-mail contenant un lien de confirmation a été envoyé à {{email}}. Veuillez le lire et cliquer sur le lien sous 24 heures, faute de quoi ce compte sera désactivé."
+    validation_email_sent: "Création du compte terminée ! Un e-mail de confirmation a été envoyé à {{email}}"
 
   category:
     title: 'Categorie "{{title}}"'
@@ -28,6 +43,12 @@ fr:
   item:
     price: "Prix"
     description: "Description"
+
+  mail:
+    registration_final_confirmation:
+      title: "[Touhou Shop] Inscription confirmée !"
+    registration_confirmation_request:
+      title: "[Touhou Shop] Veuillez confirmer votre inscription"
 
   date:
     formats:

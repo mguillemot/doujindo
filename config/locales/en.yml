@@ -3,8 +3,23 @@ en:
     title: "Home"
     welcome: "Welcome to our shop!"
 
+  user:
+    register: "Register a new Touhou-Shop account"
+    login: "Login:"
+    first_name: "First name:"
+    last_name: "Last name:"
+    email: "E-mail:"
+    password: "Password:"
+    password_confirmation: "Password confirmation:"
+    signup: "Signup"
+    
   alerts:
     login_failure: "Login failure"  
+    please_login: "Please login or create an account to continue"
+    please_logout: "Please logout to continue"
+    registration_error: "Registration error"
+    confirmation_email_sent: "An e-mail containing a confirmation link has been sent to {{email}. If you don't read it and confirm your address in the next 24 hours, this account will be automatically deleted."
+    validation_email_sent: "Accout validation successful! A confirmation e-mail has been sent to {{email}}"
 
   category:
     title: 'Category "{{title}}"'
@@ -39,3 +54,9 @@ en:
     format: "Format"
     warning: "Warning"
     notes: "Notes"
+    
+  mail:
+    registration_final_confirmation:
+      title: "[Touhou Shop] Registration successful!"
+    registration_confirmation_request:
+      title: "[Touhou Shop] Please confirm your registration"

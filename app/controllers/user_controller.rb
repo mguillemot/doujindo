@@ -1,5 +1,6 @@
 class UserController < ApplicationController
-  before_filter :login_required, :only => ['home']
+  before_filter :login_required, :only => :home
+  before_filter :login_refused, :only => :register
 
   def home
   end
@@ -71,17 +72,42 @@ class UserController < ApplicationController
 
   def register
     if request.post? and params[:user]
-      @user = User.new(params[:user])
+      @user = User.new params[:user]
+      @user.regen_confirmation_key
+      @user.preferred_language = I18n.locale
+      @user.preferred_currency = @currency.id
       if @user.save
         session[:user] = @user.id
-        add_notice "User #{@user.login} created!"
+        Notifier.deliver_registration_confirmation_request @user
+        add_notice t('alerts.confirmation_email_sent', {:email => @user.email})
         redirect_to :action => 'home'
       else
-        add_error "Registration error"
-        @user.password = '';
-        @user.password_confirmation = '';
+        add_error t('alerts.registration_error')
+        @user.password = ''
+        @user.password_confirmation = ''
       end
     end
+  end
+
+  def confirm_email
+    user = User.find_by_email_confirmation_key params[:id]
+    if user and user.email_confirmation_date.nil?
+      user.email_confirmation_date = DateTime.now
+      user.save!
+      Notifier.deliver_registration_final_confirmation user
+      add_notice t('alerts.validation_email_sent', {:email => user.email})
+      if @user and @user.id == user.id
+        redirect_to :action => 'home'
+        return
+      end
+    end
+    redirect_to :controller => 'home'
+  end
+
+  protected
+
+  def do_login
+
   end
 
 end

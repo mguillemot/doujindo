@@ -15,6 +15,14 @@ class User < ActiveRecord::Base
     "#{first_name} #{last_name}"
   end
 
+  def confirmed?
+    email_confirmation_date.nil?
+  end
+
+  def regen_confirmation_key
+    self.email_confirmation_key = User.random_string(16)
+  end
+
   def password=(pass)
     @password = pass
     self.password_salt = User.random_string(10) if !self.password_salt?

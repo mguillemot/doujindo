@@ -14,9 +14,16 @@ class ApplicationController < ActionController::Base
 
   def login_required
     return true if session[:user]
-    add_notice "Please login to continue"
+    add_notice t('alerts.please_login')
     session[:return_to] = request.request_uri
     redirect_to :controller => 'user', :action => 'register'
+    return false
+  end
+
+  def login_refused
+    return true unless session[:user]
+    add_notice t('alerts.please_logout')
+    redirect_to :controller => 'home'
     return false
   end
 
@@ -65,6 +72,7 @@ class ApplicationController < ActionController::Base
         @user = User.find session[:user]
       rescue ActiveRecord::RecordNotFound
         add_error "Could not reload user #{session[:user]} from session"
+        session[:user] = nil
       end
     end
     if session[:cart]
@@ -72,6 +80,7 @@ class ApplicationController < ActionController::Base
         @cart = Cart.find session[:cart]
       rescue ActiveRecord::RecordNotFound
         add_error "Could not reload cart #{session[:cart]} from session"
+        session[:cart] = nil
       end
     end
     if session[:currency]
