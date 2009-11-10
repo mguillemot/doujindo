@@ -1,6 +1,6 @@
 <div>
   <%= link_to category_and_sub.title, :controller => 'category', :action => 'index', :id => category_and_sub.id -%>
-  (<%= category_and_sub.all_items.size -%>)
+  (<%= category_and_sub.visible_items.size -%>)
 </div>
 <% if category_and_sub.subcategories.size > 0 -%>
   <div style="position: relative; left: 20px">

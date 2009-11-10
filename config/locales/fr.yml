@@ -20,6 +20,7 @@ fr:
     registration_error: "Echec de la création du nouveau compte client"
     confirmation_email_sent: "Un e-mail contenant un lien de confirmation a été envoyé à {{email}}. Veuillez le lire et cliquer sur le lien sous 24 heures, faute de quoi ce compte sera désactivé."
     validation_email_sent: "Création du compte terminée ! Un e-mail de confirmation a été envoyé à {{email}}"
+    admin_only: "Seuls les administrateurs peuvent accéder à cette page"
 
   category:
     title: 'Categorie "{{title}}"'
@@ -43,6 +44,17 @@ fr:
   item:
     price: "Prix"
     description: "Description"
+    availability: "Disponibilité"
+    author: "Auteur"
+    type: "Type"
+    pictures: "Photos"
+    publisher: "Publié par"
+    track_list: "Liste des pistes"
+    test: "Test"
+    required_conf: "Configuration requise"
+    format: "Format"
+    warning: "Avertissement"
+    notes: "Notes"
 
   mail:
     registration_final_confirmation:

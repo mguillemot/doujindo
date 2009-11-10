@@ -1,9 +1,14 @@
 <% @title = @category.title -%>
 <% @nav = @category.nav -%>
 <h1><%= t('category.title', :title => @category.title) -%></h1>
-<% unless @category.all_items.empty? -%>
-    <div style="text-align: center; position: relative; left: 25px; width: 640px; height: <%= (@category.all_items.length.to_f / 3).ceil * 220 -%>px">
-      <% @category.all_items.matrix_iterate(3) do |item, i, j| -%>
+<% if admin? -%>
+    <div>
+      <%= button_to 'New', :action => 'new_item', :id => @category %>
+    </div>
+<% end -%>
+<% unless @display_items.empty? -%>
+    <div style="text-align: center; position: relative; left: 25px; width: 640px; height: <%= (@display_items.length.to_f / 3).ceil * 220 -%>px">
+      <% @display_items.matrix_iterate(3) do |item, i, j| -%>
           <div class="category_item" style="position: absolute; left: <%= i * 220 -%>px; top: <%= j * 220 -%>px">
             <%= render :partial => 'category/item', :object => item %>
           </div>

@@ -28,7 +28,14 @@ class ApplicationController < ActionController::Base
   end
 
   def admin_required
-    @user.admin?
+    return true if admin?
+    add_notice t('alerts.admin_only')
+    redirect_to :controller => 'home'
+    return false
+  end
+
+  def admin?
+    @user != nil && @user.admin?
   end
 
   def find_subdomain_for_language(language)

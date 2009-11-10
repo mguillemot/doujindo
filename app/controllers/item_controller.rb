@@ -3,10 +3,14 @@ class ItemController < ApplicationController
 
   def index
 #    if params[:id] =~ /\d+/
-    @item = Item.find params[:id]
+    @item = Item.find_by_id params[:id]
 #    else
 #      @item = Item.find_by_ident params[:id]
 #    end
+    if @item == nil or (@item.show? == false and admin? == false)
+      add_error "Invalid item ##{params[:id]}"
+      redirect_to :controller => 'home'
+    end
   end
 
   def edit

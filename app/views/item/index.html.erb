@@ -1,7 +1,7 @@
 <% @title = @item.title -%>
 <% @nav = @item.nav -%>
 <h1><%= @item.title -%></h1>
-<% if @user.admin? -%>
+<% if admin? -%>
     <div>
       <%= button_to 'Edit', :action => 'edit', :id => @item %>
     </div>

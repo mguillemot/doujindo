@@ -26,6 +26,7 @@ class Item < ActiveRecord::Base
     elsif reservation_left != nil && reservation_left > 0
       max += reservation_left
     end
+    max
   end
 
   def stock_display

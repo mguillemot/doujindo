@@ -17,6 +17,10 @@ module ApplicationHelper
     session[:user] ? true : false
   end
 
+  def admin?
+    @user && @user.admin?
+  end
+
   def all_currencies
     currencies = { }
     Currency.all.each do |currency|

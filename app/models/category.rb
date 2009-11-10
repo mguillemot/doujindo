@@ -11,11 +11,11 @@ class Category < ActiveRecord::Base
   end
 
   def all_items
-    all = items.clone
-    subcategories.each do |subcat|
-      all.concat subcat.all_items
-    end
-    all
+    all_items_with '1 = 1'
+  end
+
+  def visible_items
+    all_items_with 'items.show = 1'
   end
 
   def nav
@@ -35,4 +35,15 @@ class Category < ActiveRecord::Base
   def self.root_categories
     Category.find(:all, :conditions => ['parent_id is null'])
   end
+
+  protected
+
+  def all_items_with(condition)
+    all = items.find :all, :conditions => condition
+    subcategories.each do |subcat|
+      all.concat subcat.all_items_with(condition)
+    end
+    all
+  end
+
 end
