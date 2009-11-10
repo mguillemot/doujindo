@@ -8,15 +8,6 @@ class Item < ActiveRecord::Base
     category.nav << [ title, { :controller => 'item', :action => 'index', :id => id } ]
   end
 
-  def price_in_currency(currency)
-    exact = price.to_f / currency.rate_to_yen
-    if (exact - exact.floor != 0)
-      (exact + 1).floor
-    else
-      exact.floor
-    end
-  end
-
   def max_order
     max = 0
     if stock_left != nil && stock_left > 0

@@ -1,5 +1,5 @@
 page.remove "item_#{@item.item_id}"
-page.replace_html "total_price", @cart.total_price
+page.replace_html "total_price", current_currency.format_value(@cart.total_price_in(current_currency))
 if @cart.cart_items.empty?
   page.redirect_to :controller => 'home'
 end

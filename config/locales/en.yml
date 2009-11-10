@@ -28,7 +28,10 @@ en:
 
   layout:
     sidebar:
-      cart: "Shopping cart"
+      cart:
+        title: "Shopping cart"
+        chekout_button: "Edit or Checkout"
+        empty: "(empty)"
       user_menu:
         title: "User menu"
         username: "Username:"

@@ -8,7 +8,7 @@
 <% end -%>
 <div class="item_detail">
   <div class="item_detail_name"><%= t('item.price') -%></div>
-  <div class="item_detail_content"><%= @item.price_in_currency(current_currency) -%> <%= current_currency.symbol -%></div>
+  <div class="item_detail_content"><%= current_currency.format_yen_value(@item.price) -%></div>
 </div>
 <div class="item_detail">
   <div class="item_detail_name"><%= t('item.availability') -%></div>

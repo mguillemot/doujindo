@@ -37,12 +37,6 @@ class CartController < ApplicationController
     #TODO @item.destroy
   end
 
-  def clear
-    @cart.cart_items.destroy_all
-    @cart.save!
-    redirect_to :controller => 'home' # TODO réussir à revenir sur la page courante
-  end
-
   def checkout
   end
 
@@ -50,11 +44,7 @@ class CartController < ApplicationController
 
   def cart_required
     if !@cart
-      if @user
-        @cart = @user.cart.create
-      else
-        @cart = Cart.new
-      end
+      @cart = Cart.new
       if @cart.save
         session[:cart] = @cart.id
         add_debug "Shopping cart id #{@cart.id} created"

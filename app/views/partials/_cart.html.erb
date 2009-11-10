@@ -1,18 +1,14 @@
 <div id="cart">
   <% if @cart and @cart.cart_items.size > 0 -%>
-    <div>cart_id=<%= @cart.id -%></div>
     <ol>
       <% @cart.cart_items.each do |cartItem| -%>
         <li><%= "#{cartItem.item.title} x#{cartItem.quantity}" -%></li>
       <% end -%>
     </ol>
-    <% form_tag({ :controller => 'cart', :action => 'clear' }) do %>
-      <%= submit_tag 'Clear' %>
-    <% end -%>
     <% form_tag( :controller => 'cart' ) do %>
-      <%= submit_tag 'Checkout' %>
+      <%= submit_tag t('layout.sidebar.cart.chekout_button') %>
     <% end -%>
   <% else -%>
-    (empty)
+    <%= t('layout.sidebar.cart.empty') -%>
   <% end -%>
 </div>

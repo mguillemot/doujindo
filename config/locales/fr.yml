@@ -28,7 +28,10 @@ fr:
 
   layout:
     sidebar:
-      cart: "Panier"
+      cart:
+        title: "Panier"
+        chekout_button: "Editer ou Valider"
+        empty: "(vide)"
       user_menu:
         title: "Menu utilisateur"
         username: "Identifiant:"

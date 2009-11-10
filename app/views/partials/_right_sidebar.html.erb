@@ -4,8 +4,10 @@
     <%= render :partial => 'partials/language_and_currency' %>
   </div>
 
-  <div class="menu_category"><%= t('layout.sidebar.cart') -%></div>
-  <div>
-    <%= render :partial => 'partials/cart' %>
-  </div>
+  <% unless @hide_cart -%>
+      <div class="menu_category"><%= t('layout.sidebar.cart.title') -%></div>
+      <div>
+        <%= render :partial => 'partials/cart' %>
+      </div>
+  <% end -%>
 </div>

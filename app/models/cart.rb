@@ -3,10 +3,10 @@ class Cart < ActiveRecord::Base
 
   validates_associated :cart_items
 
-  def total_price
+  def total_price_in(currency)
     total = 0
     cart_items.each do |item|
-      total += item.quantity * item.item.price
+      total += item.quantity * currency.from_yen(item.item.price)
     end
     total
   end

@@ -1,5 +1,6 @@
 <% @title = "Shopping cart summary" -%>
 <% @nav = [ [ 'Shopping cart' ] ] -%>
+<% @hide_cart = true -%>
 <h1>Shopping cart summary</h1>
 <table border="1">
   <thead>
@@ -23,13 +24,13 @@
         <div id="item_<%= cartItem.item_id -%>_quantity"><%= cartItem.quantity -%></div>
         <%= button_to_remote '+', :url => { :action => 'add_one', :id => cartItem.item_id } %>
       </td>
-      <td><%= cartItem.item.price -%></td>
-      <td><div id="item_<%= cartItem.item_id -%>_total_price"><%= cartItem.quantity * cartItem.item.price -%></div></td>
+      <td><%= current_currency.format_yen_value(cartItem.item.price) -%></td>
+      <td><div id="item_<%= cartItem.item_id -%>_total_price"><%= current_currency.format_value(current_currency.from_yen(cartItem.item.price) * cartItem.quantity) -%></div></td>
     </tr>
   <% end -%>
   <tr>
     <td colspan="5">TOTAL</td>
-    <td><div id="total_price"><%= @cart.total_price -%></div></td>
+    <td><div id="total_price"><%= current_currency.format_value(@cart.total_price_in(current_currency)) -%></div></td>
   </tr>
   </tbody>
 </table>
@@ -41,4 +42,3 @@
     <%= submit_tag 'Checkout' %>
   <% end -%>
 </p>
-<%= link_to_remote 'Do some magic', :update => 'magic', :url => { :action => 'reload' } %><div id="magic" style="background-color: yellow">&nbsp;</div>
