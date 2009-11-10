@@ -21,6 +21,7 @@ fr:
     confirmation_email_sent: "Un e-mail contenant un lien de confirmation a été envoyé à {{email}}. Veuillez le lire et cliquer sur le lien sous 24 heures, faute de quoi ce compte sera désactivé."
     validation_email_sent: "Création du compte terminée ! Un e-mail de confirmation a été envoyé à {{email}}"
     admin_only: "Seuls les administrateurs peuvent accéder à cette page"
+    cart_emptied: "Panier vidé."
 
   category:
     title: 'Categorie "{{title}}"'

@@ -34,7 +34,16 @@ class CartController < ApplicationController
     @item = @cart.cart_items.find_by_item_id params[:id]
     @cart.cart_items.delete @item
     @cart.save!
-    #TODO @item.destroy
+    if @cart.cart_items.empty?
+      add_notice t('alerts.cart_emptied')
+    end
+  end
+
+  def clear
+    @cart.cart_items.destroy_all
+    @cart.save!
+    add_notice t('alerts.cart_emptied')
+    redirect_to :controller => 'home'
   end
 
   def checkout

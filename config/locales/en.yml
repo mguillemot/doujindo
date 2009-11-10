@@ -21,7 +21,8 @@ en:
     confirmation_email_sent: "An e-mail containing a confirmation link has been sent to {{email}. If you don't read it and confirm your address in the next 24 hours, this account will be automatically deleted."
     validation_email_sent: "Accout validation successful! A confirmation e-mail has been sent to {{email}}"
     admin_only: "You need administrator privileges to access this page"
-
+    cart_emptied: "Shopping cart emptied."
+    
   category:
     title: 'Category "{{title}}"'
     empty: "(no items found)"
