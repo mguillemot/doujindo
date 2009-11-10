@@ -35,9 +35,13 @@ en:
         password: "Password:"
         login_button: "Login"
         logout_button: "Logout"
+        user_home: "User home"
       global_menu:
         title: "Global menu"
+        home: "Shop home"
         register: "Create new account"
+        about_us: "About us"
+        faq: "FAQ"
       catalog: "Catalog"
       language: "Language &amp; currency"
 

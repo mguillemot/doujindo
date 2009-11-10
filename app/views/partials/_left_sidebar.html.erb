@@ -1,14 +1,25 @@
 <div id="left_sidebar">
   <div class="menu_category"><%= t('layout.sidebar.user_menu.title') -%></div>
   <% if !logged_in -%>
-    <%= render :partial => 'partials/signin' %>
+      <%= render :partial => 'partials/signin' %>
   <% else -%>
-    <%= render :partial => 'partials/signout' %>
+      <%= render :partial => 'partials/signout' %>
   <% end -%>
 
   <div class="menu_category"><%= t('layout.sidebar.global_menu.title') -%></div>
   <div>
-    <%= link_to t('layout.sidebar.global_menu.register'), :controller => 'user', :action => 'register' -%>
+    <%= link_to t('layout.sidebar.global_menu.home'), :controller => 'home', :action => 'index' -%>
+  </div>
+  <% unless logged_in -%>
+      <div>
+        <%= link_to t('layout.sidebar.global_menu.register'), :controller => 'user', :action => 'register' -%>
+      </div>
+  <% end -%>
+  <div>
+    <%= link_to t('layout.sidebar.global_menu.faq'), :controller => 'home', :action => 'faq' -%>
+  </div>
+  <div>
+    <%= link_to t('layout.sidebar.global_menu.about_us'), :controller => 'home', :action => 'about_us' -%>
   </div>
 
   <div class="menu_category"><%= t('layout.sidebar.catalog') -%></div>

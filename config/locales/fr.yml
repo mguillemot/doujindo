@@ -35,9 +35,13 @@ fr:
         password: "Mot de passe:"
         login_button: "S'identifier"
         logout_button: "Se déconnecter"
+        user_home: "Accueil utilisateur"
       global_menu:
         title: "Menu général"
+        home: "Accueil de la boutique"
         register: "Nouveau compte"
+        about_us: "A propos de Touhou Shop"
+        faq: "FAQ"
       catalog: "Catalogue"
       language: "Langue &amp; devise"
 
