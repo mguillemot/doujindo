@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091028145928) do
+ActiveRecord::Schema.define(:version => 20091110053348) do
 
   create_table "cart_items", :force => true do |t|
     t.integer  "cart_id"
@@ -82,6 +82,36 @@ ActiveRecord::Schema.define(:version => 20091028145928) do
     t.datetime "updated_at"
   end
 
+  create_table "order_items", :force => true do |t|
+    t.integer  "order_id",                                                                :null => false
+    t.integer  "item_id",                                                                 :null => false
+    t.integer  "quantity",                                                 :default => 1, :null => false
+    t.integer  "unit_price",  :limit => 10, :precision => 10, :scale => 0,                :null => false
+    t.integer  "total_price", :limit => 10, :precision => 10, :scale => 0,                :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "orders", :force => true do |t|
+    t.integer  "client_id",                                                         :null => false
+    t.integer  "shipping_address_id",                                               :null => false
+    t.integer  "currency_id",                                                       :null => false
+    t.integer  "items_total_price",    :limit => 10, :precision => 10, :scale => 0, :null => false
+    t.string   "shipping_type",                                                     :null => false
+    t.integer  "shipping_price",       :limit => 10, :precision => 10, :scale => 0, :null => false
+    t.string   "payment_type",                                                      :null => false
+    t.string   "payment_status",                                                    :null => false
+    t.datetime "payment_date"
+    t.string   "payment_id"
+    t.string   "payment_from"
+    t.text     "notes"
+    t.string   "shipping_status",                                                   :null => false
+    t.datetime "shipping_sent_date"
+    t.string   "shipping_tracking_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "user_addresses", :force => true do |t|
     t.integer  "user_id",          :null => false
     t.string   "full_address",     :null => false
@@ -98,6 +128,8 @@ ActiveRecord::Schema.define(:version => 20091028145928) do
     t.string   "password_salt",                              :null => false
     t.string   "first_name",                                 :null => false
     t.string   "last_name",                                  :null => false
+    t.string   "preferred_language"
+    t.integer  "preferred_currency"
     t.string   "email",                                      :null => false
     t.string   "email_confirmation_key"
     t.datetime "email_confirmation_date"

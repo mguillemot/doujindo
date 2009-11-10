@@ -12,7 +12,25 @@ en:
     password: "Password:"
     password_confirmation: "Password confirmation:"
     signup: "Signup"
-    
+
+  cart:
+    edit:
+      nav: "View & edit cart"
+      title: "Shopping cart summary"
+      delete: "Delete?"
+      number: "#"
+      item: "Item"
+      quantity: "Quantity"
+      unit_price: "Unit price"
+      total_price: "Total price"
+      grand_total: "TOTAL"
+      delete_button: "Delete"
+      clear_button: "Clear"
+      checkout_button: "Checkout"
+    checkout:
+      nav: "Checkout"
+      title: "Checkout"
+
   alerts:
     login_failure: "Login failure"  
     please_login: "Please login or create an account to continue"

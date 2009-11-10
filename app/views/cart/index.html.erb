@@ -1,22 +1,22 @@
-<% @title = "Shopping cart summary" -%>
-<% @nav = [ [ 'Shopping cart' ] ] -%>
+<% @title = t('cart.edit.title') -%>
+<% @nav = [ [ t('cart.edit.nav') ] ] -%>
 <% @hide_cart = true -%>
-<h1>Shopping cart summary</h1>
+<h1><%= t('cart.edit.title') -%></h1>
 <table border="1">
   <thead>
   <tr>
-    <th>Delete?</th>
-    <th>#</th>
-    <th>Item</th>
-    <th>Quantity</th>
-    <th>Unit price</th>
-    <th>Total price</th>
+    <th><%= t('cart.edit.delete') -%></th>
+    <th><%= t('cart.edit.number') -%></th>
+    <th><%= t('cart.edit.item') -%></th>
+    <th><%= t('cart.edit.quantity') -%></th>
+    <th><%= t('cart.edit.unit_price') -%></th>
+    <th><%= t('cart.edit.total_price') -%></th>
   </tr>
   </thead>
   <tbody>
   <% i = 0; @cart.cart_items.each do |cartItem| -%>
     <tr id="item_<%= cartItem.item_id -%>">
-      <td><%= button_to_remote 'Delete', :url => { :action => 'remove_all', :id => cartItem.item_id } -%></td>
+      <td><%= button_to_remote t('cart.edit.delete_button'), :url => { :action => 'remove_all', :id => cartItem.item_id } -%></td>
       <td><%= i = i + 1 -%></td>
       <td><%= cartItem.item.title -%></td>
       <td>
@@ -29,16 +29,16 @@
     </tr>
   <% end -%>
   <tr>
-    <td colspan="5">TOTAL</td>
+    <td colspan="5"><%= t('cart.edit.grand_total') -%></td>
     <td><div id="total_price"><%= current_currency.format_value(@cart.total_price_in(current_currency)) -%></div></td>
   </tr>
   </tbody>
 </table>
 <p>
   <% form_tag( :action => 'clear' ) do %>
-    <%= submit_tag 'Clear' %>
+    <%= submit_tag t('cart.edit.clear_button') %>
   <% end -%>
   <% form_tag( :action => 'checkout' ) do %>
-    <%= submit_tag 'Checkout' %>
+    <%= submit_tag t('cart.edit.checkout_button') %>
   <% end -%>
 </p>

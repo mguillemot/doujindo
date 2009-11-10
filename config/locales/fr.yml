@@ -13,6 +13,24 @@ fr:
     password_confirmation: "Confirmation du mot de passe :"
     signup: "S'inscrire"
 
+  cart:
+    edit:
+      nav: "Editer panier"
+      title: "Résumé du panier"
+      delete: "Supprimer ?"
+      number: "#"
+      item: "Article"
+      quantity: "Quantité"
+      unit_price: "Prix unitaire"
+      total_price: "Prix total"
+      grand_total: "TOTAL"
+      delete_button: "Supprimer"
+      clear_button: "Vider tout"
+      checkout_button: "Confirmer achat"
+    checkout:
+      nav: "Confirmation achat"
+      title: "Confirmation achat"
+
   alerts:
     login_failure: "Erreur d'authentification"
     please_login: "Veuillez vous identifier ou créer un compte client pour pouvoir continuer"
