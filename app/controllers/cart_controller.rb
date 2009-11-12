@@ -47,6 +47,8 @@ class CartController < ApplicationController
   end
 
   def checkout
+    @order = Order.create @user, @currency, @cart
+    add_debug "Created order ##{@order.id} using data from cart ##{@cart.id}"
   end
 
   protected

@@ -94,20 +94,20 @@ ActiveRecord::Schema.define(:version => 20091110053348) do
 
   create_table "orders", :force => true do |t|
     t.integer  "client_id",                                                         :null => false
-    t.integer  "shipping_address_id",                                               :null => false
+    t.integer  "shipping_address_id"
     t.integer  "currency_id",                                                       :null => false
     t.integer  "items_total_price",    :limit => 10, :precision => 10, :scale => 0, :null => false
-    t.string   "shipping_type",                                                     :null => false
-    t.integer  "shipping_price",       :limit => 10, :precision => 10, :scale => 0, :null => false
-    t.string   "payment_type",                                                      :null => false
-    t.string   "payment_status",                                                    :null => false
+    t.text     "notes"
+    t.string   "shipping_type"
+    t.integer  "shipping_price",       :limit => 10, :precision => 10, :scale => 0
+    t.string   "shipping_status"
+    t.datetime "shipping_sent_date"
+    t.string   "shipping_tracking_id"
+    t.string   "payment_type"
+    t.string   "payment_status"
     t.datetime "payment_date"
     t.string   "payment_id"
     t.string   "payment_from"
-    t.text     "notes"
-    t.string   "shipping_status",                                                   :null => false
-    t.datetime "shipping_sent_date"
-    t.string   "shipping_tracking_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -128,9 +128,9 @@ ActiveRecord::Schema.define(:version => 20091110053348) do
     t.string   "password_salt",                              :null => false
     t.string   "first_name",                                 :null => false
     t.string   "last_name",                                  :null => false
+    t.string   "email",                                      :null => false
     t.string   "preferred_language"
     t.integer  "preferred_currency"
-    t.string   "email",                                      :null => false
     t.string   "email_confirmation_key"
     t.datetime "email_confirmation_date"
     t.boolean  "admin",                   :default => false, :null => false

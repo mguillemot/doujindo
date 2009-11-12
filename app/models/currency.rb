@@ -1,4 +1,6 @@
 class Currency < ActiveRecord::Base
+  has_many :orders
+
   translatable_columns :description, :format
   validates_translation_of :description, :format
 

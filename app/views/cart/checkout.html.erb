@@ -2,6 +2,7 @@
 <% @nav = [ [ t('cart.edit.nav'), { :controller => 'cart', :action => 'index' } ], [ t('cart.checkout.nav') ] ] -%>
 <% @hide_cart = true -%>
 <h1><%= t('cart.checkout.title') -%></h1>
+<div>Order #<%= @order.id -%></div>
 <table border="1">
   <thead>
   <tr>
