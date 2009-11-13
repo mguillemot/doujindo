@@ -1,0 +1,30 @@
+<% form_for :order do |f| -%>
+    <%= f.hidden_field :id %>
+    <div class="addresses">
+      <div class="address">
+        <div class="address_selector">
+          <%= f.radio_button :shipping_type, 'ems' %>
+        </div>
+        <div class="address_content">
+          <strong>EMS</strong> (fully insured, tracking number, about 5 days)
+        </div>
+      </div>
+      <div class="address">
+        <div class="address_selector">
+          <%= f.radio_button :shipping_type, 'sal' %>
+        </div>
+        <div class="address_content">
+          <strong>SAL</strong> (insured up to 30000 Yens, no tracking number, about 10 days)
+        </div>
+      </div>
+      <div class="address">
+        <div class="address_selector">
+          <%= f.radio_button :shipping_type, 'airmail' %>
+        </div>
+        <div class="address_content">
+          <strong>Air Mail</strong> (TODO)
+        </div>
+      </div>
+    </div>
+    <%= submit_tag 'Next >' %>
+<% end -%>

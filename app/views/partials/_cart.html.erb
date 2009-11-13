@@ -5,9 +5,7 @@
         <li><%= "#{cartItem.item.title} x#{cartItem.quantity}" -%></li>
       <% end -%>
     </ol>
-    <% form_tag( :controller => 'cart' ) do %>
-      <%= submit_tag t('layout.sidebar.cart.chekout_button') %>
-    <% end -%>
+    <%= button_to t('layout.sidebar.cart.chekout_button'), { :controller => 'cart' }, :method => :get %>
   <% else -%>
     <%= t('layout.sidebar.cart.empty') -%>
   <% end -%>

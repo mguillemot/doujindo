@@ -15,24 +15,50 @@
   </thead>
   <tbody>
   <% i = 0; @cart.cart_items.each do |cartItem| -%>
-    <tr id="item_<%= cartItem.item_id -%>">
-      <td><%= i = i + 1 -%></td>
-      <td><%= cartItem.item.title -%></td>
-      <td>
-        <div id="item_<%= cartItem.item_id -%>_quantity"><%= cartItem.quantity -%></div>
-      </td>
-      <td><%= current_currency.format_yen_value(cartItem.item.price) -%></td>
-      <td><div id="item_<%= cartItem.item_id -%>_total_price"><%= current_currency.format_value(current_currency.from_yen(cartItem.item.price) * cartItem.quantity) -%></div></td>
-    </tr>
+      <tr id="item_<%= cartItem.item_id -%>">
+        <td><%= i = i + 1 -%></td>
+        <td><%= cartItem.item.title -%></td>
+        <td>
+          <div id="item_<%= cartItem.item_id -%>_quantity"><%= cartItem.quantity -%></div>
+        </td>
+        <td><%= current_currency.format_yen_value(cartItem.item.price) -%></td>
+        <td>
+          <div id="item_<%= cartItem.item_id -%>_total_price"><%= current_currency.format_value(current_currency.from_yen(cartItem.item.price) * cartItem.quantity) -%></div>
+        </td>
+      </tr>
   <% end -%>
   <tr>
     <td colspan="4"><%= t('cart.edit.grand_total') -%></td>
-    <td><div id="total_price"><%= current_currency.format_value(@cart.total_price_in(current_currency)) -%></div></td>
+    <td>
+      <div id="total_price"><%= current_currency.format_value(@cart.total_price_in(current_currency)) -%></div>
+    </td>
   </tr>
   </tbody>
 </table>
-<p>
-  <% form_tag( :action => 'clear' ) do %>
-    <%= submit_tag 'Proceed to payment' %>
-  <% end -%>
-</p>
+<% unless @order.shipping_address -%>
+    <div>Choose shipping address</div>
+    <%= render :partial => 'choose_address' %>
+    <%= button_to '< Edit cart content', { :action => 'index' }, :method => :get %>
+<% else -%>
+    <div>Shipping address</div>
+    <div class="address_content">
+      <%= @order.shipping_address.full_address %>
+      <br/>
+      Country: <%= @order.shipping_address.country %>
+      <br/>
+      Phone nomber: <%= @order.shipping_address.phone_number %>
+      <br/>
+      Additionnal infos: <%= @order.shipping_address.additional_infos %>
+    </div>
+
+    <% unless @order.shipping_type -%>
+        <div>Choose shipping method</div>
+        <%= render :partial => 'choose_shipping_method' %>
+    <% else -%>
+        <div>Shipping method</div>
+        <div class="address_content">
+          <%= @order.shipping_type %>
+        </div>
+        
+    <% end -%>
+<% end -%>

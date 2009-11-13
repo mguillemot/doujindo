@@ -47,8 +47,16 @@ class CartController < ApplicationController
   end
 
   def checkout
-    @order = Order.create @user, @currency, @cart
-    add_debug "Created order ##{@order.id} using data from cart ##{@cart.id}"
+    if request.post?
+      @order = Order.find params[:order][:id]
+      add_debug params[:order][:shipping_type]
+      @order.shipping_address_id = params[:order][:shipping_address_id] if params[:order][:shipping_address_id]
+      @order.shipping_type = params[:order][:shipping_type] if params[:order][:shipping_type]
+      @order.save!
+    else
+      @order = Order.create @user, @currency, @cart
+      add_debug "Created order ##{@order.id} using data from cart ##{@cart.id}"
+    end
   end
 
   protected
