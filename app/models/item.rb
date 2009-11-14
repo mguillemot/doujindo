@@ -2,6 +2,8 @@ class Item < ActiveRecord::Base
   belongs_to :category
   has_many :cart_items
   has_many :order_items
+  belongs_to :collection, { :class_name => 'ItemCollection' }
+  has_and_belongs_to_many :tags, :join_table => 'item_tags'
 
   translatable_columns :title, :author, :item_type, :description, :publisher, :tracklist, :test, :required_config, :format, :warning, :notes
   validates_translation_of :title, :author, :item_type, :description

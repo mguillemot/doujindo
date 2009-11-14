@@ -16,6 +16,7 @@ class CreateUsers < ActiveRecord::Migration
       t.datetime :last_login
       t.timestamps
     end
+    add_index :users, :login
   end
 
   def self.down
