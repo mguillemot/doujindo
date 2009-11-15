@@ -11,13 +11,13 @@
   <div class="item_detail_content"><%= current_currency.format_yen_value(@item.price) -%></div>
 </div>
 <div class="item_detail">
-  <div class="item_detail_name"><%= t('item.availability') -%></div>
+  <div class="item_detail_name"><%= t('item.availability.title') -%></div>
   <div class="item_detail_content">
-    <%= @item.stock_display -%>
+    <%= stock_display @item -%>
     <% if @item.max_order > 0 -%>
         <% form_tag :controller => 'cart', :action => 'add', :id => @item.id do %>
             <%= text_field :op, :quantity, :size => 3, :value => '1' %>
-            <%= submit_tag 'Add to cart' %>
+            <%= submit_tag t('item.add_to_cart') %>
         <% end -%>
     <% end -%>
   </div>

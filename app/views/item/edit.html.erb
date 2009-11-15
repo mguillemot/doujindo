@@ -6,7 +6,13 @@
       <%= f.submit 'Submit' %>
     </div>
     <div class="item_detail">
-      <div class="item_detail_name"><%= "Title" -%></div>
+      <div class="item_detail_name"><%= "Ident" -%></div>
+      <div class="item_detail_content">
+        <%= f.text_field :ident %>
+      </div>
+    </div>
+    <div class="item_detail">
+      <div class="item_detail_name"><%= t('item.title') -%></div>
       <div class="item_detail_content">
         En: <%= f.text_field :title_en %>
         <br/>
@@ -14,17 +20,31 @@
       </div>
     </div>
     <div class="item_detail">
+      <div class="item_detail_name"><%= "Show in catalog?" -%></div>
+      <div class="item_detail_content">
+        <%= f.check_box :show %>
+      </div>
+    </div>
+    <div class="item_detail">
       <div class="item_detail_name"><%= t('item.price') -%></div>
-      <%= f.text_field :price %>
+      <%= f.text_field :price %> Yens
     </div>
     <div class="item_detail">
       <div class="item_detail_name">Availability</div>
       <div class="item_detail_content">
-        Stock left: <%= f.text_field :stock_left %>
+        Stock left (new): <%= f.text_field :stock_left_new, :size => 3 %>
         <br/>
-        Purchase left: <%= f.text_field :purchase_left %>
+        Stock left (perfect condition): <%= f.text_field :stock_left_perfect_condition, :size => 3 %>
         <br/>
-        Reservation left: <%= f.text_field :reservation_left %> end at <%= f.text_field :reservation_end_date %>
+        Stock left (good condition): <%= f.text_field :stock_left_good_condition, :size => 3 %>
+        <br/>
+        Stock left (medium condition): <%= f.text_field :stock_left_medium_condition, :size => 3 %>
+        <br/>
+        Stock left (poor condition): <%= f.text_field :stock_left_poor_condition, :size => 3 %>
+        <br/>
+        Purchase left: <%= f.text_field :purchase_left, :size => 3 %>
+        <br/>
+        Reservation left: <%= f.text_field :reservation_left, :size => 3 %> end at <%= f.text_field :reservation_end_date %>
       </div>
     </div>
     <div class="item_detail">

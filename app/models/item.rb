@@ -13,27 +13,6 @@ class Item < ActiveRecord::Base
   end
 
   def max_order
-    max = 0
-    if stock_left != nil && stock_left > 0
-      max += stock_left
-    elsif purchase_left != nil && purchase_left > 0
-      max += purchase_left
-    elsif reservation_left != nil && reservation_left > 0
-      max += reservation_left
-    end
-    max
-  end
-
-  def stock_display
-    if stock_left != nil && stock_left > 0
-      additional = (purchase_left != nil && purchase_left > 0) ? " / additional #{purchase_left} available within 3 days" : ""
-      "ships within 24 hours (stock: #{stock_left})#{additional}"
-    elsif purchase_left != nil && purchase_left > 0
-      "ships within 3 days (stock: #{purchase_left})"
-    elsif reservation_left != nil && reservation_left > 0
-      "can be preordered until #{reservation_end_date} (stock: #{reservation_left})"
-    else
-      "not available"
-    end
+    stock_left_new + stock_left_perfect_condition + stock_left_good_condition + stock_left_medium_condition + stock_left_poor_condition + purchase_left + reservation_left
   end
 end

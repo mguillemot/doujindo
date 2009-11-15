@@ -64,13 +64,37 @@ fr:
         register: "Nouveau compte"
         about_us: "A propos de Touhou Shop"
         faq: "FAQ"
+        contact: "Contact"
       catalog: "Catalogue"
       language: "Langue &amp; devise"
 
   item:
+    title: "Titre"
     price: "Prix"
     description: "Description"
-    availability: "Disponibilité"
+    availability:
+      title: "Disponibilité"
+      preorder: "peut être précommandé jusqu'au {{end}}"
+      new:
+        one: "neuf sous blister : {{count}} restant (envoi sous 24 heures)"
+        other: "neuf sous blister : {{count}} restants (envoi sous 24 heures)"
+      purchase:
+        one: "neuf sous blister : {{count}} restant (envoi sous 3 jours)"
+        other: "neuf sous blister : {{count}} restants (envoi sous 3 jours)"
+      perfect_condition:
+        one: "neuf sans blister: {{count}} restant (envoi sous 24 heures)"
+        other: "neuf sans blister: {{count}} restants (envoi sous 24 heures)"
+      good_condition:
+        one: "occasion, bon état: {{count}} restant (envoi sous 24 heures)"
+        other: "occasion, bon état: {{count}} restants (envoi sous 24 heures)"
+      medium_condition: 
+        one: "occasion, état moyen: {{count}} restant (envoi sous 24 heures)"
+        other: "occasion, état moyen: {{count}} restants (envoi sous 24 heures)"
+      poor_condition:
+        one: "occasion, état mauvais: {{count}} restant (envoi sous 24 heures)"
+        other: "occasion, état mauvais: {{count}} restants (envoi sous 24 heures)"
+      na: "non disponible"
+    add_to_cart: "Ajouter au panier"
     author: "Auteur"
     type: "Type"
     pictures: "Photos"

@@ -18,9 +18,9 @@ class CategoryController < ApplicationController
             :item_type_fr => '(edit)',
             :description_en => '(edit)',
             :description_fr => '(edit)',
-            :stock_left => 0,
-            :purchase_left => 0,
-            :reservation_left => 0,
+            :weight => 0,
+            :dimension_width => 0,
+            :dimension_height => 0,
             :price => 0,
             :show => false
     )
