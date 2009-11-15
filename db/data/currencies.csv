@@ -1,0 +1,4 @@
+"id"	"description_en"	"description_fr"	"symbol"	"format_en"	"format_fr"	"rate_to_yen"
+1	"Japanese Yen"	"Yen japonais"	"¥"	"{unit}}{{price}"	"{price}}{{unit}"	1
+2	"Euro"	"Euro"	"€"	"{unit}}{{price}"	"{price}}{{unit}"	135
+3	"U.S. Dollar"	"Dollar U.S."	"$"	"{unit}}{{price}"	"{price}}{{unit}"	90

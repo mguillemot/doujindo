@@ -74,7 +74,7 @@ class UserController < ApplicationController
     if request.post? and params[:user]
       @user = User.new params[:user]
       @user.regen_confirmation_key
-      @user.preferred_language = I18n.locale
+      @user.preferred_language = I18n.locale.to_s
       @user.preferred_currency = @currency.id
       if @user.save
         session[:user] = @user.id
