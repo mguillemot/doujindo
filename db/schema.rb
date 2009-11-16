@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091114162645) do
+ActiveRecord::Schema.define(:version => 20091116104211) do
 
   create_table "cart_items", :force => true do |t|
     t.integer  "cart_id",                   :null => false
@@ -98,13 +98,9 @@ ActiveRecord::Schema.define(:version => 20091114162645) do
     t.integer  "reservation_left",             :default => 0,     :null => false
     t.date     "reservation_end_date"
     t.integer  "price",                        :default => 0,     :null => false
-    t.string   "main_picture"
-    t.string   "other_pictures"
-    t.string   "video"
+    t.text     "other_pictures"
     t.string   "publisher_en"
     t.string   "publisher_fr"
-    t.text     "tracklist_en"
-    t.text     "tracklist_fr"
     t.text     "test_en"
     t.text     "test_fr"
     t.text     "required_config_en"
@@ -118,6 +114,9 @@ ActiveRecord::Schema.define(:version => 20091114162645) do
     t.boolean  "show",                         :default => false, :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "main_picture_id"
+    t.integer  "video_id"
+    t.text     "tracklist"
   end
 
   add_index "items", ["category_id"], :name => "index_items_on_category_id"
@@ -169,6 +168,24 @@ ActiveRecord::Schema.define(:version => 20091114162645) do
   add_index "shipping_prices", ["max_weight"], :name => "index_shipping_prices_on_max_weight"
   add_index "shipping_prices", ["method", "zone"], :name => "index_shipping_prices_on_method_and_zone"
   add_index "shipping_prices", ["min_weight"], :name => "index_shipping_prices_on_min_weight"
+
+  create_table "static_assets", :force => true do |t|
+    t.string   "asset_type",                 :null => false
+    t.string   "format",                     :null => false
+    t.string   "filename",                   :null => false
+    t.integer  "width"
+    t.integer  "height"
+    t.integer  "length"
+    t.integer  "quality"
+    t.integer  "filesize"
+    t.string   "notes"
+    t.string   "title_en",   :default => "", :null => false
+    t.string   "title_fr",   :default => "", :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "static_assets", ["asset_type"], :name => "index_static_assets_on_asset_type"
 
   create_table "tags", :force => true do |t|
     t.string   "title_en"

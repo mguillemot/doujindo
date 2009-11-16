@@ -17,6 +17,11 @@ class ItemController < ApplicationController
     @item = Item.find params[:id]
     if request.post? and params[:item]
       @item.update_attributes! prune(params[:item])
+      @item.tracklist = [
+              { :original_title => 'チルノのパーフェクトさんすう教室', :title_en => "Cirno's perfect math class", :title_fr => "La classe d'arithmétique de Cirno", :file => 3 },
+              { :original_title => '青色のチルノ', :title_en => "Blue Cirno", :title_fr => "Cirno bleue", :file => 4 }
+      ]
+      @item.save!
       redirect_to :action => 'index', :id => @item
     end
   end

@@ -23,49 +23,6 @@
   </div>
 </div>
 <div class="item_detail">
-  <div class="item_detail_name">Playlist (test)</div>
-  <div class="item_detail_content">
-    <div id="soundPlayer">&nbsp;</div>
-    <div id="playlist">
-      <ol>
-        <li><span id="track_1_title">チルノのパーフェクトさんすう教室</span> [ <a href="javascript:void(0)" id="play_track_1">play</a> ]
-        </li>
-        <li><span id="track_2_title">青色のチルノ</span> [ <a href="javascript:void(0)" id="play_track_2">play</a> ]</li>
-      </ol>
-    </div>
-    <script type="text/javascript">
-        $(function() {
-            $('#soundPlayer').jPlayer({
-                swfPath: '/swf',
-                ready: function () {
-                    //$(this).setFile("/audio/test.mp3");
-                }
-            });
-            $('#play_track_1').click(function() {
-                if ($('#play_track_1').html() == 'stop') {
-                    $('#soundPlayer').stop();
-                    $('#play_track_1').html('play');
-                } else {
-                    $('#soundPlayer').setFile("<%= static_url '/audio/test.mp3' -%>").play();
-                    $('#play_track_1').html('stop');
-                    $('#play_track_2').html('play');
-                }
-            });
-            $('#play_track_2').click(function() {
-                if ($('#play_track_2').html() == 'stop') {
-                    $('#soundPlayer').stop();
-                    $('#play_track_2').html('play');
-                } else {
-                    $('#soundPlayer').setFile("<%= static_url '/audio/test2.mp3' -%>").play();
-                    $('#play_track_1').html('play');
-                    $('#play_track_2').html('stop');
-                }
-            });
-        })
-    </script>
-  </div>
-</div>
-<div class="item_detail">
   <div class="item_detail_name"><%= t('item.description') -%></div>
   <div class="item_detail_content"><%= @item.description -%></div>
   <a href="<%= static_url '/videos/test-ufo.mp4' -%>" style="display:block;width:512px;height:408px;z-index:0" id="player">
@@ -121,7 +78,50 @@
 <% unless @item.tracklist.nil? -%>
     <div class="item_detail">
       <div class="item_detail_name"><%= t('item.track_list') -%></div>
-      <div class="item_detail_content"><%= @item.tracklist -%></div>
+      <div class="item_detail_content">
+        <div id="soundPlayer">&nbsp;</div>
+        <div id="playlist">
+          <ol>
+            <% @item.tracklist.each do |track| -%>
+                <li><%= track[:original_title] -%></li>
+            <% end -%>
+            <!--<li><span id="track_1_title">チルノのパーフェクトさんすう教室</span> [-->
+            <!--<a href="javascript:void(0)" id="play_track_1">play</a> ]-->
+            <!--</li>-->
+            <!--<li><span id="track_2_title">青色のチルノ</span> [ <a href="javascript:void(0)" id="play_track_2">play</a> ]</li>-->
+          </ol>
+        </div>
+        <script type="text/javascript">
+            $(function() {
+                $('#soundPlayer').jPlayer({
+                    swfPath: '/swf',
+                    ready: function () {
+                        //$(this).setFile("/audio/test.mp3");
+                    }
+                });
+                $('#play_track_1').click(function() {
+                    if ($('#play_track_1').html() == 'stop') {
+                        $('#soundPlayer').stop();
+                        $('#play_track_1').html('play');
+                    } else {
+                        $('#soundPlayer').setFile("<%= static_url '/audio/test.mp3' -%>").play();
+                        $('#play_track_1').html('stop');
+                        $('#play_track_2').html('play');
+                    }
+                });
+                $('#play_track_2').click(function() {
+                    if ($('#play_track_2').html() == 'stop') {
+                        $('#soundPlayer').stop();
+                        $('#play_track_2').html('play');
+                    } else {
+                        $('#soundPlayer').setFile("<%= static_url '/audio/test2.mp3' -%>").play();
+                        $('#play_track_1').html('play');
+                        $('#play_track_2').html('stop');
+                    }
+                });
+            })
+        </script>
+      </div>
     </div>
 <% end -%>
 <% unless @item.test.nil? -%>

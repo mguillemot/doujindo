@@ -2,7 +2,7 @@
     <div style="background-color: red">
 <% end -%>
 <% link_to( { :controller => 'item', :action => 'index', :id => item.id }, :class => 'category_item') do %>
-    <div><%= image_tag "catalog/#{item.main_picture}", :alt => item.title, :size => '175x160', :class => 'category_item' %></div>
+    <div><%= image_tag static_url((item.main_picture || StaticAsset.default_catalog_icon).full_filename), :alt => item.title, :size => '175x160', :class => 'category_item' %></div>
     <div><%= item.title %></div>
 <% end -%>
 <% if !item.show? and admin? -%>
