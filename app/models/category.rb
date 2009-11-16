@@ -1,7 +1,8 @@
 class Category < ActiveRecord::Base
   has_many :items
-  has_one :parent, { :class_name => 'Category' }
-  belongs_to :parent, { :class_name => 'Category' }
+  #has_one :parent, { :class_name => 'Category' }
+  #belongs_to :parent, { :class_name => 'Category' }
+  acts_as_tree :order => :id
 
   translatable_columns :title
   validates_translation_of :title

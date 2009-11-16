@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091116104211) do
+ActiveRecord::Schema.define(:version => 20091116114155) do
 
   create_table "cart_items", :force => true do |t|
     t.integer  "cart_id",                   :null => false
@@ -57,6 +57,17 @@ ActiveRecord::Schema.define(:version => 20091116104211) do
     t.datetime "updated_at"
   end
 
+  create_table "item_assets", :force => true do |t|
+    t.integer  "item_id",         :null => false
+    t.integer  "static_asset_id", :null => false
+    t.integer  "position",        :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "item_assets", ["item_id"], :name => "index_item_assets_on_item_id"
+  add_index "item_assets", ["static_asset_id"], :name => "index_item_assets_on_static_asset_id"
+
   create_table "item_collections", :force => true do |t|
     t.string   "title_en"
     t.string   "title_fr"
@@ -98,7 +109,6 @@ ActiveRecord::Schema.define(:version => 20091116104211) do
     t.integer  "reservation_left",             :default => 0,     :null => false
     t.date     "reservation_end_date"
     t.integer  "price",                        :default => 0,     :null => false
-    t.text     "other_pictures"
     t.string   "publisher_en"
     t.string   "publisher_fr"
     t.text     "test_en"
@@ -114,9 +124,6 @@ ActiveRecord::Schema.define(:version => 20091116104211) do
     t.boolean  "show",                         :default => false, :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "main_picture_id"
-    t.integer  "video_id"
-    t.text     "tracklist"
   end
 
   add_index "items", ["category_id"], :name => "index_items_on_category_id"

@@ -14,4 +14,9 @@ module ItemHelper
     end
     res
   end
+
+  def track_urls(tracks)
+    files = tracks.collect { |t| "'#{static_url(t.full_filename)}'" }
+    files.join(',')
+  end
 end

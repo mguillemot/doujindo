@@ -1,6 +1,5 @@
 class StaticAsset < ActiveRecord::Base
-  has_one :item, :foreign_key => 'main_picture_id'
-  has_one :item, :foreign_key => 'video_id'
+  has_many :item_assets
 
   translatable_columns :title
 

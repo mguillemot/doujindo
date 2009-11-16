@@ -1,9 +1,7 @@
 class Item < ActiveRecord::Base
-  serialize :other_pictures
-  serialize :tracklist
   belongs_to :category
-  belongs_to :main_picture, :class_name => 'StaticAsset'
-  belongs_to :video, :class_name => 'StaticAsset'
+  has_many :item_assets, :order => :position
+  has_many :static_assets, :through => :item_assets
   has_many :cart_items
   has_many :order_items
   belongs_to :collection, :class_name => 'ItemCollection'
@@ -11,6 +9,16 @@ class Item < ActiveRecord::Base
 
   translatable_columns :title, :author, :item_type, :description, :publisher, :test, :required_config, :format, :warning, :notes
   validates_translation_of :title, :author, :item_type, :description
+
+  def main_picture
+    static_assets.find :first, :conditions => ['asset_type = ?', 'icon']
+  end
+
+  def tracklist
+    res = static_assets.find :all, :conditions => ['asset_type = ?', 'audio']
+    return nil if res.empty?
+    res
+  end
 
   def nav
     category.nav << [ title, { :controller => 'item', :action => 'index', :id => id } ]

@@ -82,41 +82,31 @@
         <div id="soundPlayer">&nbsp;</div>
         <div id="playlist">
           <ol>
-            <% @item.tracklist.each do |track| -%>
-                <li><%= track[:original_title] -%></li>
+            <% @item.tracklist.each_with_index do |track, i| -%>
+                <li>
+                  <span id="track_<%= i -%>_title"><%= track.title -%></span> [
+                  <a href="javascript:void(0)" id="play_track_<%= i -%>" class="playLink">play</a> ]
+                </li>
             <% end -%>
-            <!--<li><span id="track_1_title">チルノのパーフェクトさんすう教室</span> [-->
-            <!--<a href="javascript:void(0)" id="play_track_1">play</a> ]-->
-            <!--</li>-->
-            <!--<li><span id="track_2_title">青色のチルノ</span> [ <a href="javascript:void(0)" id="play_track_2">play</a> ]</li>-->
           </ol>
         </div>
         <script type="text/javascript">
+            var tracks = [ <%= track_urls @item.tracklist -%> ];
             $(function() {
                 $('#soundPlayer').jPlayer({
-                    swfPath: '/swf',
-                    ready: function () {
-                        //$(this).setFile("/audio/test.mp3");
-                    }
+                    swfPath: '/swf'
                 });
-                $('#play_track_1').click(function() {
-                    if ($('#play_track_1').html() == 'stop') {
-                        $('#soundPlayer').stop();
-                        $('#play_track_1').html('play');
+                $('.playLink').click(function() {
+                    var value = $(this).html();
+                    $('.playLink').each(function() {
+                        $(this).html('play');
+                    });
+                    if (value == 'play') {
+                        $(this).html('stop');
+                        var selectedIndex = $(this).attr('id').substr(11);
+                        $('#soundPlayer').setFile(tracks[selectedIndex]).play();
                     } else {
-                        $('#soundPlayer').setFile("<%= static_url '/audio/test.mp3' -%>").play();
-                        $('#play_track_1').html('stop');
-                        $('#play_track_2').html('play');
-                    }
-                });
-                $('#play_track_2').click(function() {
-                    if ($('#play_track_2').html() == 'stop') {
                         $('#soundPlayer').stop();
-                        $('#play_track_2').html('play');
-                    } else {
-                        $('#soundPlayer').setFile("<%= static_url '/audio/test2.mp3' -%>").play();
-                        $('#play_track_1').html('play');
-                        $('#play_track_2').html('stop');
                     }
                 });
             })
