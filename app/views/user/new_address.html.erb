@@ -1,0 +1,4 @@
+<% @title = t('user.addresses.new.title') -%>
+<% @nav = [ [ t('user.home.nav'), { :action => 'home' } ], [ t('user.addresses.view.nav'), { :action => 'addresses' } ], [ t('user.addresses.new.nav') ] ] -%>
+<h1><%= @title -%></h1>
+<%= render :partial => 'address_editor' %>

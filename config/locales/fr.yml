@@ -4,14 +4,38 @@ fr:
     welcome: "Bienvenue dans notre boutique!"
 
   user:
-    register: "Créer un nouveau compte client"
-    login: "Identifiant :"
-    first_name: "Prénom :"
-    last_name: "Nom :"
-    email: "E-mail :"
-    password: "Mot de passe :"
-    password_confirmation: "Confirmation du mot de passe :"
-    signup: "S'inscrire"
+    home:
+      title: "Chez moi"
+      nav: "Chez moi"
+    register:
+      title: "Créer un nouveau compte client"
+      nav: "Créer un compte"
+      login: "Identifiant :"
+      first_name: "Prénom :"
+      last_name: "Nom :"
+      email: "E-mail :"
+      password: "Mot de passe :"
+      password_confirmation: "Confirmation du mot de passe :"
+      signup_button: "S'inscrire"
+    addresses:
+      view:
+        title: "Mes adresses"
+        nav: "Mes adresses"
+        country: "Pays :"
+        additional_infos: "Infos supplémentaires :"
+        no_additional_infos: "(aucune)"
+        edit_button: "Editer"
+        add_button: "Ajouter une adresse"
+      edit:
+        title: "Modifier une adresse"
+        nav: "Modifier une adresse"
+        full_address: "Adresse complète"
+        country: "Pays"
+        notes: "Infos supplémentaires"
+        submit_button: "Valider"
+      new:
+        title: "Ajouter une nouvelle adresse"
+        nav: "Ajouter une nouvelle adresse"
 
   cart:
     edit:
@@ -40,6 +64,8 @@ fr:
     validation_email_sent: "Création du compte terminée ! Un e-mail de confirmation a été envoyé à {{email}}"
     admin_only: "Seuls les administrateurs peuvent accéder à cette page"
     cart_emptied: "Panier vidé."
+    address_modification_success: "Adresse modifée avec succès."
+    address_creation_success: "Adresse créée avec succès."
 
   category:
     title: 'Categorie "{{title}}"'
@@ -58,6 +84,7 @@ fr:
         login_button: "S'identifier"
         logout_button: "Se déconnecter"
         user_home: "Accueil utilisateur"
+        user_addresses: "Mes adresses"
       global_menu:
         title: "Menu général"
         home: "Accueil de la boutique"

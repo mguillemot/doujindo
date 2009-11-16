@@ -39,4 +39,8 @@ module ApplicationHelper
   def static_url(url)
     STATIC_ROOT_URL + url
   end
+
+  def nl2br(s)
+    s.gsub(/\n/, '<br/>')
+  end
 end

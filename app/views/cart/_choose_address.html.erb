@@ -6,20 +6,12 @@
             <div class="address_selector">
               <%= f.radio_button :shipping_address_id, address.id %>
             </div>
-            <div class="address_content">
-              <%= address.full_address %>
-              <br/>
-              Country: <%= address.country %>
-              <br/>
-              Phone nomber: <%= address.phone_number %>
-              <br/>
-              Additionnal infos: <%= address.additional_infos %>
-            </div>
+            <%= render :partial => 'partials/address', :object => address %>
           </div>
       <% end -%>
       <div class="address">
         <div class="address_selector">
-          <%= radio_button_tag :shipping_address_id, 'new' %>
+          <%= f.radio_button :shipping_address_id, 'new' %>
         </div>
         <div class="address_content">
           <%= link_to 'New address', :controller => 'user', :action => 'new_address' %>

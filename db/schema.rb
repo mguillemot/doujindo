@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091116114155) do
+ActiveRecord::Schema.define(:version => 20091116145106) do
 
   create_table "cart_items", :force => true do |t|
     t.integer  "cart_id",                   :null => false
@@ -205,7 +205,6 @@ ActiveRecord::Schema.define(:version => 20091116114155) do
     t.integer  "user_id",          :null => false
     t.string   "full_address",     :null => false
     t.integer  "country_id",       :null => false
-    t.string   "phone_number"
     t.string   "additional_infos"
     t.datetime "created_at"
     t.datetime "updated_at"

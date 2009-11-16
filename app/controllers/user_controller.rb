@@ -1,5 +1,5 @@
 class UserController < ApplicationController
-  before_filter :login_required, :only => :home
+  before_filter :login_required, :only => [ :home, :addresses, :delete_address, :edit_address ]
   before_filter :login_refused, :only => :register
 
   def home
@@ -31,6 +31,34 @@ class UserController < ApplicationController
       @user.save!
     end
     redirect_to request.referer
+  end
+
+  def addresses
+  end
+
+  def delete_address
+
+  end
+
+  def edit_address
+    @address = UserAddress.find params[:id]
+    if request.post? and params[:address]
+      if @address.update_attributes params[:address]
+        add_notice t('alerts.address_modification_success')
+        redirect_to :action => 'addresses'
+      end
+    end
+  end
+
+  def new_address
+    if request.post? and params[:address]
+      @address = UserAddress.new params[:address]
+      @address.user = @user
+      if @address.save
+        add_notice t('alerts.address_creation_success')
+        redirect_to :action => 'addresses'
+      end
+    end
   end
 
   def login
@@ -107,7 +135,7 @@ class UserController < ApplicationController
   protected
 
   def do_login
-
+    # TODO factoriser ici le login après inscription et le login "normal"
   end
 
 end

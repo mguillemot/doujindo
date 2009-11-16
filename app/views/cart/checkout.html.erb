@@ -16,7 +16,7 @@
   <tbody>
   <% i = 0; @cart.cart_items.each do |cartItem| -%>
       <tr id="item_<%= cartItem.item_id -%>">
-        <td><%= i = i + 1 -%></td>
+        <td><%= i = i + 1 -%></td>                                                                                                                                                                                                                                                                                                                 
         <td><%= cartItem.item.title -%></td>
         <td>
           <div id="item_<%= cartItem.item_id -%>_quantity"><%= cartItem.quantity -%></div>
@@ -41,15 +41,7 @@
     <%= button_to '< Edit cart content', { :action => 'index' }, :method => :get %>
 <% else -%>
     <div>Shipping address</div>
-    <div class="address_content">
-      <%= @order.shipping_address.full_address %>
-      <br/>
-      Country: <%= @order.shipping_address.country %>
-      <br/>
-      Phone nomber: <%= @order.shipping_address.phone_number %>
-      <br/>
-      Additionnal infos: <%= @order.shipping_address.additional_infos %>
-    </div>
+    <%= render :partial => 'partials/address', :object => @order.shipping_address -%>
 
     <% unless @order.shipping_type -%>
         <div>Choose shipping method</div>

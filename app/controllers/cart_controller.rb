@@ -47,12 +47,19 @@ class CartController < ApplicationController
   end
 
   def checkout
-    if request.post?
+    if request.post? and params[:order]
       @order = Order.find params[:order][:id]
-      add_debug params[:order][:shipping_type]
-      @order.shipping_address_id = params[:order][:shipping_address_id] if params[:order][:shipping_address_id]
-      @order.shipping_type = params[:order][:shipping_type] if params[:order][:shipping_type]
-      @order.save!
+      if @order.client != @user
+        raise SecurityError 'Attempt to access an order from another client'
+      end
+      logger.debug "id=" + params[:order].inspect
+      if params[:order][:shipping_address_id] == 'new'
+        redirect_to :controller => 'user', :action => 'new_address'
+      else
+        @order.shipping_address_id = params[:order][:shipping_address_id] if params[:order][:shipping_address_id]
+        @order.shipping_type = params[:order][:shipping_type] if params[:order][:shipping_type]
+        @order.save!
+      end
     else
       @order = Order.create @user, @currency, @cart
       add_debug "Created order ##{@order.id} using data from cart ##{@cart.id}"

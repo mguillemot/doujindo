@@ -4,14 +4,38 @@ en:
     welcome: "Welcome to our shop!"
 
   user:
-    register: "Register a new Touhou-Shop account"
-    login: "Login:"
-    first_name: "First name:"
-    last_name: "Last name:"
-    email: "E-mail:"
-    password: "Password:"
-    password_confirmation: "Password confirmation:"
-    signup: "Signup"
+    home:
+      title: "My home"
+      nav: "My home"
+    register:
+      title: "Register a new Touhou-Shop account"
+      nav: "Register user"
+      login: "Login:"
+      first_name: "First name:"
+      last_name: "Last name:"
+      email: "E-mail:"
+      password: "Password:"
+      password_confirmation: "Password confirmation:"
+      signup_button: "Signup"
+    addresses:
+      view:
+        title: "My addresses"
+        nav: "My addresses"
+        country: "Country:"
+        additional_infos: "Additional infos:"
+        no_additional_infos: "(none)"
+        edit_button: "Edit"
+        add_button: "Add a new one"
+      edit:
+        title: "Edit address"
+        nav: "Edit address"
+        full_address: "Full address"
+        country: "Country"
+        notes: "Additional notes"
+        submit_button: "Submit"
+      new:
+        title: "New address"
+        nav: "New address"
 
   cart:
     edit:
@@ -40,7 +64,9 @@ en:
     validation_email_sent: "Accout validation successful! A confirmation e-mail has been sent to {{email}}"
     admin_only: "You need administrator privileges to access this page"
     cart_emptied: "Shopping cart emptied."
-    
+    address_modification_success: "Address successfully edited."
+    address_creation_success: "Address successfully added."
+
   category:
     title: 'Category "{{title}}"'
     empty: "(no items found)"
@@ -58,6 +84,7 @@ en:
         login_button: "Login"
         logout_button: "Logout"
         user_home: "User home"
+        user_addresses: "My addresses"
       global_menu:
         title: "Global menu"
         home: "Shop home"
