@@ -39,3 +39,6 @@ config.action_mailer.default_charset = 'utf-8'
 
 # Cookies
 DOMAIN = 'touhou-shop.com'
+
+# Sitemap
+STATIC_ROOT_URL = 'http://static.touhou-shop.com'

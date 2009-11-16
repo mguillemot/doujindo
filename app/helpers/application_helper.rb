@@ -37,6 +37,6 @@ module ApplicationHelper
   end
 
   def static_url(url)
-    'http://static.touhou-local.com/static-touhou-shop' + url
+    STATIC_ROOT_URL + url
   end
 end

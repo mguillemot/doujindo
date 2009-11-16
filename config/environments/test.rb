@@ -29,3 +29,6 @@ config.action_mailer.delivery_method = :test
 
 # Cookies
 DOMAIN = 'touhou-local.com'
+
+# Sitemap
+STATIC_ROOT_URL = 'http://static.touhou-local.com/static-touhou-shop'
