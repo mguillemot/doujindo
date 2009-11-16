@@ -35,4 +35,8 @@ module ApplicationHelper
     logger.error "Invalid currency #{session[:currency]}"
     nil
   end
+
+  def static_url(url)
+    'http://static.touhou-local.com/static-touhou-shop' + url
+  end
 end

@@ -36,7 +36,7 @@
     <script type="text/javascript">
         $(function() {
             $('#soundPlayer').jPlayer({
-                swfPath: '/audio',
+                swfPath: '/swf',
                 ready: function () {
                     //$(this).setFile("/audio/test.mp3");
                 }
@@ -46,7 +46,7 @@
                     $('#soundPlayer').stop();
                     $('#play_track_1').html('play');
                 } else {
-                    $('#soundPlayer').setFile("/audio/test.mp3").play();
+                    $('#soundPlayer').setFile("<%= static_url '/audio/test.mp3' -%>").play();
                     $('#play_track_1').html('stop');
                     $('#play_track_2').html('play');
                 }
@@ -56,7 +56,7 @@
                     $('#soundPlayer').stop();
                     $('#play_track_2').html('play');
                 } else {
-                    $('#soundPlayer').setFile("/audio/test2.mp3").play();
+                    $('#soundPlayer').setFile("<%= static_url '/audio/test2.mp3' -%>").play();
                     $('#play_track_1').html('play');
                     $('#play_track_2').html('stop');
                 }
@@ -68,16 +68,20 @@
 <div class="item_detail">
   <div class="item_detail_name"><%= t('item.description') -%></div>
   <div class="item_detail_content"><%= @item.description -%></div>
-  <a href="/videos/test-ufo.mp4" style="display:block;width:512px;height:408px" id="player">
-    <img src="/images/catalog/002_icon.jpg" width="512" height="408" alt="Game footage"/>
+  <a href="<%= static_url '/videos/test-ufo.mp4' -%>" style="display:block;width:512px;height:408px;z-index:0" id="player">
+    <img src="<%= static_url '/images/002_icon.jpg' -%>" width="512" height="408" alt="Game footage"/>
   </a>
   <script type="text/javascript">
+      // Control bar height is 24 pixels
       $(function() {
-          $('#player').flowplayer('/videos/flowplayer.swf', {
+          $('#player').flowplayer({
+              src: '<%= static_url '/swf/flowplayer.swf' -%>',
+              wmode: 'opaque'
+          }, {
               clip: {
-                  // Control bar height is 24 pixels
-                  scaling: 'fit'
-              }
+                  scaling: 'fit',
+                  bufferLength: 5
+              },
           });
       })
   </script>
@@ -94,9 +98,9 @@
   <div class="item_detail_name"><%= t('item.pictures') -%></div>
   <div class="item_detail_content">
     <div id="gallery">
-      <a href="/images/catalog/001_cover_big.jpg"><%= image_tag 'catalog/001_icon.jpg', :alt => "#{@item.title} #1" -%></a>
-      <a href="/images/catalog/002_very_big.jpg"><%= image_tag 'catalog/002_icon.jpg', :alt => "#{@item.title} #1" -%></a>
-      <a href="/images/catalog/003_fight_pose_big.jpg"><%= image_tag 'catalog/003_icon.jpg', :alt => "#{@item.title} #1" -%></a>
+      <a href="<%= static_url('/images/001_cover_big.jpg') -%>"><%= image_tag static_url('/images/001_icon.jpg'), :alt => "#{@item.title} #1" -%></a>
+      <a href="<%= static_url('/images/002_very_big.jpg') -%>"><%= image_tag static_url('/images/002_icon.jpg'), :alt => "#{@item.title} #1" -%></a>
+      <a href="<%= static_url('/images/003_fight_pose_big.jpg') -%>"><%= image_tag static_url('/images/003_icon.jpg'), :alt => "#{@item.title} #1" -%></a>
     </div>
     <script type="text/javascript">
         $(function() {
