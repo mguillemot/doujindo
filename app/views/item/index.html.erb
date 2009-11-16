@@ -25,23 +25,6 @@
 <div class="item_detail">
   <div class="item_detail_name"><%= t('item.description') -%></div>
   <div class="item_detail_content"><%= @item.description -%></div>
-  <a href="<%= static_url '/videos/test-ufo.mp4' -%>" style="display:block;width:512px;height:408px;z-index:0" id="player">
-    <img src="<%= static_url '/images/002_icon.jpg' -%>" width="512" height="408" alt="Game footage"/>
-  </a>
-  <script type="text/javascript">
-      // Control bar height is 24 pixels
-      $(function() {
-          $('#player').flowplayer({
-              src: '<%= static_url '/swf/flowplayer.swf' -%>',
-              wmode: 'opaque'
-          }, {
-              clip: {
-                  scaling: 'fit',
-                  bufferLength: 5
-              },
-          });
-      })
-  </script>
 </div>
 <div class="item_detail">
   <div class="item_detail_name"><%= t('item.author') -%></div>
@@ -52,23 +35,50 @@
   <div class="item_detail_content"><%= @item.item_type -%></div>
 </div>
 <div class="item_detail">
-  <div class="item_detail_name"><%= t('item.pictures') -%></div>
+  <div class="item_detail_name"><%= t('item.pictures.title') -%></div>
   <div class="item_detail_content">
     <div id="gallery">
-      <a href="<%= static_url('/images/001_cover_big.jpg') -%>"><%= image_tag static_url('/images/001_icon.jpg'), :alt => "#{@item.title} #1" -%></a>
-      <a href="<%= static_url('/images/002_very_big.jpg') -%>"><%= image_tag static_url('/images/002_icon.jpg'), :alt => "#{@item.title} #1" -%></a>
-      <a href="<%= static_url('/images/003_fight_pose_big.jpg') -%>"><%= image_tag static_url('/images/003_icon.jpg'), :alt => "#{@item.title} #1" -%></a>
+      <% @item.pictures_with_icons.each do |p| -%>
+          <a href="<%= static_url p[:picture].full_filename -%>"><%= image_tag static_url(p[:icon].full_filename), :alt => p[:picture].title, :size => '175x160' -%></a>
+      <% end -%>
     </div>
     <script type="text/javascript">
         $(function() {
             $('#gallery a').flyout({
-                loadingText: 'Bzzzzzt!!',
-                closeTip: 'Kill me, boy!'
+                loadingText: "<%= t('item.pictures.loading') -%>",
+                closeTip: "<%= t('item.pictures.close') -%>"
             });
         })
     </script>
   </div>
 </div>
+<% unless @item.video.nil? -%>
+    <div class="item_detail">
+      <div class="item_detail_name"><%= t('item.video') -%></div>
+      <div class="item_detail_content">
+        <a href="<%= static_url @item.video.full_filename -%>" style="display:block;width:<%= @item.video.width -%>px;height:<%= @item.video.height + 24 -%>px;z-index:0;background-color:black" id="player">
+          <% if @item.video_preview -%>
+              <img src="<%= static_url @item.video_preview.full_filename -%>" width="<%= @item.video.width -%>" height="<%= @item.video.height + 24 -%>" alt="<%= @item.video.title -%>"/>
+          <% else -%>
+              &nbsp;
+          <% end -%>
+        </a>
+        <script type="text/javascript">
+            $(function() {
+                $('#player').flowplayer({
+                    src: '<%= static_url '/swf/flowplayer.swf' -%>',
+                    wmode: 'opaque'
+                }, {
+                    clip: {
+                        scaling: 'fit',
+                        bufferLength: 5
+                    },
+                });
+            })
+        </script>
+      </div>
+    </div>
+<% end -%>
 <% unless @item.publisher.nil? -%>
     <div class="item_detail">
       <div class="item_detail_name"><%= t('item.publisher') -%></div>

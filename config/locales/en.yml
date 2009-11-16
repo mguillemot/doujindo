@@ -85,7 +85,11 @@ en:
     add_to_cart: "Add to cart"
     author: "Author"
     type: "Type"
-    pictures: "Pictures"
+    pictures:
+      title: "Pictures"
+      loading: "Loading..."
+      close: "Click to close"
+    video: "Video"
     publisher: "Publisher"
     track_list: "Track List"
     test: "Test"

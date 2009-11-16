@@ -14,6 +14,31 @@ class Item < ActiveRecord::Base
     static_assets.find :first, :conditions => ['asset_type = ?', 'icon']
   end
 
+  def pictures
+    static_assets.find :all, :conditions => ['asset_type = ?', 'image']
+  end
+
+  def pictures_with_icons
+    res = []
+    pictures.each do |p|
+      icon = StaticAsset.find :first, :conditions => ['asset_type = ? AND filename = ?', 'icon', p.filename]
+      if icon
+        res << { :picture => p, :icon => icon }
+      end
+    end
+    res
+  end
+
+  def video
+    static_assets.find :first, :conditions => ['asset_type = ?', 'video']
+  end
+
+  def video_preview
+    v = video
+    return nil unless v
+    StaticAsset.find :first, :conditions => ['asset_type = ? AND filename = ?', 'video_preview', v.filename]
+  end
+
   def tracklist
     res = static_assets.find :all, :conditions => ['asset_type = ?', 'audio']
     return nil if res.empty?

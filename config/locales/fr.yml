@@ -97,7 +97,11 @@ fr:
     add_to_cart: "Ajouter au panier"
     author: "Auteur"
     type: "Type"
-    pictures: "Photos"
+    pictures:
+      title: "Photos"
+      loading: "Chargement..."
+      close: "Cliquer pour fermer"
+    video: "Vidéo"
     publisher: "Publié par"
     track_list: "Liste des pistes"
     test: "Test"
