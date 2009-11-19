@@ -42,3 +42,10 @@ DOMAIN = 'touhou-shop.com'
 
 # Sitemap
 STATIC_ROOT_URL = 'http://static.touhou-shop.com'
+
+# PayPal
+PAYPAL_API_URL = 'https://api-3t.paypal.com/nvp'
+PAYPAL_USER_URL = 'https://www.paypal.com/webscr&cmd=_express-checkout'
+PAYPAL_USER = 'payment_api1.touhou-shop.com'
+PAYPAL_PWD = 'BPCBELRA6GB5MYJK'
+PAYPAL_SIGNATURE = 'AFcWxV21C7fd0v3bYYYRCpSSRl31AYWi88AQpbLExmH4rsXaoTubq0Jz'

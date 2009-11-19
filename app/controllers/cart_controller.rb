@@ -1,3 +1,5 @@
+require "paypal/api"
+
 class CartController < ApplicationController
   before_filter :cart_required
 
@@ -50,7 +52,7 @@ class CartController < ApplicationController
     if request.post? and params[:order]
       @order = Order.find params[:order][:id]
       if @order.client != @user
-        raise SecurityError 'Attempt to access an order from another client'
+        raise(SecurityError, 'Attempt to access an order from another client')
       end
       logger.debug "id=" + params[:order].inspect
       if params[:order][:shipping_address_id] == 'new'
@@ -64,6 +66,31 @@ class CartController < ApplicationController
       @order = Order.create @user, @currency, @cart
       add_debug "Created order ##{@order.id} using data from cart ##{@cart.id}"
     end
+  end
+
+  def test_payment
+    response = Paypal::Api.set_express_checkout(420, @currency, url_for(:action => 'test_return'), url_for(:action => 'test_cancel'))
+    logger.debug "999999999999"+response.inspect
+    if response.success
+      url = PAYPAL_USER_URL + "&token=#{CGI.escape(response.token)}"
+      @display = "<p><a href=\"#{url}\">#{url}</a></p>"
+      # adresse de retour: http://www.touhou-shop.com/cart/test_return?token=EC-7X287919VE028510J&PayerID=WXDNBJYQG85QN
+    else
+      @display = "Paypal error: #{response.error_message} (#{response.error_code})"
+    end
+  end
+
+  def test_return
+    @token = params[:token]
+    @payer_id = params[:PayerID]
+    details = Paypal::Api.get_express_checkout_details(@token)
+    @display = '<p>' + details.inspect + '</p>'
+    payment = Paypal::Api.do_express_checkout_payment(@token, @payer_id, 1000, @currency)
+    @display += '<p>' + payment.inspect + '</p>'
+  end
+
+  def test_cancel
+    @token = params[:token]
   end
 
   protected
