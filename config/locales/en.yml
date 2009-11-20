@@ -47,7 +47,7 @@ en:
       quantity: "Quantity"
       unit_price: "Unit price"
       total_price: "Total price"
-      grand_total: "TOTAL"
+      grand_total: "TOTAL w/o shipping"
       delete_button: "Delete"
       clear_button: "Clear"
       checkout_button: "Checkout &gt;"

@@ -8,33 +8,40 @@
     <th><%= t('cart.edit.delete') -%></th>
     <th><%= t('cart.edit.number') -%></th>
     <th><%= t('cart.edit.item') -%></th>
-    <th><%= t('cart.edit.quantity') -%></th>
     <th><%= t('cart.edit.unit_price') -%></th>
+    <th><%= t('cart.edit.quantity') -%></th>
     <th><%= t('cart.edit.total_price') -%></th>
   </tr>
   </thead>
   <tbody>
   <% i = 0; @cart.cart_items.each do |cartItem| -%>
-    <tr id="item_<%= cartItem.item_id -%>">
-      <td><%= button_to_remote t('cart.edit.delete_button'), :url => { :action => 'remove_all', :id => cartItem.item_id } -%></td>
-      <td><%= i = i + 1 -%></td>
-      <td><%= cartItem.item.title -%></td>
-      <td>
-        <%= button_to_remote '-', :url => { :action => 'remove_one', :id => cartItem.item_id } %>
-        <div id="item_<%= cartItem.item_id -%>_quantity"><%= cartItem.quantity -%></div>
-        <%= button_to_remote '+', :url => { :action => 'add_one', :id => cartItem.item_id } %>
-      </td>
-      <td><%= current_currency.format_yen_value(cartItem.item.price) -%></td>
-      <td><div id="item_<%= cartItem.item_id -%>_total_price"><%= current_currency.format_value(current_currency.from_yen(cartItem.item.price) * cartItem.quantity) -%></div></td>
-    </tr>
+      <tr id="item_<%= cartItem.item_id -%>">
+        <td><%= button_to_remote t('cart.edit.delete_button'), :url => { :action => 'remove_all', :id => cartItem.item_id } -%></td>
+        <td><%= i = i + 1 -%></td>
+        <td><%= cartItem.item.title -%></td>
+        <td><%= current_currency.format_yen_value(cartItem.item.price) -%></td>
+        <td>
+          <%= button_to_remote '-', :url => { :action => 'remove_one', :id => cartItem.item_id } %>
+          <div id="item_<%= cartItem.item_id -%>_quantity"><%= cartItem.quantity -%></div>
+          <%= button_to_remote '+', :url => { :action => 'add_one', :id => cartItem.item_id } %>
+        </td>
+        <td>
+          <div id="item_<%= cartItem.item_id -%>_total_price"><%= current_currency.format_value(current_currency.from_yen(cartItem.item.price) * cartItem.quantity) -%></div>
+        </td>
+      </tr>
   <% end -%>
   <tr>
     <td colspan="5"><%= t('cart.edit.grand_total') -%></td>
-    <td><div id="total_price"><%= current_currency.format_value(@cart.total_price_in(current_currency)) -%></div></td>
+    <td>
+      <div id="total_price"><%= current_currency.format_value(@cart.total_price_in(current_currency)) -%></div>
+    </td>
   </tr>
   </tbody>
 </table>
 <p>
   <%= button_to t('cart.edit.clear_button'), { :action => 'clear' } %>
-  <%= button_to t('cart.edit.checkout_button'), { :action => 'checkout' }, :method => :get %>
+  <% form_tag :action => 'checkout' do -%>
+      <%= hidden_field_tag :aktion, 'create' %>
+      <%= submit_tag t('cart.edit.checkout_button') %>
+  <% end -%>
 </p>

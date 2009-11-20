@@ -18,6 +18,6 @@ class Currency < ActiveRecord::Base
   end
 
   def format_value(value)
-    "#{value} #{symbol}"
+    '%.2f %s' % [value, symbol]
   end
 end

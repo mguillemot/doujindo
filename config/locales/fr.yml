@@ -47,7 +47,7 @@ fr:
       quantity: "Quantité"
       unit_price: "Prix unitaire"
       total_price: "Prix total"
-      grand_total: "TOTAL"
+      grand_total: "TOTAL sans frais de port"
       delete_button: "Supprimer"
       clear_button: "Vider tout"
       checkout_button: "Confirmer achat"

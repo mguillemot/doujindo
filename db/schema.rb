@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091119073709) do
+ActiveRecord::Schema.define(:version => 20091119174346) do
 
   create_table "cart_items", :force => true do |t|
     t.integer  "cart_id",                   :null => false
@@ -44,7 +44,10 @@ ActiveRecord::Schema.define(:version => 20091119073709) do
     t.string "sal_zone"
     t.string "geographic_zone", :null => false
     t.string "note"
+    t.string "paypal_code"
   end
+
+  add_index "countries", ["paypal_code"], :name => "index_countries_on_paypal_code"
 
   create_table "currencies", :force => true do |t|
     t.string   "description_en",                               :null => false
@@ -145,7 +148,6 @@ ActiveRecord::Schema.define(:version => 20091119073709) do
 
   create_table "orders", :force => true do |t|
     t.integer  "client_id",                                              :null => false
-    t.integer  "shipping_address_id"
     t.integer  "currency_id",                                            :null => false
     t.decimal  "items_total_price",        :precision => 8, :scale => 2, :null => false
     t.text     "notes"
@@ -157,10 +159,17 @@ ActiveRecord::Schema.define(:version => 20091119073709) do
     t.string   "payment_type"
     t.string   "payment_status"
     t.datetime "payment_date"
-    t.string   "payment_number"
-    t.string   "payment_from"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "ship_to_name"
+    t.string   "ship_to_street"
+    t.string   "ship_to_zip"
+    t.string   "ship_to_city"
+    t.string   "ship_to_state"
+    t.integer  "ship_to_country_id"
+    t.string   "paypal_token"
+    t.string   "paypal_payer_id"
+    t.string   "ship_to_country_code"
   end
 
   add_index "orders", ["client_id"], :name => "index_orders_on_client_id"

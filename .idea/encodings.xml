@@ -7,6 +7,7 @@
     <file url="file://$PROJECT_DIR$/app/views/layouts/application.html.erb" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/config/environment.rb" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/config/locales/fr.yml" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/lib/paypal/api.rb" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/test/fixtures/categories.yml" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/test/fixtures/currencies.yml" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/test/fixtures/items.yml" charset="UTF-8" />

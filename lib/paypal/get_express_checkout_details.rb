@@ -28,14 +28,15 @@
 
 module Paypal
   class GetExpressCheckoutDetails < ApiResponse
-    attr_reader :payer_id, :name, :city, :street, :state, :country_code, :country_name
+    attr_reader :payer_id, :name, :zip, :city, :street, :state, :country_code, :country_name
 
     def initialize(response)
       super
       @payer_id = response['PAYERID']
       @name = response['SHIPTONAME']
-      @city = response['SHIPTOCITY']
       @street = response['SHIPTOSTREET']
+      @zip = response['SHIPTOZIP']
+      @city = response['SHIPTOCITY']
       @state = response['SHIPTOSTATE']
       @country_code = response['SHIPTOCOUNTRYCODE']
       @country_name = response['SHIPTOCOUNTRYNAME']

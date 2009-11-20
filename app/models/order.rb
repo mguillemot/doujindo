@@ -1,8 +1,8 @@
 class Order < ActiveRecord::Base
   has_many :order_items, :dependent => :destroy
   belongs_to :client, { :class_name => 'User' }
-  belongs_to :shipping_address, { :class_name => 'UserAddress' }
   belongs_to :currency
+  belongs_to :ship_to_country, { :class_name => 'Country' }
 
   def self.create(user, currency, cart)
     order = Order.new

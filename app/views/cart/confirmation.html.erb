@@ -1,0 +1,56 @@
+<% @title = t('cart.checkout.title') -%>
+<% @nav = [ [ t('cart.edit.nav'), { :controller => 'cart', :action => 'index' } ], [ t('cart.checkout.nav') ] ] -%>
+<% @hide_cart = true -%>
+<h1><%= @title -%></h1>
+<div>Order #<%= @order.id -%></div>
+<table border="1">
+  <thead>
+  <tr>
+    <th><%= t('cart.edit.number') -%></th>
+    <th><%= t('cart.edit.item') -%></th>
+    <th><%= t('cart.edit.quantity') -%></th>
+    <th><%= t('cart.edit.unit_price') -%></th>
+    <th><%= t('cart.edit.total_price') -%></th>
+  </tr>
+  </thead>
+  <tbody>
+  <% i = 0; @cart.cart_items.each do |cartItem| -%>
+      <tr id="item_<%= cartItem.item_id -%>">
+        <td><%= i = i + 1 -%></td>
+        <td><%= cartItem.item.title -%></td>
+        <td>
+          <div id="item_<%= cartItem.item_id -%>_quantity"><%= cartItem.quantity -%></div>
+        </td>
+        <td><%= @order.currency.format_yen_value(cartItem.item.price) -%></td>
+        <td>
+          <div id="item_<%= cartItem.item_id -%>_total_price"><%= @order.currency.format_value(@order.currency.from_yen(cartItem.item.price) * cartItem.quantity) -%></div>
+        </td>
+      </tr>
+  <% end -%>
+  <tr>
+    <td colspan="4"><%= t('cart.edit.grand_total') -%></td>
+    <td>
+      <div id="total_price"><%= @order.currency.format_value(@cart.total_price_in(@order.currency)) -%></div>
+    </td>
+  </tr>
+  </tbody>
+</table>
+<div><strong>Shipping address</strong></div>
+<div style="border:1px solid black;background-color:orange;">
+  <br/>
+  <%= @order.ship_to_name %>
+  <br/>
+  <%= @order.ship_to_street %>
+  <br/>
+  <%= @order.ship_to_zip %> <%= @order.ship_to_city %>
+  <br/>
+  <%= @order.ship_to_state %>
+  <br/>
+  <%= @order.ship_to_country.name %>
+</div>
+<div>Shipping cost estimation</div>
+<%= render :partial => 'delivery_options' %>
+
+
+
+

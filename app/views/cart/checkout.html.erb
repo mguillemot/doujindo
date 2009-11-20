@@ -3,54 +3,55 @@
 <% @hide_cart = true -%>
 <h1><%= t('cart.checkout.title') -%></h1>
 <div>Order #<%= @order.id -%></div>
-<table border="1">
-  <thead>
-  <tr>
-    <th><%= t('cart.edit.number') -%></th>
-    <th><%= t('cart.edit.item') -%></th>
-    <th><%= t('cart.edit.quantity') -%></th>
-    <th><%= t('cart.edit.unit_price') -%></th>
-    <th><%= t('cart.edit.total_price') -%></th>
-  </tr>
-  </thead>
-  <tbody>
-  <% i = 0; @cart.cart_items.each do |cartItem| -%>
-      <tr id="item_<%= cartItem.item_id -%>">
-        <td><%= i = i + 1 -%></td>                                                                                                                                                                                                                                                                                                                 
-        <td><%= cartItem.item.title -%></td>
+<% form_for :order, @order do |f| -%>
+    <table border="1">
+      <thead>
+      <tr>
+        <th><%= t('cart.edit.number') -%></th>
+        <th><%= t('cart.edit.item') -%></th>
+        <th><%= t('cart.edit.quantity') -%></th>
+        <th><%= t('cart.edit.unit_price') -%></th>
+        <th><%= t('cart.edit.total_price') -%></th>
+      </tr>
+      </thead>
+      <tbody>
+      <% i = 0; @cart.cart_items.each do |cartItem| -%>
+          <tr id="item_<%= cartItem.item_id -%>">
+            <td><%= i = i + 1 -%></td>
+            <td><%= cartItem.item.title -%></td>
+            <td>
+              <div id="item_<%= cartItem.item_id -%>_quantity"><%= cartItem.quantity -%></div>
+            </td>
+            <td><%= @order.currency.format_yen_value(cartItem.item.price) -%></td>
+            <td>
+              <div id="item_<%= cartItem.item_id -%>_total_price"><%= @order.currency.format_value(@order.currency.from_yen(cartItem.item.price) * cartItem.quantity) -%></div>
+            </td>
+          </tr>
+      <% end -%>
+      <tr>
+        <td colspan="4"><%= t('cart.edit.grand_total') -%></td>
         <td>
-          <div id="item_<%= cartItem.item_id -%>_quantity"><%= cartItem.quantity -%></div>
-        </td>
-        <td><%= current_currency.format_yen_value(cartItem.item.price) -%></td>
-        <td>
-          <div id="item_<%= cartItem.item_id -%>_total_price"><%= current_currency.format_value(current_currency.from_yen(cartItem.item.price) * cartItem.quantity) -%></div>
+          <div id="total_price"><%= @order.currency.format_value(@cart.total_price_in(@order.currency)) -%></div>
         </td>
       </tr>
-  <% end -%>
-  <tr>
-    <td colspan="4"><%= t('cart.edit.grand_total') -%></td>
-    <td>
-      <div id="total_price"><%= current_currency.format_value(@cart.total_price_in(current_currency)) -%></div>
-    </td>
-  </tr>
-  </tbody>
-</table>
-<% unless @order.shipping_address -%>
-    <div>Choose shipping address</div>
-    <%= render :partial => 'choose_address' %>
-    <%= button_to '< Edit cart content', { :action => 'index' }, :method => :get %>
-<% else -%>
-    <div>Shipping address</div>
-    <%= render :partial => 'partials/address', :object => @order.shipping_address -%>
-
-    <% unless @order.shipping_type -%>
-        <div>Choose shipping method</div>
-        <%= render :partial => 'choose_shipping_method' %>
-    <% else -%>
-        <div>Shipping method</div>
-        <div class="address_content">
-          <%= @order.shipping_type %>
-        </div>
-        
-    <% end -%>
+      <tr>
+        <td colspan="4">
+          Shipping to
+          <%= f.collection_select :ship_to_country_id, Country.available_for_shipping, :id, :name, { :include_blank => 'Choose a country...' } %>
+          <%= observe_field :order_ship_to_country_id, :url => { :action => 'estimate_shipping' }, :with => 'countryid' %>
+          <div id="delivery_options">&nbsp;</div>
+        </td>
+        <td>
+          <div id="shipping_price">N/A</div>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="4"><%= "TOTAL" -%></td>
+        <td>
+          <div id="total_price_with_shipping">N/A</div>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+    <%= f.submit 'Shipping address &amp; Paypal >' %>
 <% end -%>
