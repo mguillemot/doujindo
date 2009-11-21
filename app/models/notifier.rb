@@ -11,6 +11,12 @@ class Notifier < ActionMailer::Base
     body :user => user
   end
 
+  def order_confirmation(order)
+    common_infos order.client
+    subject "Order ##{order.id} confirmed"
+    body :user => order.client, :order => order
+  end
+
   protected
 
   def common_infos(user)

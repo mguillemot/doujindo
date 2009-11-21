@@ -1,7 +1,9 @@
 class Cart < ActiveRecord::Base
   has_many :cart_items, :dependent => :destroy
 
-  validates_associated :cart_items
+  def empty
+    cart_items.destroy_all
+  end
 
   def total_price_in(currency)
     total = 0

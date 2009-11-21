@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091119174346) do
+ActiveRecord::Schema.define(:version => 20091121181519) do
 
   create_table "cart_items", :force => true do |t|
     t.integer  "cart_id",                   :null => false
@@ -170,6 +170,7 @@ ActiveRecord::Schema.define(:version => 20091119174346) do
     t.string   "paypal_token"
     t.string   "paypal_payer_id"
     t.string   "ship_to_country_code"
+    t.string   "paypal_transaction_id"
   end
 
   add_index "orders", ["client_id"], :name => "index_orders_on_client_id"

@@ -1,293 +1,367 @@
-"id"	"method"	"zone"	"min_weight"	"max_weight"	"price"
-1	"ems"	"first"	0	300	900
-2	"ems"	"first"	301	500	1100
-3	"ems"	"first"	501	600	1240
-4	"ems"	"first"	601	700	1380
-5	"ems"	"first"	701	800	1520
-6	"ems"	"first"	801	900	1660
-7	"ems"	"first"	901	1000	1800
-8	"ems"	"first"	1001	1250	2100
-9	"ems"	"first"	1251	1500	2400
-10	"ems"	"first"	1501	1750	2700
-11	"ems"	"first"	1751	2000	3000
-12	"ems"	"first"	2001	2500	3500
-13	"ems"	"first"	2501	3000	4000
-14	"ems"	"first"	3001	3500	4500
-15	"ems"	"first"	3501	4000	5000
-16	"ems"	"first"	4001	4500	5500
-17	"ems"	"first"	4501	5000	6000
-18	"ems"	"first"	5001	5500	6500
-19	"ems"	"first"	5501	6000	7000
-20	"ems"	"first"	6001	7000	7800
-21	"ems"	"first"	7001	8000	8600
-22	"ems"	"first"	8001	9000	9400
-23	"ems"	"first"	9001	10000	10200
-24	"ems"	"first"	10001	11000	11000
-25	"ems"	"first"	11001	12000	11800
-26	"ems"	"first"	12001	13000	12600
-27	"ems"	"first"	13001	14000	13400
-28	"ems"	"first"	14001	15000	14200
-29	"ems"	"first"	15001	16000	15000
-30	"ems"	"first"	16001	17000	15800
-31	"ems"	"first"	17001	18000	16600
-32	"ems"	"first"	18001	19000	17400
-33	"ems"	"first"	19001	20000	18200
-34	"ems"	"first"	20001	21000	19000
-35	"ems"	"first"	21001	22000	19800
-36	"ems"	"first"	22001	23000	20600
-37	"ems"	"first"	23001	24000	21400
-38	"ems"	"first"	24001	25000	22200
-39	"ems"	"first"	25001	26000	23000
-40	"ems"	"first"	26001	27000	23800
-41	"ems"	"first"	27001	28000	24600
-42	"ems"	"first"	28001	29000	25400
-43	"ems"	"first"	29001	30000	26200
-44	"ems"	"second1"	0	300	1200
-45	"ems"	"second1"	301	500	1500
-46	"ems"	"second1"	501	600	1680
-47	"ems"	"second1"	601	700	1860
-48	"ems"	"second1"	701	800	2040
-49	"ems"	"second1"	801	900	2220
-50	"ems"	"second1"	901	1000	2400
-51	"ems"	"second1"	1001	1250	2800
-52	"ems"	"second1"	1251	1500	3200
-53	"ems"	"second1"	1501	1750	3600
-54	"ems"	"second1"	1751	2000	4000
-55	"ems"	"second1"	2001	2500	4700
-56	"ems"	"second1"	2501	3000	5400
-57	"ems"	"second1"	3001	3500	6100
-58	"ems"	"second1"	3501	4000	6800
-59	"ems"	"second1"	4001	4500	7500
-60	"ems"	"second1"	4501	5000	8200
-61	"ems"	"second1"	5001	5500	8900
-62	"ems"	"second1"	5501	6000	9600
-63	"ems"	"second1"	6001	7000	10700
-64	"ems"	"second1"	7001	8000	11800
-65	"ems"	"second1"	8001	9000	12900
-66	"ems"	"second1"	9001	10000	14000
-67	"ems"	"second1"	10001	11000	15100
-68	"ems"	"second1"	11001	12000	16200
-69	"ems"	"second1"	12001	13000	17300
-70	"ems"	"second1"	13001	14000	18400
-71	"ems"	"second1"	14001	15000	19500
-72	"ems"	"second1"	15001	16000	20600
-73	"ems"	"second1"	16001	17000	21700
-74	"ems"	"second1"	17001	18000	22800
-75	"ems"	"second1"	18001	19000	23900
-76	"ems"	"second1"	19001	20000	25000
-77	"ems"	"second1"	20001	21000	26100
-78	"ems"	"second1"	21001	22000	27200
-79	"ems"	"second1"	22001	23000	28300
-80	"ems"	"second1"	23001	24000	29400
-81	"ems"	"second1"	24001	25000	30500
-82	"ems"	"second1"	25001	26000	31600
-83	"ems"	"second1"	26001	27000	32700
-84	"ems"	"second1"	27001	28000	33800
-85	"ems"	"second1"	28001	29000	34900
-86	"ems"	"second1"	29001	30000	36000
-87	"ems"	"second2"	0	300	1500
-88	"ems"	"second2"	301	500	1800
-89	"ems"	"second2"	501	600	2000
-90	"ems"	"second2"	601	700	2200
-91	"ems"	"second2"	701	800	2400
-92	"ems"	"second2"	801	900	2600
-93	"ems"	"second2"	901	1000	2800
-94	"ems"	"second2"	1001	1250	3250
-95	"ems"	"second2"	1251	1500	3700
-96	"ems"	"second2"	1501	1750	4150
-97	"ems"	"second2"	1751	2000	4600
-98	"ems"	"second2"	2001	2500	5400
-99	"ems"	"second2"	2501	3000	6200
-100	"ems"	"second2"	3001	3500	7000
-101	"ems"	"second2"	3501	4000	7800
-102	"ems"	"second2"	4001	4500	8600
-103	"ems"	"second2"	4501	5000	9400
-104	"ems"	"second2"	5001	5500	10200
-105	"ems"	"second2"	5501	6000	11000
-106	"ems"	"second2"	6001	7000	12300
-107	"ems"	"second2"	7001	8000	13600
-108	"ems"	"second2"	8001	9000	14900
-109	"ems"	"second2"	9001	10000	16200
-110	"ems"	"second2"	10001	11000	17500
-111	"ems"	"second2"	11001	12000	18800
-112	"ems"	"second2"	12001	13000	20100
-113	"ems"	"second2"	13001	14000	21400
-114	"ems"	"second2"	14001	15000	22700
-115	"ems"	"second2"	15001	16000	24000
-116	"ems"	"second2"	16001	17000	25300
-117	"ems"	"second2"	17001	18000	26600
-118	"ems"	"second2"	18001	19000	27900
-119	"ems"	"second2"	19001	20000	29200
-120	"ems"	"second2"	20001	21000	30500
-121	"ems"	"second2"	21001	22000	31800
-122	"ems"	"second2"	22001	23000	33100
-123	"ems"	"second2"	23001	24000	34400
-124	"ems"	"second2"	24001	25000	35700
-125	"ems"	"second2"	25001	26000	37000
-126	"ems"	"second2"	26001	27000	38300
-127	"ems"	"second2"	27001	28000	39600
-128	"ems"	"second2"	28001	29000	40900
-129	"ems"	"second2"	29001	30000	42200
-130	"ems"	"third"	0	300	1700
-131	"ems"	"third"	301	500	2100
-132	"ems"	"third"	501	600	2440
-133	"ems"	"third"	601	700	2780
-134	"ems"	"third"	701	800	3120
-135	"ems"	"third"	801	900	3460
-136	"ems"	"third"	901	1000	3800
-137	"ems"	"third"	1001	1250	4600
-138	"ems"	"third"	1251	1500	5400
-139	"ems"	"third"	1501	1750	6200
-140	"ems"	"third"	1751	2000	7000
-141	"ems"	"third"	2001	2500	8500
-142	"ems"	"third"	2501	3000	10000
-143	"ems"	"third"	3001	3500	11500
-144	"ems"	"third"	3501	4000	13000
-145	"ems"	"third"	4001	4500	14500
-146	"ems"	"third"	4501	5000	16000
-147	"ems"	"third"	5001	5500	17500
-148	"ems"	"third"	5501	6000	19000
-149	"ems"	"third"	6001	7000	21100
-150	"ems"	"third"	7001	8000	23200
-151	"ems"	"third"	8001	9000	25300
-152	"ems"	"third"	9001	10000	27400
-153	"ems"	"third"	10001	11000	29500
-154	"ems"	"third"	11001	12000	31600
-155	"ems"	"third"	12001	13000	33700
-156	"ems"	"third"	13001	14000	35800
-157	"ems"	"third"	14001	15000	37900
-158	"ems"	"third"	15001	16000	40000
-159	"ems"	"third"	16001	17000	42100
-160	"ems"	"third"	17001	18000	44200
-161	"ems"	"third"	18001	19000	46300
-162	"ems"	"third"	19001	20000	48400
-163	"ems"	"third"	20001	21000	50500
-164	"ems"	"third"	21001	22000	52600
-165	"ems"	"third"	22001	23000	54700
-166	"ems"	"third"	23001	24000	56800
-167	"ems"	"third"	24001	25000	58900
-168	"ems"	"third"	25001	26000	61000
-169	"ems"	"third"	26001	27000	63100
-170	"ems"	"third"	27001	28000	65200
-171	"ems"	"third"	28001	29000	67300
-172	"ems"	"third"	29001	30000	69400
-173	"sal"	"first"	0	1000	1800
-174	"sal"	"first"	1001	2000	2400
-175	"sal"	"first"	2001	3000	3000
-176	"sal"	"first"	3001	4000	3600
-177	"sal"	"first"	4001	5000	4200
-178	"sal"	"first"	5001	6000	4700
-179	"sal"	"first"	6001	7000	5200
-180	"sal"	"first"	7001	8000	5700
-181	"sal"	"first"	8001	9000	6200
-182	"sal"	"first"	9001	10000	6700
-183	"sal"	"first"	10001	11000	7000
-184	"sal"	"first"	11001	12000	7300
-185	"sal"	"first"	12001	13000	7600
-186	"sal"	"first"	13001	14000	7900
-187	"sal"	"first"	14001	15000	8200
-188	"sal"	"first"	15001	16000	8500
-189	"sal"	"first"	16001	17000	8800
-190	"sal"	"first"	17001	18000	9100
-191	"sal"	"first"	18001	19000	9400
-192	"sal"	"first"	19001	20000	9700
-193	"sal"	"first"	20001	21000	10000
-194	"sal"	"first"	21001	22000	10300
-195	"sal"	"first"	22001	23000	10600
-196	"sal"	"first"	23001	24000	10900
-197	"sal"	"first"	24001	25000	11200
-198	"sal"	"first"	25001	26000	11500
-199	"sal"	"first"	26001	27000	11800
-200	"sal"	"first"	27001	28000	12100
-201	"sal"	"first"	28001	29000	12400
-202	"sal"	"first"	29001	30000	12700
-203	"sal"	"second"	0	1000	2200
-204	"sal"	"second"	1001	2000	2900
-205	"sal"	"second"	2001	3000	3600
-206	"sal"	"second"	3001	4000	4300
-207	"sal"	"second"	4001	5000	5000
-208	"sal"	"second"	5001	6000	5600
-209	"sal"	"second"	6001	7000	6200
-210	"sal"	"second"	7001	8000	6800
-211	"sal"	"second"	8001	9000	7400
-212	"sal"	"second"	9001	10000	8000
-213	"sal"	"second"	10001	11000	8400
-214	"sal"	"second"	11001	12000	8800
-215	"sal"	"second"	12001	13000	9200
-216	"sal"	"second"	13001	14000	9600
-217	"sal"	"second"	14001	15000	10000
-218	"sal"	"second"	15001	16000	10400
-219	"sal"	"second"	16001	17000	10800
-220	"sal"	"second"	17001	18000	11200
-221	"sal"	"second"	18001	19000	11600
-222	"sal"	"second"	19001	20000	12000
-223	"sal"	"second"	20001	21000	12400
-224	"sal"	"second"	21001	22000	12800
-225	"sal"	"second"	22001	23000	13200
-226	"sal"	"second"	23001	24000	13600
-227	"sal"	"second"	24001	25000	14000
-228	"sal"	"second"	25001	26000	14400
-229	"sal"	"second"	26001	27000	14800
-230	"sal"	"second"	27001	28000	15200
-231	"sal"	"second"	28001	29000	15600
-232	"sal"	"second"	29001	30000	16000
-233	"sal"	"third"	0	1000	2700
-234	"sal"	"third"	1001	2000	3850
-235	"sal"	"third"	2001	3000	5000
-236	"sal"	"third"	3001	4000	6150
-237	"sal"	"third"	4001	5000	7300
-238	"sal"	"third"	5001	6000	8350
-239	"sal"	"third"	6001	7000	9400
-240	"sal"	"third"	7001	8000	10450
-241	"sal"	"third"	8001	9000	11500
-242	"sal"	"third"	9001	10000	12550
-243	"sal"	"third"	10001	11000	13250
-244	"sal"	"third"	11001	12000	13950
-245	"sal"	"third"	12001	13000	14650
-246	"sal"	"third"	13001	14000	15350
-247	"sal"	"third"	14001	15000	16050
-248	"sal"	"third"	15001	16000	16750
-249	"sal"	"third"	16001	17000	17450
-250	"sal"	"third"	17001	18000	18150
-251	"sal"	"third"	18001	19000	18850
-252	"sal"	"third"	19001	20000	19550
-253	"sal"	"third"	20001	21000	20250
-254	"sal"	"third"	21001	22000	20950
-255	"sal"	"third"	22001	23000	21650
-256	"sal"	"third"	23001	24000	22350
-257	"sal"	"third"	24001	25000	23050
-258	"sal"	"third"	25001	26000	23750
-259	"sal"	"third"	26001	27000	24450
-260	"sal"	"third"	27001	28000	25150
-261	"sal"	"third"	28001	29000	25850
-262	"sal"	"third"	29001	30000	26550
-263	"sal"	"fourth"	0	1000	3400
-264	"sal"	"fourth"	1001	2000	5000
-265	"sal"	"fourth"	2001	3000	6600
-266	"sal"	"fourth"	3001	4000	8200
-267	"sal"	"fourth"	4001	5000	9800
-268	"sal"	"fourth"	5001	6000	11250
-269	"sal"	"fourth"	6001	7000	12700
-270	"sal"	"fourth"	7001	8000	14150
-271	"sal"	"fourth"	8001	9000	15600
-272	"sal"	"fourth"	9001	10000	17050
-273	"sal"	"fourth"	10001	11000	18050
-274	"sal"	"fourth"	11001	12000	19050
-275	"sal"	"fourth"	12001	13000	20050
-276	"sal"	"fourth"	13001	14000	21050
-277	"sal"	"fourth"	14001	15000	22050
-278	"sal"	"fourth"	15001	16000	23050
-279	"sal"	"fourth"	16001	17000	24050
-280	"sal"	"fourth"	17001	18000	25050
-281	"sal"	"fourth"	18001	19000	26050
-282	"sal"	"fourth"	19001	20000	27050
-283	"sal"	"fourth"	20001	21000	28050
-284	"sal"	"fourth"	21001	22000	29050
-285	"sal"	"fourth"	22001	23000	30050
-286	"sal"	"fourth"	23001	24000	31050
-287	"sal"	"fourth"	24001	25000	32050
-288	"sal"	"fourth"	25001	26000	33050
-289	"sal"	"fourth"	26001	27000	34050
-290	"sal"	"fourth"	27001	28000	35050
-291	"sal"	"fourth"	28001	29000	36050
-292	"sal"	"fourth"	29001	30000	37050
+"id"	"method"	"zone"	"min_weight"	"max_weight"	"price"	"notes"
+1	"ems"	"first"	0	300	900	
+2	"ems"	"first"	301	500	1100	
+3	"ems"	"first"	501	600	1240	
+4	"ems"	"first"	601	700	1380	
+5	"ems"	"first"	701	800	1520	
+6	"ems"	"first"	801	900	1660	
+7	"ems"	"first"	901	1000	1800	
+8	"ems"	"first"	1001	1250	2100	
+9	"ems"	"first"	1251	1500	2400	
+10	"ems"	"first"	1501	1750	2700	
+11	"ems"	"first"	1751	2000	3000	
+12	"ems"	"first"	2001	2500	3500	
+13	"ems"	"first"	2501	3000	4000	
+14	"ems"	"first"	3001	3500	4500	
+15	"ems"	"first"	3501	4000	5000	
+16	"ems"	"first"	4001	4500	5500	
+17	"ems"	"first"	4501	5000	6000	
+18	"ems"	"first"	5001	5500	6500	
+19	"ems"	"first"	5501	6000	7000	
+20	"ems"	"first"	6001	7000	7800	
+21	"ems"	"first"	7001	8000	8600	
+22	"ems"	"first"	8001	9000	9400	
+23	"ems"	"first"	9001	10000	10200	
+24	"ems"	"first"	10001	11000	11000	
+25	"ems"	"first"	11001	12000	11800	
+26	"ems"	"first"	12001	13000	12600	
+27	"ems"	"first"	13001	14000	13400	
+28	"ems"	"first"	14001	15000	14200	
+29	"ems"	"first"	15001	16000	15000	
+30	"ems"	"first"	16001	17000	15800	
+31	"ems"	"first"	17001	18000	16600	
+32	"ems"	"first"	18001	19000	17400	
+33	"ems"	"first"	19001	20000	18200	
+34	"ems"	"first"	20001	21000	19000	
+35	"ems"	"first"	21001	22000	19800	
+36	"ems"	"first"	22001	23000	20600	
+37	"ems"	"first"	23001	24000	21400	
+38	"ems"	"first"	24001	25000	22200	
+39	"ems"	"first"	25001	26000	23000	
+40	"ems"	"first"	26001	27000	23800	
+41	"ems"	"first"	27001	28000	24600	
+42	"ems"	"first"	28001	29000	25400	
+43	"ems"	"first"	29001	30000	26200	
+44	"ems"	"second1"	0	300	1200	
+45	"ems"	"second1"	301	500	1500	
+46	"ems"	"second1"	501	600	1680	
+47	"ems"	"second1"	601	700	1860	
+48	"ems"	"second1"	701	800	2040	
+49	"ems"	"second1"	801	900	2220	
+50	"ems"	"second1"	901	1000	2400	
+51	"ems"	"second1"	1001	1250	2800	
+52	"ems"	"second1"	1251	1500	3200	
+53	"ems"	"second1"	1501	1750	3600	
+54	"ems"	"second1"	1751	2000	4000	
+55	"ems"	"second1"	2001	2500	4700	
+56	"ems"	"second1"	2501	3000	5400	
+57	"ems"	"second1"	3001	3500	6100	
+58	"ems"	"second1"	3501	4000	6800	
+59	"ems"	"second1"	4001	4500	7500	
+60	"ems"	"second1"	4501	5000	8200	
+61	"ems"	"second1"	5001	5500	8900	
+62	"ems"	"second1"	5501	6000	9600	
+63	"ems"	"second1"	6001	7000	10700	
+64	"ems"	"second1"	7001	8000	11800	
+65	"ems"	"second1"	8001	9000	12900	
+66	"ems"	"second1"	9001	10000	14000	
+67	"ems"	"second1"	10001	11000	15100	
+68	"ems"	"second1"	11001	12000	16200	
+69	"ems"	"second1"	12001	13000	17300	
+70	"ems"	"second1"	13001	14000	18400	
+71	"ems"	"second1"	14001	15000	19500	
+72	"ems"	"second1"	15001	16000	20600	
+73	"ems"	"second1"	16001	17000	21700	
+74	"ems"	"second1"	17001	18000	22800	
+75	"ems"	"second1"	18001	19000	23900	
+76	"ems"	"second1"	19001	20000	25000	
+77	"ems"	"second1"	20001	21000	26100	
+78	"ems"	"second1"	21001	22000	27200	
+79	"ems"	"second1"	22001	23000	28300	
+80	"ems"	"second1"	23001	24000	29400	
+81	"ems"	"second1"	24001	25000	30500	
+82	"ems"	"second1"	25001	26000	31600	
+83	"ems"	"second1"	26001	27000	32700	
+84	"ems"	"second1"	27001	28000	33800	
+85	"ems"	"second1"	28001	29000	34900	
+86	"ems"	"second1"	29001	30000	36000	
+87	"ems"	"second2"	0	300	1500	
+88	"ems"	"second2"	301	500	1800	
+89	"ems"	"second2"	501	600	2000	
+90	"ems"	"second2"	601	700	2200	
+91	"ems"	"second2"	701	800	2400	
+92	"ems"	"second2"	801	900	2600	
+93	"ems"	"second2"	901	1000	2800	
+94	"ems"	"second2"	1001	1250	3250	
+95	"ems"	"second2"	1251	1500	3700	
+96	"ems"	"second2"	1501	1750	4150	
+97	"ems"	"second2"	1751	2000	4600	
+98	"ems"	"second2"	2001	2500	5400	
+99	"ems"	"second2"	2501	3000	6200	
+100	"ems"	"second2"	3001	3500	7000	
+101	"ems"	"second2"	3501	4000	7800	
+102	"ems"	"second2"	4001	4500	8600	
+103	"ems"	"second2"	4501	5000	9400	
+104	"ems"	"second2"	5001	5500	10200	
+105	"ems"	"second2"	5501	6000	11000	
+106	"ems"	"second2"	6001	7000	12300	
+107	"ems"	"second2"	7001	8000	13600	
+108	"ems"	"second2"	8001	9000	14900	
+109	"ems"	"second2"	9001	10000	16200	
+110	"ems"	"second2"	10001	11000	17500	
+111	"ems"	"second2"	11001	12000	18800	
+112	"ems"	"second2"	12001	13000	20100	
+113	"ems"	"second2"	13001	14000	21400	
+114	"ems"	"second2"	14001	15000	22700	
+115	"ems"	"second2"	15001	16000	24000	
+116	"ems"	"second2"	16001	17000	25300	
+117	"ems"	"second2"	17001	18000	26600	
+118	"ems"	"second2"	18001	19000	27900	
+119	"ems"	"second2"	19001	20000	29200	
+120	"ems"	"second2"	20001	21000	30500	
+121	"ems"	"second2"	21001	22000	31800	
+122	"ems"	"second2"	22001	23000	33100	
+123	"ems"	"second2"	23001	24000	34400	
+124	"ems"	"second2"	24001	25000	35700	
+125	"ems"	"second2"	25001	26000	37000	
+126	"ems"	"second2"	26001	27000	38300	
+127	"ems"	"second2"	27001	28000	39600	
+128	"ems"	"second2"	28001	29000	40900	
+129	"ems"	"second2"	29001	30000	42200	
+130	"ems"	"third"	0	300	1700	
+131	"ems"	"third"	301	500	2100	
+132	"ems"	"third"	501	600	2440	
+133	"ems"	"third"	601	700	2780	
+134	"ems"	"third"	701	800	3120	
+135	"ems"	"third"	801	900	3460	
+136	"ems"	"third"	901	1000	3800	
+137	"ems"	"third"	1001	1250	4600	
+138	"ems"	"third"	1251	1500	5400	
+139	"ems"	"third"	1501	1750	6200	
+140	"ems"	"third"	1751	2000	7000	
+141	"ems"	"third"	2001	2500	8500	
+142	"ems"	"third"	2501	3000	10000	
+143	"ems"	"third"	3001	3500	11500	
+144	"ems"	"third"	3501	4000	13000	
+145	"ems"	"third"	4001	4500	14500	
+146	"ems"	"third"	4501	5000	16000	
+147	"ems"	"third"	5001	5500	17500	
+148	"ems"	"third"	5501	6000	19000	
+149	"ems"	"third"	6001	7000	21100	
+150	"ems"	"third"	7001	8000	23200	
+151	"ems"	"third"	8001	9000	25300	
+152	"ems"	"third"	9001	10000	27400	
+153	"ems"	"third"	10001	11000	29500	
+154	"ems"	"third"	11001	12000	31600	
+155	"ems"	"third"	12001	13000	33700	
+156	"ems"	"third"	13001	14000	35800	
+157	"ems"	"third"	14001	15000	37900	
+158	"ems"	"third"	15001	16000	40000	
+159	"ems"	"third"	16001	17000	42100	
+160	"ems"	"third"	17001	18000	44200	
+161	"ems"	"third"	18001	19000	46300	
+162	"ems"	"third"	19001	20000	48400	
+163	"ems"	"third"	20001	21000	50500	
+164	"ems"	"third"	21001	22000	52600	
+165	"ems"	"third"	22001	23000	54700	
+166	"ems"	"third"	23001	24000	56800	
+167	"ems"	"third"	24001	25000	58900	
+168	"ems"	"third"	25001	26000	61000	
+169	"ems"	"third"	26001	27000	63100	
+170	"ems"	"third"	27001	28000	65200	
+171	"ems"	"third"	28001	29000	67300	
+172	"ems"	"third"	29001	30000	69400	
+173	"sal"	"first"	0	100	160	"Small packet"
+174	"sal"	"first"	101	200	240	"Small packet"
+175	"sal"	"first"	201	300	320	"Small packet"
+176	"sal"	"first"	301	400	400	"Small packet"
+177	"sal"	"first"	401	500	480	"Small packet"
+178	"sal"	"first"	501	600	560	"Small packet"
+179	"sal"	"first"	601	700	640	"Small packet"
+180	"sal"	"first"	701	800	720	"Small packet"
+181	"sal"	"first"	801	900	800	"Small packet"
+182	"sal"	"first"	901	1000	880	"Small packet"
+183	"sal"	"first"	1001	1100	960	"Small packet"
+184	"sal"	"first"	1101	1200	1040	"Small packet"
+185	"sal"	"first"	1201	1300	1120	"Small packet"
+186	"sal"	"first"	1301	1400	1200	"Small packet"
+187	"sal"	"first"	1401	1500	1280	"Small packet"
+188	"sal"	"first"	1501	1600	1360	"Small packet"
+189	"sal"	"first"	1601	1700	1440	"Small packet"
+190	"sal"	"first"	1701	1800	1520	"Small packet"
+191	"sal"	"first"	1801	1900	1600	"Small packet"
+192	"sal"	"first"	1901	2000	1680	"Small packet"
+193	"sal"	"first"	2001	3000	3000	
+194	"sal"	"first"	3001	4000	3600	
+195	"sal"	"first"	4001	5000	4200	
+196	"sal"	"first"	5001	6000	4700	
+197	"sal"	"first"	6001	7000	5200	
+198	"sal"	"first"	7001	8000	5700	
+199	"sal"	"first"	8001	9000	6200	
+200	"sal"	"first"	9001	10000	6700	
+201	"sal"	"first"	10001	11000	7000	
+202	"sal"	"first"	11001	12000	7300	
+203	"sal"	"first"	12001	13000	7600	
+204	"sal"	"first"	13001	14000	7900	
+205	"sal"	"first"	14001	15000	8200	
+206	"sal"	"first"	15001	16000	8500	
+207	"sal"	"first"	16001	17000	8800	
+208	"sal"	"first"	17001	18000	9100	
+209	"sal"	"first"	18001	19000	9400	
+210	"sal"	"first"	19001	20000	9700	
+211	"sal"	"first"	20001	21000	10000	
+212	"sal"	"first"	21001	22000	10300	
+213	"sal"	"first"	22001	23000	10600	
+214	"sal"	"first"	23001	24000	10900	
+215	"sal"	"first"	24001	25000	11200	
+216	"sal"	"first"	25001	26000	11500	
+217	"sal"	"first"	26001	27000	11800	
+218	"sal"	"first"	27001	28000	12100	
+219	"sal"	"first"	28001	29000	12400	
+220	"sal"	"first"	29001	30000	12700	
+221	"sal"	"second"	0	100	160	"Small packet"
+222	"sal"	"second"	101	200	240	"Small packet"
+223	"sal"	"second"	201	300	320	"Small packet"
+224	"sal"	"second"	301	400	400	"Small packet"
+225	"sal"	"second"	401	500	480	"Small packet"
+226	"sal"	"second"	501	600	560	"Small packet"
+227	"sal"	"second"	601	700	640	"Small packet"
+228	"sal"	"second"	701	800	720	"Small packet"
+229	"sal"	"second"	801	900	800	"Small packet"
+230	"sal"	"second"	901	1000	880	"Small packet"
+231	"sal"	"second"	1001	1100	960	"Small packet"
+232	"sal"	"second"	1101	1200	1040	"Small packet"
+233	"sal"	"second"	1201	1300	1120	"Small packet"
+234	"sal"	"second"	1301	1400	1200	"Small packet"
+235	"sal"	"second"	1401	1500	1280	"Small packet"
+236	"sal"	"second"	1501	1600	1360	"Small packet"
+237	"sal"	"second"	1601	1700	1440	"Small packet"
+238	"sal"	"second"	1701	1800	1520	"Small packet"
+239	"sal"	"second"	1801	1900	1600	"Small packet"
+240	"sal"	"second"	1901	2000	1680	"Small packet"
+241	"sal"	"second"	2001	3000	3600	
+242	"sal"	"second"	3001	4000	4300	
+243	"sal"	"second"	4001	5000	5000	
+244	"sal"	"second"	5001	6000	5600	
+245	"sal"	"second"	6001	7000	6200	
+246	"sal"	"second"	7001	8000	6800	
+247	"sal"	"second"	8001	9000	7400	
+248	"sal"	"second"	9001	10000	8000	
+249	"sal"	"second"	10001	11000	8400	
+250	"sal"	"second"	11001	12000	8800	
+251	"sal"	"second"	12001	13000	9200	
+252	"sal"	"second"	13001	14000	9600	
+253	"sal"	"second"	14001	15000	10000	
+254	"sal"	"second"	15001	16000	10400	
+255	"sal"	"second"	16001	17000	10800	
+256	"sal"	"second"	17001	18000	11200	
+257	"sal"	"second"	18001	19000	11600	
+258	"sal"	"second"	19001	20000	12000	
+259	"sal"	"second"	20001	21000	12400	
+260	"sal"	"second"	21001	22000	12800	
+261	"sal"	"second"	22001	23000	13200	
+262	"sal"	"second"	23001	24000	13600	
+263	"sal"	"second"	24001	25000	14000	
+264	"sal"	"second"	25001	26000	14400	
+265	"sal"	"second"	26001	27000	14800	
+266	"sal"	"second"	27001	28000	15200	
+267	"sal"	"second"	28001	29000	15600	
+268	"sal"	"second"	29001	30000	16000	
+269	"sal"	"third"	0	100	180	"Small packet"
+270	"sal"	"third"	101	200	280	"Small packet"
+271	"sal"	"third"	201	300	380	"Small packet"
+272	"sal"	"third"	301	400	480	"Small packet"
+273	"sal"	"third"	401	500	580	"Small packet"
+274	"sal"	"third"	501	600	680	"Small packet"
+275	"sal"	"third"	601	700	780	"Small packet"
+276	"sal"	"third"	701	800	880	"Small packet"
+277	"sal"	"third"	801	900	980	"Small packet"
+278	"sal"	"third"	901	1000	1080	"Small packet"
+279	"sal"	"third"	1001	1100	1180	"Small packet"
+280	"sal"	"third"	1101	1200	1280	"Small packet"
+281	"sal"	"third"	1201	1300	1380	"Small packet"
+282	"sal"	"third"	1301	1400	1480	"Small packet"
+283	"sal"	"third"	1401	1500	1580	"Small packet"
+284	"sal"	"third"	1501	1600	1680	"Small packet"
+285	"sal"	"third"	1601	1700	1780	"Small packet"
+286	"sal"	"third"	1701	1800	1880	"Small packet"
+287	"sal"	"third"	1801	1900	1980	"Small packet"
+288	"sal"	"third"	1901	2000	2080	"Small packet"
+289	"sal"	"third"	2001	3000	5000	
+290	"sal"	"third"	3001	4000	6150	
+291	"sal"	"third"	4001	5000	7300	
+292	"sal"	"third"	5001	6000	8350	
+293	"sal"	"third"	6001	7000	9400	
+294	"sal"	"third"	7001	8000	10450	
+295	"sal"	"third"	8001	9000	11500	
+296	"sal"	"third"	9001	10000	12550	
+297	"sal"	"third"	10001	11000	13250	
+298	"sal"	"third"	11001	12000	13950	
+299	"sal"	"third"	12001	13000	14650	
+300	"sal"	"third"	13001	14000	15350	
+301	"sal"	"third"	14001	15000	16050	
+302	"sal"	"third"	15001	16000	16750	
+303	"sal"	"third"	16001	17000	17450	
+304	"sal"	"third"	17001	18000	18150	
+305	"sal"	"third"	18001	19000	18850	
+306	"sal"	"third"	19001	20000	19550	
+307	"sal"	"third"	20001	21000	20250	
+308	"sal"	"third"	21001	22000	20950	
+309	"sal"	"third"	22001	23000	21650	
+310	"sal"	"third"	23001	24000	22350	
+311	"sal"	"third"	24001	25000	23050	
+312	"sal"	"third"	25001	26000	23750	
+313	"sal"	"third"	26001	27000	24450	
+314	"sal"	"third"	27001	28000	25150	
+315	"sal"	"third"	28001	29000	25850	
+316	"sal"	"third"	29001	30000	26550	
+317	"sal"	"fourth"	0	100	200	"Small packet"
+318	"sal"	"fourth"	101	200	320	"Small packet"
+319	"sal"	"fourth"	201	300	440	"Small packet"
+320	"sal"	"fourth"	301	400	560	"Small packet"
+321	"sal"	"fourth"	401	500	680	"Small packet"
+322	"sal"	"fourth"	501	600	800	"Small packet"
+323	"sal"	"fourth"	601	700	920	"Small packet"
+324	"sal"	"fourth"	701	800	1040	"Small packet"
+325	"sal"	"fourth"	801	900	1160	"Small packet"
+326	"sal"	"fourth"	901	1000	1280	"Small packet"
+327	"sal"	"fourth"	1001	1100	1400	"Small packet"
+328	"sal"	"fourth"	1101	1200	1520	"Small packet"
+329	"sal"	"fourth"	1201	1300	1640	"Small packet"
+330	"sal"	"fourth"	1301	1400	1760	"Small packet"
+331	"sal"	"fourth"	1401	1500	1880	"Small packet"
+332	"sal"	"fourth"	1501	1600	2000	"Small packet"
+333	"sal"	"fourth"	1601	1700	2120	"Small packet"
+334	"sal"	"fourth"	1701	1800	2240	"Small packet"
+335	"sal"	"fourth"	1801	1900	2360	"Small packet"
+336	"sal"	"fourth"	1901	2000	2480	"Small packet"
+337	"sal"	"fourth"	0	1000	3400	
+338	"sal"	"fourth"	1001	2000	5000	
+339	"sal"	"fourth"	2001	3000	6600	
+340	"sal"	"fourth"	3001	4000	8200	
+341	"sal"	"fourth"	4001	5000	9800	
+342	"sal"	"fourth"	5001	6000	11250	
+343	"sal"	"fourth"	6001	7000	12700	
+344	"sal"	"fourth"	7001	8000	14150	
+345	"sal"	"fourth"	8001	9000	15600	
+346	"sal"	"fourth"	9001	10000	17050	
+347	"sal"	"fourth"	10001	11000	18050	
+348	"sal"	"fourth"	11001	12000	19050	
+349	"sal"	"fourth"	12001	13000	20050	
+350	"sal"	"fourth"	13001	14000	21050	
+351	"sal"	"fourth"	14001	15000	22050	
+352	"sal"	"fourth"	15001	16000	23050	
+353	"sal"	"fourth"	16001	17000	24050	
+354	"sal"	"fourth"	17001	18000	25050	
+355	"sal"	"fourth"	18001	19000	26050	
+356	"sal"	"fourth"	19001	20000	27050	
+357	"sal"	"fourth"	20001	21000	28050	
+358	"sal"	"fourth"	21001	22000	29050	
+359	"sal"	"fourth"	22001	23000	30050	
+360	"sal"	"fourth"	23001	24000	31050	
+361	"sal"	"fourth"	24001	25000	32050	
+362	"sal"	"fourth"	25001	26000	33050	
+363	"sal"	"fourth"	26001	27000	34050	
+364	"sal"	"fourth"	27001	28000	35050	
+365	"sal"	"fourth"	28001	29000	36050	
+366	"sal"	"fourth"	29001	30000	37050	

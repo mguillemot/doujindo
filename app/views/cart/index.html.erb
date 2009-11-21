@@ -41,7 +41,6 @@
 <p>
   <%= button_to t('cart.edit.clear_button'), { :action => 'clear' } %>
   <% form_tag :action => 'checkout' do -%>
-      <%= hidden_field_tag :aktion, 'create' %>
       <%= submit_tag t('cart.edit.checkout_button') %>
   <% end -%>
 </p>

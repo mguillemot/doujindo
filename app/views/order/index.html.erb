@@ -3,7 +3,7 @@
 <% @hide_cart = true -%>
 <h1><%= t('cart.checkout.title') -%></h1>
 <div>Order #<%= @order.id -%></div>
-<% form_for :order, @order do |f| -%>
+<% form_for :order, @order, :url => { :action => 'to_paypal' } do |f| -%>
     <table border="1">
       <thead>
       <tr>
@@ -15,31 +15,33 @@
       </tr>
       </thead>
       <tbody>
-      <% i = 0; @cart.cart_items.each do |cartItem| -%>
-          <tr id="item_<%= cartItem.item_id -%>">
-            <td><%= i = i + 1 -%></td>
-            <td><%= cartItem.item.title -%></td>
+      <% i = 0; @order.order_items.each_with_index do |oi,i| -%>
+          <tr id="item_<%= oi.item_id -%>">
+            <td><%= i + 1 -%></td>
+            <td><%= oi.item.title -%></td>
             <td>
-              <div id="item_<%= cartItem.item_id -%>_quantity"><%= cartItem.quantity -%></div>
+              <div id="item_<%= oi.item_id -%>_quantity"><%= oi.quantity -%></div>
             </td>
-            <td><%= @order.currency.format_yen_value(cartItem.item.price) -%></td>
+            <td><%= @order.currency.format_yen_value(oi.item.price) -%></td>
             <td>
-              <div id="item_<%= cartItem.item_id -%>_total_price"><%= @order.currency.format_value(@order.currency.from_yen(cartItem.item.price) * cartItem.quantity) -%></div>
+              <div id="item_<%= oi.item_id -%>_total_price"><%= @order.currency.format_value(@order.currency.from_yen(oi.item.price) * oi.quantity) -%></div>
             </td>
           </tr>
       <% end -%>
       <tr>
         <td colspan="4"><%= t('cart.edit.grand_total') -%></td>
         <td>
-          <div id="total_price"><%= @order.currency.format_value(@cart.total_price_in(@order.currency)) -%></div>
+          <div id="total_price"><%= @order.currency.format_value(@order.items_total_price) -%></div>
         </td>
       </tr>
       <tr>
         <td colspan="4">
           Shipping to
           <%= f.collection_select :ship_to_country_id, Country.available_for_shipping, :id, :name, { :include_blank => 'Choose a country...' } %>
-          <%= observe_field :order_ship_to_country_id, :url => { :action => 'estimate_shipping' }, :with => 'countryid' %>
-          <div id="delivery_options">&nbsp;</div>
+          <%= observe_field :order_ship_to_country_id, :url => { :action => 'choose_country' }, :with => 'countryid' %>
+          <div id="delivery_options">
+            <%= render :partial => 'delivery_options' -%>
+          </div>
         </td>
         <td>
           <div id="shipping_price">N/A</div>
@@ -53,5 +55,5 @@
       </tr>
       </tbody>
     </table>
-    <%= f.submit 'Shipping address &amp; Paypal >' %>
+    <%= f.submit 'Shipping address &amp; Paypal >', :disabled => true %>
 <% end -%>
