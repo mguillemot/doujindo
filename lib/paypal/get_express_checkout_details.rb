@@ -28,18 +28,21 @@
 
 module Paypal
   class GetExpressCheckoutDetails < ApiResponse
-    attr_reader :payer_id, :name, :zip, :city, :street, :state, :country_code, :country_name
+    attr_reader :payer_id, :email, :name, :zip, :city, :street, :state, :country_code, :country_name, :note
 
     def initialize(response)
       super
       @payer_id = response['PAYERID']
+      @email = response['EMAIL'] || ''
       @name = response['SHIPTONAME']
       @street = response['SHIPTOSTREET']
+      @street += "\n#{response['SHIPTOSTREET2']}" if response['SHIPTOSTREET2']
       @zip = response['SHIPTOZIP']
       @city = response['SHIPTOCITY']
       @state = response['SHIPTOSTATE']
       @country_code = response['SHIPTOCOUNTRYCODE']
       @country_name = response['SHIPTOCOUNTRYNAME']
+      @note = response['NOTE']
     end
   end
 end

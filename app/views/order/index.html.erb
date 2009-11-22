@@ -15,7 +15,7 @@
       </tr>
       </thead>
       <tbody>
-      <% i = 0; @order.order_items.each_with_index do |oi,i| -%>
+      <% @order.order_items.each_with_index do |oi,i| -%>
           <tr id="item_<%= oi.item_id -%>">
             <td><%= i + 1 -%></td>
             <td><%= oi.item.title -%></td>

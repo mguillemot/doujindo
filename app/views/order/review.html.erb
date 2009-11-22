@@ -35,7 +35,7 @@
   </tr>
   <tr>
     <td colspan="4">
-      Shipping to <%= @order.ship_to_country.name -%> by <%= @order.shipping_type %>
+      Shipping to <span id="shipping_country"><%= @order.ship_to_country.name -%></span> by <%= @order.shipping_type %>
     </td>
     <td>
       <div id="shipping_price"><%= @order.currency.format_value(@order.shipping_price) -%></div>
@@ -49,18 +49,23 @@
   </tr>
   </tbody>
 </table>
-<div id="shipping_address">
+<% if @paypal_alternative_country -%>
+    <div id="paypal_alternative_country">
+      <p>WARNING: the shipping address you have entered in your Paypal payment form is located in another country
+        (<%= @paypal_alternative_country.name -%>)
+        than the one you selected for computing shipping costs (<%= @order.ship_to_country.name -%>). You have to
+        recompute shipping
+        costs before you can confirm your order.</p>
+
+      <p><%= button_to_remote "Recompute shipping to #{@paypal_alternative_country.name}", :url => { :action => 'recompute_shipping' } -%></p>
+    </div>
+<% end -%>
+<div>
   <div><strong>Shipping address</strong></div>
-  <div>
-    <%= @order.ship_to_name %>
-    <br/>
-    <%= @order.ship_to_street %>
-    <br/>
-    <%= @order.ship_to_zip %> <%= @order.ship_to_city %>
-    <br/>
-    <%= @order.ship_to_state %>
-    <br/>
-    <%= @order.ship_to_country.name %>
+  <div id="shipping_address">
+    <%= render :partial => 'shipping_address' %>
   </div>
 </div>
-<%= button_to 'Confirm order', :action => 'confirmation' %>
+<% form_tag :action => 'confirmation' do -%>
+    <%= submit_tag 'Confirm order', :disabled => (@paypal_alternative_country != nil), :id => 'confirm_order' %>
+<% end -%>

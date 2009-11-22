@@ -1,2 +1,2 @@
 page.replace_html "shipping_price",  @order.currency.format_value(@order.shipping_price)
-page.replace_html "total_price_with_shipping",  @order.currency.format_value(@order.items_total_price)
+page.replace_html "total_price_with_shipping",  @order.currency.format_value(@order.total_price)

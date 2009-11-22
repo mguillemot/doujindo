@@ -1,5 +1,6 @@
 class OrderController < ApplicationController
   before_filter :order_required
+  before_filter :pending_order_check, :except => :confirmation
 
   def index
     if @order.ship_to_country
@@ -32,7 +33,7 @@ class OrderController < ApplicationController
     if response.success
       @order.paypal_token = response.token
       @order.save!
-      url = PAYPAL_USER_URL + "&token=#{CGI.escape(response.token)}&useraction=commit"
+      url = PAYPAL_USER_URL + "&token=#{CGI.escape(response.token)}" #&useraction=commit"
       redirect_to url
     else
       add_error "Paypal error (1): #{response.error_message} (#{response.error_code})"
@@ -45,28 +46,53 @@ class OrderController < ApplicationController
     payer_id = params[:PayerID]
     details = Paypal::Api.get_express_checkout_details(token)
     if details.success
-      country = Country.from_paypal_code details.country_code
-      @order.payment_type = 'paypal'
-      @order.paypal_token = token
-      @order.paypal_payer_id = payer_id
-      @order.payment_status = 'waiting-for-user-confirmation'
-      @order.ship_to_name = details.name
-      @order.ship_to_street = details.street
-      @order.ship_to_zip = details.zip
-      @order.ship_to_city = details.city
-      @order.ship_to_state = details.state
-      @order.ship_to_country_code = details.country_code
-      @order.ship_to_country = country
-      @order.save!
-      compute_shipping_to country, @order.currency
+      if details.token != token || details.token != @order.paypal_token
+        add_error "Paypal error (2b): wrong token"
+        redirect_to :action => 'index'
+      elsif details.payer_id != payer_id
+        add_error "Paypal error (2c): wrong payer ID"
+        redirect_to :action => 'index'
+      else
+        country = Country.from_paypal_code details.country_code
+        @order.payment_type = 'paypal'
+        @order.paypal_payer_id = details.payer_id
+        @order.payment_status = 'waiting-for-user-confirmation'
+        @order.ship_to_name = details.name
+        @order.ship_to_street = details.street
+        @order.ship_to_zip = details.zip
+        @order.ship_to_city = details.city
+        @order.ship_to_state = details.state
+        @order.ship_to_country_code = details.country_code
+        @order.notes = details.note
+        if @order.ship_to_country != country
+          @paypal_alternative_country = country
+        end
+        @order.save!
+      end
     else
-      add_error "Paypal error (2): #{details.error_message} (#{details.error_code})"
+      add_error "Paypal error (2a): #{details.error_message} (#{details.error_code})"
       redirect_to :action => 'index'
     end
   end
 
+  def recompute_shipping
+    @order.ship_to_country = Country.from_paypal_code @order.ship_to_country_code
+    @paypal_alternative_country = nil
+    compute_shipping_to @order.ship_to_country, @order.currency
+    case @order.shipping_type
+      when 'ems'
+        @order.shipping_price = @ems_price
+      when 'sal'
+        @order.shipping_price = @sal_price
+    end
+    @order.save!
+  end
+
   def cancel
-    @token = params[:token]
+    add_notice "PayPal payment cancelled."
+    @order.payment_status = 'cancelled-by-user'
+    @order.save!
+    redirect_to :action => 'index'
   end
 
   def confirmation
@@ -77,7 +103,11 @@ class OrderController < ApplicationController
       @order.paypal_transaction_id = response.transaction_id
       @order.save!
       @cart.empty
-      Notifier.deliver_order_confirmation(@order)
+      begin
+        Notifier.deliver_order_confirmation(@order)
+      rescue
+        add_notice "An error occured while trying to send the confirmation mail to #{@user.email}"
+      end
     else
       @order.payment_status = "paypal-error ##{response.reason_code}"
       @order.save!
@@ -90,7 +120,14 @@ class OrderController < ApplicationController
 
   def order_required
     @order = Order.find session[:order_id]
-    true
+    redirect_to :controller => 'cart' unless @order
+  end
+
+  def pending_order_check
+    if @order.payment_status == 'paid'
+      add_notice "The order ##{@order.id} is already confirmed."
+      redirect_to :controller => 'home'
+    end
   end
 
   def compute_shipping_to(country, currency)

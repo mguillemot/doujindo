@@ -9,6 +9,10 @@ class Item < ActiveRecord::Base
 
   translatable_columns :title, :author, :item_type, :description, :publisher, :test, :required_config, :format, :warning, :notes
   validates_translation_of :title, :author, :item_type, :description
+  validates_inclusion_of :dimension_width, :in => 1..2000
+  validates_inclusion_of :dimension_height, :in => 1..2000
+  validates_inclusion_of :dimension_thickness, :in => 1..2000
+  validates_inclusion_of :weight, :in => 1..30000
 
   def main_picture
     static_assets.find :first, :conditions => ['asset_type = ?', 'icon']
