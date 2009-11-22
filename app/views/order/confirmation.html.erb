@@ -1,9 +1,6 @@
-<% @title = "Order confirmed" -%>
-<% @nav = [ [ t('cart.edit.nav'), { :controller => 'cart', :action => 'index' } ], [ t('cart.checkout.nav') ] ] -%>
+<% @title = t('checkout.confirmation.title') -%>
+<% @nav = order_confirmation_nav -%>
 <% @hide_cart = true -%>
 <h1><%= @title -%></h1>
-<div>Order #<%= @order.id -%></div>
-The order has been validated successfully. An e-mail confirmation has been sent to <%= @user.email -%>. We will send you
-another e-mail when we ship your order. You can also view the status of your order in <strong>My Home</strong> any time.
-Thank you for purchasing at Touhou Shop!
+<div><%= t('checkout.confirmation.msg', :email => @user.email) %></div> 
 <%= render :partial => 'partials/order', :object => @order %>

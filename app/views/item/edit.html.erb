@@ -1,5 +1,5 @@
 <% @title = @item.title -%>
-<% @nav = @item.nav -%>
+<% @nav = @item.nav << [ 'Edit' ] -%>
 <h1><%= @item.title -%></h1>
 <% form_for :item, @item do |f| -%>
     <div>
@@ -45,6 +45,18 @@
         Purchase left: <%= f.text_field :purchase_left, :size => 3 %>
         <br/>
         Reservation left: <%= f.text_field :reservation_left, :size => 3 %> end at <%= f.text_field :reservation_end_date %>
+      </div>
+    </div>
+    <div class="item_detail">
+      <div class="item_detail_name">Dimensions &amp; weight</div>
+      <div class="item_detail_content">
+        Width: <%= f.text_field :dimension_width, :size => 4 %> mm
+        <br/>
+        Height: <%= f.text_field :dimension_height, :size => 3 %> mm
+        <br/>
+        Thickness: <%= f.text_field :dimension_thickness, :size => 3 %> mm
+        <br/>
+        Weight: <%= f.text_field :weight, :size => 4 %> g
       </div>
     </div>
     <div class="item_detail">

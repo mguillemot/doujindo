@@ -212,3 +212,7 @@ a.category_item {
 img.category_item {
     border: none;
 }
+
+.shipment_price {
+    color: red;
+}

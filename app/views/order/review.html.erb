@@ -1,20 +1,14 @@
-<% @title = "Checkout - Review &amp; confirm" -%>
-<% @nav = [ [ t('cart.edit.nav'), { :controller => 'cart', :action => 'index' } ], [ t('cart.checkout.nav') ] ] -%>
+<% @title = t('checkout.review.title') -%>
+<% @nav = order_review_nav -%>
 <% @hide_cart = true -%>
 <h1><%= @title -%></h1>
-<div>Order #<%= @order.id -%></div>
 <%= render :partial => 'partials/order', :object => @order %>
 <% if @paypal_alternative_country -%>
     <div id="paypal_alternative_country">
-      <p>WARNING: the shipping address you have entered in your Paypal payment form is located in another country
-        (<%= @paypal_alternative_country.name -%>)
-        than the one you selected for computing shipping costs (<%= @order.ship_to_country.name -%>). You have to
-        recompute shipping
-        costs before you can confirm your order.</p>
-
-      <p><%= button_to_remote "Recompute shipping to #{@paypal_alternative_country.name}", :url => { :action => 'recompute_shipping' } -%></p>
+      <p><%= t('checkout.review.paypal_alternative_country', :alternative_country => @paypal_alternative_country.name, :current_country => @order.ship_to_country.name) -%></p>
+      <p><%= button_to_remote t('checkout.review.recompute_shipping', :alternative_country => @paypal_alternative_country.name), :url => { :action => 'recompute_shipping' } -%></p>
     </div>
 <% end -%>
 <% form_tag :action => 'confirmation' do -%>
-    <%= submit_tag 'Confirm order', :disabled => (@paypal_alternative_country != nil), :id => 'confirm_order' %>
+    <%= submit_tag t('checkout.review.confirm_button'), :disabled => (@paypal_alternative_country != nil), :id => 'confirm_order' %>
 <% end -%>

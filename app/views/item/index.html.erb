@@ -3,7 +3,7 @@
 <h1><%= @item.title -%></h1>
 <% if admin? -%>
     <div>
-      <%= button_to 'Edit', :action => 'edit', :id => @item %>
+      <%= button_to 'Edit', { :action => 'edit', :id => @item }, :method => :get %>
     </div>
 <% end -%>
 <div class="item_detail">

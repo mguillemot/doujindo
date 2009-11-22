@@ -1,7 +1,7 @@
 <% @title = t('cart.edit.title') -%>
-<% @nav = [ [ t('cart.edit.nav') ] ] -%>
+<% @nav = cart_index_nav -%>
 <% @hide_cart = true -%>
-<h1><%= t('cart.edit.title') -%></h1>
+<h1><%= @title -%></h1>
 <table border="1">
   <thead>
   <tr>

@@ -36,6 +36,37 @@ fr:
       new:
         title: "Ajouter une nouvelle adresse"
         nav: "Ajouter une nouvelle adresse"
+    orders:
+      list:
+        title: "Mes commandes"
+        nav: "Mes commandes"
+        details_button: "Détails..."
+      detail:
+        title: "Commande n°{{id}}"
+        nav: "Commande n°{{id}}"
+        number: "N°"
+        item: "Article"
+        quantity: "Quantité"
+        unit_price: "Prix unitaire"
+        total_price: "Prix total"
+        grand_total: "TOTAL sans frais de port"
+        grand_total_with_shipping: "TOTAL"
+        na: "N/D"
+        shipping_to:
+          incomplete: "Envoi en"
+          complete: 'Envoi en <span id="shipping_country">{{country}}</span> via {{method}}'
+        delivery:
+          ems: "EMS"
+          ems_description: "<ul><li>assuré à 100% du prix</li><li>n° de suivi disponible</li><li>arrive en 3-5 jours ouvrés</li></ul>"
+          ems_unavailable: "(EMS non-disponible pour ce pays)"
+          sal: "SAL"
+          sal_description: "<ul><li>pas d'assurance</li><li>pas de n° de suivi</li><li>arrive en 5-10 jours ouvrés</li></ul>"
+          sal_unavailable: "(SAL non-disponible pour ce pays)"
+          special: "Des conditions d'envoi spéciales s'appliques. Veuillez nous contacter directement."
+        choose_a_country: "Choisissez un pays..."
+        shipping_address:
+          title: "Adresse d'envoi"
+          note: "Note :"
 
   cart:
     edit:
@@ -54,6 +85,22 @@ fr:
     checkout:
       nav: "Confirmation achat"
       title: "Confirmation achat"
+
+  checkout:
+    index:
+      title: "Finalisation de commande - Choix de la méthode d'envoi"
+      nav: "Méthode d'envoi"
+      paypal_button: "Adresse d'envoi &amp; PayPal >"
+    review:
+      title: "Finalisation de commande - Vérification"
+      nav: "Vérification"
+      paypal_alternative_country: "AVERTISSEMENT: l'adresse d'envoi que vous avez entré sur PayPal est située dans un autre pays ({{alternative_country}}) que celui que vous aviez sélectionné pour le calcul des frais de port ({{current_country}}). Vous devez recalculer les frais de port avant de pouvoir finaliser votre commande."
+      recompute_shipping: "Recalculer les frais de port vers le/la {{alternative_country}}"
+      confirm_button: "Confirmer la commande"
+    confirmation:
+      title: "Commande confirmée"
+      nav: "Commande confirmée"
+      msg: "Votre commande a été confirmée avec succès. Un e-mail de récapitulatif vous a été envoyé à {{email}}. Nous vous enverrons un 2è e-mail lors de l'envoi de commande. Vous pouvez également suivre l'état de cette dernière à tout moment dans la section <strong>Mes commandes</strong>. Merci d'avoir utilisé Touhou Shop !"
 
   alerts:
     login_failure: "Erreur d'authentification"

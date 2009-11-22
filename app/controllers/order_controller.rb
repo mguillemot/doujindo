@@ -1,4 +1,5 @@
 class OrderController < ApplicationController
+  before_filter :login_required
   before_filter :order_required
   before_filter :pending_order_check, :except => :confirmation
 
@@ -135,7 +136,7 @@ class OrderController < ApplicationController
     @sal_price = nil
     if country.special?
       logger.info "Special shipping conditions for country ##{country.id}"
-      @ems_desc = "Special shipping conditions will apply. Please contact us directly to proceed with your order."
+      @ems_desc = t('user.orders.detail.delivery.special')
       @sal_desc = @ems_desc
     else
       order = Order.find session[:order_id]
@@ -154,18 +155,20 @@ class OrderController < ApplicationController
         ems_shipping = ShippingPrice.find_for_package(pack, 'ems', country.ems_zone)
         if ems_shipping
           @ems_price += currency.from_yen(ems_shipping.price)
-          @ems_desc += "<p>Package #{pack[:dimensions][0]}x#{pack[:dimensions][1]}x#{pack[:dimensions][2]} of weight #{pack[:weight]} will cost #{currency.format_yen_value(ems_shipping.price)}</p>"
+          #@ems_desc += "<p>Package #{pack[:dimensions][0]}x#{pack[:dimensions][1]}x#{pack[:dimensions][2]} of weight #{pack[:weight]} will cost #{currency.format_yen_value(ems_shipping.price)}</p>"
+          @ems_desc = currency.format_value(@ems_price)
         else
           @ems_price = nil
-          @ems_desc = "(EMS unavailable for this country)"
+          @ems_desc = t('user.orders.detail.delivery.ems_unavailable')
         end
         sal_shipping = ShippingPrice.find_for_package(pack, 'sal', country.sal_zone)
         if sal_shipping
           @sal_price += currency.from_yen(sal_shipping.price)
-          @sal_desc += "<p>Package #{pack[:dimensions][0]}x#{pack[:dimensions][1]}x#{pack[:dimensions][2]} of weight #{pack[:weight]} will cost #{currency.format_yen_value(sal_shipping.price)}</p>"
+          #@sal_desc += "<p>Package #{pack[:dimensions][0]}x#{pack[:dimensions][1]}x#{pack[:dimensions][2]} of weight #{pack[:weight]} will cost #{currency.format_yen_value(sal_shipping.price)}</p>"
+          @sal_desc = currency.format_value(@sal_price)
         else
           @sal_price = nil
-          @sal_desc = "(SAL unavailable for this country)"
+          @sal_desc = t('user.orders.detail.delivery.sal_unavailable')
         end
       end
     end

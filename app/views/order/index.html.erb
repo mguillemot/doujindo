@@ -1,9 +1,8 @@
-<% @title = t('cart.checkout.title') -%>
-<% @nav = [ [ t('cart.edit.nav'), { :controller => 'cart', :action => 'index' } ], [ t('cart.checkout.nav') ] ] -%>
+<% @title = t('checkout.index.title') -%>
+<% @nav = order_index_nav -%>
 <% @hide_cart = true -%>
-<h1><%= t('cart.checkout.title') -%></h1>
-<div>Order #<%= @order.id -%></div>
+<h1><%= @title -%></h1>
 <% form_for :order, @order, :url => { :action => 'to_paypal' } do |f| -%>
     <%= render :partial => 'partials/order', :object => @order, :locals => { :no_shipping_address => true, :country_chooser => true } %>
-    <%= f.submit 'Shipping address &amp; Paypal >', :disabled => true %>
+    <%= f.submit t('checkout.index.paypal_button'), :disabled => true %>
 <% end -%>

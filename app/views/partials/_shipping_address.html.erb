@@ -8,8 +8,8 @@
     <%= h shipping_address.ship_to_state %>
 <% end -%>
 <br/>
-<%= h shipping_address.ship_to_country.name %>
+<%= Country.find_by_paypal_code(shipping_address.ship_to_country_code).name %>
 <% if shipping_address.notes && shipping_address.notes.size > 0 -%>
     <br/>
-    <span style="text-decoration:underline">Note:</span> <%= h shipping_address.notes %>
+    <span style="text-decoration:underline"><%= t('user.orders.detail.shipping_address.note') -%></span> <%= h shipping_address.notes %>
 <% end -%>

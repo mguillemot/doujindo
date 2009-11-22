@@ -44,6 +44,29 @@ en:
       detail:
         title: "Order #{{id}}"
         nav: "Order #{{id}}"
+        number: "#"
+        item: "Item"
+        quantity: "Quantity"
+        unit_price: "Unit price"
+        total_price: "Total price"
+        grand_total: "TOTAL w/o shipping"
+        grand_total_with_shipping: "TOTAL"
+        na: "N/A"
+        shipping_to:
+          incomplete: "Shipping to"
+          complete: 'Shipping to <span id="shipping_country">{{country}}</span> by {{method}}'
+        delivery:
+          ems: "EMS"
+          ems_description: "<ul><li>fully insured</li><li>tracking number available</li><li>reaches in 3-5 working days</li></ul>"
+          ems_unavailable: "(EMS unavailable for this country)"
+          sal: "SAL"
+          sal_description: "<ul><li>not insured</li><li>no tracking number</li><li>reaches in about 5-10 working days</li></ul>"
+          sal_unavailable: "(SAL unavailable for this country)"
+          special: "Special shipping conditions will apply. Please contact us directly to proceed."
+        choose_a_country: "Choose a country..."
+        shipping_address:
+          title: "Shipping address"
+          note: "Note:"
 
   cart:
     edit:
@@ -59,9 +82,22 @@ en:
       delete_button: "Delete"
       clear_button: "Clear"
       checkout_button: "Checkout &gt;"
-    checkout:
-      nav: "Checkout"
-      title: "Checkout"
+
+  checkout:
+    index:
+      title: "Checkout - Choose shipping method"
+      nav: "Shipping method"
+      paypal_button: "Shipping address &amp; PayPal >"
+    review:
+      title: "Checkout - Final review"
+      nav: "Review"
+      paypal_alternative_country: "WARNING: the shipping address you have entered in your PayPal payment form is located in another country ({{alternative_country}}) than the one you selected for computing shipping costs ({{current_country}}). You have to recompute shipping costs before you can confirm your order."
+      recompute_shipping: "Recompute shipping to {{alternative_country}}"
+      confirm_button: "Confirm order"
+    confirmation:
+      title: "Order confirmed"
+      nav: "Order confirmed"
+      msg: "Your order has been validated successfully. An e-mail confirmation has been sent to {{email}}. We will send you another e-mail when we ship your order. You can also view the status of your order in <strong>My Home</strong> any time. Thank you for purchasing at Touhou Shop!"
 
   alerts:
     login_failure: "Login failure"  

@@ -4,13 +4,9 @@
         <%= radio_button_tag :shipping_type, 'ems', false, :class => 'shippingMethodSelector', :disabled => @ems_price.nil? %>
       </div>
       <div class="address_content">
-        <strong>EMS</strong> <span id="ems_price"><%= @ems_desc -%></span>
+        <strong><%= t('user.orders.detail.delivery.ems') %></strong> <span class="shipment_price" id="ems_price"><%= @ems_desc -%></span>
         <br/>
-        <ul>
-          <li>fully insured</li>
-          <li>tracking number</li>
-          <li>about 5 days</li>
-        </ul>
+        <%= t('user.orders.detail.delivery.ems_description') %>
       </div>
     </div>
     <div class="address">
@@ -18,13 +14,9 @@
         <%= radio_button_tag :shipping_type, 'sal', false, :class => 'shippingMethodSelector', :disabled => @sal_price.nil? %>
       </div>
       <div class="address_content">
-        <strong>SAL</strong> <span id="sal_price"><%= @sal_desc -%></span>
+        <strong><%= t('user.orders.detail.delivery.sal') %></strong> <span class="shipment_price" id="sal_price"><%= @sal_desc -%></span>
         <br/>
-        <ul>
-          <li>insured up to 30000 Yens</li>
-          <li>no tracking number</li>
-          <li>about 10 days</li>
-        </ul>
+        <%= t('user.orders.detail.delivery.sal_description') %>
       </div>
     </div>
     <script type="text/javascript">

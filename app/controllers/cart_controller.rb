@@ -1,6 +1,7 @@
 require "paypal/api"
 
 class CartController < ApplicationController
+  before_filter :login_required, :only => :checkout
   before_filter :cart_required
 
   def index

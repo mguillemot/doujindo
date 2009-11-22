@@ -8,7 +8,7 @@ class CategoryController < ApplicationController
 
   def new_item
     @category = Category.find params[:id]
-    item = @category.items.create(
+    item = @category.items.create!(
             :title_en => '(new item)',
             :title_fr => '(new item)',
             :ident => Utils.random_string(16),
@@ -18,13 +18,14 @@ class CategoryController < ApplicationController
             :item_type_fr => '(edit)',
             :description_en => '(edit)',
             :description_fr => '(edit)',
-            :weight => 0,
-            :dimension_width => 0,
-            :dimension_height => 0,
+            :weight => 1,
+            :dimension_width => 1,
+            :dimension_height => 1,
+            :dimension_thickness => 1,
             :price => 0,
             :show => false
     )
-    logger.debug "itemId=#{item.id}"
-    redirect_to :controller => 'item', :action => 'edit', :id => item.id
+    add_debug "New item ##{item.id} created"
+    redirect_to :controller => 'item', :action => 'edit', :id => item
   end
 end

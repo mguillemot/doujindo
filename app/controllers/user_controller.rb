@@ -34,10 +34,15 @@ class UserController < ApplicationController
   end
 
   def orders
+    @orders = @user.orders.find_all_by_payment_status 'paid'
   end
 
   def order
     @order = @user.orders.find_by_id params[:id]
+    if @order.client != @user or @order.payment_status != 'paid'
+      add_error "Wrong order ID"
+      redirect_to :action => 'orders'
+    end
   end
 
   def addresses

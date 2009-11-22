@@ -1,11 +1,11 @@
 <table border="1">
   <thead>
   <tr>
-    <th><%= t('cart.edit.number') -%></th>
-    <th><%= t('cart.edit.item') -%></th>
-    <th><%= t('cart.edit.quantity') -%></th>
-    <th><%= t('cart.edit.unit_price') -%></th>
-    <th><%= t('cart.edit.total_price') -%></th>
+    <th><%= t('user.orders.detail.number') -%></th>
+    <th><%= t('user.orders.detail.item') -%></th>
+    <th><%= t('user.orders.detail.quantity') -%></th>
+    <th><%= t('user.orders.detail.unit_price') -%></th>
+    <th><%= t('user.orders.detail.total_price') -%></th>
   </tr>
   </thead>
   <tbody>
@@ -23,7 +23,7 @@
       </tr>
   <% end -%>
   <tr>
-    <td colspan="4"><%= t('cart.edit.grand_total') -%></td>
+    <td colspan="4"><%= t('user.orders.detail.grand_total') -%></td>
     <td>
       <div id="total_price"><%= order.currency.format_value(order.items_total_price) -%></div>
     </td>
@@ -31,10 +31,10 @@
   <tr>
     <td colspan="4">
       <% unless defined? country_chooser -%>
-          Shipping to <span id="shipping_country"><%= order.ship_to_country.name -%></span> by <%= order.shipping_type %>
+          <%= t('user.orders.detail.shipping_to.complete', :country => order.ship_to_country.name, :method => order.shipping_type) %>
       <% else -%>
-          Shipping to
-          <%= collection_select :order, :ship_to_country_id, Country.available_for_shipping, :id, :name, { :include_blank => 'Choose a country...' } %>
+          <%= t('user.orders.detail.shipping_to.incomplete') %>
+          <%= collection_select :order, :ship_to_country_id, Country.available_for_shipping, :id, :name, { :include_blank => t('user.orders.detail.choose_a_country') } %>
           <%= observe_field :order_ship_to_country_id, :url => { :action => 'choose_country' }, :with => 'countryid' %>
           <div id="delivery_options">
             <%= render :partial => 'partials/delivery_options' -%>
@@ -42,20 +42,20 @@
       <% end -%>
     </td>
     <td>
-      <div id="shipping_price"><%= order.shipping_price ? order.currency.format_value(order.shipping_price) : 'N/A' -%></div>
+      <div id="shipping_price"><%= order.shipping_price ? order.currency.format_value(order.shipping_price) : t('user.orders.detail.na') -%></div>
     </td>
   </tr>
   <tr>
-    <td colspan="4"><%= "TOTAL" -%></td>
+    <td colspan="4"><%= t('user.orders.detail.grand_total_with_shipping') -%></td>
     <td>
-      <div id="total_price_with_shipping"><%= order.shipping_price ? order.currency.format_value(order.total_price) : 'N/A' -%></div>
+      <div id="total_price_with_shipping"><%= order.shipping_price ? order.currency.format_value(order.total_price) : t('user.orders.detail.na') -%></div>
     </td>
   </tr>
   </tbody>
 </table>
 <% unless defined? no_shipping_address -%>
     <div id="shipping_address">
-      <div><strong>Shipping address</strong></div>
+      <div><strong><%= t('user.orders.detail.shipping_address.title') -%></strong></div>
       <div>
         <%= render :partial => 'partials/shipping_address', :object => order %>
       </div>
