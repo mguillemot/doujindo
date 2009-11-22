@@ -1,5 +1,0 @@
-<div class="address_content">
-  <p><%= nl2br h address.full_address %></p>
-  <p><strong><%= t('user.addresses.view.country') -%></strong> <%= address.country.name %></p>
-  <p><strong><%= t('user.addresses.view.additional_infos') -%></strong> <%= (address.additional_infos and address.additional_infos != '') ? nl2br(h(address.additional_infos)) : t('user.addresses.view.no_additional_infos') %></p>
-</div>

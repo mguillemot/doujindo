@@ -4,56 +4,6 @@
 <h1><%= t('cart.checkout.title') -%></h1>
 <div>Order #<%= @order.id -%></div>
 <% form_for :order, @order, :url => { :action => 'to_paypal' } do |f| -%>
-    <table border="1">
-      <thead>
-      <tr>
-        <th><%= t('cart.edit.number') -%></th>
-        <th><%= t('cart.edit.item') -%></th>
-        <th><%= t('cart.edit.quantity') -%></th>
-        <th><%= t('cart.edit.unit_price') -%></th>
-        <th><%= t('cart.edit.total_price') -%></th>
-      </tr>
-      </thead>
-      <tbody>
-      <% @order.order_items.each_with_index do |oi,i| -%>
-          <tr id="item_<%= oi.item_id -%>">
-            <td><%= i + 1 -%></td>
-            <td><%= oi.item.title -%></td>
-            <td>
-              <div id="item_<%= oi.item_id -%>_quantity"><%= oi.quantity -%></div>
-            </td>
-            <td><%= @order.currency.format_yen_value(oi.item.price) -%></td>
-            <td>
-              <div id="item_<%= oi.item_id -%>_total_price"><%= @order.currency.format_value(@order.currency.from_yen(oi.item.price) * oi.quantity) -%></div>
-            </td>
-          </tr>
-      <% end -%>
-      <tr>
-        <td colspan="4"><%= t('cart.edit.grand_total') -%></td>
-        <td>
-          <div id="total_price"><%= @order.currency.format_value(@order.items_total_price) -%></div>
-        </td>
-      </tr>
-      <tr>
-        <td colspan="4">
-          Shipping to
-          <%= f.collection_select :ship_to_country_id, Country.available_for_shipping, :id, :name, { :include_blank => 'Choose a country...' } %>
-          <%= observe_field :order_ship_to_country_id, :url => { :action => 'choose_country' }, :with => 'countryid' %>
-          <div id="delivery_options">
-            <%= render :partial => 'delivery_options' -%>
-          </div>
-        </td>
-        <td>
-          <div id="shipping_price">N/A</div>
-        </td>
-      </tr>
-      <tr>
-        <td colspan="4"><%= "TOTAL" -%></td>
-        <td>
-          <div id="total_price_with_shipping">N/A</div>
-        </td>
-      </tr>
-      </tbody>
-    </table>
+    <%= render :partial => 'partials/order', :object => @order, :locals => { :no_shipping_address => true, :country_chooser => true } %>
     <%= f.submit 'Shipping address &amp; Paypal >', :disabled => true %>
 <% end -%>

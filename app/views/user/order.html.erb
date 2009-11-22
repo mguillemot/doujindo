@@ -1,0 +1,5 @@
+<% @title = t('user.orders.detail.title', :id => @order.id) -%>
+<% @nav = [ [ t('user.home.nav'), { :action => 'index' } ], [ t('user.orders.list.nav'), { :action => 'orders'  } ], [ t('user.orders.detail.nav', :id => @order.id) ] ] -%>
+<h1><%= @title -%></h1>
+<%= render :partial => 'partials/order', :object => @order %>
+<%= button_to '&lt; Back', { :action => 'orders' }, :method => :get %> 

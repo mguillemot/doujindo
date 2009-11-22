@@ -1,4 +1,4 @@
-page.replace_html "delivery_options", render(:partial => 'delivery_options')
+page.replace_html "delivery_options", render(:partial => 'partials/delivery_options')
 page.replace_html "shipping_price",  'N/A'
 page.replace_html "total_price_with_shipping", 'N/A'
 page << "$('#order_submit').attr('disabled', true);"

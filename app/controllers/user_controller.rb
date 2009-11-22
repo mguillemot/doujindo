@@ -1,8 +1,8 @@
 class UserController < ApplicationController
-  before_filter :login_required, :only => [ :home, :addresses, :delete_address, :edit_address ]
+  before_filter :login_required, :only => [ :index, :orders, :order, :addresses, :delete_address, :edit_address ]
   before_filter :login_refused, :only => :register
 
-  def home
+  def index
   end
 
   def change_language
@@ -33,11 +33,17 @@ class UserController < ApplicationController
     redirect_to request.referer
   end
 
+  def orders
+  end
+
+  def order
+    @order = @user.orders.find_by_id params[:id]
+  end
+
   def addresses
   end
 
   def delete_address
-
   end
 
   def edit_address
@@ -77,13 +83,13 @@ class UserController < ApplicationController
             parts = request.host.split('.')
             parts[0] = find_subdomain_for_language(user.preferred_language) || 'www'
             lang_host = parts.join('.')
-            redirect_to :controller => 'user', :action => 'home', :host => lang_host, :port => request.port 
+            redirect_to :controller => 'user', :action => 'index', :host => lang_host, :port => request.port
           rescue URI::InvalidURIError
             logger.error "Impossible to redirect to #{request.referer} after language switch to #{params[:id]}"
-            redirect_to controller => 'user', :action => 'home'
+            redirect_to controller => 'user', :action => 'index'
           end
         else
-          redirect_to :controller => 'user', :action => 'home'
+          redirect_to :controller => 'user', :action => 'index'
         end
       else
         add_error t('alerts.login_failure')
@@ -108,7 +114,7 @@ class UserController < ApplicationController
         session[:user] = @user.id
         Notifier.deliver_registration_confirmation_request @user
         add_notice t('alerts.confirmation_email_sent', {:email => @user.email})
-        redirect_to :action => 'home'
+        redirect_to :action => 'index'
       else
         add_error t('alerts.registration_error')
         @user.password = ''
@@ -125,7 +131,7 @@ class UserController < ApplicationController
       Notifier.deliver_registration_final_confirmation user
       add_notice t('alerts.validation_email_sent', {:email => user.email})
       if @user and @user.id == user.id
-        redirect_to :action => 'home'
+        redirect_to :action => 'index'
         return
       end
     end

@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
   has_many :user_addresses, :dependent => :destroy
-  has_many :orders
+  has_many :orders, :foreign_key => :client_id
 
   validates_length_of :login, :within =>  3..40
   validates_length_of :password, :within => 6..40, :on => :create
@@ -17,7 +17,7 @@ class User < ActiveRecord::Base
   end
 
   def confirmed?
-    email_confirmation_date.nil?
+    email_confirmation_date != nil
   end
 
   def regen_confirmation_key

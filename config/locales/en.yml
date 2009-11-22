@@ -36,6 +36,14 @@ en:
       new:
         title: "New address"
         nav: "New address"
+    orders:
+      list:
+        title: "My orders"
+        nav: "My orders"
+        details_button: "Details..."
+      detail:
+        title: "Order #{{id}}"
+        nav: "Order #{{id}}"
 
   cart:
     edit:
@@ -84,7 +92,7 @@ en:
         login_button: "Login"
         logout_button: "Logout"
         user_home: "User home"
-        user_addresses: "My addresses"
+        user_orders: "My orders"
       global_menu:
         title: "Global menu"
         home: "Shop home"

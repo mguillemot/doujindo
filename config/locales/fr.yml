@@ -84,7 +84,7 @@ fr:
         login_button: "S'identifier"
         logout_button: "Se déconnecter"
         user_home: "Accueil utilisateur"
-        user_addresses: "Mes adresses"
+        user_orders: "Mes commandes"
       global_menu:
         title: "Menu général"
         home: "Accueil de la boutique"

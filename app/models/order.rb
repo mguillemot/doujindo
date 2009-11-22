@@ -11,6 +11,10 @@ Order < ActiveRecord::Base
     total
   end
 
+  def status
+    payment_status
+  end
+
   def self.create(user, currency, cart)
     order = Order.new
     order.client = user
