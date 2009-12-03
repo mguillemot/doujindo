@@ -1,0 +1,19 @@
+<% @title = "Upload new asset" -%>
+<% @nav = [ [ 'Assets', { :action => 'index' } ], [ 'New' ] ] -%>
+<h1><%= @title -%></h1>
+<% form_for :asset, :url => { :action => 'upload' }, :html => { :multipart => true } do |f| -%>
+    <p>
+      Type: <%= f.select :asset_type, options_for_select(['image']) %>
+    </p>
+    <p>
+      Title (en): <%= f.text_field :title_en, :size => 30 %>
+      <br/>
+      Title (fr): <%= f.text_field :title_fr, :size => 30 %>
+    </p>
+    <p>
+      File: <%= f.file_field :asset_file %>
+    </p>
+    <p>
+      <%= f.submit 'Submit' %>
+    </p>
+<% end -%>

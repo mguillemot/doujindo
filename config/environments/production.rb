@@ -41,6 +41,7 @@ config.action_mailer.default_charset = 'utf-8'
 DOMAIN = 'touhou-shop.com'
 
 # Sitemap
+STATIC_ROOT_PATH = 'C:/erhune/touhou-shop-static'
 STATIC_ROOT_URL = 'http://static.touhou-shop.com'
 
 # PayPal

@@ -4,10 +4,14 @@ class StaticAsset < ActiveRecord::Base
   translatable_columns :title
 
   def full_filename
-    "/#{asset_type}/#{filename}.#{format}"
+    "/#{asset_type}/#{filename}"
+  end
+
+  def thumb
+    StaticAsset.find_by_filename_and_asset_type filename, 'thumb'
   end
 
   def self.default_catalog_icon
-    find 2
+    find 1
   end
 end

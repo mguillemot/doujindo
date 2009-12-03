@@ -1,0 +1,64 @@
+<% @title = "Assets" -%>
+<% @nav = [ [ 'Assets', { :action => 'index' } ] ] -%>
+<% @fullwidth = true -%>
+<h1>Assets</h1>
+<%= button_to 'Upload', { :action => 'upload' }, :method => :get %>
+<table border="1">
+  <thead>
+  <tr>
+    <th>#</th>
+    <th>View</th>
+    <th>Actions</th>
+    <th>File</th>
+    <th>Dimensions</th>
+    <th>Title</th>
+    <th>Notes</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @assets.each do |a| -%>
+      <tr>
+        <td><%= a.id %></td>
+        <td>
+          <div class="thumb">
+            <a href="<%= static_url a.full_filename -%>">
+              <% if a.thumb -%>
+                  <%= image_tag static_url(a.thumb.full_filename), :alt => a.title, :width => a.thumb.width, :height => a.thumb.height -%>
+              <% else -%>
+                  <div class="error"><strong>WARNING:</strong> thumbnail missing!</div>
+                  <br/>
+                  <%= image_tag static_url(a.full_filename), :alt => a.title, :size => '175x160' -%>
+              <% end -%>
+            </a>
+          </div>
+        </td>
+        <td>
+          <%= button_to 'Edit', { :action => 'edit', :id => a }, :method => :get %>
+          <%= button_to 'Delete', { :action => 'delete', :id => a }, :confirm => 'Are you sure?' %>
+        </td>
+        <td>
+          <%= a.filename %>
+          <br/>
+          <%= number_to_human_size a.filesize %>
+          <br/>
+          <%= a.mime_type %>
+        </td>
+        <td>
+          (original) <%= "#{a.width}x#{a.height}" %>
+          <br/>
+          <% if a.thumb -%>
+              (thumb) <%= "#{a.thumb.width}x#{a.thumb.height}" %>
+          <% else -%>
+              <div class="error"><strong>WARNING:</strong> thumbnail missing!</div>
+          <% end -%>
+        </td>
+        <td>
+          (en) <%= a.title_en %>
+          <br/>
+          (fr) <%= a.title_fr %>
+        </td>
+        <td><%= a.notes %></td>
+      </tr>
+  <% end -%>
+  </tbody>
+</table>

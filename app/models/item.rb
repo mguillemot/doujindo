@@ -14,8 +14,9 @@ class Item < ActiveRecord::Base
   validates_inclusion_of :dimension_thickness, :in => 1..2000
   validates_inclusion_of :weight, :in => 1..30000
 
-  def main_picture
-    static_assets.find :first, :conditions => ['asset_type = ?', 'icon']
+  def main_thumb
+    item_thumb = static_assets.find :first, :conditions => ['asset_type = ?', 'thumb']
+    item_thumb || StaticAsset.default_catalog_icon
   end
 
   def pictures
@@ -25,9 +26,8 @@ class Item < ActiveRecord::Base
   def pictures_with_icons
     res = []
     pictures.each do |p|
-      icon = StaticAsset.find :first, :conditions => ['asset_type = ? AND filename = ?', 'icon', p.filename]
-      if icon
-        res << { :picture => p, :icon => icon }
+      if p.thumb
+        res << { :picture => p, :thumb => thumb }
       end
     end
     res

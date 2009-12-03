@@ -8,6 +8,20 @@
   <%= javascript_include_tag 'flyout' %>
   <%= javascript_include_tag 'flowplayer' %>
   <%= javascript_include_tag 'jplayer' %>
+  <% if @fullwidth -%>
+      <script type="text/javascript">
+          $(function() {
+              $('.thumb a').flyout({
+                  loadingText: "<%= t('item.pictures.loading') -%>",
+                  closeTip: "<%= t('item.pictures.close') -%>"
+              });
+              $(window).resize(function() {
+                  fullWidthLayout();
+              });
+              fullWidthLayout();
+          })
+      </script>
+  <% end -%>
 </head>
 <body>
 <div id="page">
@@ -19,13 +33,13 @@
         <div id="content">
           <%= render :partial => 'partials/navbar' %>
           <% if flash[:debug] -%>
-            <div id="debug"><%= flash[:debug] -%></div>
+              <div id="debug"><%= flash[:debug] -%></div>
           <% end -%>
           <% if flash[:notice] -%>
-            <div id="notice"><%= flash[:notice] -%></div>
+              <div id="notice"><%= flash[:notice] -%></div>
           <% end -%>
           <% if flash[:error] -%>
-            <div id="error"><%= flash[:error] -%></div>
+              <div id="error"><%= flash[:error] -%></div>
           <% end -%>
           <%= yield %>
         </div>
@@ -34,7 +48,6 @@
     </div>
   </div>
   <div id="footer">Touhou Shop © 2009</div>
-  <%= render :partial => 'partials/chibi' %>
 </div>
 </body>
 </html>

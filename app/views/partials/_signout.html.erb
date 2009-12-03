@@ -2,6 +2,9 @@
   <div class="signin_box">
     <p>Logged as <%= "#{@user.first_name} #{@user.last_name}" -%></p>
     <p><%= link_to t('layout.sidebar.user_menu.user_home'), :controller => 'user', :action => 'index' -%></p>
+    <% if admin? -%>
+        <p>(ADMIN) <%= link_to 'Assets', :controller => 'assets', :action => 'index' -%></p>
+    <% end -%>
     <p><%= link_to t('layout.sidebar.user_menu.user_orders'), :controller => 'user', :action => 'orders' -%></p>
     <p><%= link_to t('layout.sidebar.user_menu.logout_button'), :controller => 'user', :action => 'logout' -%></p>
   </div>

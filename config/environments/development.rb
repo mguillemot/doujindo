@@ -30,6 +30,7 @@ config.action_mailer.default_charset = 'utf-8'
 DOMAIN = 'touhou-local.com'
 
 # Sitemap
+STATIC_ROOT_PATH = '../static-touhou-shop'
 STATIC_ROOT_URL = 'http://static.touhou-local.com/static-touhou-shop'
 
 # PayPal
