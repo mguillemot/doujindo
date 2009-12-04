@@ -20,17 +20,7 @@
       <tr>
         <td><%= a.id %></td>
         <td>
-          <div class="thumb">
-            <a href="<%= static_url a.full_filename -%>">
-              <% if a.thumb -%>
-                  <%= image_tag static_url(a.thumb.full_filename), :alt => a.title, :width => a.thumb.width, :height => a.thumb.height -%>
-              <% else -%>
-                  <div class="error"><strong>WARNING:</strong> thumbnail missing!</div>
-                  <br/>
-                  <%= image_tag static_url(a.full_filename), :alt => a.title, :size => '175x160' -%>
-              <% end -%>
-            </a>
-          </div>
+          <%= render :partial => 'partials/thumb', :object => a %>
         </td>
         <td>
           <%= button_to 'Edit', { :action => 'edit', :id => a }, :method => :get %>
@@ -46,11 +36,7 @@
         <td>
           (original) <%= "#{a.width}x#{a.height}" %>
           <br/>
-          <% if a.thumb -%>
-              (thumb) <%= "#{a.thumb.width}x#{a.thumb.height}" %>
-          <% else -%>
-              <div class="error"><strong>WARNING:</strong> thumbnail missing!</div>
-          <% end -%>
+          (thumb) <%= "#{a.thumb.width}x#{a.thumb.height}" %>
         </td>
         <td>
           (en) <%= a.title_en %>

@@ -4,6 +4,7 @@
 <% if admin? -%>
     <div>
       <%= button_to 'Edit', { :action => 'edit', :id => @item }, :method => :get %>
+      <%= button_to 'Delete', { :action => 'delete', :id => @item }, :confirm => 'Are you sure?' %>
     </div>
 <% end -%>
 <div class="item_detail">
@@ -38,8 +39,8 @@
   <div class="item_detail_name"><%= t('item.pictures.title') -%></div>
   <div class="item_detail_content">
     <div id="gallery">
-      <% @item.pictures_with_icons.each do |p| -%>
-          <a href="<%= static_url p[:picture].full_filename -%>"><%= image_tag static_url(p[:icon].full_filename), :alt => p[:picture].title, :size => '175x160' -%></a>
+      <% @item.pictures.each do |p| -%>
+          <a href="<%= static_url p.full_filename -%>"><%= image_tag static_url(p.thumb.full_filename), :alt => p.title, :width => p.thumb.width, :height => p.thumb.height -%></a>
       <% end -%>
     </div>
     <script type="text/javascript">

@@ -44,7 +44,8 @@
         <br/>
         Purchase left: <%= f.text_field :purchase_left, :size => 3 %>
         <br/>
-        Reservation left: <%= f.text_field :reservation_left, :size => 3 %> end at <%= f.text_field :reservation_end_date %>
+        Reservation left: <%= f.text_field :reservation_left, :size => 3 %> end
+        at <%= f.text_field :reservation_end_date %>
       </div>
     </div>
     <div class="item_detail">
@@ -86,9 +87,29 @@
     <div class="item_detail">
       <div class="item_detail_name">Pictures</div>
       <div class="item_detail_content">
-        TODO
+        <%= select_tag :add_image, options_from_collection_for_select(StaticAsset.valid_images, 'id', 'title') %>
+        <%= link_to_remote 'Add this image', :url => { :action => 'add_image_to_item', :id => @item }, :with => "'image='+$('#add_image').val()" %>
+        <div id="item_images">
+          <%= render :partial => 'item_images' %>
+        </div>
       </div>
     </div>
+    <script type="text/javascript">
+        $(function() {
+            $("#item_images").sortable({
+                stop: function(event, ui) {
+                    var images = $('#item_images .item_image');
+                    var data = [];
+                    for (var i = 0; i < images.length; i++) {
+                        data.push(images[i].id.substr(11));
+                    }
+                    var srvdata = data.join(',');
+                    <%= remote_function :url => { :action => 'reorder_item_images', :id => @item }, :with => "'order=' + srvdata" %>
+                }
+            });
+            $("#item_images").disableSelection();
+        });
+    </script>
     <div class="item_detail">
       <div class="item_detail_name">Publisher</div>
       <div class="item_detail_content">

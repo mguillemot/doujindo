@@ -4,7 +4,7 @@ class AssetsController < ApplicationController
   before_filter :admin_required
 
   def index
-    @assets = StaticAsset.find_all_by_asset_type 'image'
+    @assets = StaticAsset.valid_images
   end
 
   def edit

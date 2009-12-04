@@ -11,17 +11,18 @@
   <% if @fullwidth -%>
       <script type="text/javascript">
           $(function() {
-              $('.thumb a').flyout({
-                  loadingText: "<%= t('item.pictures.loading') -%>",
-                  closeTip: "<%= t('item.pictures.close') -%>"
-              });
-              $(window).resize(function() {
-                  fullWidthLayout();
-              });
-              fullWidthLayout();
-          })
+              enableFullWidthLayout();
+          });
       </script>
   <% end -%>
+  <script type="text/javascript">
+      $(function() {
+          $('.thumb a').flyout({
+              loadingText: "<%= t('item.pictures.loading') -%>",
+              closeTip: "<%= t('item.pictures.close') -%>"
+          });
+      });
+  </script>
 </head>
 <body>
 <div id="page">

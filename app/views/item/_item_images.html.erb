@@ -1,0 +1,6 @@
+<% @item.pictures.each do |img| -%>
+    <div class="item_image" id="item_image_<%= img.id %>">
+      <%= link_to_remote 'Remove', :url => { :action => 'remove_image_from_item', :id => @item }, :with => "'image=#{img.id}'" %>
+      <%= image_tag static_url(img.thumb.full_filename), :alt => img.title, :width => img.thumb.width, :height => img.thumb.height -%>
+    </div>
+<% end -%>

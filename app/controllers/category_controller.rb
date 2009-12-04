@@ -2,8 +2,10 @@ class CategoryController < ApplicationController
   before_filter :admin_required, :only => :new_item
 
   def index
-    @category = Category.find params[:id]
+    id = params[:id] || session[:category_id]
+    @category = Category.find id
     @display_items = admin? ? @category.all_items : @category.visible_items
+    session[:category_id] = id
   end
 
   def new_item

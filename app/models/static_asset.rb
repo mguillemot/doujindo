@@ -14,4 +14,8 @@ class StaticAsset < ActiveRecord::Base
   def self.default_catalog_icon
     find 1
   end
+
+  def self.valid_images
+    StaticAsset.find_all_by_asset_type('image').select { |i| i.thumb != nil }
+  end
 end

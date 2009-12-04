@@ -1,7 +1,7 @@
 class Item < ActiveRecord::Base
   belongs_to :category
   has_many :item_assets, :order => :position
-  has_many :static_assets, :through => :item_assets
+  has_many :static_assets, :through => :item_assets, :order => :position
   has_many :cart_items
   has_many :order_items
   belongs_to :collection, :class_name => 'ItemCollection'
@@ -15,22 +15,11 @@ class Item < ActiveRecord::Base
   validates_inclusion_of :weight, :in => 1..30000
 
   def main_thumb
-    item_thumb = static_assets.find :first, :conditions => ['asset_type = ?', 'thumb']
-    item_thumb || StaticAsset.default_catalog_icon
+    pictures.size >= 1 ? pictures[0].thumb : StaticAsset.default_catalog_icon
   end
 
   def pictures
     static_assets.find :all, :conditions => ['asset_type = ?', 'image']
-  end
-
-  def pictures_with_icons
-    res = []
-    pictures.each do |p|
-      if p.thumb
-        res << { :picture => p, :thumb => thumb }
-      end
-    end
-    res
   end
 
   def video
