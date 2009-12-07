@@ -110,6 +110,8 @@ fr:
     confirmation_email_sent: "Un e-mail contenant un lien de confirmation a été envoyé à {{email}}. Veuillez le lire et cliquer sur le lien sous 24 heures, faute de quoi ce compte sera désactivé."
     validation_email_sent: "Création du compte terminée ! Un e-mail de confirmation a été envoyé à {{email}}"
     admin_only: "Seuls les administrateurs peuvent accéder à cette page"
+    item_added_to_cart: "<strong>{{name}} x{{qty}} ajouté à votre panier"
+    cart_creation_error: "Impossible de créer un nouveau panier"
     cart_emptied: "Panier vidé."
     address_modification_success: "Adresse modifée avec succès."
     address_creation_success: "Adresse créée avec succès."

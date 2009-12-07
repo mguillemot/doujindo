@@ -39,7 +39,7 @@ class Item < ActiveRecord::Base
   end
 
   def nav
-    category.nav << [ title, { :controller => 'item', :action => 'index', :id => id } ]
+    category.nav << [ title, { :controller => 'item', :action => 'index', :ident => ident } ]
   end
 
   def max_order

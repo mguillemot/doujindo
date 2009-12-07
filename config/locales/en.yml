@@ -107,6 +107,8 @@ en:
     confirmation_email_sent: "An e-mail containing a confirmation link has been sent to {{email}}. If you don't read it and confirm your address in the next 24 hours, this account will be automatically deleted."
     validation_email_sent: "Accout validation successful! A confirmation e-mail has been sent to {{email}}"
     admin_only: "You need administrator privileges to access this page"
+    cart_creation_error: "Impossible to create a new shopping cart"
+    item_added_to_cart: "<strong>{{name}} x{{qty}} added to your cart"
     cart_emptied: "Shopping cart emptied."
     address_modification_success: "Address successfully edited."
     address_creation_success: "Address successfully added."

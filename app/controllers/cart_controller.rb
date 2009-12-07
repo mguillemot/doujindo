@@ -1,5 +1,3 @@
-require "paypal/api"
-
 class CartController < ApplicationController
   before_filter :login_required, :only => :checkout
   before_filter :cart_required
@@ -8,17 +6,17 @@ class CartController < ApplicationController
   end
 
   def add
+    item = Item.find params[:id]
     begin
       qty = Integer(params[:op][:quantity])
     rescue ArgumentError
       qty = 0
     end
-    if qty < 0
-      qty = 0
+    if qty > 0
+      @cart.add item.id, qty
+      add_notice t('alerts.item_added_to_cart', :name => item.title, :qty => qty)
     end
-    @cart.add params[:id], qty
-    add_notice "Item #{params[:id]} x#{qty} added to cart"
-    redirect_to :controller => 'item', :action => 'index', :id => params[:id]
+    redirect_to :controller => 'item', :action => 'index', :ident => item.ident
   end
 
   def remove_one
@@ -65,7 +63,7 @@ class CartController < ApplicationController
         session[:cart] = @cart.id
         add_debug "Shopping cart id #{@cart.id} created"
       else
-        add_error "Impossible to create a new shopping cart"
+        add_error t('alerts.cart_creation_error')
         @cart = nil
       end
     end

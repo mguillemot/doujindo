@@ -1,7 +1,7 @@
 <% if !item.show? and admin? -%>
     <div style="background-color: red">
 <% end -%>
-<% link_to( { :controller => 'item', :action => 'index', :id => item.id }, :class => 'category_item') do %>
+<% link_to( { :controller => 'item', :action => 'index', :ident => item.ident }, :class => 'category_item') do %>
     <div><%= image_tag static_url(item.main_thumb.full_filename), :alt => item.title, :width => item.main_thumb.width, :height => item.main_thumb.height, :class => 'category_item' %></div>
     <div><%= item.title %></div>
 <% end -%>

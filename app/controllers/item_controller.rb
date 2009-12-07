@@ -2,11 +2,11 @@ class ItemController < ApplicationController
   before_filter :admin_required, :except => :index
 
   def index
-#    if params[:id] =~ /\d+/
-    @item = Item.find_by_id params[:id]
-#    else
-#      @item = Item.find_by_ident params[:id]
-#    end
+    if params[:id]
+      @item = Item.find_by_id params[:id]
+    elsif params[:ident]
+      @item = Item.find_by_ident params[:ident]
+    end
     if @item == nil or (@item.show? == false and admin? == false)
       add_error "Invalid item ##{params[:id]}"
       redirect_to :controller => 'home'

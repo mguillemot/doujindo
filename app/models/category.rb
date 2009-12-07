@@ -25,7 +25,7 @@ class Category < ActiveRecord::Base
     if (p)
       nav = [ ];
       while (p)
-        nav << [ p.title, { :controller => 'category', :action => 'index', :id => p.id } ];
+        nav << [ p.title, { :controller => 'category', :action => 'index', :ident => p.ident } ];
         p = p.parent
       end
       nav = nav.reverse
