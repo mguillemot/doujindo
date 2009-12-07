@@ -1,4 +1,8 @@
 <% @title = @post.title -%>
 <% @nav = blog_post_nav(@post) -%>
 <h1><%= @title %></h1>
+<% if admin? -%>
+    <%= button_to 'Edit', { :action => 'edit', :id => @post } %>
+    <%= button_to 'Delete', { :action => 'delete', :id => @post }, :confirm => 'Are you sure?' %>
+<% end -%>
 <%= @post.content %>

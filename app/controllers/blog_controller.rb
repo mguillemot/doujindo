@@ -1,5 +1,5 @@
 class BlogController < ApplicationController
-  before_filter :admin_required, :only => :new
+  before_filter :admin_required, :only => [ :new, :delete ]
 
   def index
     @posts = BlogPost.find :all, :order => 'created_at DESC', :limit => 8
@@ -20,24 +20,31 @@ class BlogController < ApplicationController
   def new
     if request.post? and params[:post]
       @post = BlogPost.new params[:post]
+      @post.author = @user
       if @post.save
+        add_notice "New post added successfully"
         redirect_to :action => 'index'
-      else
-
-      end
-
-      if @user.save
-        session[:user] = @user.id
-        Notifier.deliver_registration_confirmation_request @user
-        add_notice t('alerts.confirmation_email_sent', {:email => @user.email})
-        redirect_to :action => 'index'
-      else
-        add_error t('alerts.registration_error')
-        @user.password = ''
-        @user.password_confirmation = ''
       end
     else
       @post = BlogPost.new
+      @post.ident = Utils.random_string(16)
     end
+  end
+
+  def edit
+    @post = BlogPost.find params[:id]
+    if request.post? and params[:post]
+      if @post.update_attributes(params[:post])
+        add_notice "Post edited successfully"
+        redirect_to :action => 'index'
+      end
+    end
+  end
+
+  def delete
+    @post = BlogPost.find params[:id]
+    @post.destroy
+    add_notice "Post '#{@post.title}' deleted"
+    redirect_to :action => 'index'
   end
 end

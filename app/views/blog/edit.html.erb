@@ -1,5 +1,5 @@
-<% @title = 'New blog post' -%>
-<% @nav = blog_index_nav << [ 'New post' ] -%>
+<% @title = 'Edit blog post' -%>
+<% @nav = blog_post_nav(@post) << [ 'Edit' ] -%>
 <h1><%= @title %></h1>
 <% form_for :post do |f| -%>
 

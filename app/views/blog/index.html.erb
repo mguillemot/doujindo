@@ -2,7 +2,7 @@
 <% @nav = blog_index_nav -%>
 <h1><%= @title %></h1>
 <% if admin? -%>
-    <%= link_to 'New post', { :action => 'new' } %>
+    <%= button_to 'New post', { :action => 'new' }, :method => :get %>
 <% end -%>
 <ul>
   <% @posts.each do |post| -%>

@@ -47,7 +47,7 @@ class ApplicationController < ActionController::Base
   end
 
   def prune(hash)
-    hash.delete_if { |k,v| v == '' }
+    hash.delete_if { |k, v| v == '' }
   end
 
   def add_notice(notice)
@@ -61,7 +61,9 @@ class ApplicationController < ActionController::Base
   end
 
   def add_debug(debug)
-    flash[:debug] = debug
+    if admin?
+      flash[:debug] = debug
+    end
     logger.debug debug
   end
 
