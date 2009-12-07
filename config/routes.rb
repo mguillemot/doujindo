@@ -8,8 +8,10 @@ ActionController::Routing::Routes.draw do |map|
   # Sample of named route:
   #   map.purchase 'products/:id/purchase', :controller => 'catalog', :action => 'purchase'
   # This route can be invoked with purchase_url(:id => product.id)
-  map.view_item 'item/:ident', :controller => 'item', :action => 'index', :ident => /[a-z][a-z0-9_-]+/
-  map.view_item 'category/:ident', :controller => 'category', :action => 'index', :ident => /[a-z][a-z0-9_-]+/
+  map.connect 'item/:ident', :controller => 'item', :action => 'index', :ident => /[a-z][a-z0-9_-]+/
+  map.connect 'category/:ident', :controller => 'category', :action => 'index', :ident => /[a-z][a-z0-9_-]+/
+  map.connect 'blog/new', :controller => 'blog', :action => 'new'
+  map.connect 'blog/:ident', :controller => 'blog', :action => 'view', :ident => /[a-z][a-z0-9_-]+/
 
   # Sample resource route (maps HTTP verbs to controller actions automatically):
   #   map.resources :products
@@ -44,5 +46,5 @@ ActionController::Routing::Routes.draw do |map|
   # Note: These default routes make all actions in every controller accessible via GET requests. You should
   # consider removing or commenting them out if you're using named routes and resources.
   map.connect ':controller/:action/:id'
-  map.connect ':controller/:action/:id.:format'
+  #map.connect ':controller/:action/:id.:format', :requirements => { :id => /[0-9]+/ }
 end

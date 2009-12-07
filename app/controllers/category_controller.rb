@@ -2,10 +2,18 @@ class CategoryController < ApplicationController
   before_filter :admin_required, :only => :new_item
 
   def index
-    id = params[:id] || session[:category_id]
-    @category = Category.find id
-    @display_items = admin? ? @category.all_items : @category.visible_items
-    session[:category_id] = id
+    if params[:ident]
+      @category = Category.find_by_ident params[:ident]
+    else
+      @category = Category.find_by_id (params[:id] || session[:category_id])
+    end
+    if @category == nil
+      add_error t('alerts.invalid_category')
+      redirect_to :controller => 'home'
+    else
+      @display_items = admin? ? @category.all_items : @category.visible_items
+      session[:category_id] = @category.id
+    end
   end
 
   def new_item

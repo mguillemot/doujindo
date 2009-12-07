@@ -1,0 +1,13 @@
+<% @title = t('blog.index.title') -%>
+<% @nav = blog_index_nav -%>
+<h1><%= @title %></h1>
+<% if admin? -%>
+    <%= link_to 'New post', { :action => 'new' } %>
+<% end -%>
+<ul>
+  <% @posts.each do |post| -%>
+      <li>
+        (<%= post.author.login %>) <%= link_to post.title, { :action => 'view', :ident => post.ident } %>
+      </li>
+  <% end -%>
+</ul>

@@ -9,7 +9,20 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091203151044) do
+ActiveRecord::Schema.define(:version => 20091207135600) do
+
+  create_table "blog_posts", :force => true do |t|
+    t.string   "ident",      :null => false
+    t.integer  "author_id",  :null => false
+    t.string   "title_en"
+    t.string   "title_fr"
+    t.text     "content_en"
+    t.text     "content_fr"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "blog_posts", ["ident"], :name => "index_blog_posts_on_ident", :unique => true
 
   create_table "cart_items", :force => true do |t|
     t.integer  "cart_id",                   :null => false
@@ -221,17 +234,6 @@ ActiveRecord::Schema.define(:version => 20091203151044) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-
-  create_table "user_addresses", :force => true do |t|
-    t.integer  "user_id",          :null => false
-    t.string   "full_address",     :null => false
-    t.integer  "country_id",       :null => false
-    t.string   "additional_infos"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "user_addresses", ["user_id"], :name => "index_user_addresses_on_user_id"
 
   create_table "users", :force => true do |t|
     t.string   "login",                                      :null => false

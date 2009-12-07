@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
-  has_many :user_addresses, :dependent => :destroy
   has_many :orders, :foreign_key => :client_id
+  has_many :blog_posts, :foreign_key => 'author_id'
 
   validates_length_of :login, :within =>  3..40
   validates_length_of :password, :within => 6..40, :on => :create

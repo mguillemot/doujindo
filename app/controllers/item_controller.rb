@@ -2,13 +2,13 @@ class ItemController < ApplicationController
   before_filter :admin_required, :except => :index
 
   def index
-    if params[:id]
-      @item = Item.find_by_id params[:id]
-    elsif params[:ident]
+    if params[:ident]
       @item = Item.find_by_ident params[:ident]
+    elsif params[:id]
+        @item = Item.find_by_id params[:id]
     end
     if @item == nil or (@item.show? == false and admin? == false)
-      add_error "Invalid item ##{params[:id]}"
+      add_error t('alerts.invalid_item')
       redirect_to :controller => 'home'
     end
   end

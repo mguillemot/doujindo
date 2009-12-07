@@ -106,10 +106,16 @@ fr:
     login_failure: "Erreur d'authentification"
     please_login: "Veuillez vous identifier ou créer un compte client pour pouvoir continuer"
     please_logout: "Veuillez vous déconnecter pour pouvoir continuer"
+    user_reload_failed: "Erreur de session : veuillez vous réauthentifier"
+    cart_reload_failed: "Erreur de sssion : votre panier a été vidé"
     registration_error: "Echec de la création du nouveau compte client"
     confirmation_email_sent: "Un e-mail contenant un lien de confirmation a été envoyé à {{email}}. Veuillez le lire et cliquer sur le lien sous 24 heures, faute de quoi ce compte sera désactivé."
     validation_email_sent: "Création du compte terminée ! Un e-mail de confirmation a été envoyé à {{email}}"
     admin_only: "Seuls les administrateurs peuvent accéder à cette page"
+    invalid_item: "Article inconnu"
+    invalid_category: "Catégorie inconnue"
+    invalid_blog_post: "Article du blog inconnu"
+    invalid_order: "Commande invalide"
     item_added_to_cart: "<strong>{{name}} x{{qty}} ajouté à votre panier"
     cart_creation_error: "Impossible de créer un nouveau panier"
     cart_emptied: "Panier vidé."
@@ -138,7 +144,7 @@ fr:
         title: "Menu général"
         home: "Accueil de la boutique"
         register: "Nouveau compte"
-        about_us: "A propos de Touhou Shop"
+        blog: "Blog"
         faq: "FAQ"
         contact: "Contact"
       catalog: "Catalogue"
@@ -185,6 +191,11 @@ fr:
     format: "Format"
     warning: "Avertissement"
     notes: "Notes"
+
+  blog:
+    index:
+      title: "Blog"
+      nav: "Blog"
 
   mail:
     registration_final_confirmation:

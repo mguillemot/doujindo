@@ -100,13 +100,19 @@ en:
       msg: "Your order has been validated successfully. An e-mail confirmation has been sent to {{email}}. We will send you another e-mail when we ship your order. You can also view the status of your order in <strong>My Home</strong> any time. Thank you for purchasing at Touhou Shop!"
 
   alerts:
-    login_failure: "Login failure"  
+    login_failure: "Login failure"
     please_login: "Please login or create an account to continue"
     please_logout: "Please logout to continue"
+    user_reload_failed: "Session error: please log in again"
+    cart_reload_failed: "Session error: your cart has been emptied"
     registration_error: "Registration error"
     confirmation_email_sent: "An e-mail containing a confirmation link has been sent to {{email}}. If you don't read it and confirm your address in the next 24 hours, this account will be automatically deleted."
     validation_email_sent: "Accout validation successful! A confirmation e-mail has been sent to {{email}}"
     admin_only: "You need administrator privileges to access this page"
+    invalid_item: "Invalid item"
+    invalid_category: "Invalid category"
+    invalid_blog_post: "Invalid blog post"
+    invalid_order: "Invalid order"
     cart_creation_error: "Impossible to create a new shopping cart"
     item_added_to_cart: "<strong>{{name}} x{{qty}} added to your cart"
     cart_emptied: "Shopping cart emptied."
@@ -135,7 +141,7 @@ en:
         title: "Global menu"
         home: "Shop home"
         register: "Create new account"
-        about_us: "About us"
+        blog: "Blog"
         faq: "FAQ"
         contact: "Contact"
       catalog: "Catalog"
@@ -170,7 +176,12 @@ en:
     format: "Format"
     warning: "Warning"
     notes: "Notes"
-    
+
+  blog:
+    index:
+      title: "Blog"
+      nav: "Blog"
+
   mail:
     registration_final_confirmation:
       title: "[Touhou Shop] Registration successful!"

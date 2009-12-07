@@ -67,9 +67,8 @@ class ApplicationController < ActionController::Base
 
   def set_locale
     parsed_locale = LANGUAGE_BY_SUBDOMAIN[request.host.split('.').first]
-    if (parsed_locale)
+    if parsed_locale
       I18n.locale = LANGUAGE_BY_SUBDOMAIN[parsed_locale]
-      logger.info "Locale automagically set to #{parsed_locale}"
     end
   end
 
@@ -78,7 +77,8 @@ class ApplicationController < ActionController::Base
       begin
         @user = User.find session[:user]
       rescue ActiveRecord::RecordNotFound
-        add_error "Could not reload user #{session[:user]} from session"
+        add_error t('alerts.user_reload_failed')
+        logger.error "Could not reload user #{session[:user]} from session"
         session[:user] = nil
       end
     end
@@ -86,7 +86,8 @@ class ApplicationController < ActionController::Base
       begin
         @cart = Cart.find session[:cart]
       rescue ActiveRecord::RecordNotFound
-        add_error "Could not reload cart #{session[:cart]} from session"
+        add_error t('alerts.cart_reload_failed')
+        logger.error "Could not reload cart #{session[:cart]} from session"
         session[:cart] = nil
       end
     end
@@ -94,13 +95,12 @@ class ApplicationController < ActionController::Base
       begin
         @currency = Currency.find session[:currency]
       rescue ActiveRecord::RecordNotFound
-        add_error "Could not reload currency #{session[:currency]} from session"
+        logger.error "Could not reload currency #{session[:currency]} from session"
       end
     end
     unless @currency
-      logger.info "Using default currency for #{I18n.locale}"
       session[:currency] = default_currency_for I18n.locale
-      logger.info "Using default currency for #{session[:currency]}"
+      logger.info "Using default currency for #{I18n.locale} which is #{session[:currency]}"
       @currency = Currency.find session[:currency]
     end
   end
