@@ -4,16 +4,13 @@
       <div class="menu_category_title">
         <%= image_tag "menuheader_shop_#{I18n.locale}.png", :width => 168, :height => 24, :alt => t('layout.sidebar.global_menu.title') %>
       </div>
-      <div class="menu_element">
+      <div class="sidebar_group">
         <%= link_to t('layout.sidebar.global_menu.home'), :controller => 'home', :action => 'index' -%>
-      </div>
-      <div class="menu_element">
+        <hr/>
         <%= link_to t('layout.sidebar.global_menu.blog'), :controller => 'blog', :action => 'index' -%>
-      </div>
-      <div class="menu_element">
+        <hr/>
         <%= link_to t('layout.sidebar.global_menu.faq'), :controller => 'home', :action => 'faq' -%>
-      </div>
-      <div class="menu_element">
+        <hr/>
         <%= link_to t('layout.sidebar.global_menu.contact'), :controller => 'home', :action => 'contact' -%>
       </div>
     </div>
@@ -22,7 +19,7 @@
       <div class="menu_category_title">
         <%= image_tag "menuheader_catalog_#{I18n.locale}.png", :width => 168, :height => 24, :alt => t('layout.sidebar.catalog') %>
       </div>
-      <div style="text-align:left">
+      <div class="sidebar_group" style="text-align:left">
         <%= render :partial => 'partials/category_and_sub', :collection => Category.root_categories %>
       </div>
     </div>

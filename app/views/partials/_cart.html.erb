@@ -1,12 +1,22 @@
-<div id="cart">
+<div id="cart" class="sidebar_group">
   <% if @cart and @cart.cart_items.size > 0 -%>
-    <ol>
       <% @cart.cart_items.each do |cartItem| -%>
-        <li><%= "#{cartItem.item.title} x#{cartItem.quantity}" -%></li>
+          <div class="cart_item">
+            <div class="cart_item_title">
+              <% link_to({:controller => 'item', :action => 'index', :ident => cartItem.item.ident}) do %>
+                  <%= cartItem.item.title %>
+              <% end %>
+            </div>
+            <div class="cart_item_details">
+              Condition: new - Quantity: <%= cartItem.quantity %>
+            </div>
+          </div>
+          <hr/>
       <% end -%>
-    </ol>
-    <%= button_to t('layout.sidebar.cart.chekout_button'), { :controller => 'cart' }, :method => :get %>
+      <div>
+        <%= button_to t('layout.sidebar.cart.chekout_button'), { :controller => 'cart' }, :method => :get %>
+      </div>
   <% else -%>
-    <%= t('layout.sidebar.cart.empty') -%>
+      <%= t('layout.sidebar.cart.empty') -%>
   <% end -%>
 </div>

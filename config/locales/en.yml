@@ -115,7 +115,7 @@ en:
     invalid_blog_post: "Invalid blog post"
     invalid_order: "Invalid order"
     cart_creation_error: "Impossible to create a new shopping cart"
-    item_added_to_cart: "<strong>{{name}} x{{qty}} added to your cart"
+    item_added_to_cart: "<strong>{{name}} x{{qty}}</strong> added to your cart"
     cart_emptied: "Shopping cart emptied."
     address_modification_success: "Address successfully edited."
     address_creation_success: "Address successfully added."

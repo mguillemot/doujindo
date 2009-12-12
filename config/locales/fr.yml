@@ -117,7 +117,7 @@ fr:
     invalid_category: "Catégorie inconnue"
     invalid_blog_post: "Article du blog inconnu"
     invalid_order: "Commande invalide"
-    item_added_to_cart: "<strong>{{name}} x{{qty}} ajouté à votre panier"
+    item_added_to_cart: "<strong>{{name}}</strong> x{{qty}} ajouté à votre panier"
     cart_creation_error: "Impossible de créer un nouveau panier"
     cart_emptied: "Panier vidé."
     address_modification_success: "Adresse modifée avec succès."

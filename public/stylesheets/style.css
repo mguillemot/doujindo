@@ -183,6 +183,22 @@ a:visited.navbar_link {
 
 /* --- SIDE BARS --- */
 
+.sidebar_group {
+    display: table;
+    width: 100%;
+    background-color: #ffa2a4;
+    border: #ff6a6f 1px solid;
+    text-align: center;
+    border-radius: 8px;
+    padding: 8px;
+}
+
+.sidebar_group hr {
+    border-style: none;
+    width: 100%;
+    border-bottom: 1px solid #ff6a6f;
+}
+
 .sidebar_content {
     width: 197px;
     margin-left: 8px;
@@ -211,23 +227,6 @@ a:visited.navbar_link {
 }
 
 /* --- SIGNIN/OUT BOX --- */
-
-.signin_box {
-    display: table;
-    width: 100%;
-    table-layout: auto;
-    background-color: #ffa2a4;
-    border: #ff6a6f 1px solid;
-    text-align: center;
-    padding: 8px;
-    border-radius: 8px;
-}
-
-.signin_box hr {
-    border-style: none;
-    border-bottom: 1px solid #ff6a6f;
-    width: 100%;
-}
 
 .signin_box_field {
     display: table-row;
@@ -269,8 +268,15 @@ a:visited.navbar_link {
 
 /* --- CART --- */
 
-#cart {
-    text-align: center;
+.cart_item {
+}
+
+.cart_item_title {
+}
+
+.cart_item_details {
+    font-size: smaller;
+    color: #696969;
 }
 
 /* --- PAGE: new account creation --- */
