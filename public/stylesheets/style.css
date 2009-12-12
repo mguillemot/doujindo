@@ -375,7 +375,6 @@ a:visited.navbar_link {
 
 .category_item_description {
     display: table-cell;
-    border: solid 1px black;
     width: auto;
     vertical-align: middle;
 }
