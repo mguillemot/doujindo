@@ -2,11 +2,11 @@
   <% form_tag({ :controller => 'user', :action => 'login' }, { :id => 'signin_form' }) do -%>
       <div class="signin_box_field">
         <label for="user_login" class="signin_box_label"><%= t('layout.sidebar.user_menu.username') -%></label>
-        <div class="toto"><%= text_field 'user', 'login', :size => 8, :class => 'signin_box_input' %></div>
+        <%= text_field 'user', 'login', :size => 8, :class => 'signin_box_input' %>
       </div>
       <div class="signin_box_field">
         <label for="user_password" class="signin_box_label"><%= t('layout.sidebar.user_menu.password') -%></label>
-        <div class="toto"><%= password_field 'user', 'password', :size => 8, :class => 'signin_box_input' %></div>
+        <%= password_field 'user', 'password', :size => 8, :class => 'signin_box_input' %>
       </div>
       <div id="signin_button">
         <%= submit_tag t('layout.sidebar.user_menu.login_button') %>

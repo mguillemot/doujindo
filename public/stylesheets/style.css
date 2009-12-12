@@ -349,20 +349,42 @@ a:visited.navbar_link {
 
 /* --- PAGE: category view --- */
 
-div.category_item {
-    background-color: aliceblue;
-    border: black dotted 1px;
-    padding: 10px;
-    width: 180px;
-    height: 180px;
+.category_items {
+    display: table;
+    width: 100%;
 }
 
-a.category_item {
-    text-decoration: none;
+.category_item {
+    display: table-row;
 }
 
-img.category_item {
-    border: none;
+.category_item.even {
+    background-color: #ffdfe0;
+}
+
+.category_item.odd {
+    background-color: #ffecec;
+}
+
+.category_item_picture {
+    display: table-cell;
+    width: 100px;
+    padding: 5px;
+    vertical-align: middle;
+}
+
+.category_item_description {
+    display: table-cell;
+    border: solid 1px black;
+    width: auto;
+    vertical-align: middle;
+}
+
+.category_item_price {
+    display: table-cell;
+    width: 100px;
+    text-align: center;
+    vertical-align: middle;
 }
 
 /* --- PAGE: checkout --- */

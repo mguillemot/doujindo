@@ -42,7 +42,20 @@ class Item < ActiveRecord::Base
     category.nav << [ title, { :controller => 'item', :action => 'index', :ident => ident } ]
   end
 
+  def pseudo_stock_left
+    stock_left_new + stock_left_perfect_condition + stock_left_good_condition + stock_left_medium_condition + stock_left_poor_condition + purchase_left
+  end
+
   def max_order
-    stock_left_new + stock_left_perfect_condition + stock_left_good_condition + stock_left_medium_condition + stock_left_poor_condition + purchase_left + reservation_left
+    pseudo_stock_left + reservation_left
+  end
+
+  def availability_type
+    if pseudo_stock_left > 0
+      return 2
+    elsif reservation_left > 0
+      return 1
+    end
+    0
   end
 end

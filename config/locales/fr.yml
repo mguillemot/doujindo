@@ -126,6 +126,18 @@ fr:
   category:
     title: 'Categorie "{{title}}"'
     empty: "(aucun article trouvé)"
+    order:
+      title: "Trier par"
+      last-added: "Derniers ajouts"
+      by-name: "Nom"
+      by-price: "Prix"
+      by-type: "Type"
+      by-availability: "Disponibilité"
+    item:
+      type: "Type :"
+      availability0: "Pas de stock"
+      availability1: "Disponible en pré-commande"
+      availability2: "Disponible immédiatement"
 
   layout:
     sidebar:

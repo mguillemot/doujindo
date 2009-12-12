@@ -1,10 +1,23 @@
-<% if !item.show? and admin? -%>
-    <div style="background-color: red">
-<% end -%>
-<% link_to( { :controller => 'item', :action => 'index', :ident => item.ident }, :class => 'category_item') do %>
-    <div><%= image_tag static_url(item.main_thumb.full_filename), :alt => item.title, :width => item.main_thumb.width, :height => item.main_thumb.height, :class => 'category_item' %></div>
-    <div><%= item.title %></div>
-<% end -%>
-<% if !item.show? and admin? -%>
+<div class="category_item <%= cycle('odd', 'even') %><%= " hidden_item" if !item.show? and admin? %>">
+  <div class="category_item_picture">
+    <% link_to( { :controller => 'item', :action => 'index', :ident => item.ident }, :class => 'category_item') do %>
+        <%= image_tag static_url(item.main_thumb.full_filename), :alt => item.title, :width => item.main_thumb.width/2, :height => item.main_thumb.height/2, :border => 1 %>
+    <% end -%>
+  </div>
+  <div class="category_item_description">
+    <div class="category_item_description_title">
+      <% link_to( { :controller => 'item', :action => 'index', :ident => item.ident }, :class => 'category_item') do %>
+          <%= item.title %>
+      <% end -%>
     </div>
-<% end -%>
+    <div class="category_item_description_type">
+      <%= t('category.item.type') %> <%= item.item_type %>
+    </div>
+    <div class="category_item_description_availability">
+      <%= t("category.item.availability#{item.availability_type}") %>
+    </div>
+  </div>
+  <div class="category_item_price">
+    <%= current_currency.format_yen_value(item.price) %>
+  </div>
+</div>

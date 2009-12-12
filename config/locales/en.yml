@@ -123,6 +123,18 @@ en:
   category:
     title: 'Category "{{title}}"'
     empty: "(no items found)"
+    order:
+      title: "Order by"
+      last-added: "Last added"
+      by-name: "Name"
+      by-price: "Price"
+      by-type: "Type"
+      by-availability: "Availability"
+    item:
+      type: "Type:"
+      availability0: "Not in stock"
+      availability1: "Available for preorder"
+      availability2: "Available now"
 
   layout:
     sidebar:
