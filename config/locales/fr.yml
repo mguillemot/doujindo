@@ -14,6 +14,7 @@ fr:
       first_name: "Prénom :"
       last_name: "Nom :"
       email: "E-mail :"
+      email_confirmation: "Confirmation de l'e-mail :"
       password: "Mot de passe :"
       password_confirmation: "Confirmation du mot de passe :"
       signup_button: "S'inscrire"

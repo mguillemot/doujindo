@@ -1,71 +1,103 @@
+/* --- GENERAL HTML SETTINGS --- */
+
 html, body {
     margin: 0;
     padding: 0;
     text-align: center; /* IE compatibility of centered #content */
+    background: #ffecec url("../images/background.png") repeat-x;
 }
 
+a {
+    color: #c40000;
+}
+
+a:hover {
+    color: #f20000;
+}
+
+/* --- APPLICATION LAYOUT --- */
+
 #page {
-    width: 1100px;
+    width: 1105px;
     margin-left: auto;
     margin-right: auto;
     text-align: left;
 }
 
 #header {
+    margin: 8px 0 6px 0;
     position: relative;
-    width: 100%;
-    height: 80px;
-    background-color: red;
-    color: black;
-    font-size: xx-large;
-    text-align: left;
+    width: 1105px;
+    height: 151px;
+    background: white;
+}
+
+#content_container_top {
+    width: 1105px;
+    height: 17px;
+    background: white url("../images/content_bg_top.jpg") no-repeat;
+}
+
+#content_container {
+    width: 1105px;
+    background: white url("../images/content_bg_slice.jpg") repeat-y;
+}
+
+#content_container_bottom {
+    width: 1105px;
+    height: 17px;
+    background: white url("../images/content_bg_bottom.jpg") no-repeat;
+}
+
+#footer {
+    margin: 7px 0 7px 0;
+    width: 1105px;
+    height: 28px;
+    background: white url("../images/footer.jpg") no-repeat;
+    clear: both;
+    display: table;
+}
+
+#footer_content {
+    color: #696969;
+    text-align: center;
+    font-size: small;
+    vertical-align: middle;
+    display: table-cell;
 }
 
 #left_sidebar {
     position: relative;
-    width: 200px;
+    top: -10px;
+    width: 213px;
     float: left;
-    background-color: lightsteelblue;
 }
 
 #twocols {
-    width: 900px;
+    width: 892px;
     position: relative;
     float: right;
 }
 
 #right_sidebar {
     position: relative;
-    width: 200px;
+    top: -10px;
+    width: 213px;
     float: right;
-    background-color: lightsteelblue;
 }
 
 #centercol {
     position: relative;
+    top: -10px;
     float: left;
-    width: 700px;
+    width: 679px;
 }
 
 #content {
-    padding: 5px;
-    background-color: fuchsia;
-}
-
-#footer {
-    background-color: black;
-    height: 20px;
-    clear: both;
-    text-align: center;
-    color: white;
-}
-
-#navbar {
-    width: 680px;
+    padding-top: 2px;
+    padding-left: 5px;
+    padding-right: 5px;
     background-color: white;
-    text-align: left;
-    border: darkslategray 1px dotted;
-    padding: 3px;
 }
 
 .clearfix:after {
@@ -95,6 +127,52 @@ html, body {
     }
 }
 
+/* --- NAVIGATION BAR --- */
+
+#navbar {
+    width: 660px;
+    background-color: #ffdfe0;
+    text-align: left;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.navbar_elements_container {
+    height: 20px;
+}
+
+.navbar_element {
+    float: left;
+    font-size: small;
+    background: #ffacae;
+    vertical-align: middle;
+}
+
+.navbar_element a {
+    text-decoration: none;
+    vertical-align: middle;
+}
+
+.navbar_element:hover {
+    background: #dddddd;
+}
+
+.navbar_last_element {
+    float: left;
+    font-size: small;
+    font-weight: bold;
+    background: #ff7d81;
+    vertical-align: middle;
+}
+
+.navbar_image {
+    display: inline;
+    margin: 0;
+    padding: 0;
+    border: none;
+    vertical-align: middle;
+}
+
 a.navbar_link {
     color: black;
 }
@@ -103,38 +181,79 @@ a:visited.navbar_link {
     color: black;
 }
 
-a.title_link {
-    text-decoration: none;
-    color: black;
-}
+/* --- SIDE BARS --- */
 
-a:visited.title_link {
-    color: black;
+.sidebar_content {
+    width: 197px;
+    margin-left: 8px;
 }
 
 .menu_category {
-    font-weight: bold;
-    background-color: black;
-    color: white;
+    width: 100%;
     text-align: center;
     margin-top: 10px;
     margin-bottom: 10px;
 }
 
+.menu_category_title {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.menu_element {
+    margin-top: 2px;
+    margin-bottom: 2px;
+}
+
+.category_item_count {
+    font-size: small;
+    color: #696969;
+}
+
+/* --- SIGNIN/OUT BOX --- */
+
 .signin_box {
-    background-color: moccasin;
-    border: black 1px solid;
+    display: table;
+    width: 100%;
+    table-layout: auto;
+    background-color: #ffa2a4;
+    border: #ff6a6f 1px solid;
     text-align: center;
     padding: 8px;
+    border-radius: 8px;
+}
+
+.signin_box hr {
+    border-style: none;
+    border-bottom: 1px solid #ff6a6f;
+    width: 100%;
 }
 
 .signin_box_field {
+    display: table-row;
+    width: 100%;
+}
+
+.signin_box_label {
+    display: table-cell;
+    width: 50%;
     font-size: small;
+    text-align: right;
+    padding-right: 8px;
 }
 
 .signin_box_input {
-    width: 100px;
+    display: table-cell;
+    width: auto;
+    background-color: white;
+    border: #ff6a6f 1px solid;
 }
+
+.signin_box_additional_actions {
+    font-size: smaller;
+}
+
+/* --- FLASH --- */
 
 #error {
     color: red;
@@ -148,13 +267,62 @@ a:visited.title_link {
     color: green;
 }
 
-#register_error {
-    color: darkred;
-}
+/* --- CART --- */
 
 #cart {
     text-align: center;
 }
+
+/* --- PAGE: new account creation --- */
+
+.register_content {
+    position: relative;
+    display: table;
+    left: 50px;
+}
+
+.register_field {
+    display: table-row;
+    width: 100%;
+}
+
+.register_field.even {
+    background-color: #ffdfe0;
+}
+
+.register_field.odd {
+    background-color: #ffecec;
+}
+
+.register_field_label {
+    display: table-cell;
+    width: 200px;
+    text-align: right;
+    padding-right: 5px;
+    border-right: 1px solid #ffacae;
+}
+
+.register_field_value {
+    display: table-cell;
+    width: 200px;
+    padding-left: 5px;
+}
+
+.register_field_check {
+    width: 30px;
+    text-align: center;
+}
+
+.register_submit {
+    width: 100%;
+    text-align: center;
+}
+
+.register_error {
+    color: darkred;
+}
+
+/* --- PAGE: item details --- */
 
 .item_detail {
     background-color: skyblue;
@@ -173,36 +341,14 @@ a:visited.title_link {
     left: 25px;
 }
 
+/* --- PAGE: category view --- */
+
 div.category_item {
     background-color: aliceblue;
     border: black dotted 1px;
     padding: 10px;
     width: 180px;
     height: 180px;
-}
-
-div.addresses {
-    display: table;
-    border: 1px solid black;
-}
-
-div.address {
-    display: table-row;
-}
-
-div.address_selector {
-    display: table-cell;
-    width: 20px;
-    background-color: blanchedalmond;
-    text-align: center;
-    vertical-align: middle;
-}
-
-div.address_content {
-    display: table-cell;
-    width: auto;
-    background-color: gold;
-    vertical-align: middle;
 }
 
 a.category_item {
@@ -212,6 +358,8 @@ a.category_item {
 img.category_item {
     border: none;
 }
+
+/* --- PAGE: checkout --- */
 
 .shipment_price {
     color: red;

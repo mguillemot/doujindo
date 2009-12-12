@@ -1,6 +1,6 @@
-<div>
+<div class="menu_element">
   <%= link_to category_and_sub.title, :controller => 'category', :action => 'index', :ident => category_and_sub.ident -%>
-  (<%= category_and_sub.visible_items.size -%>)
+  <span class="category_item_count">(<%= category_and_sub.visible_items.size -%>)</span>
 </div>
 <% if category_and_sub.subcategories.size > 0 -%>
   <div style="position: relative; left: 20px">

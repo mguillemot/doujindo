@@ -1,6 +1,6 @@
 class UserController < ApplicationController
   before_filter :login_required, :only => [ :index, :orders, :order, :logout ]
-  before_filter :login_refused, :only => [ :register, :login ]
+  before_filter :login_refused, :only => [ :register, :forgot_password, :login ]
 
   def index
   end
@@ -99,6 +99,10 @@ class UserController < ApplicationController
         @user.password_confirmation = ''
       end
     end
+  end
+
+  def forgot_password
+
   end
 
   def confirm_email

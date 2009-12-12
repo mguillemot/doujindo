@@ -1,41 +1,141 @@
 <% @title = t('user.register.title') -%>
 <% @nav = [ [ t('user.register.nav') ] ] -%>
 <h1><%= @title -%></h1>
-<div id="register_content">
+<div class="register_content">
   <% form_for :user, @user, :url => { :action => 'register' } do |f| %>
-    <div id="register_error"><%= error_messages_for 'user' %></div>
+      <div class="register_error"><%= error_messages_for 'user' %></div>
 
-    <div class="register_field">
-      <label for="user_login"><%= t('user.register.login') -%></label>
-      <%= f.text_field :login %>
-    </div>
+      <div class="register_field even">
+        <label for="user_login" class="register_field_label">
+          <%= t('user.register.login') -%>
+        </label>
 
-    <div class="register_field">
-      <label for="user_first_name"><%= t('user.register.first_name') -%></label>
-      <%= f.text_field :first_name %>
-    </div>
+        <div class="register_field_value">
+          <%= f.text_field :login, :size => 8 %>
+          <span class="register_field_check">
+            <%= image_tag 'validator_help.png', :width => 16, :height => 16, :alt => '', :id => 'user_login_check' %>
+          </span>
+        </div>
+      </div>
 
-    <div class="register_field">
-      <label for="user_last_name"><%= t('user.register.last_name') -%></label>
-      <%= f.text_field :last_name %>
-    </div>
+      <div class="register_field odd">
+        <label for="user_email" class="register_field_label">
+          <%= t('user.register.email') -%>
+        </label>
 
-    <div class="register_field">
-      <label for="user_email"><%= t('user.register.email') -%></label>
-      <%= f.text_field :email %>
-    </div>
+        <div class="register_field_value">
+          <%= f.text_field :email, :size => 20 %>
+          <span class="register_field_check">
+            <%= image_tag 'validator_help.png', :width => 16, :height => 16, :alt => '', :id => 'user_email_check' %>
+          </span>
+        </div>
+      </div>
 
-    <div class="register_field">
-      <label for="user_password"><%= t('user.register.password') -%></label>
-      <%= f.password_field :password %>
-    </div>
+      <div class="register_field even">
+        <label for="user_email_confirmation" class="register_field_label">
+          <%= t('user.register.email_confirmation') -%>
+        </label>
 
-    <div class="register_field">
-      <label for="user_password_confirmation"><%= t('user.register.password_confirmation') -%></label>
-      <%= f.password_field :password_confirmation %>
-    </div>
+        <div class="register_field_value">
+          <%= f.text_field :email_confirmation, :size => 20 %>
+          <span class="register_field_check">
+            <%= image_tag 'validator_help.png', :width => 16, :height => 16, :alt => '', :id => 'user_email_confirmation_check' %>
+          </span>
+        </div>
+      </div>
 
-    <%= submit_tag t('user.register.signup_button') %>
+      <div class="register_field odd">
+        <label for="user_password" class="register_field_label">
+          <%= t('user.register.password') -%>
+        </label>
 
+        <div class="register_field_value">
+          <%= f.password_field :password, :size => 8 %>
+          <span class="register_field_check">
+            <%= image_tag 'validator_help.png', :width => 16, :height => 16, :alt => '', :id => 'user_password_check' %>
+          </span>
+        </div>
+      </div>
+
+      <div class="register_field even">
+        <label for="user_password_confirmation" class="register_field_label">
+          <%= t('user.register.password_confirmation') -%>
+        </label>
+
+        <div class="register_field_value">
+          <%= f.password_field :password_confirmation, :size => 8 %>
+          <span class="register_field_check">
+            <%= image_tag 'validator_help.png', :width => 16, :height => 16, :alt => '', :id => 'user_password_confirmation_check' %>
+          </span>
+        </div>
+      </div>
+
+      <div class="register_submit">
+        <%= submit_tag t('user.register.signup_button'), :disabled => true, :id => 'signup_button' %>
+      </div>
   <% end %>
 </div>
+<script type="text/javascript">
+    $(function() {
+        var login_ok, email_ok, email_confirmation_ok, password_ok, password_confirmation_ok = false;
+        function activate_submit() {
+            var ok = login_ok && email_ok && email_confirmation_ok && password_ok && password_confirmation_ok;
+            $('#signup_button').attr('disabled', !ok);
+        }
+        function validate_login() {
+            if ($(this).val().match(/^[\d\w_\-]{3,40}$/)) {
+                $('#user_login_check').attr('src', '/images/validator_ok.png');
+                login_ok = true;
+            } else {
+                $('#user_login_check').attr('src', '/images/validator_ko.png');
+                login_ok = false;
+            }
+            activate_submit();
+        }
+        function validate_email() {
+            if ($(this).val().match(/^[\d\w_\-\.]+@([\d\w_\-]+\.)+[a-zA-Z]+$/)) {
+                $('#user_email_check').attr('src', '/images/validator_ok.png');
+                email_ok = true;
+            } else {
+                $('#user_email_check').attr('src', '/images/validator_ko.png');
+                email_ok = false;
+            }
+            activate_submit();
+        }
+        function validate_email_confirmation() {
+            if ($(this).val() == $('#user_email').val()) {
+                $('#user_email_confirmation_check').attr('src', '/images/validator_ok.png');
+                email_confirmation_ok = true;
+            } else {
+                $('#user_email_confirmation_check').attr('src', '/images/validator_ko.png');
+                email_confirmation_ok = false;
+            }
+            activate_submit();
+        }
+        function validate_password() {
+            if ($(this).val().match(/^[^\s]{6,40}$/)) {
+                $('#user_password_check').attr('src', '/images/validator_ok.png');
+                password_ok = true;
+            } else {
+                $('#user_password_check').attr('src', '/images/validator_ko.png');
+                password_ok = false;
+            }
+            activate_submit();
+        }
+        function validate_password_confirmation() {
+            if ($(this).val() == $('#user_password').val()) {
+                $('#user_password_confirmation_check').attr('src', '/images/validator_ok.png');
+                password_confirmation_ok = true;
+            } else {
+                $('#user_password_confirmation_check').attr('src', '/images/validator_ko.png');
+                password_confirmation_ok = false;
+            }
+            activate_submit();
+        }
+        $('#user_login').keyup(validate_login).change(validate_login);
+        $('#user_email').keyup(validate_email).change(validate_email);
+        $('#user_email_confirmation').keyup(validate_email_confirmation).change(validate_email_confirmation);
+        $('#user_password').keyup(validate_password).change(validate_password);
+        $('#user_password_confirmation').keyup(validate_password_confirmation).change(validate_password_confirmation);
+    });
+</script>

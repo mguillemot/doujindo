@@ -1,17 +1,21 @@
-<div id="signin_section">
-  <div class="signin_box">
-    <% form_tag({ :controller => 'user', :action => 'login' }, { :id => 'signin_form' }) do -%>
+<div class="signin_box">
+  <% form_tag({ :controller => 'user', :action => 'login' }, { :id => 'signin_form' }) do -%>
       <div class="signin_box_field">
-        <label for="user_login"><%= t('layout.sidebar.user_menu.username') -%></label>
-        <%= text_field 'user', 'login', :size => 20, :class => 'signin_box_input' %>
+        <label for="user_login" class="signin_box_label"><%= t('layout.sidebar.user_menu.username') -%></label>
+        <div class="toto"><%= text_field 'user', 'login', :size => 8, :class => 'signin_box_input' %></div>
       </div>
       <div class="signin_box_field">
-        <label for="user_password"><%= t('layout.sidebar.user_menu.password') -%></label>
-        <%= password_field 'user', 'password', :size => 20, :class => 'signin_box_input' %>
+        <label for="user_password" class="signin_box_label"><%= t('layout.sidebar.user_menu.password') -%></label>
+        <div class="toto"><%= password_field 'user', 'password', :size => 8, :class => 'signin_box_input' %></div>
       </div>
       <div id="signin_button">
         <%= submit_tag t('layout.sidebar.user_menu.login_button') %>
       </div>
-    <% end -%>
+  <% end -%>
+  <hr/>
+  <div class="signin_box_additional_actions">
+    <%= link_to 'New account', :controller => 'user', :action => 'register' %>
+    |
+    <%= link_to 'Forgot password?', :controller => 'user', :action => 'forgot_password' %>
   </div>
 </div>

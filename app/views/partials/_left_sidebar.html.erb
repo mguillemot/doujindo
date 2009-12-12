@@ -1,32 +1,30 @@
 <div id="left_sidebar">
-  <div class="menu_category"><%= t('layout.sidebar.user_menu.title') -%></div>
-  <% if !logged_in -%>
-      <%= render :partial => 'partials/signin' %>
-  <% else -%>
-      <%= render :partial => 'partials/signout' %>
-  <% end -%>
-
-  <div class="menu_category"><%= t('layout.sidebar.global_menu.title') -%></div>
-  <div>
-    <%= link_to t('layout.sidebar.global_menu.home'), :controller => 'home', :action => 'index' -%>
-  </div>
-  <% unless logged_in -%>
-      <div>
-        <%= link_to t('layout.sidebar.global_menu.register'), :controller => 'user', :action => 'register' -%>
+  <div class="sidebar_content">
+    <div class="menu_category">
+      <div class="menu_category_title">
+        <%= image_tag "menuheader_shop_#{I18n.locale}.png", :width => 168, :height => 24, :alt => t('layout.sidebar.global_menu.title') %>
       </div>
-  <% end -%>
-  <div>
-    <%= link_to t('layout.sidebar.global_menu.blog'), :controller => 'blog', :action => 'index' -%>
-  </div>
-  <div>
-    <%= link_to t('layout.sidebar.global_menu.faq'), :controller => 'home', :action => 'faq' -%>
-  </div>
-  <div>
-    <%= link_to t('layout.sidebar.global_menu.contact'), :controller => 'home', :action => 'contact' -%>
-  </div>
+      <div class="menu_element">
+        <%= link_to t('layout.sidebar.global_menu.home'), :controller => 'home', :action => 'index' -%>
+      </div>
+      <div class="menu_element">
+        <%= link_to t('layout.sidebar.global_menu.blog'), :controller => 'blog', :action => 'index' -%>
+      </div>
+      <div class="menu_element">
+        <%= link_to t('layout.sidebar.global_menu.faq'), :controller => 'home', :action => 'faq' -%>
+      </div>
+      <div class="menu_element">
+        <%= link_to t('layout.sidebar.global_menu.contact'), :controller => 'home', :action => 'contact' -%>
+      </div>
+    </div>
 
-  <div class="menu_category"><%= t('layout.sidebar.catalog') -%></div>
-  <div>
-    <%= render :partial => 'partials/category_and_sub', :collection => Category.root_categories %>
+    <div class="menu_category">
+      <div class="menu_category_title">
+        <%= image_tag "menuheader_catalog_#{I18n.locale}.png", :width => 168, :height => 24, :alt => t('layout.sidebar.catalog') %>
+      </div>
+      <div style="text-align:left">
+        <%= render :partial => 'partials/category_and_sub', :collection => Category.root_categories %>
+      </div>
+    </div>
   </div>
 </div>

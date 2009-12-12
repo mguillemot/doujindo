@@ -1,3 +1,5 @@
 <div id="header">
-  <%= link_to 'Touhou Shop', { :controller => 'home' }, { :class => 'title_link' } -%>
+  <% link_to({ :controller => 'home' }) do %>
+      <%= image_tag 'header.jpg', :width => 1105, :height => 151, :alt => 'Touhou Shop' %>
+  <% end -%>
 </div>

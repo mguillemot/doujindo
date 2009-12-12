@@ -1,13 +1,36 @@
 <div id="navbar">
-  <%= link_to t('home.title'), { :controller => 'home' }, { :class => 'navbar_link' } %>
-  <% if @nav -%>
-    &gt;
-    <% @nav.each do |nav| -%>
-      <% if nav != @nav.last -%>
-        <%= link_to nav[0], nav[1] %> &gt;
-      <% else -%>
-        <%= nav[0] %>
-      <% end -%>
+  <div class="navbar_elements_container">
+    <% if @nav -%>
+        <div class="navbar_element">
+          <% link_to({ :controller => 'home' }, { :class => 'navbar_link' }) do %>
+              <%= image_tag 'nav_spacer.png', :width => 5, :height => 20, :alt => '', :class => 'navbar_image' %>
+              <%= t('home.title') %>
+              <%= image_tag 'nav_l.png', :width => 10, :height => 20, :alt => '', :class => 'navbar_image' %>
+          <% end %>
+        </div>
+        <% @nav.each do |nav| -%>
+            <% if nav != @nav.last -%>
+                <div class="navbar_element">
+                  <% link_to(nav[1], { :class => 'navbar_link' }) do %>
+                      <%= image_tag 'nav_r.png', :width => 10, :height => 20, :alt => '', :class => 'navbar_image' %>
+                      <%= nav[0] %>
+                      <%= image_tag 'nav_l.png', :width => 10, :height => 20, :alt => '', :class => 'navbar_image' %>
+                  <% end %>
+                </div>
+            <% else -%>
+                <div class="navbar_last_element">
+                  <%= image_tag 'nav_r.png', :width => 10, :height => 20, :alt => '', :class => 'navbar_image' %>
+                  <%= nav[0] %>
+                  <%= image_tag 'nav_l.png', :width => 10, :height => 20, :alt => '', :class => 'navbar_image' %>
+                </div>
+            <% end -%>
+        <% end -%>
+    <% else -%>
+        <div class="navbar_last_element">
+          <%= image_tag 'nav_spacer.png', :width => 5, :height => 20, :alt => '', :class => 'navbar_image' %>
+          <%= t('home.title') %>
+          <%= image_tag 'nav_l.png', :width => 10, :height => 20, :alt => '', :class => 'navbar_image' %>
+        </div>
     <% end -%>
-  <% end -%>
+  </div>
 </div>
