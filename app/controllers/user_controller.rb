@@ -1,6 +1,6 @@
 class UserController < ApplicationController
   before_filter :login_required, :only => [ :index, :orders, :order, :logout ]
-  before_filter :login_refused, :only => [ :register, :forgot_password, :login ]
+  before_filter :login_refused, :only => [ :register, :confirm_email, :forgot_password, :reset_password, :login ]
 
   def index
   end
@@ -46,33 +46,16 @@ class UserController < ApplicationController
   end
 
   def login
-    if request.post?
+    if request.post? and params[:user][:login] and params[:user][:password]
       user = User.authenticate(params[:user][:login], params[:user][:password])
       if user
-        user.login_count += + 1
-        user.last_login = DateTime.now
-        user.save!
-        session[:user] = user.id
-        session[:currency] = user.preferred_currency || default_currency_for(user.preferred_language)
-        logger.info "User #{user.id} logged successfully with preferred language '#{user.preferred_language}' (vs. '#{I18n.locale}') and currency '#{user.preferred_currency}' (vs. '#{session[:currency]}')"
-        if (user.preferred_language && I18n.locale != user.preferred_language)
-          logger.info "User-defined language is not the same as current language: switch!"
-          begin
-            parts = request.host.split('.')
-            parts[0] = find_subdomain_for_language(user.preferred_language) || 'www'
-            lang_host = parts.join('.')
-            redirect_to :controller => 'user', :action => 'index', :host => lang_host, :port => request.port
-          rescue URI::InvalidURIError
-            logger.error "Impossible to redirect to #{request.referer} after language switch to #{params[:id]}"
-            redirect_to controller => 'user', :action => 'index'
-          end
-        else
-          redirect_to :controller => 'user', :action => 'index'
-        end
+        do_login user
       else
         add_error t('alerts.login_failure')
         redirect_to request.referer
       end
+    else
+      redirect_to :controller => 'home'
     end
   end
 
@@ -89,10 +72,9 @@ class UserController < ApplicationController
       @user.preferred_language = I18n.locale.to_s
       @user.preferred_currency = @currency.id
       if @user.save
-        session[:user] = @user.id
         Notifier.deliver_registration_confirmation_request @user
-        add_notice t('alerts.confirmation_email_sent', {:email => @user.email})
-        redirect_to :action => 'index'
+        add_notice t('alerts.confirmation_email_sent', :email => @user.email, :login => @user.login)
+        do_login @user
       else
         add_error t('alerts.registration_error')
         @user.password = ''
@@ -102,7 +84,43 @@ class UserController < ApplicationController
   end
 
   def forgot_password
+    @email = ''
+    if request.post? and params[:email]
+      @email = params[:email]
+      user = User.find_by_email params[:email]
+      if user
+        user.lost_password_key = Utils.random_string(16)
+        user.lost_password_date = DateTime.now
+        user.save!
+        Notifier.deliver_password_forgotten user
+        add_notice_now t('alerts.forgotten_password_email_sent', :email => user.email)
+      else
+        add_error_now t('alerts.forgotten_password_no_such_email')
+      end
+    end
+  end
 
+  def reset_password
+    @user = User.find_by_lost_password_key params[:id]
+    if @user
+      minutes_ago = (Time.now - @user.lost_password_date)/1.minute
+      if minutes_ago > 30
+        logger.info "Operation expired: generated #{minutes_ago} minutes ago"
+        add_error t('alerts.reset_password_expired_key')
+        @user = nil
+        redirect_to :controller => 'user', :action => 'forgot_password'
+      else
+        if request.post? and params[:password] and params[:password] == params[:password_confirmation]
+          @user.password = params[:password]
+          @user.save!
+          add_notice t('alerts.reset_password_ok')
+          do_login @user
+        end
+      end
+    else
+      add_error t('alerts.reset_password_invalid_key')
+      redirect_to :controller => 'user', :action => 'forgot_password'
+    end
   end
 
   def confirm_email
@@ -122,8 +140,27 @@ class UserController < ApplicationController
 
   protected
 
-  def do_login
-    # TODO factoriser ici le login après inscription et le login "normal"
+  def do_login(user)
+    user.login_count += 1
+    user.last_login = DateTime.now
+    user.save!
+    session[:user] = user.id
+    session[:currency] = user.preferred_currency || default_currency_for(user.preferred_language)
+    logger.info "User #{user.id} logged successfully with preferred language '#{user.preferred_language}' (vs. '#{I18n.locale}') and currency '#{user.preferred_currency}' (vs. '#{session[:currency]}')"
+    if (user.preferred_language && I18n.locale != user.preferred_language)
+      logger.info "User-defined language is not the same as current language: switch!"
+      begin
+        parts = request.host.split('.')
+        parts[0] = find_subdomain_for_language(user.preferred_language) || 'www'
+        lang_host = parts.join('.')
+        redirect_to :controller => 'home', :host => lang_host, :port => request.port
+      rescue URI::InvalidURIError
+        logger.error "Impossible to redirect to #{request.referer} after language switch to #{params[:id]}"
+        redirect_to controller => 'home'
+      end
+    else
+      redirect_to :controller => 'home'
+    end
   end
 
 end

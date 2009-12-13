@@ -7,14 +7,11 @@ class User < ActiveRecord::Base
   validates_presence_of :login, :email
   validates_uniqueness_of :login, :email
   validates_confirmation_of :password, :on => :create
+  validates_confirmation_of :email, :on => :create
   validates_format_of :email, :with => /^([^@\s]+)@([^@\s\.])+\.[a-z]{2,}$/i, :message => "Invalid email"
 
-  attr_accessor :password, :password_confirmation
+  attr_accessor :password, :password_confirmation, :email_confirmation
   attr_protected :password_salt
-
-  def full_name
-    "#{first_name} #{last_name}"
-  end
 
   def confirmed?
     email_confirmation_date != nil

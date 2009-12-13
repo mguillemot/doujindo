@@ -8,14 +8,24 @@ en:
       title: "My home"
       nav: "My home"
     register:
-      title: "Register a new Touhou-Shop account"
-      nav: "Register user"
+      title: "Register a new Touhou Shop account"
+      nav: "New account"
       login: "Login"
       email: "E-mail"
       email_confirmation: "E-mail confirmation"
       password: "Password"
       password_confirmation: "Password confirmation"
       signup_button: "Signup"
+    forgot_password:
+      title: "Forgotten password retrieval"
+      nav: "Password retrieval"
+      explain: "You've lost your Touhou Shop account password? \"Don't panic!\" Just enter your e-mail address in the field below. We will then send you an e-mail with a link to the password reset page."
+      button: "Send me the instructions!"
+    reset_password:
+      title: "Reset forgotten password"
+      nav: "Password reset"
+      explain: "Choose a new password for user <strong>{{user}}</strong>:"
+      button: "Set as new password"
     orders:
       list:
         title: "My orders"
@@ -86,8 +96,13 @@ en:
     user_reload_failed: "Session error: please log in again"
     cart_reload_failed: "Session error: your cart has been emptied"
     registration_error: "Registration error"
-    confirmation_email_sent: "An e-mail containing a confirmation link has been sent to {{email}}. If you don't read it and confirm your address in the next 24 hours, this account will be automatically deleted."
+    confirmation_email_sent: "You are now logged as {{login}}.<br/><br/>An e-mail containing a confirmation link has been sent to {{email}}. If you don't confirm your address by clicking on the provided link in the next 24 hours, this account will be automatically desactivated."
     validation_email_sent: "Accout validation successful! A confirmation e-mail has been sent to {{email}}"
+    forgotten_password_email_sent: "An e-mail with detailled instructions for password retrieval has been sent to {{email}}."
+    forgotten_password_no_such_email: "No user was found with such e-mail." 
+    reset_password_invalid_key: "Invalid operation."
+    reset_password_expired_key: "Operation expired. Please try again..."
+    reset_password_ok: "Your password has been sucessfully changed."
     admin_only: "You need administrator privileges to access this page"
     invalid_item: "Invalid item"
     invalid_category: "Invalid category"
@@ -130,6 +145,8 @@ en:
         logged_as: "Logged as <strong>{{name}}</strong>"
         user_home: "User home"
         user_orders: "My orders"
+        new_account: "New account"
+        forgot_password: "Forgot password?"
       global_menu:
         title: "Global menu"
         home: "Shop home"
@@ -177,6 +194,10 @@ en:
 
   mail:
     registration_final_confirmation:
-      title: "[Touhou Shop] Registration successful!"
+      subject: "[Touhou Shop] Registration successful!"
     registration_confirmation_request:
-      title: "[Touhou Shop] Please confirm your registration"
+      subject: "[Touhou Shop] Please confirm your registration"
+    password_forgotten:
+      subject: "[Touhou Shop] Password forgotten?"
+    order_confirmation:
+      subject: "[Touhou Shop] Order #{{id}} confirmed"

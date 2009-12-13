@@ -1,4 +1,4 @@
-Dear <%= @user.full_name -%>,
+Dear <%= @user.login -%>,
 
 Your order #<%= @order.id -%> has been confirmed for <%= @order.currency.format_value(@order.total_price) -%>. We will send you another mail when we ship your items. You can also follow the status of your order any time in the "My Home" section of Touhou Shop website.
 

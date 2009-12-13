@@ -1,19 +1,25 @@
 class Notifier < ActionMailer::Base
   def registration_confirmation_request(user)
     common_infos user
-    subject I18n.t('mail.registration_confirmation_request.title')
+    subject I18n.t('mail.registration_confirmation_request.subject')
     body :user => user
   end
 
   def registration_final_confirmation(user)
     common_infos user
-    subject I18n.t('mail.registration_final_confirmation.title')
+    subject I18n.t('mail.registration_final_confirmation.subject')
+    body :user => user
+  end
+
+  def password_forgotten(user)
+    common_infos user
+    subject I18n.t('mail.password_forgotten.subject')
     body :user => user
   end
 
   def order_confirmation(order)
     common_infos order.client
-    subject "Order ##{order.id} confirmed"
+    subject I18n.t('mail.order_confirmation.subject', :id => order.id)
     body :user => order.client, :order => order
   end
 
@@ -21,7 +27,7 @@ class Notifier < ActionMailer::Base
 
   def common_infos(user)
     from 'Touhou Shop <noreply@touhou-shop.com>'
-    recipients "#{user.full_name} <#{user.email}>"
+    recipients user.email
   end
 
   private

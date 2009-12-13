@@ -67,6 +67,23 @@ class ApplicationController < ActionController::Base
     logger.debug debug
   end
 
+  def add_notice_now(notice)
+    flash.now[:notice] = notice
+    logger.info notice
+  end
+
+  def add_error_now(error)
+    flash.now[:error] = error
+    logger.error error
+  end
+
+  def add_debug_now(debug)
+    if admin?
+      flash.now[:debug] = debug
+    end
+    logger.debug debug
+  end
+
   def set_locale
     parsed_locale = LANGUAGE_BY_SUBDOMAIN[request.host.split('.').first]
     if parsed_locale

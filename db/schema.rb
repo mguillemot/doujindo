@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091207135600) do
+ActiveRecord::Schema.define(:version => 20091213075250) do
 
   create_table "blog_posts", :force => true do |t|
     t.string   "ident",      :null => false
@@ -239,8 +239,6 @@ ActiveRecord::Schema.define(:version => 20091207135600) do
     t.string   "login",                                      :null => false
     t.string   "password_hash",                              :null => false
     t.string   "password_salt",                              :null => false
-    t.string   "first_name",                                 :null => false
-    t.string   "last_name",                                  :null => false
     t.string   "email",                                      :null => false
     t.string   "preferred_language"
     t.integer  "preferred_currency"
@@ -251,6 +249,8 @@ ActiveRecord::Schema.define(:version => 20091207135600) do
     t.datetime "last_login"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "lost_password_key"
+    t.datetime "lost_password_date"
   end
 
   add_index "users", ["login"], :name => "index_users_on_login"

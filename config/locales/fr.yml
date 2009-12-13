@@ -16,6 +16,16 @@ fr:
       password: "Mot de passe"
       password_confirmation: "Confirmation du mot de passe"
       signup_button: "S'inscrire"
+    forgot_password:
+      title: "Mot de passe perdu ?"
+      nav: "Mot de passe perdu ?"
+      explain: "Vous avez perdu le mot de passe de votre compte Touhou Shop ? \"Pas de panique !\" Entrez simplement votre adresse e-mail dans le champ ci-dessous, et nous vous enverrons un lien pour changer directement de mot de passe."
+      button: "Envoyer les instructions"
+    reset_password:
+      title: "Reset forgotten password"
+      nav: "Password reset"
+      explain: "Choose a new password for user <strong>{{user}}</strong>:"
+      button: "Set as new password"
     orders:
       list:
         title: "Mes commandes"
@@ -89,8 +99,13 @@ fr:
     user_reload_failed: "Erreur de session : veuillez vous réauthentifier"
     cart_reload_failed: "Erreur de sssion : votre panier a été vidé"
     registration_error: "Echec de la création du nouveau compte client"
-    confirmation_email_sent: "Un e-mail contenant un lien de confirmation a été envoyé à {{email}}. Veuillez le lire et cliquer sur le lien sous 24 heures, faute de quoi ce compte sera désactivé."
+    confirmation_email_sent: "Vous êtres maintenant connecté en tant que <strong>{{login}}</strong>.<br/><br/>Un e-mail contenant un lien de confirmation a été envoyé à {{email}}. Veuillez cliquer sur ce lien sous 24 heures, faute de quoi ce compte sera désactivé."
     validation_email_sent: "Création du compte terminée ! Un e-mail de confirmation a été envoyé à {{email}}"
+    forgotten_password_email_sent: "Un e-mail contenant des instructions détaillées pour changer votre mot de passe a été envoyé à {{email}}."
+    forgotten_password_no_such_email: "Cet e-mail ne correspond à aucun utilisateur."
+    reset_password_invalid_key: "Opération invalide." 
+    reset_password_expired_key: "Operation expirée. Veuillez réessayer à nouveau..."
+    reset_password_ok: "Votre mot de passe a été modifié."
     admin_only: "Seuls les administrateurs peuvent accéder à cette page"
     invalid_item: "Article inconnu"
     invalid_category: "Catégorie inconnue"
@@ -133,6 +148,8 @@ fr:
         logged_as: "Utilisateur : <strong>{{name}}</strong>"
         user_home: "Accueil utilisateur"
         user_orders: "Mes commandes"
+        new_account: "Nouveau client"
+        forgot_password: "MdP perdu?"
       global_menu:
         title: "Menu général"
         home: "Accueil de la boutique"
@@ -192,9 +209,13 @@ fr:
 
   mail:
     registration_final_confirmation:
-      title: "[Touhou Shop] Inscription confirmée !"
+      subject: "[Touhou Shop] Inscription confirmée !"
     registration_confirmation_request:
-      title: "[Touhou Shop] Veuillez confirmer votre inscription"
+      subject: "[Touhou Shop] Veuillez confirmer votre inscription"
+    password_forgotten:
+      subject: "[Touhou Shop] Mot de passe perdu ?"
+    order_confirmation:
+      subject: "[Touhou Shop] Commande #{{id}} confirmée"
 
   date:
     formats:

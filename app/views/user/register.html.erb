@@ -106,18 +106,14 @@
         }
 
         function validate_email() {
-            if ($(this).val().match(/^[\d\w_\-\.]+@([\d\w_\-]+\.)+[a-zA-Z]+$/)) {
+            if ($('#user_email').val().match(/^[\d\w_\-\.]+@([\d\w_\-]+\.)+[a-zA-Z]+$/)) {
                 $('#user_email_check').attr('src', '/images/validator_ok.png');
                 email_ok = true;
             } else {
                 $('#user_email_check').attr('src', '/images/validator_ko.png');
                 email_ok = false;
             }
-            activate_submit();
-        }
-
-        function validate_email_confirmation() {
-            if ($(this).val() == $('#user_email').val()) {
+            if ($('#user_email_confirmation').val() == $('#user_email').val()) {
                 $('#user_email_confirmation_check').attr('src', '/images/validator_ok.png');
                 email_confirmation_ok = true;
             } else {
@@ -128,18 +124,14 @@
         }
 
         function validate_password() {
-            if ($(this).val().match(/^[^\s]{6,40}$/)) {
+            if ($('#user_password').val().match(/^[^\s]{6,40}$/)) {
                 $('#user_password_check').attr('src', '/images/validator_ok.png');
                 password_ok = true;
             } else {
                 $('#user_password_check').attr('src', '/images/validator_ko.png');
                 password_ok = false;
             }
-            activate_submit();
-        }
-
-        function validate_password_confirmation() {
-            if ($(this).val() == $('#user_password').val()) {
+            if ($('#user_password_confirmation').val() == $('#user_password').val()) {
                 $('#user_password_confirmation_check').attr('src', '/images/validator_ok.png');
                 password_confirmation_ok = true;
             } else {
@@ -151,8 +143,8 @@
 
         $('#user_login').keyup(validate_login).change(validate_login);
         $('#user_email').keyup(validate_email).change(validate_email);
-        $('#user_email_confirmation').keyup(validate_email_confirmation).change(validate_email_confirmation);
+        $('#user_email_confirmation').keyup(validate_email).change(validate_email);
         $('#user_password').keyup(validate_password).change(validate_password);
-        $('#user_password_confirmation').keyup(validate_password_confirmation).change(validate_password_confirmation);
+        $('#user_password_confirmation').keyup(validate_password).change(validate_password);
     });
 </script>
