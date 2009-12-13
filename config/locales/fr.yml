@@ -130,6 +130,7 @@ fr:
         password: "Mot de passe:"
         login_button: "S'identifier"
         logout_button: "Se déconnecter"
+        logged_as: "Utilisateur : <strong>{{name}}</strong>"
         user_home: "Accueil utilisateur"
         user_orders: "Mes commandes"
       global_menu:

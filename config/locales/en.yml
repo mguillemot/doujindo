@@ -127,6 +127,7 @@ en:
         password: "Password:"
         login_button: "Login"
         logout_button: "Logout"
+        logged_as: "Logged as <strong>{{name}}</strong>"
         user_home: "User home"
         user_orders: "My orders"
       global_menu:
