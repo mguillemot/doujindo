@@ -129,9 +129,9 @@ fr:
       by-availability: "Disponibilité"
     item:
       type: "Type :"
-      availability0: "Pas de stock"
-      availability1: "Disponible en pré-commande"
-      availability2: "Disponible immédiatement"
+      availability0: '<span class="availability0">Pas de stock</span>'
+      availability1: '<span class="availability1">Disponible en pré-commande</span>'
+      availability2: '<span class="availability2">Disponible immédiatement</span>'
 
   layout:
     sidebar:

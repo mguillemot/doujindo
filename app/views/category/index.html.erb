@@ -6,32 +6,23 @@
       <%= button_to 'New', :action => 'new_item', :id => @category %>
     </div>
 <% end -%>
-<div class="category_sort">
-  <%= t('category.order.title') %>
-  <%= (@sort == 'last-added') ? "<strong>#{t('category.order.last-added')}</strong>" : (link_to t('category.order.last-added'), :sort => 'last-added', :page => 1) %>
-  |
-  <%= (@sort == 'by-name') ? "<strong>#{t('category.order.by-name')}</strong>" : (link_to t('category.order.by-name'), :sort => 'by-name', :page => 1) %>
-  |
-  <%= (@sort == 'by-price') ? "<strong>#{t('category.order.by-price')}</strong>" : (link_to t('category.order.by-price'), :sort => 'by-price', :page => 1) %>
-  |
-  <%= (@sort == 'by-type') ? "<strong>#{t('category.order.by-type')}</strong>" : (link_to t('category.order.by-type'), :sort => 'by-type', :page => 1) %>
-  |
-  <%= (@sort == 'by-availability') ? "<strong>#{t('category.order.by-availability')}</strong>" : (link_to t('category.order.by-availability'), :sort => 'by-availability', :page => 1) %>
-</div>
-<div class="category_pages">
-  Page
-  <% 1.upto(@npages) do |i| -%>
-      <% if @page == i -%>
-          <%= "<strong>#{i}</strong>" %>
-      <% else -%>
-          <%= link_to i.to_s, :page => i %>
-      <% end -%>
-  <% end -%>
-</div>
-<div class="category_items">
-  <% unless @display_items.empty? -%>
+<% unless @display_items.empty? -%>
+    <%= render :partial => 'controls' %>
+    <table cellpadding="0" cellspacing="0" class="category_items">
+      <tbody>
       <%= render :partial => 'category/item', :collection => @display_items %>
-  <% else -%>
-      <%= t('category.empty') -%>
-  <% end -%>
-</div>
+      </tbody>
+    </table>
+    <%= render :partial => 'controls' %>
+<% else -%>
+    <div><%= t('category.empty') -%></div>                             
+<% end -%>
+<script type="text/javascript">
+    $(function() {
+        $('.category_item').click(function() {
+            var id = $(this).attr('id').substr(14);
+            var url_base = '/item/';
+            window.location = url_base + id;
+        });
+    });
+</script>

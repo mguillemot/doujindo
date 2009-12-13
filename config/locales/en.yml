@@ -126,9 +126,9 @@ en:
       by-availability: "Availability"
     item:
       type: "Type:"
-      availability0: "Not in stock"
-      availability1: "Available for preorder"
-      availability2: "Available now"
+      availability0: '<span class="availability0">Not in stock</span>'
+      availability1: '<span class="availability1">Available for preorder</span>'
+      availability2: '<span class="availability2">Available now</span>'
 
   layout:
     sidebar:

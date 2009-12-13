@@ -265,7 +265,7 @@ a:visited.navbar_link {
     color: #696969;
 }
 
-/* --- PAGE: new account creation --- */
+/* --- PAGES: new account creation, forgot password, reset password --- */
 
 .register_content {
     position: relative;
@@ -327,13 +327,22 @@ a:visited.navbar_link {
 
 /* --- PAGE: category view --- */
 
+.category_controls {
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+
+.category_sort {
+    float: left;
+}
+
+.category_pages {
+    float: right;
+}
+
 .category_items {
     display: table;
     width: 100%;
-}
-
-.category_item {
-    display: table-row;
 }
 
 .category_item.even {
@@ -344,21 +353,48 @@ a:visited.navbar_link {
     background-color: #ffecec;
 }
 
+.category_item.hidden_item {
+    background-color: red;
+}
+
+.category_item:hover {
+    background-color: #ffacae;
+}
+
 .category_item_picture {
-    display: table-cell;
     width: 100px;
     padding: 5px;
+    text-align: center;
     vertical-align: middle;
 }
 
 .category_item_description {
-    display: table-cell;
     width: auto;
     vertical-align: middle;
 }
 
+.category_item_description_type {
+    font-size: small;
+    color: #696969;
+}
+
+.category_item_description_availability {
+    font-size: small;
+}
+
+.availability0 { /* not in stock */
+    color: red;
+}
+
+.availability1 { /* preorder */
+    color: blue;
+}
+
+.availability2 { /* OK */
+    color: green;
+}
+
 .category_item_price {
-    display: table-cell;
     width: 100px;
     text-align: center;
     vertical-align: middle;
