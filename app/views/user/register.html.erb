@@ -5,83 +5,95 @@
   <% form_for :user, @user, :url => { :action => 'register' } do |f| %>
       <div class="register_error"><%= error_messages_for 'user' %></div>
 
-      <div class="register_field even">
-        <label for="user_login" class="register_field_label">
-          <%= t('user.register.login') -%>
-        </label>
+      <table cellpadding="0" cellspacing="1" class="register_content">
+        <tbody>
+        <tr class="register_field even">
+          <td class="register_field_label">
+            <label for="user_login">
+              <%= t('user.register.login') %>
+            </label>
+          </td>
+          <td class="register_field_value">
+            <%= f.text_field :login, :size => 8 %>
+            <span class="register_field_check">
+              <%= image_tag 'validator_help.png', :width => 16, :height => 16, :alt => '', :id => 'user_login_check' %>
+            </span>
+          </td>
+        </tr>
 
-        <div class="register_field_value">
-          <%= f.text_field :login, :size => 8 %>
-          <span class="register_field_check">
-            <%= image_tag 'validator_help.png', :width => 16, :height => 16, :alt => '', :id => 'user_login_check' %>
-          </span>
-        </div>
-      </div>
+        <tr class="register_field odd">
+          <td class="register_field_label">
+            <label for="user_email">
+              <%= t('user.register.email') %>
+            </label>
+          </td>
+          <td class="register_field_value">
+            <%= f.text_field :email, :size => 20 %>
+            <span class="register_field_check">
+              <%= image_tag 'validator_help.png', :width => 16, :height => 16, :alt => '', :id => 'user_email_check' %>
+            </span>
+          </td>
+        </tr>
 
-      <div class="register_field odd">
-        <label for="user_email" class="register_field_label">
-          <%= t('user.register.email') -%>
-        </label>
-
-        <div class="register_field_value">
-          <%= f.text_field :email, :size => 20 %>
-          <span class="register_field_check">
-            <%= image_tag 'validator_help.png', :width => 16, :height => 16, :alt => '', :id => 'user_email_check' %>
-          </span>
-        </div>
-      </div>
-
-      <div class="register_field even">
-        <label for="user_email_confirmation" class="register_field_label">
-          <%= t('user.register.email_confirmation') -%>
-        </label>
-
-        <div class="register_field_value">
-          <%= f.text_field :email_confirmation, :size => 20 %>
-          <span class="register_field_check">
+        <tr class="register_field even">
+          <td class="register_field_label">
+            <label for="user_email_confirmation">
+              <%= t('user.register.email_confirmation') %>
+            </label>
+          </td>
+          <td class="register_field_value">
+            <%= f.text_field :email_confirmation, :size => 20 %>
+            <span class="register_field_check">
             <%= image_tag 'validator_help.png', :width => 16, :height => 16, :alt => '', :id => 'user_email_confirmation_check' %>
           </span>
-        </div>
-      </div>
+          </td>
+        </tr>
 
-      <div class="register_field odd">
-        <label for="user_password" class="register_field_label">
-          <%= t('user.register.password') -%>
-        </label>
-
-        <div class="register_field_value">
-          <%= f.password_field :password, :size => 8 %>
-          <span class="register_field_check">
+        <tr class="register_field odd">
+          <td class="register_field_label">
+            <label for="user_password">
+              <%= t('user.register.password') %>
+            </label>
+          </td>
+          <td class="register_field_value">
+            <%= f.password_field :password, :size => 8 %>
+            <span class="register_field_check">
             <%= image_tag 'validator_help.png', :width => 16, :height => 16, :alt => '', :id => 'user_password_check' %>
           </span>
-        </div>
-      </div>
+          </td>
+        </tr>
 
-      <div class="register_field even">
-        <label for="user_password_confirmation" class="register_field_label">
-          <%= t('user.register.password_confirmation') -%>
-        </label>
-
-        <div class="register_field_value">
-          <%= f.password_field :password_confirmation, :size => 8 %>
-          <span class="register_field_check">
+        <tr class="register_field even">
+          <td class="register_field_label">
+            <label for="user_password_confirmation">
+              <%= t('user.register.password_confirmation') %>
+            </label>
+          </td>
+          <td class="register_field_value">
+            <%= f.password_field :password_confirmation, :size => 8 %>
+            <span class="register_field_check">
             <%= image_tag 'validator_help.png', :width => 16, :height => 16, :alt => '', :id => 'user_password_confirmation_check' %>
           </span>
-        </div>
-      </div>
-
-      <div class="register_submit">
-        <%= submit_tag t('user.register.signup_button'), :disabled => true, :id => 'signup_button' %>
-      </div>
+          </td>
+        </tr>
+        <tr class="register_field odd">
+          <td class="register_submit" colspan="2">
+            <%= submit_tag t('user.register.signup_button'), :disabled => true, :id => 'signup_button' %>
+          </td>
+        </tr>
+        </tbody>
+      </table>
   <% end %>
 </div>
 <script type="text/javascript">
     $(function() {
         var login_ok, email_ok, email_confirmation_ok, password_ok, password_confirmation_ok = false;
+
         function activate_submit() {
             var ok = login_ok && email_ok && email_confirmation_ok && password_ok && password_confirmation_ok;
             $('#signup_button').attr('disabled', !ok);
         }
+
         function validate_login() {
             if ($(this).val().match(/^[\d\w_\-]{3,40}$/)) {
                 $('#user_login_check').attr('src', '/images/validator_ok.png');
@@ -92,6 +104,7 @@
             }
             activate_submit();
         }
+
         function validate_email() {
             if ($(this).val().match(/^[\d\w_\-\.]+@([\d\w_\-]+\.)+[a-zA-Z]+$/)) {
                 $('#user_email_check').attr('src', '/images/validator_ok.png');
@@ -102,6 +115,7 @@
             }
             activate_submit();
         }
+
         function validate_email_confirmation() {
             if ($(this).val() == $('#user_email').val()) {
                 $('#user_email_confirmation_check').attr('src', '/images/validator_ok.png');
@@ -112,6 +126,7 @@
             }
             activate_submit();
         }
+
         function validate_password() {
             if ($(this).val().match(/^[^\s]{6,40}$/)) {
                 $('#user_password_check').attr('src', '/images/validator_ok.png');
@@ -122,6 +137,7 @@
             }
             activate_submit();
         }
+
         function validate_password_confirmation() {
             if ($(this).val() == $('#user_password').val()) {
                 $('#user_password_confirmation_check').attr('src', '/images/validator_ok.png');
@@ -132,6 +148,7 @@
             }
             activate_submit();
         }
+
         $('#user_login').keyup(validate_login).change(validate_login);
         $('#user_email').keyup(validate_email).change(validate_email);
         $('#user_email_confirmation').keyup(validate_email_confirmation).change(validate_email_confirmation);

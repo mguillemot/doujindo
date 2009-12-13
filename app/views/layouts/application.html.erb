@@ -27,32 +27,45 @@
 <body>
 <div id="page">
   <%= render :partial => 'partials/header' %>
-  <div id="content_container_top"></div>
-  <div id="content_container" class="clearfix">
-    <%= render :partial => 'partials/left_sidebar' %>
-    <div id="twocols" class="clearfix">
-      <div id="centercol">
-        <div id="content">
-          <%= render :partial => 'partials/navbar' %>
-          <% if flash[:debug] -%>
-              <div id="debug"><%= flash[:debug] -%></div>
-          <% end -%>
-          <% if flash[:notice] -%>
-              <div id="notice"><%= flash[:notice] -%></div>
-          <% end -%>
-          <% if flash[:error] -%>
-              <div id="error"><%= flash[:error] -%></div>
-          <% end -%>
-          <%= yield %>
-        </div>
-      </div>
-      <%= render :partial => 'partials/right_sidebar' %>
-    </div>
+  <div>
+    <table id="content_table" cellpadding="0" cellspacing="0">
+      <tr>
+        <td colspan="3" id="content_container_top"></td>
+      </tr>
+      <tr>
+        <td id="left_sidebar">
+          <%= render :partial => 'partials/left_sidebar' %>
+        </td>
+        <td id="centercol">
+          <div id="content">
+            <%= render :partial => 'partials/navbar' %>
+            <% if flash[:debug] -%>
+                <div id="debug"><%= flash[:debug] -%></div>
+            <% end -%>
+            <% if flash[:notice] -%>
+                <div id="notice"><%= flash[:notice] -%></div>
+            <% end -%>
+            <% if flash[:error] -%>
+                <div id="error"><%= flash[:error] -%></div>
+            <% end -%>
+            <%= yield %>
+          </div>
+        </td>
+        <td id="right_sidebar">
+          <%= render :partial => 'partials/right_sidebar' %>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="3" id="content_container_bottom"></td>
+      </tr>
+    </table>
   </div>
-  <div id="content_container_bottom"></div>
-  <div id="footer">
-    <div id="footer_content">Touhou Shop © 2009</div>
-  </div>
+  <table cellpadding="0" cellspacing="0" id="footer">
+    <tr>
+      <td id="footer_content">Touhou Shop © 2009</td>
+    </tr>
+  </table>
+</div>
 </div>
 </body>
 </html>

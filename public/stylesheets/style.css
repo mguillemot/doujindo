@@ -3,8 +3,14 @@
 html, body {
     margin: 0;
     padding: 0;
-    text-align: center; /* IE compatibility of centered #content */
+    text-align: center; /* IE compatibility of centered #page */
     background: #ffecec url("../images/background.png") repeat-x;
+}
+
+img, table, tr, td {
+    border: 0;
+    margin: 0;
+    padding: 0;
 }
 
 a {
@@ -13,6 +19,10 @@ a {
 
 a:hover {
     color: #f20000;
+}
+
+h1 {
+    color: black;
 }
 
 /* --- APPLICATION LAYOUT --- */
@@ -35,62 +45,31 @@ a:hover {
 #content_container_top {
     width: 1105px;
     height: 17px;
-    background: white url("../images/content_bg_top.jpg") no-repeat;
-}
-
-#content_container {
-    width: 1105px;
-    background: white url("../images/content_bg_slice.jpg") repeat-y;
+    background: white url("../images/content_bg_top.png") no-repeat;
 }
 
 #content_container_bottom {
     width: 1105px;
     height: 17px;
-    background: white url("../images/content_bg_bottom.jpg") no-repeat;
-}
-
-#footer {
-    margin: 7px 0 7px 0;
-    width: 1105px;
-    height: 28px;
-    background: white url("../images/footer.jpg") no-repeat;
-    clear: both;
-    display: table;
-}
-
-#footer_content {
-    color: #696969;
-    text-align: center;
-    font-size: small;
-    vertical-align: middle;
-    display: table-cell;
+    background: white url("../images/content_bg_bottom.png") no-repeat;
 }
 
 #left_sidebar {
-    position: relative;
-    top: -10px;
     width: 213px;
-    float: left;
-}
-
-#twocols {
-    width: 892px;
-    position: relative;
-    float: right;
-}
-
-#right_sidebar {
-    position: relative;
-    top: -10px;
-    width: 213px;
-    float: right;
+    background: white url("../images/content_bg_left.png") repeat-y;
+    vertical-align: top;
 }
 
 #centercol {
-    position: relative;
-    top: -10px;
-    float: left;
     width: 679px;
+    background: white;
+    vertical-align: top;
+}
+
+#right_sidebar {
+    width: 213px;
+    background: white url("../images/content_bg_right.png") repeat-y;
+    vertical-align: top;
 }
 
 #content {
@@ -100,16 +79,18 @@ a:hover {
     background-color: white;
 }
 
-.clearfix:after {
-    content: ".";
-    display: block;
-    height: 0;
-    clear: both;
-    visibility: hidden;
+#footer {
+    margin: 7px 0 7px 0;
+    width: 1105px;
+    height: 28px;
+    background: white url("../images/footer.jpg") no-repeat;
 }
 
-.clearfix {
-    display: inline-block;
+#footer_content {
+    color: #696969;
+    text-align: center;
+    font-size: small;
+    vertical-align: middle;
 }
 
 @media print {
@@ -135,6 +116,8 @@ a:hover {
     text-align: left;
     padding: 5px;
     border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
 }
 
 .navbar_elements_container {
@@ -184,18 +167,21 @@ a:visited.navbar_link {
 /* --- SIDE BARS --- */
 
 .sidebar_group {
-    display: table;
-    width: 100%;
+    width: 179px;
     background-color: #ffa2a4;
     border: #ff6a6f 1px solid;
     text-align: center;
     border-radius: 8px;
+    -moz-border-radius: 8px;
+    -webkit-border-radius: 8px;
     padding: 8px;
 }
 
-.sidebar_group hr {
-    border-style: none;
+.sidebar_group div.hr {
     width: 100%;
+    height: 1px;
+    margin-top: 7px;
+    margin-bottom: 6px;
     border-bottom: 1px solid #ff6a6f;
 }
 
@@ -283,13 +269,7 @@ a:visited.navbar_link {
 
 .register_content {
     position: relative;
-    display: table;
     left: 50px;
-}
-
-.register_field {
-    display: table-row;
-    width: 100%;
 }
 
 .register_field.even {
@@ -301,15 +281,13 @@ a:visited.navbar_link {
 }
 
 .register_field_label {
-    display: table-cell;
     width: 200px;
     text-align: right;
-    padding-right: 5px;
+    padding-right: 8px;
     border-right: 1px solid #ffacae;
 }
 
 .register_field_value {
-    display: table-cell;
     width: 200px;
     padding-left: 5px;
 }

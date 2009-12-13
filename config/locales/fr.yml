@@ -10,33 +10,12 @@ fr:
     register:
       title: "Créer un nouveau compte client"
       nav: "Créer un compte"
-      login: "Identifiant :"
-      first_name: "Prénom :"
-      last_name: "Nom :"
-      email: "E-mail :"
-      email_confirmation: "Confirmation de l'e-mail :"
-      password: "Mot de passe :"
-      password_confirmation: "Confirmation du mot de passe :"
+      login: "Identifiant"
+      email: "E-mail"
+      email_confirmation: "Confirmation de l'e-mail"
+      password: "Mot de passe"
+      password_confirmation: "Confirmation du mot de passe"
       signup_button: "S'inscrire"
-    addresses:
-      view:
-        title: "Mes adresses"
-        nav: "Mes adresses"
-        country: "Pays :"
-        additional_infos: "Infos supplémentaires :"
-        no_additional_infos: "(aucune)"
-        edit_button: "Editer"
-        add_button: "Ajouter une adresse"
-      edit:
-        title: "Modifier une adresse"
-        nav: "Modifier une adresse"
-        full_address: "Adresse complète"
-        country: "Pays"
-        notes: "Infos supplémentaires"
-        submit_button: "Valider"
-      new:
-        title: "Ajouter une nouvelle adresse"
-        nav: "Ajouter une nouvelle adresse"
     orders:
       list:
         title: "Mes commandes"
