@@ -241,15 +241,45 @@ a:visited.navbar_link {
 /* --- FLASH --- */
 
 #error {
+    position: relative;
+    left: 5px;
+    width: 660px;
+    height: 100px;
+    background: white url("../images/flash_cirno.png");
+}
+
+#error_content {
+    position: relative;
+    top: 20px;
+    left: 110px;
+    width: 540px;
+    height: 55px;
     color: red;
+    vertical-align: middle;
+    text-align: center;
 }
 
 #notice {
-    color: darkslateblue;
+    position: relative;
+    left: 5px;
+    width: 660px;
+    height: 100px;
+    background: white url("../images/flash_marisa.png");
+}
+
+#notice_content {
+    position: relative;
+    top: 20px;
+    left: 110px;
+    width: 540px;
+    height: 55px;
+    color: black;
+    vertical-align: middle;
+    text-align: center;
 }
 
 #debug {
-    color: green;
+    background: yellow;
 }
 
 /* --- CART --- */
