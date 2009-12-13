@@ -61,8 +61,8 @@ class UserController < ApplicationController
 
   def logout
     session[:user] = nil
-    add_notice "Logged out"
-    redirect_to :controller => 'home'
+    add_notice t('alerts.logged_out')
+    redirect_to request.referer
   end
 
   def register
@@ -145,21 +145,23 @@ class UserController < ApplicationController
     user.last_login = DateTime.now
     user.save!
     session[:user] = user.id
-    session[:currency] = user.preferred_currency || default_currency_for(user.preferred_language)
     logger.info "User #{user.id} logged successfully with preferred language '#{user.preferred_language}' (vs. '#{I18n.locale}') and currency '#{user.preferred_currency}' (vs. '#{session[:currency]}')"
-    if (user.preferred_language && I18n.locale != user.preferred_language)
+    logger.info "Referer was #{request.referer}"
+    session[:currency] = user.preferred_currency || default_currency_for(user.preferred_language)
+    if user.preferred_language != nil and I18n.locale.to_s != user.preferred_language
       logger.info "User-defined language is not the same as current language: switch!"
       begin
-        parts = request.host.split('.')
+        redirect = URI.parse(request.referer)
+        parts = redirect.host.split('.')
         parts[0] = find_subdomain_for_language(user.preferred_language) || 'www'
-        lang_host = parts.join('.')
-        redirect_to :controller => 'home', :host => lang_host, :port => request.port
+        redirect.host = parts.join('.')
+        redirect_to redirect.to_s
       rescue URI::InvalidURIError
         logger.error "Impossible to redirect to #{request.referer} after language switch to #{params[:id]}"
-        redirect_to controller => 'home'
+        redirect_to request.referer
       end
     else
-      redirect_to :controller => 'home'
+      redirect_to request.referer
     end
   end
 

@@ -90,6 +90,7 @@ en:
       msg: "Your order has been validated successfully. An e-mail confirmation has been sent to {{email}}. We will send you another e-mail when we ship your order. You can also view the status of your order in <strong>My Home</strong> any time. Thank you for purchasing at Touhou Shop!"
 
   alerts:
+    logged_out: "Logged out."
     login_failure: "Login failure"
     please_login: "Please login or create an account to continue"
     please_logout: "Please logout to continue"

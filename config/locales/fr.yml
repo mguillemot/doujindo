@@ -93,6 +93,7 @@ fr:
       msg: "Votre commande a été confirmée avec succès. Un e-mail de récapitulatif vous a été envoyé à {{email}}. Nous vous enverrons un 2è e-mail lors de l'envoi de commande. Vous pouvez également suivre l'état de cette dernière à tout moment dans la section <strong>Mes commandes</strong>. Merci d'avoir utilisé Touhou Shop !"
 
   alerts:
+    logged_out: "Session fermée."
     login_failure: "Erreur d'authentification"
     please_login: "Veuillez vous identifier ou créer un compte client pour pouvoir continuer"
     please_logout: "Veuillez vous déconnecter pour pouvoir continuer"

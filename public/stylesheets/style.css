@@ -246,6 +246,7 @@ a:visited.navbar_link {
     width: 660px;
     height: 100px;
     background: white url("../images/flash_cirno.png");
+    margin-top: 8px;
 }
 
 #error_content {
@@ -265,6 +266,7 @@ a:visited.navbar_link {
     width: 660px;
     height: 100px;
     background: white url("../images/flash_marisa.png");
+    margin-top: 8px;
 }
 
 #notice_content {
