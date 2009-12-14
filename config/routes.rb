@@ -9,6 +9,7 @@ ActionController::Routing::Routes.draw do |map|
   #   map.purchase 'products/:id/purchase', :controller => 'catalog', :action => 'purchase'
   # This route can be invoked with purchase_url(:id => product.id)
   map.connect 'item/:ident', :controller => 'item', :action => 'index', :ident => /[a-z][a-z0-9_-]+/
+  map.connect 'category/new_item/:id', :controller => 'category', :action => 'new_item'
   map.connect 'category/:ident/:sort/:page', :controller => 'category', :action => 'index', :ident => /[a-z][a-z0-9_-]+/, :sort => 'last-added', :page => 1
   map.connect 'blog/new', :controller => 'blog', :action => 'new'
   map.connect 'blog/:ident', :controller => 'blog', :action => 'view', :ident => /[a-z][a-z0-9_-]+/
