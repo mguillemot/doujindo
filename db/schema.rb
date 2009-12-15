@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091213075250) do
+ActiveRecord::Schema.define(:version => 20091214024831) do
 
   create_table "blog_posts", :force => true do |t|
     t.string   "ident",      :null => false
@@ -141,6 +141,7 @@ ActiveRecord::Schema.define(:version => 20091213075250) do
     t.boolean  "show",                         :default => false, :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "original_title"
   end
 
   add_index "items", ["category_id"], :name => "index_items_on_category_id"

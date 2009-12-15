@@ -153,8 +153,7 @@ fr:
         forgot_password: "MdP perdu?"
       global_menu:
         title: "Menu général"
-        home: "Accueil de la boutique"
-        register: "Nouveau compte"
+        home: "Accueil"
         blog: "Blog"
         faq: "FAQ"
         contact: "Contact"
@@ -163,14 +162,14 @@ fr:
 
   item:
     title: "Titre"
-    price: "Prix"
+    price: "Prix :"
     description: "Description"
     availability:
       title: "Disponibilité"
       preorder: "peut être précommandé jusqu'au {{end}}"
       new:
-        one: "neuf sous blister : {{count}} restant (envoi sous 24 heures)"
-        other: "neuf sous blister : {{count}} restants (envoi sous 24 heures)"
+        one: '<span class="availability2">disponible</span> ({{count}} restant)'
+        other: '<span class="availability2">disponible</span> ({{count}} restants)'
       purchase:
         one: "neuf sous blister : {{count}} restant (envoi sous 3 jours)"
         other: "neuf sous blister : {{count}} restants (envoi sous 3 jours)"
@@ -186,9 +185,9 @@ fr:
       poor_condition:
         one: "occasion, état mauvais: {{count}} restant (envoi sous 24 heures)"
         other: "occasion, état mauvais: {{count}} restants (envoi sous 24 heures)"
-      na: "non disponible"
+      na: '<span class="availability0">en rupture</span>'
     add_to_cart: "Ajouter au panier"
-    author: "Auteur"
+    author: "Par {{author}}"
     type: "Type"
     pictures:
       title: "Photos"

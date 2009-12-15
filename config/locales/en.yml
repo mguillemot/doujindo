@@ -150,8 +150,7 @@ en:
         forgot_password: "Forgot password?"
       global_menu:
         title: "Global menu"
-        home: "Shop home"
-        register: "Create new account"
+        home: "Home"
         blog: "Blog"
         faq: "FAQ"
         contact: "Contact"
@@ -160,20 +159,20 @@ en:
 
   item:
     title: "Title"
-    price: "Price"
+    price: "Price:"
     description: "Description"
     availability:
       title: "Availability"
       preorder: "can be pre-ordered until {{end}}"
-      new: "sealed new: {{count}} left (ships within 24 hours)"
+      new: '<span class="availability2">available now</span> (max {{count}})'
       purchase: "sealed new: {{count}} left (ships within 3 days)"
       perfect_condition: "non-sealed new: {{count}} left (ships within 24 hours)"
       good_condition: "used, good condition: {{count}} left (ships within 24 hours)"
       medium_condition: "used, medium condition: {{count}} left (ships within 24 hours)"
       poor_condition: "used, poor condition: {{count}} left (ships within 24 hours)"
-      na: "not available"
+      na: '<span class="availability0">out of stock</span>'
     add_to_cart: "Add to cart"
-    author: "Author"
+    author: "By {{author}}"
     type: "Type"
     pictures:
       title: "Pictures"
