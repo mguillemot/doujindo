@@ -500,8 +500,71 @@ a:visited.navbar_link {
     vertical-align: middle;
 }
 
-/* --- PAGE: checkout --- */
+/* --- PAGEs: cart view & checkout --- */
 
 .shipment_price {
     color: red;
 }
+
+.cart {
+    margin-left: 50px;
+    vertical-align: middle;
+}
+
+.cart th {
+    text-align: center;
+}
+
+.cart_item {
+    height: 25px;
+}
+
+.cart_item.odd {
+    background-color: #ffecec;
+}
+
+.cart_item.even {
+    background-color: #ffdfe0;
+}
+
+.cart_item_delete {
+    width: 30px;
+    text-align: center;
+    border-right: 1px solid #ffacae;
+}
+
+.cart_item_title {
+    padding-left: 8px;
+    padding-right: 8px;
+    width: 300px;
+    text-align: left;
+    border-right: 1px solid #ffacae;
+}
+
+.cart_item_unit_price {
+    width: 80px;
+    text-align: center;
+    border-right: 1px solid #ffacae;
+}
+
+.cart_item_quantity {
+    width: 80px;
+    text-align: center;
+    border-right: 1px solid #ffacae;
+}
+
+.cart_total {
+    border-right: 1px solid #ffacae;
+    padding-left: 8px;
+}
+
+.cart_item_total_price {
+    width: 80px;
+    text-align: center;
+}
+
+.register_submit {
+    width: 100%;
+    text-align: center;
+}
+

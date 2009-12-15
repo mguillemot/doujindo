@@ -62,14 +62,11 @@ en:
     edit:
       nav: "View & edit cart"
       title: "Shopping cart summary"
-      delete: "Delete?"
-      number: "#"
       item: "Item"
-      quantity: "Quantity"
+      quantity: "Qty."
       unit_price: "Unit price"
       total_price: "Total price"
       grand_total: "TOTAL w/o shipping"
-      delete_button: "Delete"
       clear_button: "Clear"
       checkout_button: "Checkout &gt;"
 

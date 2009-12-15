@@ -62,14 +62,11 @@ fr:
     edit:
       nav: "Editer panier"
       title: "Résumé du panier"
-      delete: "Supprimer ?"
-      number: "#"
       item: "Article"
-      quantity: "Quantité"
-      unit_price: "Prix unitaire"
+      quantity: "Qté."
+      unit_price: "Prix unit."
       total_price: "Prix total"
       grand_total: "TOTAL sans frais de port"
-      delete_button: "Supprimer"
       clear_button: "Vider tout"
       checkout_button: "Confirmer achat"
     checkout:
