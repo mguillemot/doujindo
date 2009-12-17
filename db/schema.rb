@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091214024831) do
+ActiveRecord::Schema.define(:version => 20091217054723) do
 
   create_table "blog_posts", :force => true do |t|
     t.string   "ident",      :null => false
@@ -101,47 +101,36 @@ ActiveRecord::Schema.define(:version => 20091214024831) do
   add_index "item_tags", ["tag_id"], :name => "index_item_tags_on_tag_id"
 
   create_table "items", :force => true do |t|
-    t.string   "ident",                                           :null => false
-    t.integer  "category_id",                                     :null => false
+    t.string   "ident",                                   :null => false
+    t.integer  "category_id",                             :null => false
     t.string   "title_en"
     t.string   "title_fr"
+    t.string   "original_title"
     t.string   "author_en"
     t.string   "author_fr"
     t.string   "item_type_en"
     t.string   "item_type_fr"
     t.integer  "collection_id"
-    t.string   "package_type",                 :default => "box", :null => false
-    t.integer  "dimension_width",                                 :null => false
-    t.integer  "dimension_height",                                :null => false
+    t.string   "package_type",         :default => "box", :null => false
+    t.integer  "dimension_width",                         :null => false
+    t.integer  "dimension_height",                        :null => false
     t.integer  "dimension_thickness"
-    t.integer  "weight",                                          :null => false
+    t.integer  "weight",                                  :null => false
     t.text     "description_en"
     t.text     "description_fr"
-    t.integer  "stock_left_new",               :default => 0,     :null => false
-    t.integer  "stock_left_perfect_condition", :default => 0,     :null => false
-    t.integer  "stock_left_good_condition",    :default => 0,     :null => false
-    t.integer  "stock_left_medium_condition",  :default => 0,     :null => false
-    t.integer  "stock_left_poor_condition",    :default => 0,     :null => false
-    t.integer  "purchase_left",                :default => 0,     :null => false
-    t.integer  "reservation_left",             :default => 0,     :null => false
     t.date     "reservation_end_date"
-    t.integer  "price",                        :default => 0,     :null => false
-    t.string   "publisher_en"
-    t.string   "publisher_fr"
+    t.integer  "price",                :default => 0,     :null => false
     t.text     "test_en"
     t.text     "test_fr"
     t.text     "required_config_en"
     t.text     "required_config_fr"
-    t.text     "format_en"
-    t.text     "format_fr"
     t.text     "warning_en"
     t.text     "warning_fr"
-    t.text     "notes_en"
-    t.text     "notes_fr"
-    t.boolean  "show",                         :default => false, :null => false
+    t.boolean  "show",                 :default => false, :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "original_title"
+    t.integer  "stock",                :default => 0,     :null => false
+    t.string   "stock_type",           :default => "new", :null => false
   end
 
   add_index "items", ["category_id"], :name => "index_items_on_category_id"

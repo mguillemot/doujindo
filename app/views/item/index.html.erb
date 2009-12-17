@@ -29,7 +29,7 @@
         <% end -%>
         <div id="price"><%= t('item.price') %> <strong><%= current_currency.format_yen_value(@item.price) %></strong>
         </div>
-        <% if @item.max_order > 0 -%>
+        <% if @item.stock > 0 -%>
             <% form_tag :controller => 'cart', :action => 'add', :id => @item.id do %>
                 <%= hidden_field :op, :quantity, :size => 3, :value => '1' %>
                 <div id="stock"><%= stock_display @item %> <%= image_submit_tag 'add_to_cart.png', :width => 157, :height => 66, :alt => t('item.add_to_cart'), :id => 'add_to_cart_button' %></div>
@@ -57,11 +57,6 @@
 <div class="item_detail">
   <div class="item_detail_name"><%= t('item.type') -%></div>
   <div class="item_detail_content"><p><%= @item.item_type -%></p></div>
-  <% unless @item.publisher.nil? -%>
-      <div class="hr"></div>
-      <div class="item_detail_name"><%= t('item.publisher') -%></div>
-      <div class="item_detail_content"><%= @item.publisher -%></div>
-  <% end -%>
   <div class="hr"></div>
   <div class="item_detail_name"><%= t('item.description') -%></div>
   <div class="item_detail_content"><%= @item.description -%></div>
@@ -75,20 +70,10 @@
       <div class="item_detail_name"><%= t('item.required_conf') -%></div>
       <div class="item_detail_content"><%= @item.required_config -%></div>
   <% end -%>
-  <% unless @item.format.nil? -%>
-      <div class="hr"></div>
-      <div class="item_detail_name"><%= t('item.format') -%></div>
-      <div class="item_detail_content"><%= @item.format -%></div>
-  <% end -%>
   <% unless @item.warning.nil? -%>
       <div class="hr"></div>
       <div class="item_detail_name"><%= t('item.warning') -%></div>
       <div class="item_detail_content"><%= @item.warning -%></div>
-  <% end -%>
-  <% unless @item.notes.nil? -%>
-      <div class="hr"></div>
-      <div class="item_detail_name"><%= t('item.notes') -%></div>
-      <div class="item_detail_content"><%= @item.notes -%></div>
   <% end -%>
 </div>
 <% unless @item.video.nil? -%>

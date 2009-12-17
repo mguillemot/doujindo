@@ -6,8 +6,15 @@
       <%= f.submit 'Submit' %>
     </div>
     <div class="item_detail">
+      <div class="item_detail_name">Show in catalog?</div>
+      <div class="item_detail_content">
+        <%= f.check_box :show %>
+      </div>
+    </div>
+    <div class="item_detail">
       <div class="item_detail_name"><%= "Ident" -%></div>
       <div class="item_detail_content">
+        <div style="color:firebrick;">The will become the URL for the item.</div>
         <%= f.text_field :ident %>
       </div>
     </div>
@@ -17,55 +24,19 @@
         En: <%= f.text_field :title_en %>
         <br/>
         Fr: <%= f.text_field :title_fr %>
+        <br/>
+        Original title / subtitle: <%= f.text_field :original_title %>
       </div>
     </div>
     <div class="item_detail">
-      <div class="item_detail_name"><%= "Show in catalog?" -%></div>
+      <div class="item_detail_name">Type</div>
       <div class="item_detail_content">
-        <%= f.check_box :show %>
-      </div>
-    </div>
-    <div class="item_detail">
-      <div class="item_detail_name"><%= t('item.price') -%></div>
-      <%= f.text_field :price %> Yens
-    </div>
-    <div class="item_detail">
-      <div class="item_detail_name">Availability</div>
-      <div class="item_detail_content">
-        Stock left (new): <%= f.text_field :stock_left_new, :size => 3 %>
+        <div style="color:firebrick;">This is displayed in the category view, and should be more precise than the
+          general category.
+        </div>
+        En: <%= f.text_field :item_type_en %>
         <br/>
-        Stock left (perfect condition): <%= f.text_field :stock_left_perfect_condition, :size => 3 %>
-        <br/>
-        Stock left (good condition): <%= f.text_field :stock_left_good_condition, :size => 3 %>
-        <br/>
-        Stock left (medium condition): <%= f.text_field :stock_left_medium_condition, :size => 3 %>
-        <br/>
-        Stock left (poor condition): <%= f.text_field :stock_left_poor_condition, :size => 3 %>
-        <br/>
-        Purchase left: <%= f.text_field :purchase_left, :size => 3 %>
-        <br/>
-        Reservation left: <%= f.text_field :reservation_left, :size => 3 %> end
-        at <%= f.text_field :reservation_end_date %>
-      </div>
-    </div>
-    <div class="item_detail">
-      <div class="item_detail_name">Dimensions &amp; weight</div>
-      <div class="item_detail_content">
-        Width: <%= f.text_field :dimension_width, :size => 4 %> mm
-        <br/>
-        Height: <%= f.text_field :dimension_height, :size => 3 %> mm
-        <br/>
-        Thickness: <%= f.text_field :dimension_thickness, :size => 3 %> mm
-        <br/>
-        Weight: <%= f.text_field :weight, :size => 4 %> g
-      </div>
-    </div>
-    <div class="item_detail">
-      <div class="item_detail_name"><%= t('item.description') -%></div>
-      <div class="item_detail_content">
-        En: <%= f.text_area :description_en, :size => '70x8' %>
-        <br/>
-        Fr: <%= f.text_area :description_fr, :size => '70x8' %>
+        Fr: <%= f.text_field :item_type_fr %>
       </div>
     </div>
     <div class="item_detail">
@@ -77,16 +48,52 @@
       </div>
     </div>
     <div class="item_detail">
-      <div class="item_detail_name">Type</div>
+      <div class="item_detail_name"><%= t('item.price') -%></div>
       <div class="item_detail_content">
-        En: <%= f.text_field :item_type_en %>
+        <%= f.text_field :price, :size => 5 %> Yens = <span id="price_euro">?</span> € =
+        <span id="price_dollar">?</span> $
+      </div>
+      <script type="text/javascript">
+          $(function() {
+              $("#item_price").keyup(function() {
+                  var yens = $("#item_price").val();
+                  var euros = Math.ceil(yens / <%= Currency.euro.rate_to_yen %>);
+                  var dollars = Math.ceil(yens / <%= Currency.dollar.rate_to_yen %>);
+                  $('#price_euro').text(euros);
+                  $('#price_dollar').text(dollars);
+              }).keyup();
+          });
+      </script>
+    </div>
+    <div class="item_detail">
+      <div class="item_detail_name">Availability</div>
+      <div class="item_detail_content">
+        <%= f.radio_button 'stock_type', 'new' %>new
+        <%= f.radio_button 'stock_type', 'used' %>used
+        <%= f.radio_button 'stock_type', 'used' %>preorder, end at <%= f.text_field :reservation_end_date %>
         <br/>
-        Fr: <%= f.text_field :item_type_fr %>
+        Quantity: <%= f.text_field :stock, :size => 3 %>
+      </div>
+    </div>
+    <div class="item_detail">
+      <div class="item_detail_name">Dimensions &amp; weight</div>
+      <div class="item_detail_content">
+        <div style="color:firebrick;">This data is used only for shipping cost calculations, it is not displayed to the
+          user.
+        </div>
+        Width: <%= f.text_field :dimension_width, :size => 4 %> mm
+        <br/>
+        Height: <%= f.text_field :dimension_height, :size => 3 %> mm
+        <br/>
+        Thickness: <%= f.text_field :dimension_thickness, :size => 3 %> mm
+        <br/>
+        Weight: <%= f.text_field :weight, :size => 4 %> g
       </div>
     </div>
     <div class="item_detail">
       <div class="item_detail_name">Pictures</div>
       <div class="item_detail_content">
+        <div style="color:firebrick;">The first picture becomes the main picture of the item.</div>
         <%= select_tag :add_image, options_from_collection_for_select(StaticAsset.valid_images, 'id', 'title') %>
         <%= link_to_remote 'Add this image', :url => { :action => 'add_image_to_item', :id => @item }, :with => "'image='+$('#add_image').val()" %>
         <div id="item_images">
@@ -104,29 +111,34 @@
                         data.push(images[i].id.substr(11));
                     }
                     var srvdata = data.join(',');
-                    <%= remote_function :url => { :action => 'reorder_item_images', :id => @item }, :with => "'order=' + srvdata" %>
+                <%= remote_function :url => { :action => 'reorder_item_images', :id => @item }, :with => "'order=' + srvdata" %>
                 }
             });
             $("#item_images").disableSelection();
         });
     </script>
     <div class="item_detail">
-      <div class="item_detail_name">Publisher</div>
+      <div class="item_detail_name"><%= t('item.description') -%></div>
       <div class="item_detail_content">
-        En: <%= f.text_field :publisher_en %>
+        En: <%= f.text_area :description_en, :size => '70x8' %>
         <br/>
-        Fr: <%= f.text_field :publisher_fr %>
+        Fr: <%= f.text_area :description_fr, :size => '70x8' %>
       </div>
     </div>
     <div class="item_detail">
-      <div class="item_detail_name">Track List</div>
+      <div class="item_detail_name">Warning</div>
       <div class="item_detail_content">
-        TODO
+        <div style="color:firebrick;">This is displayed proeminently in the item view.</div>
+        <div style="color:firebrick;">(facultative)</div>
+        En: <%= f.text_area :warning_en, :size => '70x8' %>
+        <br/>
+        Fr: <%= f.text_area :warning_fr, :size => '70x8' %>
       </div>
     </div>
     <div class="item_detail">
       <div class="item_detail_name">Test</div>
       <div class="item_detail_content">
+        <div style="color:firebrick;">(facultative)</div>
         En: <%= f.text_area :test_en, :size => '70x8' %>
         <br/>
         Fr: <%= f.text_area :test_fr, :size => '70x8' %>
@@ -135,33 +147,10 @@
     <div class="item_detail">
       <div class="item_detail_name">Required config</div>
       <div class="item_detail_content">
+        <div style="color:firebrick;">(facultative)</div>
         En: <%= f.text_area :required_config_en, :size => '70x8' %>
         <br/>
         Fr: <%= f.text_area :required_config_fr, :size => '70x8' %>
-      </div>
-    </div>
-    <div class="item_detail">
-      <div class="item_detail_name">Format</div>
-      <div class="item_detail_content">
-        En: <%= f.text_field :format_en %>
-        <br/>
-        Fr: <%= f.text_field :format_fr %>
-      </div>
-    </div>
-    <div class="item_detail">
-      <div class="item_detail_name">Warning</div>
-      <div class="item_detail_content">
-        En: <%= f.text_area :warning_en, :size => '70x8' %>
-        <br/>
-        Fr: <%= f.text_area :warning_fr, :size => '70x8' %>
-      </div>
-    </div>
-    <div class="item_detail">
-      <div class="item_detail_name"><%= t('item.notes') -%></div>
-      <div class="item_detail_content">
-        En: <%= f.text_area :notes_en, :size => '70x8' %>
-        <br/>
-        Fr: <%= f.text_area :notes_fr, :size => '70x8' %>
       </div>
     </div>
     <div>

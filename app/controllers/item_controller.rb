@@ -16,6 +16,8 @@ class ItemController < ApplicationController
   def edit
     @item = Item.find params[:id]
     if request.post? and params[:item]
+      params[:item][:ident].downcase!
+      params[:item][:ident].gsub! /\s/, '_'
       @item.update_attributes! prune(params[:item])
       redirect_to :action => 'index', :id => @item
     end

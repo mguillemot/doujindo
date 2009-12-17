@@ -124,9 +124,6 @@ en:
       by-availability: "Availability"
     item:
       type: "Type:"
-      availability0: '<span class="availability0">Not in stock</span>'
-      availability1: '<span class="availability1">Available for preorder</span>'
-      availability2: '<span class="availability2">Available now</span>'
 
   layout:
     sidebar:
@@ -160,14 +157,10 @@ en:
     description: "Description"
     availability:
       title: "Availability"
-      preorder: "can be pre-ordered until {{end}}"
-      new: '<span class="availability2">available now</span> (max {{count}})'
-      purchase: "sealed new: {{count}} left (ships within 3 days)"
-      perfect_condition: "non-sealed new: {{count}} left (ships within 24 hours)"
-      good_condition: "used, good condition: {{count}} left (ships within 24 hours)"
-      medium_condition: "used, medium condition: {{count}} left (ships within 24 hours)"
-      poor_condition: "used, poor condition: {{count}} left (ships within 24 hours)"
       na: '<span class="availability0">out of stock</span>'
+      new: '<span class="availability2">available now</span> (max {{count}})'
+      used: '<span class="availability2">available now (used)</span> (max {{count}})'
+      preorder: '<span class="availability1">taking pre-orders</span> (max {{count}})'
     add_to_cart: "Add to cart"
     author: "By {{author}}"
     type: "Type"

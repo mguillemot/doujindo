@@ -14,7 +14,7 @@
       <%= t('category.item.type') %> <%= item.item_type %>
     </div>
     <div class="category_item_description_availability">
-      <%= t("category.item.availability#{item.availability_type}") %>
+      <%= stock_display(item) %>
     </div>
   </td>
   <% if admin? -%>

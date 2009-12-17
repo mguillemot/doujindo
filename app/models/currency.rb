@@ -6,11 +6,7 @@ class Currency < ActiveRecord::Base
 
   def from_yen(value)
     exact = value.to_f / rate_to_yen
-    if (exact - exact.floor != 0)
-      (exact + 1).floor
-    else
-      exact.floor
-    end
+    exact.ceil
   end
 
   def format_yen_value(value)
@@ -19,5 +15,13 @@ class Currency < ActiveRecord::Base
 
   def format_value(value)
     '%.2f %s' % [value, symbol]
+  end
+
+  def self.euro
+    Currency.find 2
+  end
+
+  def self.dollar
+    Currency.find 3
   end
 end

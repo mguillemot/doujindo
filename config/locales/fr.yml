@@ -127,9 +127,6 @@ fr:
       by-availability: "Disponibilité"
     item:
       type: "Type :"
-      availability0: '<span class="availability0">Pas de stock</span>'
-      availability1: '<span class="availability1">Disponible en pré-commande</span>'
-      availability2: '<span class="availability2">Disponible immédiatement</span>'
 
   layout:
     sidebar:
@@ -167,22 +164,11 @@ fr:
       new:
         one: '<span class="availability2">disponible</span> ({{count}} restant)'
         other: '<span class="availability2">disponible</span> ({{count}} restants)'
-      purchase:
-        one: "neuf sous blister : {{count}} restant (envoi sous 3 jours)"
-        other: "neuf sous blister : {{count}} restants (envoi sous 3 jours)"
-      perfect_condition:
-        one: "neuf sans blister: {{count}} restant (envoi sous 24 heures)"
-        other: "neuf sans blister: {{count}} restants (envoi sous 24 heures)"
-      good_condition:
-        one: "occasion, bon état: {{count}} restant (envoi sous 24 heures)"
-        other: "occasion, bon état: {{count}} restants (envoi sous 24 heures)"
-      medium_condition: 
-        one: "occasion, état moyen: {{count}} restant (envoi sous 24 heures)"
-        other: "occasion, état moyen: {{count}} restants (envoi sous 24 heures)"
-      poor_condition:
-        one: "occasion, état mauvais: {{count}} restant (envoi sous 24 heures)"
-        other: "occasion, état mauvais: {{count}} restants (envoi sous 24 heures)"
-      na: '<span class="availability0">en rupture</span>'
+      used:
+        one: '<span class="availability2">disponible en occasion</span> ({{count}} restant)'
+        other: '<span class="availability2">disponible en occasion</span> ({{count}} restants)'
+      preorder: '<span class="availability1">en pré-commande</span> (max {{count}})'
+      na: '<span class="availability0">rupture</span>'
     add_to_cart: "Ajouter au panier"
     author: "Par {{author}}"
     type: "Type"
