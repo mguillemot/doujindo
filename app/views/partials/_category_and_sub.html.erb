@@ -1,9 +1,7 @@
-<div class="menu_element">
+<div class="menu_element" style="position:relative;left:<%= category_and_sub.depth*15 %>px;width:<%= (180 - category_and_sub.depth*15) %>px">
   <%= link_to category_and_sub.title, :controller => 'category', :action => 'index', :ident => category_and_sub.ident -%>
   <span class="category_item_count">(<%= category_and_sub.visible_items.size -%>)</span>
 </div>
 <% if category_and_sub.subcategories.size > 0 -%>
-  <div style="position: relative; left: 20px">
     <%= render :partial => 'partials/category_and_sub', :collection => category_and_sub.subcategories %>
-  </div>
 <% end -%>

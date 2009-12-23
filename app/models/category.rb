@@ -11,6 +11,16 @@ class Category < ActiveRecord::Base
     return Category.find_all_by_parent_id(self.id)
   end
 
+  def depth
+    d = -1
+    p = self
+    while (p)
+      d += 1
+      p = p.parent
+    end
+    d
+  end
+
   def all_items
     all_items_with '1 = 1'
   end

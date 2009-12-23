@@ -1,13 +1,13 @@
 <div id="cart" class="sidebar_group">
   <% if @cart and @cart.cart_items.size > 0 -%>
       <% @cart.cart_items.each do |cartItem| -%>
-          <div class="cart_item">
-            <div class="cart_item_title">
+          <div class="sidebar_cart_item">
+            <div class="sidebar_cart_item_title">
               <% link_to({:controller => 'item', :action => 'index', :ident => cartItem.item.ident}) do %>
                   <%= cartItem.item.title %>
               <% end %>
             </div>
-            <div class="cart_item_details">
+            <div class="sidebar_cart_item_details">
               Condition: new - Quantity: <%= cartItem.quantity %>
             </div>
           </div>

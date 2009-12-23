@@ -284,15 +284,15 @@ a:visited.navbar_link {
     background: yellow;
 }
 
-/* --- CART --- */
+/* --- SIDEBAR CART --- */
 
-.cart_item {
+.sidebar_cart_item {
 }
 
-.cart_item_title {
+.sidebar_cart_item_title {
 }
 
-.cart_item_details {
+.sidebar_cart_item_details {
     font-size: smaller;
     color: #696969;
 }
