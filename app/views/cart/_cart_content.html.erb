@@ -1,0 +1,33 @@
+<% @cart.cart_items.each do |cartItem| -%>
+    <tr id="item_<%= cartItem.item_id -%>" class="cart_item <%= cycle('odd', 'even') %>">
+      <td class="cart_item_delete">
+        <%= link_to_remote image_tag('button_cart_x.png', :width => 15, :height => 15), :url => { :action => 'remove_all', :id => cartItem.item_id } %>
+      </td>
+      <td class="cart_item_title"><%= link_to cartItem.item.title, :controller => 'item', :action => 'index', :ident => cartItem.item.ident -%></td>
+      <td class="cart_item_unit_price"><%= current_currency.format_yen_value(cartItem.item.price) -%></td>
+      <td class="cart_item_quantity">
+        <%= link_to_remote image_tag('button_cart_minus.png', :width => 15, :height => 15, :class => 'cart_item_button'), :url => { :action => 'remove_one', :id => cartItem.item_id } %>
+        <span id="item_<%= cartItem.item_id -%>_quantity"><%= cartItem.quantity -%></span>
+        <%= link_to_remote image_tag('button_cart_plus.png', :width => 15, :height => 15, :class => 'cart_item_button'), :url => { :action => 'add_one', :id => cartItem.item_id } %>
+      </td>
+      <td class="cart_item_total_price">
+        <div id="item_<%= cartItem.item_id -%>_total_price"><%= current_currency.format_value(current_currency.from_yen(cartItem.item.price) * cartItem.quantity) -%></div>
+      </td>
+    </tr>
+<% end -%>
+<tr class="cart_item <%= cycle('odd', 'even') %>">
+  <td colspan="4" class="cart_total"><%= t('cart.edit.grand_total') -%></td>
+  <td>
+    <div class="cart_item_total_price" id="total_price"><%= current_currency.format_value(@cart.total_price_in(current_currency)) -%></div>
+  </td>
+</tr>
+<tr class="cart_item <%= cycle('odd', 'even') %>">
+  <td colspan="2">
+    <%= button_to t('cart.edit.clear_button'), { :action => 'clear' } %>
+  </td>
+  <td colspan="3" style="text-align:right">
+    <% form_tag :action => 'checkout' do -%>
+        <%= submit_tag t('cart.edit.checkout_button') %>
+    <% end -%>
+  </td>
+</tr>

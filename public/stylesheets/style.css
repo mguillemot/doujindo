@@ -553,6 +553,11 @@ a:visited.navbar_link {
     border-right: 1px solid #ffacae;
 }
 
+.cart_item_button {
+    position: relative;
+    top: 2px;
+}
+
 .cart_total {
     border-right: 1px solid #ffacae;
     padding-left: 8px;

@@ -9,6 +9,7 @@ class ItemController < ApplicationController
     end
     if @item == nil or (@item.show? == false and admin? == false)
       add_error t('alerts.invalid_item')
+      #logger.debug "pident #{params[:ident]} pid #{params[:id]} item #{@itam}"
       redirect_to :controller => 'home'
     end
   end

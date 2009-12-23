@@ -16,6 +16,7 @@ class ApplicationController < ActionController::Base
     return true if session[:user]
     add_notice t('alerts.please_login')
     session[:return_to] = request.request_uri
+    logger.info "Set session return-to to \"#{session[:return_to]}\""
     redirect_to :controller => 'user', :action => 'register'
     return false
   end
