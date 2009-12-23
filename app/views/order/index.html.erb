@@ -3,6 +3,6 @@
 <% @hide_cart = true -%>
 <h1><%= @title -%></h1>
 <% form_for :order, @order, :url => { :action => 'to_paypal' } do |f| -%>
-    <%= render :partial => 'partials/order', :object => @order, :locals => { :no_shipping_address => true, :country_chooser => true } %>
-    <%= f.submit t('checkout.index.paypal_button'), :disabled => true %>
+    <% button = f.submit t('checkout.index.paypal_button'), :disabled => true %>
+    <%= render :partial => 'partials/order', :object => @order, :locals => { :no_shipping_address => true, :country_chooser => true, :additional_button => button } %>
 <% end -%>

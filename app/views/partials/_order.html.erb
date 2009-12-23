@@ -1,37 +1,41 @@
-<table border="1">
+<table cellpadding="0" cellspacing="1" border="0" class="cart">
   <thead>
-  <tr>
-    <th><%= t('user.orders.detail.number') -%></th>
-    <th><%= t('user.orders.detail.item') -%></th>
-    <th><%= t('user.orders.detail.quantity') -%></th>
-    <th><%= t('user.orders.detail.unit_price') -%></th>
-    <th><%= t('user.orders.detail.total_price') -%></th>
+  <tr class="cart_item even">
+    <th class="cart_item_title"><%= t('user.orders.detail.item') -%></th>
+    <th class="cart_item_unit_price"><%= t('user.orders.detail.unit_price') -%></th>
+    <th class="cart_item_quantity"><%= t('user.orders.detail.quantity') -%></th>
+    <th class="cart_item_total_price"><%= t('user.orders.detail.total_price') -%></th>
   </tr>
   </thead>
   <tbody>
-  <% order.order_items.each_with_index do |oi, i| -%>
-      <tr id="item_<%= oi.item_id -%>">
-        <td><%= i + 1 -%></td>
-        <td><%= oi.item.title -%></td>
-        <td>
+  <% order.order_items.each do |oi| -%>
+      <tr id="item_<%= oi.item_id -%>" class="cart_item <%= cycle('odd', 'even') %>">
+        <td class="cart_item_title">
+          <%= oi.item.title -%>
+        </td>
+        <td class="cart_item_unit_price">
+          <%= order.currency.format_yen_value(oi.item.price) -%>
+        </td>
+        <td class="cart_item_quantity">
           <div id="item_<%= oi.item_id -%>_quantity"><%= oi.quantity -%></div>
         </td>
-        <td><%= order.currency.format_yen_value(oi.item.price) -%></td>
-        <td>
+        <td class="cart_item_total_price">
           <div id="item_<%= oi.item_id -%>_total_price"><%= order.currency.format_value(order.currency.from_yen(oi.item.price) * oi.quantity) -%></div>
         </td>
       </tr>
   <% end -%>
-  <tr>
-    <td colspan="4"><%= t('user.orders.detail.grand_total') -%></td>
+  <tr class="cart_item <%= cycle('odd', 'even') %>">
+    <td colspan="3" class="cart_total">
+      <%= t('user.orders.detail.grand_total') -%>
+    </td>
     <td>
-      <div id="total_price"><%= order.currency.format_value(order.items_total_price) -%></div>
+      <div id="total_price" class="cart_item_total_price"><%= order.currency.format_value(order.items_total_price) -%></div>
     </td>
   </tr>
-  <tr>
-    <td colspan="4">
+  <tr class="cart_item <%= cycle('odd', 'even') %>">
+    <td colspan="3" class="cart_total">
       <% unless defined? country_chooser -%>
-          <%= t('user.orders.detail.shipping_to.complete', :country => order.ship_to_country.name, :method => order.shipping_type) %>
+          <%= t('user.orders.detail.shipping_to.complete', :country => order.ship_to_country.name, :method => order.shipping_type.upcase) %>
       <% else -%>
           <%= t('user.orders.detail.shipping_to.incomplete') %>
           <%= collection_select :order, :ship_to_country_id, Country.available_for_shipping, :id, :name, { :include_blank => t('user.orders.detail.choose_a_country') } %>
@@ -41,23 +45,29 @@
           </div>
       <% end -%>
     </td>
-    <td>
+    <td class="cart_item_total_price">
       <div id="shipping_price"><%= order.shipping_price ? order.currency.format_value(order.shipping_price) : t('user.orders.detail.na') -%></div>
     </td>
   </tr>
-  <tr>
-    <td colspan="4"><%= t('user.orders.detail.grand_total_with_shipping') -%></td>
-    <td>
+  <tr class="cart_item <%= cycle('odd', 'even') %>">
+    <td colspan="3" class="cart_total">
+      <%= t('user.orders.detail.grand_total_with_shipping') -%>
+    </td>
+    <td class="cart_item_total_price">
       <div id="total_price_with_shipping"><%= order.shipping_price ? order.currency.format_value(order.total_price) : t('user.orders.detail.na') -%></div>
     </td>
   </tr>
+  <% if defined? additional_button -%>
+      <tr class="cart_item <%= cycle('odd', 'even') %>">
+        <td colspan="4" class="cart_additional_button">
+          <%= additional_button %>
+        </td>
+      </tr>
+  <% end -%>
   </tbody>
 </table>
 <% unless defined? no_shipping_address -%>
     <div id="shipping_address">
-      <div><strong><%= t('user.orders.detail.shipping_address.title') -%></strong></div>
-      <div>
-        <%= render :partial => 'partials/shipping_address', :object => order %>
-      </div>
+      <%= render :partial => 'partials/shipping_address', :object => order %>
     </div>
 <% end -%>

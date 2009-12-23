@@ -34,7 +34,6 @@ en:
       detail:
         title: "Order #{{id}}"
         nav: "Order #{{id}}"
-        number: "#"
         item: "Item"
         quantity: "Quantity"
         unit_price: "Unit price"

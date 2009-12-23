@@ -1,19 +1,19 @@
 <% if @ems_desc or @sal_desc -%>
-    <div class="address">
-      <div class="address_selector">
+    <div class="delivery_method">
+      <div class="delivery_method_selector">
         <%= radio_button_tag :shipping_type, 'ems', false, :class => 'shippingMethodSelector', :disabled => @ems_price.nil? %>
       </div>
-      <div class="address_content">
+      <div class="delivery_method_content">
         <strong><%= t('user.orders.detail.delivery.ems') %></strong> <span class="shipment_price" id="ems_price"><%= @ems_desc -%></span>
         <br/>
         <%= t('user.orders.detail.delivery.ems_description') %>
       </div>
     </div>
-    <div class="address">
-      <div class="address_selector">
+    <div class="delivery_method">
+      <div class="delivery_method_selector">
         <%= radio_button_tag :shipping_type, 'sal', false, :class => 'shippingMethodSelector', :disabled => @sal_price.nil? %>
       </div>
-      <div class="address_content">
+      <div class="delivery_method_content">
         <strong><%= t('user.orders.detail.delivery.sal') %></strong> <span class="shipment_price" id="sal_price"><%= @sal_desc -%></span>
         <br/>
         <%= t('user.orders.detail.delivery.sal_description') %>

@@ -502,10 +502,6 @@ a:visited.navbar_link {
 
 /* --- PAGEs: cart view & checkout --- */
 
-.shipment_price {
-    color: red;
-}
-
 .cart {
     margin-left: 50px;
     vertical-align: middle;
@@ -568,8 +564,55 @@ a:visited.navbar_link {
     text-align: center;
 }
 
-.register_submit {
-    width: 100%;
+.cart_additional_button {
     text-align: center;
 }
 
+.delivery_method {
+}
+
+.delivery_method_selector {
+    float: left;
+    width: 25px;
+}
+
+.delivery_method_content {
+    margin: 10px 0 5px;
+}
+
+.delivery_method_content ul {
+    margin: 0;
+    list-style: circle;
+}
+
+.shipment_price {
+    color: red;
+}
+
+.shipping_address_box {
+    width: 350px;
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #ffdfe0;
+    padding: 8px;
+    border-radius: 10px;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+}
+
+.shipping_address_box .title {
+    text-align: center;
+    font-weight: bold;
+}
+
+.shipping_address_box div.hr {
+    width: 100%;
+    height: 1px;
+    margin-top: 7px;
+    margin-bottom: 6px;
+    border-bottom: 1px solid #ffacae;
+}
+
+#paypal_alternative_country {
+}

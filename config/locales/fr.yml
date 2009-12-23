@@ -34,7 +34,6 @@ fr:
       detail:
         title: "Commande n°{{id}}"
         nav: "Commande n°{{id}}"
-        number: "N°"
         item: "Article"
         quantity: "Quantité"
         unit_price: "Prix unitaire"

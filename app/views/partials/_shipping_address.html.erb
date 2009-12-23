@@ -1,15 +1,15 @@
-<%= h shipping_address.ship_to_name %>
-<br/>
-<%= nl2br h shipping_address.ship_to_street %>
-<br/>
-<%= h shipping_address.ship_to_zip %> <%= h shipping_address.ship_to_city %>
-<% if shipping_address.ship_to_state -%>
-    <br/>
-    <%= h shipping_address.ship_to_state %>
-<% end -%>
-<br/>
-<%= Country.find_by_paypal_code(shipping_address.ship_to_country_code).name %>
-<% if shipping_address.notes && shipping_address.notes.size > 0 -%>
-    <br/>
-    <span style="text-decoration:underline"><%= t('user.orders.detail.shipping_address.note') -%></span> <%= h shipping_address.notes %>
-<% end -%>
+<div class="shipping_address_box">
+  <div class="title"><%= t('user.orders.detail.shipping_address.title') -%></div>
+  <div class="hr"></div>
+  <div><%= h shipping_address.ship_to_name %></div>
+  <div><%= nl2br h shipping_address.ship_to_street %></div>
+  <div><%= h shipping_address.ship_to_zip %> <%= h shipping_address.ship_to_city %></div>
+  <% if shipping_address.ship_to_state -%>
+      <div><%= h shipping_address.ship_to_state %></div>
+  <% end -%>
+  <div><%= Country.find_by_paypal_code(shipping_address.ship_to_country_code).name %></div>
+  <% if shipping_address.notes && shipping_address.notes.size > 0 -%>
+      <div class="hr"></div>
+      <div><span style="text-decoration:underline"><%= t('user.orders.detail.shipping_address.note') -%></span> <%= h shipping_address.notes %></div>
+  <% end -%>
+</div>
