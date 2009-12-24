@@ -3,7 +3,7 @@ class CreateFulltextRows < ActiveRecord::Migration
     create_table :fulltext_rows, :options => 'ENGINE=MyISAM' do |t|
       t.column :fulltextable_type,  :string,  :null => false, :limit => 50
       t.column :fulltextable_id,    :integer, :null => false
-      t.column :value,              :text,    :null => false, :default => ''
+      t.column :value,              :text,    :null => false
       t.column :parent_id,          :integer
     end
     
