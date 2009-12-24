@@ -11,6 +11,13 @@ class StaticAsset < ActiveRecord::Base
     StaticAsset.find_by_filename_and_asset_type filename, 'thumb'
   end
 
+  def destroy_thumb
+    if self.thumb
+      File.delete File.join(STATIC_ROOT_PATH, 'thumb', self.thumb.filename)
+      self.thumb.destroy
+    end
+  end
+
   def self.default_catalog_icon
     find 1
   end

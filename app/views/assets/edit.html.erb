@@ -1,0 +1,22 @@
+<% @title = "Edit asset" -%>
+<% @nav = [ [ 'Assets', { :action => 'index' } ], [ 'Edit' ] ] -%>
+<h1><%= @title -%></h1>
+<% form_for :asset, :url => { :action => 'edit', :id => @asset }, :html => { :multipart => true } do |f| -%>
+    <p>
+      Type: <%= f.select :asset_type, options_for_select(['image']) %>
+    </p>
+    <p>
+      Title (en): <%= f.text_field :title_en, :size => 30 %>
+      <br/>
+      Title (fr): <%= f.text_field :title_fr, :size => 30 %>
+    </p>
+    <p>
+      Current file: <%= render :partial => 'partials/thumb', :object => @asset %>
+    </p>
+    <p>
+      Change file: <%= f.file_field :asset_file %>
+    </p>
+    <p>
+      <%= f.submit 'Submit' %>
+    </p>
+<% end -%>
