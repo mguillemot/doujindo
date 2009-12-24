@@ -12,7 +12,11 @@ Order < ActiveRecord::Base
   end
 
   def status
-    payment_status
+    if payment_status == 'paid' and shipping_status == 'sent'
+      'sent'
+    else
+      'paid'
+    end
   end
 
   def self.create(user, currency, cart)

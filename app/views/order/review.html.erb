@@ -6,9 +6,23 @@
 <% if @paypal_alternative_country -%>
     <div id="paypal_alternative_country">
       <p><%= t('checkout.review.paypal_alternative_country', :alternative_country => @paypal_alternative_country.name, :current_country => @order.ship_to_country.name) -%></p>
+
       <p><%= button_to_remote t('checkout.review.recompute_shipping', :alternative_country => @paypal_alternative_country.name), :url => { :action => 'recompute_shipping' } -%></p>
     </div>
+    <script type="text/javascript">
+        function enableConfirm() {
+            $('#confirm_order').attr('src', '/images/confirm_order_button.png').attr('disabled', false);
+        }
+        $(function() {
+            $('#confirm_order').attr('src', '/images/confirm_order_button_disabled.png').attr('disabled', true);
+        });
+    </script>
 <% end -%>
-<% form_tag :action => 'confirmation' do -%>
-    <%= submit_tag t('checkout.review.confirm_button'), :disabled => (@paypal_alternative_country != nil), :id => 'confirm_order' %>
-<% end -%>
+<div class="bottom_button">
+  <% form_tag :action => 'confirmation' do -%>
+      <%= image_submit_tag 'confirm_order_button.png', :width => 209, :height => 64, :alt => t('checkout.review.confirm_button'), :id => 'confirm_order' %>
+  <% end -%>
+  <div class="bottom_button_explain">
+    <%= t('checkout.review.confirm_button_explain') %>
+  </div>
+</div>

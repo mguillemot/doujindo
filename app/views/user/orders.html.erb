@@ -1,25 +1,25 @@
 <% @title = t('user.orders.list.title') -%>
-<% @nav = [ [ t('user.home.nav'), { :action => 'index' } ], [ t('user.orders.list.nav') ] ] -%>
+<% @nav = [ [ t('user.orders.list.nav') ] ] -%>
 <h1><%= @title -%></h1>
 <% unless @orders.empty? -%>
-    <table border="1">
+    <table cellpadding="0" cellspacing="1" border="0" class="cart">
       <thead>
-      <tr>
-        <th>Id</th>
-        <th>Date</th>
-        <th>Total price</th>
-        <th>Status</th>
-        <th>Details?</th>
+      <tr class="cart_item even">
+        <th class="order_id"><%= t('user.orders.list.id') %></th>
+        <th class="order_date"><%= t('user.orders.list.date') %></th>
+        <th class="order_total_price"><%= t('user.orders.list.total_price') %></th>
+        <th class="order_status"><%= t('user.orders.list.status_col') %></th>
+        <th class="order_actions"><%= t('user.orders.list.actions_col') %></th>
       </tr>
       </thead>
       <tbody>
       <% @orders.each do |order| -%>
-          <tr>
-            <td><%= "##{order.id}" %></td>
-            <td><%= order.payment_date -%></td>
-            <td><%= order.currency.format_value(order.total_price) -%></td>
-            <td><%= order.status -%></td>
-            <td><%= button_to t('user.orders.list.details_button'), { :action => 'order', :id => order }, :method => :get %></td>
+          <tr class="cart_item <%= cycle('odd', 'even') %>">
+            <td class="order_id"><%= "##{order.id}" %></td>
+            <td class="order_date"><%= l order.payment_date.to_date, :format => :long -%></td>
+            <td class="order_total_price"><%= order.currency.format_value(order.total_price) -%></td>
+            <td class="order_status"><%= t("user.orders.list.status.#{order.status}") -%></td>
+            <td class="order_actions"><%= link_to t('user.orders.list.details_button'), { :action => 'order', :id => order } %></td>
           </tr>
       <% end -%>
       </tbody>

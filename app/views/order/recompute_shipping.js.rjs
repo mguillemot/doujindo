@@ -3,4 +3,4 @@ page.replace_html "shipping_country", @order.ship_to_country.name
 page.replace_html "shipping_price",  @order.currency.format_value(@order.shipping_price)
 page.replace_html "total_price_with_shipping", @order.currency.format_value(@order.total_price)
 page.replace_html "shipping_address", render(:partial => 'partials/shipping_address', :object => @order)
-page << "$('#confirm_order').attr('disabled', false);"
+page << "enableConfirm();"

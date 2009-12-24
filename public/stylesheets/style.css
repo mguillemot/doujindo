@@ -642,3 +642,62 @@ a:visited.navbar_link {
 
 #paypal_alternative_country {
 }
+
+.confirm_order {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.bottom_button {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.bottom_button_explain {
+    margin-top: 8px;
+    font-size: small;
+}
+
+/* --- PAGEs: orders list --- */
+
+.order_id {
+    width: 70px;
+    text-align: center;
+    border-right: 1px solid #ffacae;
+}
+
+.order_date {
+    width: 150px;
+    text-align: center;
+    border-right: 1px solid #ffacae;
+}
+
+.order_total_price {
+    width: 100px;
+    text-align: center;
+    border-right: 1px solid #ffacae;
+}
+
+.order_status {
+    width: 100px;
+    text-align: center;
+    border-right: 1px solid #ffacae;
+}
+
+.order_actions {
+    width: 120px;
+    text-align: center;
+}
+
+.order_events {
+    margin-left: 50px;
+    margin-bottom: 20px;
+}
+
+.order_events ul {
+    margin: 0;
+}
+
+.order_events_title {
+    text-decoration: underline;
+}

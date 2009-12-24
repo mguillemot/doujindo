@@ -1,5 +1,16 @@
 <% @title = t('user.orders.detail.title', :id => @order.id) -%>
-<% @nav = [ [ t('user.home.nav'), { :action => 'index' } ], [ t('user.orders.list.nav'), { :action => 'orders'  } ], [ t('user.orders.detail.nav', :id => @order.id) ] ] -%>
+<% @nav = [ [ t('user.orders.list.nav'), { :action => 'orders' } ], [ t('user.orders.detail.nav', :id => @order.id) ] ] -%>
 <h1><%= @title -%></h1>
+<div class="order_events">
+  <div class="order_events_title"><%= t('user.orders.detail.events.title') %></div>
+  <ul>
+    <li><%= t('user.orders.detail.events.paid_on', :date => l(@order.payment_date.to_date, :format => :long)) %></li>
+    <% if @order.status == 'sent' -%>
+        <li><%= t('user.orders.detail.events.sent_on', :date => l(@order.shipping_sent_date.to_date, :format => :long), :method => @order.shipping_type.upcase) %></li>
+    <% end -%>
+  </ul>
+</div>
 <%= render :partial => 'partials/order', :object => @order %>
-<%= button_to '&lt; Back', { :action => 'orders' }, :method => :get %> 
+<div class="bottom_button">
+  <%= button_to t('user.orders.detail.back_button'), { :action => 'orders' }, :method => :get %>
+</div>

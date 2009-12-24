@@ -2,5 +2,6 @@
 <% @nav = order_confirmation_nav -%>
 <% @hide_cart = true -%>
 <h1><%= @title -%></h1>
-<div><%= t('checkout.confirmation.msg', :email => @user.email) %></div> 
+<div><%= t('checkout.confirmation.msg', :email => @user.email) %></div>
+<div>&nbsp;</div>
 <%= render :partial => 'partials/order', :object => @order %>

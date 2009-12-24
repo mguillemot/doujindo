@@ -4,9 +4,6 @@ fr:
     welcome: "Bienvenue dans notre boutique!"
 
   user:
-    home:
-      title: "Chez moi"
-      nav: "Chez moi"
     register:
       title: "Créer un nouveau compte client"
       nav: "Créer un compte"
@@ -31,6 +28,14 @@ fr:
         title: "Mes commandes"
         nav: "Mes commandes"
         details_button: "Détails..."
+        id: "N°"
+        date: "Effectuée le..."
+        total_price: "Prix total"
+        status_col: "Etat"
+        actions_col: "Détails ?"
+        status:
+          paid: "payée"
+          sent: "envoyée"
       detail:
         title: "Commande n°{{id}}"
         nav: "Commande n°{{id}}"
@@ -38,7 +43,7 @@ fr:
         quantity: "Quantité"
         unit_price: "Prix unitaire"
         total_price: "Prix total"
-        grand_total: "TOTAL sans frais de port"
+        grand_total: "TOTAL articles"
         grand_total_with_shipping: "TOTAL"
         na: "N/D"
         shipping_to:
@@ -56,6 +61,7 @@ fr:
         shipping_address:
           title: "Adresse d'envoi"
           note: "Note :"
+        back_button: "&lt; Retour à la liste"
 
   cart:
     edit:
@@ -74,15 +80,16 @@ fr:
 
   checkout:
     index:
-      title: "Finalisation de commande - Choix de la méthode d'envoi"
+      title: "Choix de la méthode d'envoi"
       nav: "Méthode d'envoi"
       paypal_button: "Adresse d'envoi &amp; PayPal >"
     review:
-      title: "Finalisation de commande - Vérification"
+      title: "Vérification finale"
       nav: "Vérification"
       paypal_alternative_country: "AVERTISSEMENT: l'adresse d'envoi que vous avez entré sur PayPal est située dans un autre pays ({{alternative_country}}) que celui que vous aviez sélectionné pour le calcul des frais de port ({{current_country}}). Vous devez recalculer les frais de port avant de pouvoir finaliser votre commande."
       recompute_shipping: "Recalculer les frais de port vers le/la {{alternative_country}}"
       confirm_button: "Confirmer la commande"
+      confirm_button_explain: "En cliquant sur ce bouton, vous autoriserez le transfert d'argent depuis PayPal.<br/>Vérifiez une dernière fois le contenu de votre commande (y compris l'adresse de livraison !) avant de cliquer."
     confirmation:
       title: "Commande confirmée"
       nav: "Commande confirmée"

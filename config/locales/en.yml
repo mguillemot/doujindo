@@ -4,9 +4,6 @@ en:
     welcome: "Welcome to our shop!"
 
   user:
-    home:
-      title: "My home"
-      nav: "My home"
     register:
       title: "Register a new Touhou Shop account"
       nav: "New account"
@@ -31,6 +28,14 @@ en:
         title: "My orders"
         nav: "My orders"
         details_button: "Details..."
+        id: "#"
+        date: "Placed on..."
+        total_price: "Total price"
+        status_col: "Status"
+        actions_col: "Details?"
+        status:
+          paid: "paid"
+          sent: "sent"
       detail:
         title: "Order #{{id}}"
         nav: "Order #{{id}}"
@@ -56,6 +61,11 @@ en:
         shipping_address:
           title: "Shipping address"
           note: "Note:"
+        back_button: "&lt; Back to the list"
+        events:
+          title: "Status:"
+          paid_on: "Paid on {{date}}"
+          sent_on: "Sent by {{method}} on {{date}}"
 
   cart:
     edit:
@@ -80,6 +90,7 @@ en:
       paypal_alternative_country: "WARNING: the shipping address you have entered in your PayPal payment form is located in another country ({{alternative_country}}) than the one you selected for computing shipping costs ({{current_country}}). You have to recompute shipping costs before you can confirm your order."
       recompute_shipping: "Recompute shipping to {{alternative_country}}"
       confirm_button: "Confirm order"
+      confirm_button_explain: "By clicking this button, you will authorize the money transfer from PayPal to us.<br/>Be sure to review your order (including shipping address!) one last time before clicking."
     confirmation:
       title: "Order confirmed"
       nav: "Order confirmed"
