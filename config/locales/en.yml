@@ -147,7 +147,10 @@ en:
         blog: "Blog"
         faq: "FAQ"
         contact: "Contact"
-      catalog: "Catalog"
+      catalog:
+        title: "Catalog"
+        search: "Search"
+        search_phantom: "(search)"
       language: "Language &amp; currency"
 
   item:
@@ -175,6 +178,13 @@ en:
     format: "Format"
     warning: "Warning"
     notes: "Notes"
+
+  search:
+    title: "Search results"
+    nav: "Search results"
+    page_title: 'Search results for "{{query}}"'
+    empty: "No results found."
+    more: "More results found..."
 
   blog:
     index:

@@ -1,0 +1,17 @@
+<% @title = t('search.title') -%>
+<% @nav = [ [ t('search.nav') ] ] -%>
+<h1><%= t('search.page_title', :query => @query) %></h1>
+<% if @results.length > 0 -%>
+    <ul>
+      <% @results.each do |result| -%>
+          <li><%= link_to result.title, :action => 'index', :ident => result.ident %></li>
+      <% end -%>
+      <% if @more_results -%>
+          <li><%= t('search.more') %></li>
+      <% end -%>
+    </ul>
+<% else -%>
+    <div>
+      <%= t('search.empty') %>
+    </div>
+<% end -%>

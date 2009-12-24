@@ -212,6 +212,32 @@ a:visited.navbar_link {
     color: #696969;
 }
 
+.search_field {
+    width: 143px;
+    padding: 3px;
+    background-color: #ffdfe0;
+    font-size: 12px;
+    border: 1px solid #c40000;
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+}
+
+.search_field_phantom {
+    color: gray;
+    text-align: center;
+}
+
+.search_button {
+    height: 23px;
+    width: 23px;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    top: -2px;
+    vertical-align: middle;
+}
+
 /* --- SIGNIN/OUT BOX --- */
 
 .signin_box_field {

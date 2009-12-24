@@ -150,7 +150,10 @@ fr:
         blog: "Blog"
         faq: "FAQ"
         contact: "Contact"
-      catalog: "Catalogue"
+      catalog:
+        title: "Catalogue"
+        search: "Rechercher"
+        search_phantom: "(rechercher)"
       language: "Langue &amp; devise"
 
   item:
@@ -183,6 +186,13 @@ fr:
     format: "Format"
     warning: "Avertissement"
     notes: "Notes"
+
+  search:
+    title: "Résultats de la recherche"
+    nav: "Résultats de la recherche"
+    page_title: 'Recherche de "{{query}}"'
+    empty: "Aucun résultat trouvé."
+    more: "Plus de résultats trouvés."
 
   blog:
     index:

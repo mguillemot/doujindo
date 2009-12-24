@@ -16,9 +16,32 @@
 
   <div class="menu_category">
     <div class="menu_category_title">
-      <%= image_tag "menuheader_catalog_#{I18n.locale}.png", :width => 168, :height => 24, :alt => t('layout.sidebar.catalog') %>
+      <%= image_tag "menuheader_catalog_#{I18n.locale}.png", :width => 168, :height => 24, :alt => t('layout.sidebar.catalog.title') %>
     </div>
     <div class="sidebar_group" style="text-align:left">
+      <div id="search_bar">
+        <% form_tag({ :controller => 'item', :action => 'search', :query => nil }, :method => :get, :id => 'search_form') do -%>
+            <input id="search_value" type="text" name="query" value="" class="search_field"/>
+            <%= image_submit_tag 'search_button.png', :width => 23, :height => 23, :alt => t('layout.sidebar.catalog.search'), :class => 'search_button' %>
+        <% end -%>
+      </div>
+      <script type="text/javascript">
+          $(function() {
+              if ($('#search_value').val() == '') {
+                  $('#search_value').val('<%= h t('layout.sidebar.catalog.search_phantom') %>').addClass('search_field_phantom').one('focus', function() {
+                      $(this).removeClass('search_field_phantom').val('');
+                  });
+              }
+              $('#search_form').submit(function() {
+                  var query = $('#search_value').val();
+                  if (query != '') {
+                      window.location = '<%= url_for(:controller => :item, :action => 'search', :query => nil) %>/' + encodeURI(query);
+                  }
+                  return false;
+              });
+          });
+      </script>
+      <div class="hr"></div>
       <%= render :partial => 'partials/category_and_sub', :collection => Category.root_categories %>
     </div>
   </div>
