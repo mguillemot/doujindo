@@ -377,11 +377,7 @@ a:visited.navbar_link {
 }
 
 .home_section {
-    margin-bottom: 15px;
-}
-
-.home_section img {
-    margin: 0;
+    margin-bottom: 10px;
 }
 
 .home_section_title {
@@ -398,21 +394,44 @@ a:visited.navbar_link {
     padding: 5px;
 }
 
-.home_section_content img {
-    vertical-align: middle;
-    margin-left: 10px;
-    margin-right: 10px;
-    margin-bottom: 10px;
-}
-
 .osusume {
     border: 1px solid black;
+}
+
+.osusume_thumb {
+    vertical-align: middle;
+    background-color:yellow;
+}
+
+.item_thumb {
+    border: 1px solid black;
+}
+
+.osusume_details {
+    vertical-align: middle;
+}
+
+.osusume_reason {
+    margin-top: 15px;
 }
 
 .osusume_character {
     position: relative;
     top: 5px;
     left: 40px;
+}
+
+#random_items {
+    margin: 10px;
+}
+
+.random_item {
+    text-align: center;
+}
+
+.random_item_separator {
+    width: 0;
+    border-right: 1px solid #edd0d1;
 }
 
 /* --- PAGES: new account creation, forgot password, reset password --- */

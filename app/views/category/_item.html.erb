@@ -1,7 +1,7 @@
 <tr id="category_item_<%= item.ident %>" class="category_item <%= (!item.show? and admin?) ? 'hidden_item' : cycle('odd', 'even') %>">
   <td class="category_item_picture" align="center">
     <% link_to( { :controller => 'item', :action => 'index', :ident => item.ident }) do %>
-        <%= image_tag static_url(item.main_thumb.full_filename), :alt => item.title, :width => item.main_thumb.width/2, :height => item.main_thumb.height/2, :border => 1 %>
+        <%= image_tag static_url(item.main_thumb.full_filename), :alt => item.title, :width => item.main_thumb.width/2, :height => item.main_thumb.height/2, :border => 1, :class => 'item_thumb' %>
     <% end %>
   </td>
   <td class="category_item_description">

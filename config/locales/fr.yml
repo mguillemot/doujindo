@@ -1,7 +1,6 @@
 fr:
   home:
     title: "Accueil"
-    welcome: "Bienvenue dans notre boutique!"
     warning:
       title: "Avertissement"
       content: "Cette boutique est actuellement en phase de <strong>beta-test privé</strong>. Toutes les pages sont normalement fonctionelles, y compris le paiement. Si jamais vous rencontrez un problème, merci de <a href=\"{{contact_link}}\">nous contacter</a> directement. Toutes vos suggestions sont également les bienvenues !"
@@ -10,6 +9,12 @@ fr:
       title:
         erhune: "La recommandation d'Erhune"
         a-m: "La recommandation d'A-M"
+    news:
+      title: "Dernières nouvelles"
+    random_items:
+      title: "Articles aléatoires"
+    blog:
+      title: "Blog Touhou Shop"
 
   user:
     register:
@@ -143,6 +148,8 @@ fr:
       type: "Type :"
 
   layout:
+    meta:
+      description: "Boutique en ligne spécialisée dans les Touhou et autres doujin japonais : jeux, goodies, figurines... En direct du Japon !"
     sidebar:
       cart:
         title: "Panier"

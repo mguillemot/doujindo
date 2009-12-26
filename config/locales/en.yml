@@ -1,7 +1,6 @@
 en:
   home:
     title: "Home"
-    welcome: "Welcome to our shop!"
     warning:
       title: "Warning"
       content: "This shop is currently in private <strong>beta-test</strong> stage. All the displayed pages should be fully functionnal (including payments), but should you find some defects, please <a href=\"{{contact_link}}\">contact us</a> directly. Any suggestions are also very welcomed. Thank you for helping us to make this place enjoyable!"
@@ -10,6 +9,12 @@ en:
       title:
         erhune: "Erhune's recommendation"
         a-m: "A-M's recommendation"
+    news:
+      title: "Latest news"
+    random_items:
+      title: "Random items"
+    blog:
+      title: "Touhou Shop blog"
 
   user:
     register:
@@ -144,6 +149,8 @@ en:
       type: "Type:"
 
   layout:
+    meta:
+      description: "Web shop for Touhou items and Japanese doujin stuff: games, goods, figures... Coming direct from Japan!"
     sidebar:
       cart:
         title: "Shopping cart"

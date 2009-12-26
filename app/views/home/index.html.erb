@@ -13,38 +13,90 @@
 <table id="home_twocols">
   <tr>
     <td id="home_left">
-      <div id="news">
-        <h2 class="home_section_title">Latest news</h2>
+      <% if @news -%>
+          <div id="news">
+            <h2 class="home_section_title"><%= t('home.news.title') %></h2>
 
-        <div class="home_section_content">
-          hahaha
-        </div>
-      </div>
+            <div class="home_section_content">
+              <%= @news.content %>
+            </div>
+          </div>
+      <% end -%>
     </td>
     <td id="home_separator_col"></td>
     <td id="home_right">
-      <div class="home_section osusume">
-        <h2 class="home_section_title"><%= t("home.osusume.title.#{@osusume.from}") %></h2>
+      <% if @osusume -%>
+          <div class="home_section osusume">
+            <h2 class="home_section_title"><%= t("home.osusume.title.#{@osusume.from}") %></h2>
 
-        <div class="home_section_content">
-          <% link_to( { :controller => 'item', :action => 'index', :ident => @osusume.item.ident }) do %>
-              <%= image_tag static_url(@osusume.item.main_thumb.full_filename), :alt => @osusume.item.title, :width => @osusume.item.main_thumb.width/2, :height => @osusume.item.main_thumb.height/2, :border => 1 %>
-          <% end %>
-          <% link_to( { :controller => 'item', :action => 'index', :ident => @osusume.item.ident }) do %>
-              <%= @osusume.item.title %>
-          <% end %>
-          <div>
-            <%= @osusume.reason %>
+            <div class="home_section_content">
+              <table>
+                <tr>
+                  <td class="osusume_thumb">
+                    <% link_to( { :controller => 'item', :action => 'index', :ident => @osusume.item.ident }) do %>
+                        <%= image_tag static_url(@osusume.item.main_thumb.full_filename), :alt => @osusume.item.title, :width => @osusume.item.main_thumb.width/2, :height => @osusume.item.main_thumb.height/2, :border => 1, :class => 'item_thumb' %>
+                    <% end %>
+                  </td>
+                  <td class="osusume_details">
+                    <% link_to( { :controller => 'item', :action => 'index', :ident => @osusume.item.ident }) do %>
+                        <%= @osusume.item.title %>
+                    <% end %>
+                    <div class="category_item_description_type">
+                      <%= t('category.item.type') %> <%= @osusume.item.item_type %>
+                    </div>
+                    <div class="category_item_description_availability">
+                      <%= stock_display(@osusume.item) %>
+                    </div>
+                  </td>
+                </tr>
+              </table>
+              <div class="osusume_reason">
+                <%= @osusume.reason %>
+              </div>
+              <%= image_tag "osusume_#{@osusume.from}.png", :class => 'osusume_character' %>
+            </div>
           </div>
-          <%= image_tag "osusume_#{@osusume.from}.png", :class => 'osusume_character' %>
-        </div>
-      </div>
-      <div id="blog_headers">
-        <h2 class="home_section_title">Touhou Shop blog</h2>
+      <% end -%>
+      <% if false -%>
+          <div id="blog_headers">
+            <h2 class="home_section_title"><%= t('home.blog.title') %></h2>
 
-        <div class="home_section_content">
-        </div>
-      </div>
+            <div class="home_section_content">
+            </div>
+          </div>
+      <% end -%>
     </td>
   </tr>
 </table>
+<% unless @random_items.empty? -%>
+    <div id="random_items">
+      <h2 class="home_section_title"><%= t('home.random_items.title') %></h2>
+
+      <div class="home_section_content">
+        <table>
+          <tr>
+            <% @random_items.each_with_index do |item, i| -%>
+                <td class="random_item" style="width:<%= 100/@random_items.length %>%">
+                  <% link_to( { :controller => 'item', :action => 'index', :ident => item.ident }) do %>
+                      <%= image_tag static_url(item.main_thumb.full_filename), :alt => item.title, :width => item.main_thumb.width/2, :height => item.main_thumb.height/2, :border => 1, :class => 'item_thumb' %>
+                  <% end %>
+                  <br/>
+                  <% link_to( { :controller => 'item', :action => 'index', :ident => item.ident }) do %>
+                      <%= item.title %>
+                  <% end %>
+                  <div class="category_item_description_type">
+                    <%= t('category.item.type') %> <%= item.item_type %>
+                  </div>
+                  <div class="category_item_description_availability">
+                    <%= stock_display(item) %>
+                  </div>
+                </td>
+                <% if i < @random_items.length-1 -%>
+                    <td class="random_item_separator"></td>
+                <% end -%>
+            <% end -%>
+          </tr>
+        </table>
+      </div>
+    </div>
+<% end -%>
