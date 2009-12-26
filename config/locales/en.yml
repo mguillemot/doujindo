@@ -2,6 +2,14 @@ en:
   home:
     title: "Home"
     welcome: "Welcome to our shop!"
+    warning:
+      title: "Warning"
+      content: "This shop is currently in private <strong>beta-test</strong> stage. All the displayed pages should be fully functionnal (including payments), but should you find some defects, please <a href=\"{{contact_link}}\">contact us</a> directly. Any suggestions are also very welcomed. Thank you for helping us to make this place enjoyable!"
+      signature: "- Erhune &amp; A-M"
+    osusume:
+      title:
+        erhune: "Erhune's recommendation"
+        a-m: "A-M's recommendation"
 
   user:
     register:
@@ -163,6 +171,7 @@ en:
         search: "Search"
         search_phantom: "(search)"
       language: "Language &amp; currency"
+    footer: "Website content &amp; design © {{shop_c}} Touhou Shop - Touhou Project © {{touhou_c}} Team Shanghai Alice - All items in the catalog are © of their respective authors"
 
   item:
     title: "Title"

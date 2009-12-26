@@ -43,4 +43,9 @@ module ApplicationHelper
   def nl2br(s)
     s.gsub(/\n/, '<br/>')
   end
+
+  def copyright_time(from_year)
+    this_year = DateTime.now.strftime('%Y')
+    (this_year == from_year.to_s) ? from_year : "#{from_year}-#{this_year}"
+  end
 end

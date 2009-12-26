@@ -2,6 +2,14 @@ fr:
   home:
     title: "Accueil"
     welcome: "Bienvenue dans notre boutique!"
+    warning:
+      title: "Avertissement"
+      content: "Cette boutique est actuellement en phase de <strong>beta-test privé</strong>. Toutes les pages sont normalement fonctionelles, y compris le paiement. Si jamais vous rencontrez un problème, merci de <a href=\"{{contact_link}}\">nous contacter</a> directement. Toutes vos suggestions sont également les bienvenues !"
+      signature: "- Erhune &amp; A-M"
+    osusume:
+      title:
+        erhune: "La recommandation d'Erhune"
+        a-m: "La recommandation d'A-M"
 
   user:
     register:
@@ -162,6 +170,7 @@ fr:
         search: "Rechercher"
         search_phantom: "(rechercher)"
       language: "Langue &amp; devise"
+    footer: "Design &amp; contenu du site © {{shop_c}} Touhou Shop - Touhou Project © {{touhou_c}} Team Shanghai Alice - Tous les articles du catalogue sont © de leurs auteurs respectifs"
 
   item:
     title: "Titre"

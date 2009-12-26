@@ -6,6 +6,7 @@ class Item < ActiveRecord::Base
   has_many :order_items
   belongs_to :collection, :class_name => 'ItemCollection'
   has_and_belongs_to_many :tags, :join_table => 'item_tags'
+  has_one :osusume
 
   translatable_columns :title, :author, :item_type, :description, :test, :required_config, :warning
   acts_as_fulltextable :title_en, :title_fr, :original_title, :author_en, :author_fr, :item_type_en, :item_type_fr, :description_en, :description_fr, :test_en, :test_fr, :required_config_en, :required_config_fr, :warning_en, :warning_fr

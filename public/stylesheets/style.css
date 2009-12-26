@@ -323,6 +323,97 @@ a:visited.navbar_link {
     color: #696969;
 }
 
+/* --- PAGE: home --- */
+
+.warning_box {
+    color: white;
+    margin: 15px auto;
+    padding: 10px;
+    width: 550px;
+    text-align: justify;
+    background-color: #cc0004;
+    border: 1px solid black;
+    border-radius: 10px;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+}
+
+.warning_box a {
+    color: yellow;
+}
+
+.warning_box img {
+    float: left;
+    margin-right: 15px;
+    vertical-align: middle;
+}
+
+.warning_box_signature {
+    margin-top: 10px;
+    position: relative;
+    left: 350px;
+}
+
+#home_twocols {
+    width: 100%;
+}
+
+#home_left {
+    width: 50%;
+    vertical-align: top;
+    padding: 5px;
+}
+
+#home_right {
+    width: 50%;
+    vertical-align: top;
+    padding: 5px;
+}
+
+#home_separator_col {
+    width: 0;
+    border-right: 1px solid #edd0d1;
+}
+
+.home_section {
+    margin-bottom: 15px;
+}
+
+.home_section img {
+    margin: 0;
+}
+
+.home_section_title {
+    background-color: #ffdfe0;
+    margin: 0;
+    padding: 4px;
+    text-align: center;
+    font-size: 18px;
+    border-bottom: 1px solid #edd0d1;
+}
+
+.home_section_content {
+    background-color: #ffecec;
+    padding: 5px;
+}
+
+.home_section_content img {
+    vertical-align: middle;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+
+.osusume {
+    border: 1px solid black;
+}
+
+.osusume_character {
+    position: relative;
+    top: 5px;
+    left: 40px;
+}
+
 /* --- PAGES: new account creation, forgot password, reset password --- */
 
 .register_content {

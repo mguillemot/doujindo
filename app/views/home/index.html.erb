@@ -1,2 +1,50 @@
 <% @title = t('home.title') -%>
-<p><%= t('home.welcome') -%></p>
+<div class="warning_box">
+  <div>
+    <%= image_tag 'warning_utsuho.png', :width => 151, :height => 100, :alt => t('home.warning.title') %>
+  </div>
+  <div>
+    <%= t('home.warning.content', :contact_link => url_for(:action => 'contact')) %>
+    <div class="warning_box_signature">
+      <%= t('home.warning.signature') %>
+    </div>
+  </div>
+</div>
+<table id="home_twocols">
+  <tr>
+    <td id="home_left">
+      <div id="news">
+        <h2 class="home_section_title">Latest news</h2>
+
+        <div class="home_section_content">
+          hahaha
+        </div>
+      </div>
+    </td>
+    <td id="home_separator_col"></td>
+    <td id="home_right">
+      <div class="home_section osusume">
+        <h2 class="home_section_title"><%= t("home.osusume.title.#{@osusume.from}") %></h2>
+
+        <div class="home_section_content">
+          <% link_to( { :controller => 'item', :action => 'index', :ident => @osusume.item.ident }) do %>
+              <%= image_tag static_url(@osusume.item.main_thumb.full_filename), :alt => @osusume.item.title, :width => @osusume.item.main_thumb.width/2, :height => @osusume.item.main_thumb.height/2, :border => 1 %>
+          <% end %>
+          <% link_to( { :controller => 'item', :action => 'index', :ident => @osusume.item.ident }) do %>
+              <%= @osusume.item.title %>
+          <% end %>
+          <div>
+            <%= @osusume.reason %>
+          </div>
+          <%= image_tag "osusume_#{@osusume.from}.png", :class => 'osusume_character' %>
+        </div>
+      </div>
+      <div id="blog_headers">
+        <h2 class="home_section_title">Touhou Shop blog</h2>
+
+        <div class="home_section_content">
+        </div>
+      </div>
+    </td>
+  </tr>
+</table>
