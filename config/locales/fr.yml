@@ -170,7 +170,7 @@ fr:
         search: "Rechercher"
         search_phantom: "(rechercher)"
       language: "Langue &amp; devise"
-    footer: "Design &amp; contenu du site © {{shop_c}} Touhou Shop - Touhou Project © {{touhou_c}} Team Shanghai Alice - Tous les articles du catalogue sont © de leurs auteurs respectifs"
+    footer: "Design &amp; contenu du site © {{shop_c}} Touhou Shop - Touhou Project © {{touhou_c}} Team Shanghai Alice - Tous les articles du catalogue sont © de leurs auteurs respectifs."
 
   item:
     title: "Titre"
