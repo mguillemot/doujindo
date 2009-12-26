@@ -1,3 +1,4 @@
+page.remove "invalid_stocks"
 page.replace_html "cart_body", render(:partial => 'cart_content')
 if @cart.cart_items.empty?
   page.redirect_to :controller => 'home'

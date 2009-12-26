@@ -30,10 +30,7 @@ module ApplicationHelper
   end
 
   def current_currency
-    Currency.find session[:currency]
-  rescue ActiveRecord::RecordNotFound
-    logger.error "Invalid currency #{session[:currency]}"
-    nil
+    @currency
   end
 
   def static_url(url)

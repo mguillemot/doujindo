@@ -91,6 +91,8 @@ en:
       grand_total: "TOTAL w/o shipping"
       clear_button: "Clear"
       checkout_button: "Checkout &gt;"
+      fix_button: "Fix-up everything, please!"
+      fix_explain: "Some items in your cart are not available any longer."
 
   checkout:
     index:
@@ -132,8 +134,12 @@ en:
     cart_creation_error: "Impossible to create a new shopping cart."
     item_added_to_cart: "<strong>{{name}}</strong> added to your cart."
     cart_emptied: "Shopping cart emptied."
-    address_modification_success: "Address successfully edited."
-    address_creation_success: "Address successfully added."
+    paypal_error: "PayPal error (stage {{stage}}): {{msg}} (code {{code}})."
+    paypal_error_wrong_token: "wrong token"
+    paypal_error_wrong_payer_id: "wrong payer ID"
+    paypal_cancelled: "PayPal payment cancelled."
+    impossible_to_send_order_confirm_mail: "An error occured while trying to send the confirmation mail to {{email}}."
+    order_already_confirmed: "This order has already been confirmed."
 
   category:
     title: 'Category "{{title}}"'

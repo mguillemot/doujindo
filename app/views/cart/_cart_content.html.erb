@@ -1,14 +1,20 @@
 <% @cart.cart_items.each do |cartItem| -%>
     <tr id="item_<%= cartItem.item_id -%>" class="cart_item <%= cycle('odd', 'even') %>">
       <td class="cart_item_delete">
-        <%= link_to_remote image_tag('button_cart_x.png', :width => 15, :height => 15), :url => { :action => 'remove_all', :id => cartItem.item_id } %>
+        <% if @cart.items_out_of_stock.empty? -%>
+            <%= link_to_remote image_tag('button_cart_x.png', :width => 15, :height => 15), :url => { :action => 'remove_all', :id => cartItem.item_id } %>
+        <% end -%>
       </td>
       <td class="cart_item_title"><%= link_to cartItem.item.title, :controller => 'item', :action => 'index', :ident => cartItem.item.ident -%></td>
       <td class="cart_item_unit_price"><%= current_currency.format_yen_value(cartItem.item.price) -%></td>
       <td class="cart_item_quantity">
-        <%= link_to_remote image_tag('button_cart_minus.png', :width => 15, :height => 15, :class => 'cart_item_button'), :url => { :action => 'remove_one', :id => cartItem.item_id } %>
+        <% if @cart.items_out_of_stock.empty? -%>
+            <%= link_to_remote image_tag('button_cart_minus.png', :width => 15, :height => 15, :class => 'cart_item_button'), :url => { :action => 'remove_one', :id => cartItem.item_id } %>
+        <% end -%>
         <span id="item_<%= cartItem.item_id -%>_quantity"><%= cartItem.quantity -%></span>
-        <%= link_to_remote image_tag('button_cart_plus.png', :width => 15, :height => 15, :class => 'cart_item_button'), :url => { :action => 'add_one', :id => cartItem.item_id } %>
+        <% if @cart.items_out_of_stock.empty? -%>
+            <%= link_to_remote image_tag('button_cart_plus.png', :width => 15, :height => 15, :class => 'cart_item_button'), :url => { :action => 'add_one', :id => cartItem.item_id } %>
+        <% end -%>
       </td>
       <td class="cart_item_total_price">
         <div id="item_<%= cartItem.item_id -%>_total_price"><%= current_currency.format_value(current_currency.from_yen(cartItem.item.price) * cartItem.quantity) -%></div>
@@ -27,7 +33,23 @@
   </td>
   <td colspan="3" style="text-align:right">
     <% form_tag :action => 'checkout' do -%>
-        <%= submit_tag t('cart.edit.checkout_button') %>
+        <%= submit_tag t('cart.edit.checkout_button'), :id => 'checkout_button' %>
     <% end -%>
   </td>
 </tr>
+<% unless @cart.items_out_of_stock.empty? -%>
+    <div class="warning_box" id="invalid_stocks">
+      <%= t('cart.edit.fix_explain') %>
+      <div class="warning_box_button">
+        <%= button_to_remote t('cart.edit.fix_button'), :url => { :action => 'fix_all' } %>
+      </div>
+    </div>
+    <script type="text/javascript">
+        $(function() {
+            $('#checkout_button').attr('disabled', true);
+        <% @cart.items_out_of_stock.each do |ci| -%>
+            $('#item_<%= ci.item_id %>').addClass('invalid_cart_item').css('background-color', 'red');
+        <% end -%>
+        });
+    </script>
+<% end -%>

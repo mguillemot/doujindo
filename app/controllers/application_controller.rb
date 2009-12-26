@@ -104,7 +104,7 @@ class ApplicationController < ActionController::Base
     end
     if session[:cart]
       begin
-        @cart = Cart.find session[:cart]
+        @cart = Cart.find session[:cart], :include => :cart_items
       rescue ActiveRecord::RecordNotFound
         add_error t('alerts.cart_reload_failed')
         logger.error "Could not reload cart #{session[:cart]} from session"

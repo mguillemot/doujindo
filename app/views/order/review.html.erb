@@ -4,10 +4,11 @@
 <h1><%= @title -%></h1>
 <%= render :partial => 'partials/order', :object => @order %>
 <% if @paypal_alternative_country -%>
-    <div id="paypal_alternative_country">
-      <p><%= t('checkout.review.paypal_alternative_country', :alternative_country => @paypal_alternative_country.name, :current_country => @order.ship_to_country.name) -%></p>
-
-      <p><%= button_to_remote t('checkout.review.recompute_shipping', :alternative_country => @paypal_alternative_country.name), :url => { :action => 'recompute_shipping' } -%></p>
+    <div id="paypal_alternative_country" class="warning_box">
+      <%= t('checkout.review.paypal_alternative_country', :alternative_country => @paypal_alternative_country.name, :current_country => @order.ship_to_country.name) -%>
+      <div class="warning_box_button">
+        <%= button_to_remote t('checkout.review.recompute_shipping', :alternative_country => @paypal_alternative_country.name), :url => { :action => 'recompute_shipping' } -%>
+      </div>
     </div>
     <script type="text/javascript">
         function enableConfirm() {

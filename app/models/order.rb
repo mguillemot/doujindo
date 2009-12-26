@@ -19,6 +19,13 @@ Order < ActiveRecord::Base
     end
   end
 
+  def decrease_stocks!
+    order_items.each do |oi|
+      oi.item.stock -= oi.quantity
+      oi.item.save!
+    end
+  end
+
   def self.create(user, currency, cart)
     order = Order.new
     order.client = user

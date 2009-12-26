@@ -20,23 +20,39 @@ class CartController < ApplicationController
   end
 
   def remove_one
-    @item = @cart.cart_items.find_by_item_id params[:id]
-    @item.quantity -= 1
-    @item.save!
+    @item = @cart.find_by_item_id params[:id].to_i
+    if @item.quantity > 1
+      @item.quantity -= 1
+      @item.save!
+    end
   end
 
   def add_one
-    @item = @cart.cart_items.find_by_item_id params[:id]
-    @item.quantity += 1
-    @item.save!
+    @item = @cart.find_by_item_id params[:id].to_i
+    if @item.item.stock > @item.quantity
+      @item.quantity += 1
+      @item.save!
+    end
   end
 
   def remove_all
-    @item = @cart.cart_items.find_by_item_id params[:id]
+    @item = @cart.find_by_item_id params[:id].to_i
     @cart.cart_items.delete @item
     @cart.save!
     if @cart.cart_items.empty?
       add_notice t('alerts.cart_emptied')
+    end
+  end
+
+  def fix_all
+    @cart.items_out_of_stock.each do |item|
+      if item.item.stock > 0
+        item.quantity = item.item.stock
+        item.save!
+      else
+        @cart.cart_items.delete item
+        @cart.save!
+      end
     end
   end
 
@@ -48,10 +64,14 @@ class CartController < ApplicationController
   end
 
   def checkout
-    order = Order.create @user, @currency, @cart
-    session[:order_id] = order.id
-    add_debug "Created order ##{order.id} using data from cart ##{@cart.id}"
-    redirect_to :controller => 'order'
+    if @cart.items_out_of_stock.empty?
+      order = Order.create @user, @currency, @cart
+      session[:order_id] = order.id
+      add_debug "Created order ##{order.id} using data from cart ##{@cart.id}"
+      redirect_to :controller => 'order'
+    else
+      redirect_to :action => 'index'
+    end
   end
 
   protected

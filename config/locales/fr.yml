@@ -87,9 +87,8 @@ fr:
       grand_total: "TOTAL sans frais de port"
       clear_button: "Vider tout"
       checkout_button: "Confirmer achat"
-    checkout:
-      nav: "Confirmation achat"
-      title: "Confirmation achat"
+      fix_button: "Réparez-moi tout ça !"
+      fix_explain: "Certains articles de votre panier ne sont plus disponibles."
 
   checkout:
     index:
@@ -131,8 +130,12 @@ fr:
     item_added_to_cart: "<strong>{{name}}</strong> ajouté à votre panier."
     cart_creation_error: "Impossible de créer un nouveau panier."
     cart_emptied: "Panier vidé."
-    address_modification_success: "Adresse modifée avec succès."
-    address_creation_success: "Adresse créée avec succès."
+    paypal_error: "Erreur PayPal (stage {{stage}}) : {{msg}} (code {{code}})."
+    paypal_error_wrong_token: "mauvais token"
+    paypal_error_wrong_payer_id: "mauvais payer ID"
+    paypal_cancelled: "Paiement PayPal annulé."
+    impossible_to_send_order_confirm_mail: "Une erreur est survenue lors de l'envoi de l'e-mail de confirmation à {{email}}."
+    order_already_confirmed: "Cette commande a déjà été confirmée."
 
   category:
     title: 'Categorie "{{title}}"'

@@ -23,6 +23,11 @@ a:hover {
 
 h1 {
     color: black;
+    margin: 10px 10px 30px;
+}
+
+ul, li {
+    margin-left: 30px;
 }
 
 /* --- APPLICATION LAYOUT --- */
@@ -311,24 +316,11 @@ a:visited.navbar_link {
     background: yellow;
 }
 
-/* --- SIDEBAR CART --- */
-
-.sidebar_cart_item {
-}
-
-.sidebar_cart_item_title {
-}
-
-.sidebar_cart_item_details {
-    font-size: smaller;
-    color: #696969;
-}
-
-/* --- PAGE: home --- */
+/* --- WARNING BOXES --- */
 
 .warning_box {
-    color: white;
     margin: 15px auto;
+    color: white;
     padding: 10px;
     width: 550px;
     text-align: justify;
@@ -337,6 +329,11 @@ a:visited.navbar_link {
     border-radius: 10px;
     -moz-border-radius: 10px;
     -webkit-border-radius: 10px;
+}
+
+.warning_box_button {
+    margin-top: 10px;
+    text-align: center;
 }
 
 .warning_box a {
@@ -354,6 +351,21 @@ a:visited.navbar_link {
     position: relative;
     left: 350px;
 }
+
+/* --- SIDEBAR CART --- */
+
+.sidebar_cart_item {
+}
+
+.sidebar_cart_item_title {
+}
+
+.sidebar_cart_item_details {
+    font-size: smaller;
+    color: #696969;
+}
+
+/* --- PAGE: home --- */
 
 #home_twocols {
     width: 100%;
@@ -752,9 +764,6 @@ a:visited.navbar_link {
     margin-top: 7px;
     margin-bottom: 6px;
     border-bottom: 1px solid #ffacae;
-}
-
-#paypal_alternative_country {
 }
 
 .confirm_order {
