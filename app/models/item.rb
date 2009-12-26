@@ -46,14 +46,8 @@ class Item < ActiveRecord::Base
   end
 
   def availability_type
-    case item.stock_type
-      when 'new'
-        return 2
-      when 'used'
-        return 2
-      when 'preorder'
-        return 1
-    end
-    0
+    return 0 if stock == 0
+    return 1 if stock_type == 'preorder'
+    2
   end
 end

@@ -35,7 +35,14 @@ class CategoryController < ApplicationController
           when 'by-type'
             items.sort! { |a, b| a.item_type <=> b.item_type }
           when 'by-availability'
-            items.sort! { |a, b| b.availability_type <=> a.availability_type }
+            items.sort! do |a, b|
+              diff_availability = b.availability_type <=> a.availability_type
+              if diff_availability != 0
+                diff_availability
+              else
+                a.title <=> b.title
+              end
+            end
         end
         @display_items = items[((@page-1)*ITEMS_PER_PAGE)..(@page*ITEMS_PER_PAGE-1)]
       end
