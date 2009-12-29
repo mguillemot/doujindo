@@ -184,7 +184,7 @@ en:
         search: "Search"
         search_phantom: "(search)"
       language: "Language &amp; currency"
-    footer: "Website content &amp; design © {{shop_c}} Touhou Shop - Touhou Project © {{touhou_c}} Team Shanghai Alice - All items in the catalog are © of their respective authors."
+    footer: "Website © {{shop_c}} {{shop_link}} - Touhou Project © {{touhou_c}} {{touhou_link}} - Characters by {{walfas_link}} - All items in the catalog are © of their respective authors."
 
   item:
     title: "Title"

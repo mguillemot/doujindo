@@ -98,6 +98,16 @@ ul, li {
     vertical-align: middle;
 }
 
+#footer_content a {
+    color: #696969;
+    text-decoration: none;
+}
+
+#footer_content a:hover {
+    color: #696969;
+    text-decoration: underline;
+}
+
 @media print {
     #left_sidebar {
         display: none;
