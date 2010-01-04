@@ -1,5 +1,6 @@
 class ItemController < ApplicationController
   before_filter :admin_required, :except => [ :index, :search ]
+  layout :admin_layout
 
   MAX_RESULTS = 20
 
@@ -27,6 +28,7 @@ class ItemController < ApplicationController
   end
 
   def edit
+    layout 'admin'
     @item = Item.find params[:id]
     if request.post? and params[:item]
       params[:item][:ident].downcase!

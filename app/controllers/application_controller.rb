@@ -39,6 +39,10 @@ class ApplicationController < ActionController::Base
     @user != nil && @user.admin?
   end
 
+  def admin_layout
+    admin? ? 'admin' : 'application'
+  end
+
   def find_subdomain_for_language(language)
     LANGUAGE_BY_SUBDOMAIN.index language
   end

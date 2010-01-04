@@ -2,6 +2,7 @@ require 'RMagick'
 
 class AssetsController < ApplicationController
   before_filter :admin_required
+  layout 'admin'
 
   def index
     @assets = StaticAsset.valid_images
