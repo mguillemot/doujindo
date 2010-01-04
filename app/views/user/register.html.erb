@@ -76,7 +76,14 @@
           </span>
           </td>
         </tr>
+
         <tr class="register_field odd">
+          <td colspan="2" class="register_field_fullwidth">
+            <%= f.check_box :newsletter %> <%= t('user.register.subscribe_newsletter') %><a href="#footnote" class="footnote_reference">*</a>
+          </td>
+        </tr>
+
+        <tr class="register_field even">
           <td class="register_submit" colspan="2">
             <%= submit_tag t('user.register.signup_button'), :disabled => true, :id => 'signup_button' %>
           </td>
@@ -84,6 +91,9 @@
         </tbody>
       </table>
   <% end %>
+</div>
+<div id="newletter_description" class="footnote">
+  <a name="footnote" class="footnote_reference">*</a> <%= t('user.register.newsletter_description') %>
 </div>
 <script type="text/javascript">
     $(function() {

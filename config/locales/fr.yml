@@ -25,7 +25,9 @@ fr:
       email_confirmation: "Confirmation de l'e-mail"
       password: "Mot de passe"
       password_confirmation: "Confirmation du mot de passe"
+      subscribe_newsletter: "Recevor la newsletter du site"
       signup_button: "S'inscrire"
+      newsletter_description: "Votre adresse e-mail restera complètement privée ; nous ne la vendrons ou donnerons <strong>jamais</strong> à une tierce partie. La newsletter sera envoyée environ 1 fois par mois. Elle contiendra des informations générales sur l'actualité doujin, ainsi que les ajouts à notre catalogue les plus notoires, ainsi que des promotions. Vous pouvez vous désinscrire de cette liste à tout moment en cliquant sur le lien présent à la fin de chaque mail que nous vous enverrons."
     forgot_password:
       title: "Mot de passe perdu ?"
       nav: "Mot de passe perdu ?"

@@ -123,6 +123,17 @@ ul, li {
     }
 }
 
+div.footnote {
+    margin-top: 20px;
+    font-size: 11px;
+}
+
+.footnote_reference {
+    text-decoration: none;
+    font-size: 11px;
+    vertical-align: top;
+}
+
 /* --- NAVIGATION BAR --- */
 
 #navbar {
@@ -462,6 +473,14 @@ a:visited.navbar_link {
     left: 50px;
 }
 
+.register_content td {
+    padding: 3px;
+}
+
+.register_content input[type="text"],input[type="password"] {
+    border: 1px solid black;
+}
+
 .register_field.even {
     background-color: #ffdfe0;
 }
@@ -482,9 +501,14 @@ a:visited.navbar_link {
     padding-left: 5px;
 }
 
-.register_field_check {
-    width: 30px;
+.register_field_fullwidth {
     text-align: center;
+}
+
+.register_field_check img {
+    height: 16px;
+    position: relative;
+    top: 2px;
 }
 
 .register_submit {

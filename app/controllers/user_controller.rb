@@ -66,6 +66,7 @@ class UserController < ApplicationController
   end
 
   def register
+    @user = User.new
     if request.post? and params[:user]
       @user = User.new params[:user]
       @user.regen_confirmation_key
