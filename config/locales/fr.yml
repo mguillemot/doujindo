@@ -16,6 +16,17 @@ fr:
     blog:
       title: "Blog Touhou Shop"
 
+  faq:
+    title: "Foire Aux Questions"
+    nav: "FAQ"
+    question: "Question"
+    answer: "Réponse"
+
+  rss:
+    items:
+      title: "Catalogue Touhou Shop"
+      description: "Tous les articles du catalogue Touhou Shop."
+
   user:
     register:
       title: "Créer un nouveau compte client"

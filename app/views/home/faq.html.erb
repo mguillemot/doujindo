@@ -1,0 +1,14 @@
+<h1>FAQ: Frequently Asked Questions</h1>
+<div id="table">
+  <ol class="table_of_contents">
+    <% for cat in @categories -%>
+        <div class="category"><%= cat.toc_entry %></div>
+        <% for item in cat.children -%>
+            <li><a href="#<%= item.id %>"><%= item.toc_entry %></a></li>
+        <% end -%>
+    <% end -%>
+  </ol>
+</div>
+<div id="faq_content">
+  <%= render :partial => 'faq_category', :collection => @categories %>
+</div>
