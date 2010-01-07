@@ -13,9 +13,11 @@ class OrderController < ApplicationController
   def choose_country
     @order.ship_to_country = Country.find params[:countryid]
     @order.shipping_type = nil
-    @order.notes = @packing_debug
     @order.save!
     compute_shipping_to @order.ship_to_country, @order.currency
+    # Debug:
+    @order.shipping_notes = @packing_debug
+    @order.save!
   end
 
   def choose_shipping
@@ -167,6 +169,7 @@ class OrderController < ApplicationController
       @ems_price = 0
       @sal_price = 0
       @packing_price = 0
+      @packing_debug = ''
       @ems_desc = ''
       @sal_desc = ''
       packing = packer.find_optimal_packing items
@@ -190,17 +193,18 @@ class OrderController < ApplicationController
           @packing_debug = "other"
           @packing_price += 250
         end
-        @packing_debug = "Packing: (#{pack[:dimensions][0]}x#{pack[:dimensions][1]}x#{pack[:dimensions][2]}) weight #{pack[:weight]} => #{@packing_debug} for total price #{@packing_price}"
-        logger.info @packing_debug
+        @packing_debug += "Packing: (#{pack[:dimensions][0]}x#{pack[:dimensions][1]}x#{pack[:dimensions][2]}) weight #{pack[:weight]} => #{@packing_debug} for total price #{@packing_price}\n"
 
         # Shipping prices
         ems_shipping = ShippingPrice.find_for_package(pack, 'ems', country.ems_zone)
         if ems_shipping
           @ems_price += ems_shipping.price
+          @packing_debug += "EMS price for this pack is #{ems_shipping.price}\n"
         end
         sal_shipping = ShippingPrice.find_for_package(pack, 'sal', country.sal_zone)
         if sal_shipping
           @sal_price += sal_shipping.price
+          @packing_debug += "SAL price for this pack is #{sal_shipping.price}\n"
         end
       end
 
@@ -219,6 +223,7 @@ class OrderController < ApplicationController
       else
         @sal_desc = t('user.orders.detail.delivery.sal_unavailable')
       end
+      logger.info @packing_debug
     end
   end
 end
