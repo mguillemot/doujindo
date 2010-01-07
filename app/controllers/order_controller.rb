@@ -13,6 +13,7 @@ class OrderController < ApplicationController
   def choose_country
     @order.ship_to_country = Country.find params[:countryid]
     @order.shipping_type = nil
+    @order.notes = @packing_debug
     @order.save!
     compute_shipping_to @order.ship_to_country, @order.currency
   end
@@ -165,27 +166,58 @@ class OrderController < ApplicationController
       end
       @ems_price = 0
       @sal_price = 0
+      @packing_price = 0
       @ems_desc = ''
       @sal_desc = ''
       packing = packer.find_optimal_packing items
       logger.info "Zones for country ##{country.id}: ems=#{country.ems_zone} / sal=#{country.sal_zone}"
       packing.each do |pack|
+        # Packing prices
+        # TODO: business rules for packing prices
+        if pack[:type] == 'box' and pack[:dimensions][0] <= 150 and pack[:dimensions][1] <= 150 and pack[:dimensions][2] <= 30 and pack[:weight] <= 500
+          @packing_debug = "petite enveloppe papier bulle"
+          @packing_price += 100
+        elsif pack[:type] == 'box' and pack[:dimensions][0] <= 200 and pack[:dimensions][1] <= 200 and pack[:dimensions][2] <= 40 and pack[:weight] <= 1000
+          @packing_debug = "grande enveloppe papier bulle"
+          @packing_price += 150
+        elsif pack[:type] == 'box' and pack[:dimensions][0] <= 400 and pack[:dimensions][1] <= 400 and pack[:dimensions][2] <= 300
+          @packing_debug = "petit carton"
+          @packing_price += 200
+        elsif pack[:type] == 'box' and pack[:dimensions][0] <= 600 and pack[:dimensions][1] <= 600 and pack[:dimensions][2] <= 450
+          @packing_debug = "grand carton"
+          @packing_price += 250
+        else
+          @packing_debug = "other"
+          @packing_price += 250
+        end
+        @packing_debug = "Packing: (#{pack[:dimensions][0]}x#{pack[:dimensions][1]}x#{pack[:dimensions][2]}) weight #{pack[:weight]} => #{@packing_debug} for total price #{@packing_price}"
+        logger.info @packing_debug
+
+        # Shipping prices
         ems_shipping = ShippingPrice.find_for_package(pack, 'ems', country.ems_zone)
         if ems_shipping
-          @ems_price += currency.from_yen(ems_shipping.price)
-          @ems_desc = currency.format_value(@ems_price)
-        else
-          @ems_price = nil
-          @ems_desc = t('user.orders.detail.delivery.ems_unavailable')
+          @ems_price += ems_shipping.price
         end
         sal_shipping = ShippingPrice.find_for_package(pack, 'sal', country.sal_zone)
         if sal_shipping
-          @sal_price += currency.from_yen(sal_shipping.price)
-          @sal_desc = currency.format_value(@sal_price)
-        else
-          @sal_price = nil
-          @sal_desc = t('user.orders.detail.delivery.sal_unavailable')
+          @sal_price += sal_shipping.price
         end
+      end
+
+      # Converting currencies
+      if @ems_price > 0
+        @ems_price += @packing_price
+        @ems_price = currency.from_yen(@ems_price)
+        @ems_desc = currency.format_value(@ems_price)
+      else
+        @ems_desc = t('user.orders.detail.delivery.ems_unavailable')
+      end
+      if @sal_price > 0
+        @sal_price += @packing_price
+        @sal_price = currency.from_yen(@sal_price)
+        @sal_desc = currency.format_value(@sal_price)
+      else
+        @sal_desc = t('user.orders.detail.delivery.sal_unavailable')
       end
     end
   end
