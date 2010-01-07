@@ -28,7 +28,6 @@ class ItemController < ApplicationController
   end
 
   def edit
-    layout 'admin'
     @item = Item.find params[:id]
     if request.post? and params[:item]
       params[:item][:ident].downcase!
