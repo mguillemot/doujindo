@@ -22,6 +22,25 @@ fr:
     question: "Question"
     answer: "Réponse"
 
+  contact:
+    title: "Contact"
+    nav: "Contact"
+    intro: "Nous sommes à votre écoute !"
+    reasons: "N'hésitez pas à nous envoyer un e-mail à <a href=\"mailto:contact@touhou-shop.com\">contact@touhou-shop.com</a> pour toute raison !<ul>
+      <li>si vous avez une question à propos d'un article de notre catalogue</li>
+      <li>si vous voulez que nous vous cherchions un article en rupture de stock</li>
+      <li>si vous voulez pré-commander un article</li>
+      <li>si vous cherchez un doujin qui n'est PAS actuellement dans notre catalogue</li>
+      <li>si vous avez le moindre problème avec l'une de vos commandes (paiement, envoi, contenu...)</li>
+      <li>si vous voulez nous aider à promouvoir les doujins en Occident (programme d'affiliation, publicité...)</li>
+      <li>si vous produisez vous-mêmes des doujins que vous aimeriez vendre sur Touhou Shop</li>
+      <li>toute autre question générale</li>
+      <li>des commentaires, des suggestions...</li></ul>"
+    form_explain: "Vous pouvez également utiliser directement le formulaire de contact suivant :"
+    email: "Votre adresse e-mail :"
+    content: "Message :"
+    submit: "Envoyer"
+
   rss:
     items:
       title: "Catalogue Touhou Shop"
@@ -149,6 +168,7 @@ fr:
     paypal_cancelled: "Paiement PayPal annulé."
     impossible_to_send_order_confirm_mail: "Une erreur est survenue lors de l'envoi de l'e-mail de confirmation à {{email}}."
     order_already_confirmed: "Cette commande a déjà été confirmée."
+    contact_form_message_sent: "Message envoyé."
 
   category:
     title: 'Categorie "{{title}}"'

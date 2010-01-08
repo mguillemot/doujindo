@@ -11,5 +11,11 @@ class HomeController < ApplicationController
   end
 
   def contact
+    @email = @user.email if @user
+    if request.post?
+      Contacter.deliver_incoming_contact @user, params[:email], params[:content]
+      add_notice_now t('alerts.contact_form_message_sent')
+      @email = params[:email]
+    end
   end
 end

@@ -1,0 +1,33 @@
+<% @title = t('contact.title') -%>
+<% @nav = [ [ t('contact.nav') ] ] -%>
+<h1><%= @title %></h1>
+<div>
+  <p><%= t('contact.intro') %></p>
+  <br/>
+  <p><%= t('contact.reasons') %></p>
+  <br/>
+  <p><%= t('contact.form_explain') %></p>
+</div>
+<div id="contact_form">
+  <% form_tag :action => 'contact' do -%>
+      <div>
+        <label for="email"><%= t('contact.email') %></label>
+        <br/>
+        <%= text_field_tag :email, @email, :size => 30 %>
+      </div>
+
+      <br/>
+
+      <div>
+        <label for="content"><%= t('contact.content') %></label>
+        <br/>
+        <%= text_area_tag :content, '', :id => 'message_content' %>
+      </div>
+
+      <div class="hr"></div>
+
+      <div class="contact_actions">
+        <%= submit_tag t('contact.submit') %>
+      </div>
+  <% end -%>
+</div>
