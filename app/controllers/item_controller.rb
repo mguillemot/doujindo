@@ -5,19 +5,13 @@ class ItemController < ApplicationController
   MAX_RESULTS = 20
 
   def index
-    logger.debug "**start request=#{request.url}"
-    logger.debug "**params=#{params}"
     if params[:ident]
-      logger.debug "**ident"
       @item = Item.find_by_ident params[:ident]
     elsif params[:id]
-      logger.debug "**id"
       @item = Item.find_by_id params[:id]
     end
-    logger.debug "**item=#{@item}"
     if @item == nil or (@item.show? == false and admin? == false)
       add_error t('alerts.invalid_item')
-      #logger.debug "pident #{params[:ident]} pid #{params[:id]} item #{@itam}"
       redirect_to :controller => 'home'
     end
   end
