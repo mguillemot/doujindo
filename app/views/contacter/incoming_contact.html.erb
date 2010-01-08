@@ -1,6 +1,6 @@
 A message was send from the contact form:
 
-Logged-user: <%= @user %>
+Logged-user: <%= @user ? @user.id : '<none>' %>
 Date: <%= DateTime.now %>
 Reply address: <%= @email %>
 

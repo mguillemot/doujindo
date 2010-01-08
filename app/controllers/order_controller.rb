@@ -177,21 +177,27 @@ class OrderController < ApplicationController
       packing.each do |pack|
         # Packing prices
         # TODO: business rules for packing prices
-        if pack[:type] == 'box' and pack[:dimensions][0] <= 150 and pack[:dimensions][1] <= 150 and pack[:dimensions][2] <= 30 and pack[:weight] <= 500
+        if pack[:type] == 'box' and pack[:dimensions][0] <= 200 and pack[:dimensions][1] <= 150 and pack[:dimensions][2] <= 20 and pack[:weight] <= 300
           @packing_debug = "petite enveloppe papier bulle"
           @packing_price += 100
-        elsif pack[:type] == 'box' and pack[:dimensions][0] <= 200 and pack[:dimensions][1] <= 200 and pack[:dimensions][2] <= 40 and pack[:weight] <= 1000
+        elsif pack[:type] == 'box' and pack[:dimensions][0] <= 250 and pack[:dimensions][1] <= 200 and pack[:dimensions][2] <= 50 and pack[:weight] <= 600
           @packing_debug = "grande enveloppe papier bulle"
-          @packing_price += 150
-        elsif pack[:type] == 'box' and pack[:dimensions][0] <= 400 and pack[:dimensions][1] <= 400 and pack[:dimensions][2] <= 300
-          @packing_debug = "petit carton"
-          @packing_price += 200
-        elsif pack[:type] == 'box' and pack[:dimensions][0] <= 600 and pack[:dimensions][1] <= 600 and pack[:dimensions][2] <= 450
-          @packing_debug = "grand carton"
-          @packing_price += 250
+          @packing_price += 140
+        elsif pack[:type] == 'box' and pack[:dimensions][0] <= 200 and pack[:dimensions][1] <= 120 and pack[:dimensions][2] <= 65
+          @packing_debug = "carton SS"
+          @packing_price += 138
+        elsif pack[:type] == 'box' and pack[:dimensions][0] <= 225 and pack[:dimensions][1] <= 160 and pack[:dimensions][2] <= 105
+          @packing_debug = "carton S"
+          @packing_price += 168
+        elsif pack[:type] == 'box' and pack[:dimensions][0] <= 315 and pack[:dimensions][1] <= 220 and pack[:dimensions][2] <= 145
+          @packing_debug = "carton M"
+          @packing_price += 218
+        elsif pack[:type] == 'box' and pack[:dimensions][0] <= 390 and pack[:dimensions][1] <= 270 and pack[:dimensions][2] <= 180
+          @packing_debug = "carton L"
+          @packing_price += 258
         else
           @packing_debug = "other"
-          @packing_price += 250
+          @packing_price += 350
         end
         @packing_debug += "Packing: (#{pack[:dimensions][0]}x#{pack[:dimensions][1]}x#{pack[:dimensions][2]}) weight #{pack[:weight]} => #{@packing_debug} for total price #{@packing_price}\n"
 
