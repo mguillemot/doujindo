@@ -1,18 +1,32 @@
 <div class="faq_category">
-  <%= faq_category.toc_entry %>  
+  <%= faq_category.toc_entry %>
 </div>
 <% for item in faq_category.children -%>
     <a name="<%= item.id %>"></a>
 
-    <div class="faq_item">
-      <div class="faq_question">
-        <%= image_tag 'faq_aya.png', :width => 56, :height => 80, :alt => t('faq.question') %>
-        <%= item.question %>
-      </div>
-      <div class="hr"></div>
-      <div class="faq_answer">
-        <%= image_tag "faq_#{item.answer_avatar}.png", :height => 80, :alt => t('faq.answer') %>
-        <%= item.answer %>
-      </div>
-    </div>
+    <table class="faq_item">
+      <tbody>
+      <tr>
+        <td class="faq_avatar">
+          <%= image_tag 'faq_aya.png', :width => 56, :height => 80, :alt => t('faq.question') %>
+        </td>
+        <td class="faq_question">
+          <%= item.question %>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2">
+          <div class="hr"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="faq_avatar">
+          <%= image_tag "faq_#{item.answer_avatar}.png", :height => 80, :alt => t('faq.answer') %>
+        </td>
+        <td class="faq_answer">
+          <%= item.answer %>
+        </td>
+      </tr>
+      </tbody>
+    </table>
 <% end -%>
