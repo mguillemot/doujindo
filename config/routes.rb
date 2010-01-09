@@ -8,6 +8,7 @@ ActionController::Routing::Routes.draw do |map|
   # Sample of named route:
   #   map.purchase 'products/:id/purchase', :controller => 'catalog', :action => 'purchase'
   # This route can be invoked with purchase_url(:id => product.id)
+  map.connect 'item/view_all', :controller => 'item', :action => 'view_all'
   map.connect 'item/search/:query', :controller => 'item', :action => 'search', :query => ''
   map.connect 'item/:ident', :controller => 'item', :action => 'index', :ident => /[a-z][a-z0-9_-]+/
   map.connect 'category/new_item/:id', :controller => 'category', :action => 'new_item'

@@ -1,0 +1,50 @@
+<table id="all_items">
+  <tbody>
+  <% @items.each_with_index do |item, i| -%>
+      <% if i % 10 == 0 -%>
+          <tr>
+            <th>Edit</th>
+            <th>ID</th>
+            <th>Ident</th>
+            <th>Category</th>
+            <th>Title</th>
+            <th>Price</th>
+            <th>Genre</th>
+            <th>Dimensions</th>
+            <th>Stock</th>
+            <th>Description</th>
+            <th>Test</th>
+            <th>Required config</th>
+            <th>Warning</th>
+          </tr>
+      <% end -%>
+      <tr class="<%= item.show? ? cycle('odd', 'even') : 'hidden' %>">
+        <td><%= link_to 'Edit', :action => 'edit', :id => item %></td>
+        <td><%= item.id %></td>
+        <td><%= item.ident %></td>
+        <td><%= item.category.title %></td>
+        <td><%= item.title_en %>
+          <br/><%= item.title_fr %>
+          <br/><%= item.original_title %></td>
+        <td><%= Currency.yen.format_yen_value(item.price) %>
+          <br/><%= Currency.dollar.format_yen_value(item.price) %>
+          <br/><%= Currency.euro.format_yen_value(item.price) %></td>
+        <td><%= item.item_type_en %>
+          <br/><%= item.item_type_fr %></td>
+        <td><%= item.package_type %>
+          <br/><%= "#{item.dimension_width} x #{item.dimension_height} x #{item.dimension_thickness}" %>
+          <br/><%= item.weight %> g
+        </td>
+        <td><%= "#{item.stock} #{item.stock_type}" %><%= "<br/>#{item.reservation_end_date}" if item.reservation_end_date %></td>
+        <td><%= truncate item.description_en %>
+          <br/><%= truncate item.description_fr %></td>
+        <td><%= truncate item.test_en %>
+          <br/><%= truncate item.test_fr %></td>
+        <td><%= truncate item.required_config_en %>
+          <br/><%= truncate item.required_config_fr %></td>
+        <td><%= truncate item.warning_en %>
+          <br/><%= truncate item.warning_fr %></td>
+      </tr>
+  <% end -%>
+  </tbody>
+</table>

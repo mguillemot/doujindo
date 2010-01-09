@@ -372,6 +372,7 @@ a:visited.navbar_link {
     margin-top: 10px;
     position: relative;
     left: 350px;
+    width: 200px;
 }
 
 /* --- SIDEBAR CART --- */
@@ -954,4 +955,37 @@ ol.table_of_contents li {
 
 .contact_actions {
     text-align: center;
+}
+
+/* --- PAGES: all items --- */
+
+table#all_items {
+    text-align: center;
+    font-size: 12px;
+}
+
+table#all_items th {
+    background-color: black;
+    color: white;
+}
+
+table#all_items tr.hidden {
+    background-color: lightcoral;
+}
+
+table#all_items tr.odd {
+    background-color: #ffecec;
+}
+
+table#all_items tr.even {
+    background-color: #ffdfe0;
+}
+
+table#all_items tr:hover {
+    background-color: yellow;
+}
+
+table#all_items td {
+    border: 1px solid lightgray;
+    padding: 2px;
 }

@@ -76,4 +76,8 @@ class ItemController < ApplicationController
     @item.save!
     logger.info "Image for item ##{@item.id} reordered as #{params[:order]}"
   end
+
+  def view_all
+    @items = Item.all
+  end
 end

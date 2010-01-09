@@ -17,6 +17,10 @@ class Currency < ActiveRecord::Base
     '%.2f %s' % [value, symbol]
   end
 
+  def self.yen
+    Currency.find 1
+  end
+
   def self.euro
     Currency.find 2
   end

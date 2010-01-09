@@ -6,6 +6,8 @@
   <% if admin? -%>
       (ADMIN) <%= link_to 'Assets', :controller => 'assets', :action => 'index' -%>
       <div class="hr"></div>
+      (ADMIN) <%= link_to 'All items', :controller => 'item', :action => 'view_all' -%>
+      <div class="hr"></div>
   <% end -%>
   <%= link_to t('layout.sidebar.user_menu.user_orders'), :controller => 'user', :action => 'orders' -%>
   <div class="hr"></div>
