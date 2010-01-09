@@ -943,6 +943,10 @@ ol.table_of_contents li {
     padding: 8px;
 }
 
+.faq_answer p {
+    margin-bottom: 15px;
+}
+
 .faq_item div.hr {
     width: 100%;
     height: 1px;

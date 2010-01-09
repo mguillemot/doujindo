@@ -7,7 +7,7 @@ class HomeController < ApplicationController
   end
 
   def faq
-    @categories = FaqEntry.find_all_by_category true, :order => 'display_order asc'
+    @categories = FaqEntry.find_all_by_category true, :order => 'id asc'
   end
 
   def contact
