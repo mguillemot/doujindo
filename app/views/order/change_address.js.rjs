@@ -1,0 +1,10 @@
+page['address_display'].show
+page['edit_link'].show
+page['address_edit'].hide
+page.replace_html "shipping_address", render(:partial => 'partials/shipping_address', :object => @order, :locals => { :editable_address => true })
+if @order.ship_to_country == @order.shipping_calculated_for_country
+  page << "enableConfirm();"
+else
+  page.replace_html 'paypal_alternative_country', render(:partial => 'alternative_country', :locals => { :order => @order }) 
+  page['paypal_alternative_country'].show
+end

@@ -35,11 +35,11 @@
   <tr class="cart_item <%= cycle('odd', 'even') %>">
     <td colspan="3" class="cart_total">
       <% unless defined? country_chooser -%>
-          <%= t('user.orders.detail.shipping_to.complete', :country => order.ship_to_country.name, :method => order.shipping_type.upcase) %>
+          <%= t('user.orders.detail.shipping_to.complete', :country => order.shipping_calculated_for_country.name, :method => order.shipping_type.upcase) %>
       <% else -%>
           <%= t('user.orders.detail.shipping_to.incomplete') %>
-          <%= collection_select :order, :ship_to_country_id, Country.available_for_shipping, :id, :name, { :include_blank => t('user.orders.detail.choose_a_country') } %>
-          <%= observe_field :order_ship_to_country_id, :url => { :action => 'choose_country' }, :with => 'countryid' %>
+          <%= collection_select :order, :shipping_calculated_for_country_id, Country.available_for_shipping, :id, :name, { :include_blank => t('user.orders.detail.choose_a_country') } %>
+          <%= observe_field :order_shipping_calculated_for_country_id, :url => { :action => 'choose_country' }, :with => 'countryid' %>
           <div id="delivery_options">
             <%= render :partial => 'partials/delivery_options' -%>
           </div>
@@ -66,8 +66,3 @@
   <% end -%>
   </tbody>
 </table>
-<% unless defined? no_shipping_address -%>
-    <div id="shipping_address">
-      <%= render :partial => 'partials/shipping_address', :object => order %>
-    </div>
-<% end -%>

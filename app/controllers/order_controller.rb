@@ -5,23 +5,24 @@ class OrderController < ApplicationController
   before_filter :check_items_availability
 
   def index
-    if @order.ship_to_country
-      compute_shipping_to @order.ship_to_country, @order.currency
-    end
+    @order.shipping_calculated_for_country = nil
+    @order.shipping_type = nil
+    @order.shipping_price = nil
+    @order.save!
   end
 
   def choose_country
-    @order.ship_to_country = Country.find params[:countryid]
+    @order.shipping_calculated_for_country = Country.find params[:countryid]
     @order.shipping_type = nil
     @order.save!
-    compute_shipping_to @order.ship_to_country, @order.currency
+    compute_shipping_to @order.shipping_calculated_for_country, @order.currency
     # Debug:
     @order.shipping_notes = @packing_debug
     @order.save!
   end
 
   def choose_shipping
-    compute_shipping_to @order.ship_to_country, @order.currency
+    compute_shipping_to @order.shipping_calculated_for_country, @order.currency
     case params[:shippingtype]
       when 'ems'
         @order.shipping_type = 'ems'
@@ -34,7 +35,7 @@ class OrderController < ApplicationController
   end
 
   def to_paypal
-    response = Paypal::Api.set_express_checkout(@order, url_for(:action => 'review'), url_for(:action => 'cancel' ))
+    response = Paypal::Api.set_express_checkout(@order, url_for(:action => 'paypal_review'), url_for(:action => 'cancel' ))
     if response.success
       @order.paypal_token = response.token
       @order.save!
@@ -46,7 +47,7 @@ class OrderController < ApplicationController
     end
   end
 
-  def review
+  def paypal_review
     token = params[:token]
     payer_id = params[:PayerID]
     details = Paypal::Api.get_express_checkout_details(token)
@@ -58,7 +59,6 @@ class OrderController < ApplicationController
         add_error t('alerts.paypal_error', :stage => '2c', :msg => t('alerts.paypal_error_wrong_payer_id'), :code => 0)
         redirect_to :action => 'index'
       else
-        country = Country.from_paypal_code details.country_code
         @order.payment_type = 'paypal'
         @order.paypal_payer_id = details.payer_id
         @order.payment_status = 'waiting-for-user-confirmation'
@@ -67,12 +67,10 @@ class OrderController < ApplicationController
         @order.ship_to_zip = details.zip
         @order.ship_to_city = details.city
         @order.ship_to_state = details.state
-        @order.ship_to_country_code = details.country_code
+        @order.ship_to_country = Country.find_by_paypal_code(details.country_code)
         @order.notes = details.note
-        if @order.ship_to_country != country
-          @paypal_alternative_country = country
-        end
         @order.save!
+        redirect_to :action => 'review'
       end
     else
       add_error t('alerts.paypal_error', :stage => '2a', :msg => details.error_message, :code => details.error_code)
@@ -80,9 +78,14 @@ class OrderController < ApplicationController
     end
   end
 
+  def review
+  end
+
+  def change_address
+    @order.update_attributes! params[:order]
+  end
+
   def recompute_shipping
-    @order.ship_to_country = Country.from_paypal_code @order.ship_to_country_code
-    @paypal_alternative_country = nil
     compute_shipping_to @order.ship_to_country, @order.currency
     case @order.shipping_type
       when 'ems'
@@ -90,7 +93,12 @@ class OrderController < ApplicationController
       when 'sal'
         @order.shipping_price = @sal_price
     end
-    @order.save!
+    @order.shipping_calculated_for_country = @order.ship_to_country
+    if @order.shipping_price == nil
+      add_error t('alerts.shipping_method_not_available', :shipping_method => @order.shipping_type.upcase, :country => @order.ship_to_country.name)
+    else
+      @order.save!
+    end
   end
 
   def cancel
@@ -199,18 +207,18 @@ class OrderController < ApplicationController
           @packing_debug = "other"
           @packing_price += 350
         end
-        @packing_debug += "Packing: (#{pack[:dimensions][0]}x#{pack[:dimensions][1]}x#{pack[:dimensions][2]}) weight #{pack[:weight]} => #{@packing_debug} for total price #{@packing_price}\n"
+        @packing_debug += "Packing: (#{pack[:dimensions][0]}x#{pack[:dimensions][1]}x#{pack[:dimensions][2]}) weight #{pack[:weight]} => #{@packing_debug} for total price #{@packing_price} / "
 
         # Shipping prices
         ems_shipping = ShippingPrice.find_for_package(pack, 'ems', country.ems_zone)
         if ems_shipping
           @ems_price += ems_shipping.price
-          @packing_debug += "EMS price for this pack is #{ems_shipping.price}\n"
+          @packing_debug += "EMS price for this pack is #{ems_shipping.price} / "
         end
         sal_shipping = ShippingPrice.find_for_package(pack, 'sal', country.sal_zone)
         if sal_shipping
           @sal_price += sal_shipping.price
-          @packing_debug += "SAL price for this pack is #{sal_shipping.price}\n"
+          @packing_debug += "SAL price for this pack is #{sal_shipping.price} / "
         end
       end
 
@@ -220,6 +228,7 @@ class OrderController < ApplicationController
         @ems_price = currency.from_yen(@ems_price)
         @ems_desc = currency.format_value(@ems_price)
       else
+        @ems_price = nil
         @ems_desc = t('user.orders.detail.delivery.ems_unavailable')
       end
       if @sal_price > 0
@@ -227,6 +236,7 @@ class OrderController < ApplicationController
         @sal_price = currency.from_yen(@sal_price)
         @sal_desc = currency.format_value(@sal_price)
       else
+        @sal_price = nil
         @sal_desc = t('user.orders.detail.delivery.sal_unavailable')
       end
       logger.info @packing_debug

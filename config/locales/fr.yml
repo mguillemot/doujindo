@@ -81,6 +81,7 @@ fr:
         status:
           paid: "payée"
           sent: "envoyée"
+        none: "(aucune)"
       detail:
         title: "Commande n°{{id}}"
         nav: "Commande n°{{id}}"
@@ -107,6 +108,10 @@ fr:
           title: "Adresse d'envoi"
           note: "Note :"
         back_button: "&lt; Retour à la liste"
+        events:
+          title: "Etat :"
+          paid_on: "Payée le {{date}}"
+          sent_on: "Envoyée par {{method}} le {{date}}"
 
   cart:
     edit:
@@ -130,14 +135,14 @@ fr:
     review:
       title: "Vérification finale"
       nav: "Vérification"
-      paypal_alternative_country: "AVERTISSEMENT: l'adresse d'envoi que vous avez entré sur PayPal est située dans un autre pays ({{alternative_country}}) que celui que vous aviez sélectionné pour le calcul des frais de port ({{current_country}}). Vous devez recalculer les frais de port avant de pouvoir finaliser votre commande."
+      paypal_alternative_country: "AVERTISSEMENT: l'adresse d'envoi que vous avez entré est située dans un autre pays ({{alternative_country}}) que celui que vous aviez sélectionné pour le calcul des frais de port ({{current_country}}). Vous devez recalculer les frais de port avant de pouvoir finaliser votre commande."
       recompute_shipping: "Recalculer les frais de port vers le/la {{alternative_country}}"
       confirm_button: "Confirmer la commande"
       confirm_button_explain: "En cliquant sur ce bouton, vous autoriserez le transfert d'argent depuis PayPal.<br/>Vérifiez une dernière fois le contenu de votre commande (y compris l'adresse de livraison !) avant de cliquer."
     confirmation:
       title: "Commande confirmée"
       nav: "Commande confirmée"
-      msg: "Votre commande a été confirmée avec succès. Un e-mail de récapitulatif vous a été envoyé à {{email}}. Nous vous enverrons un 2è e-mail lors de l'envoi de commande. Vous pouvez également suivre l'état de cette dernière à tout moment dans la section <strong>Mes commandes</strong>. Merci d'avoir utilisé Touhou Shop !"
+      msg: "Votre commande a été confirmée avec succès. Un e-mail de récapitulatif vous a été envoyé à {{email}}. Nous vous enverrons un 2è e-mail lors de l'envoi de commande. Vous pouvez également suivre l'état de cette dernière à tout moment dans la section <strong>Mes commandes</strong> dans le menu client à droite. Merci d'avoir utilisé Touhou Shop !"
 
   alerts:
     logged_out: "Session fermée."
@@ -160,12 +165,14 @@ fr:
     invalid_blog_post: "Article du blog inconnu."
     invalid_order: "Commande invalide."
     item_added_to_cart: "<strong>{{name}}</strong> ajouté à votre panier."
+    empty_cart: "Panier vide."
     cart_creation_error: "Impossible de créer un nouveau panier."
     cart_emptied: "Panier vidé."
     paypal_error: "Erreur PayPal (stage {{stage}}) : {{msg}} (code {{code}})."
     paypal_error_wrong_token: "mauvais token"
     paypal_error_wrong_payer_id: "mauvais payer ID"
     paypal_cancelled: "Paiement PayPal annulé."
+    shipping_method_not_available: "{{shipping_method}} n'est pas disponible pour le/la {{country}}."
     impossible_to_send_order_confirm_mail: "Une erreur est survenue lors de l'envoi de l'e-mail de confirmation à {{email}}."
     order_already_confirmed: "Cette commande a déjà été confirmée."
     contact_form_message_sent: "Message envoyé."
@@ -191,6 +198,7 @@ fr:
         title: "Panier"
         chekout_button: "Editer ou Valider"
         empty: "(vide)"
+        condition_and_quantity: "Etat: neuf - Quantité: {{quantity}}"
       user_menu:
         title: "Menu utilisateur"
         username: "Identifiant:"

@@ -2,20 +2,18 @@
 <% @nav = order_review_nav -%>
 <% @hide_cart = true -%>
 <h1><%= @title -%></h1>
-<%= render :partial => 'partials/order', :object => @order %>
-<% if @paypal_alternative_country -%>
-    <div id="paypal_alternative_country" class="warning_box">
-      <%= t('checkout.review.paypal_alternative_country', :alternative_country => @paypal_alternative_country.name, :current_country => @order.ship_to_country.name) -%>
-      <div class="warning_box_button">
-        <%= button_to_remote t('checkout.review.recompute_shipping', :alternative_country => @paypal_alternative_country.name), :url => { :action => 'recompute_shipping' } -%>
-      </div>
-    </div>
+<%= render :partial => 'partials/order', :object => @order, :locals => { :editable_address => true } %>
+<div id="shipping_address">
+  <%= render :partial => 'partials/shipping_address', :object => @order, :locals => { :editable_address => true } %>
+</div>
+<div id="paypal_alternative_country" class="warning_box" style="display:none;">
+  <%= render :partial => 'alternative_country', :locals => { :order => @order } %>
+</div>
+<% if @order.ship_to_country != @order.shipping_calculated_for_country -%>
     <script type="text/javascript">
-        function enableConfirm() {
-            $('#confirm_order').attr('src', '/images/confirm_order_button.png').attr('disabled', false);
-        }
         $(function() {
-            $('#confirm_order').attr('src', '/images/confirm_order_button_disabled.png').attr('disabled', true);
+            $('#paypal_alternative_country').show();
+            disableConfirm();
         });
     </script>
 <% end -%>
@@ -27,3 +25,11 @@
     <%= t('checkout.review.confirm_button_explain') %>
   </div>
 </div>
+<script type="text/javascript">
+    function enableConfirm() {
+        $('#confirm_order').attr('src', '/images/confirm_order_button.png').attr('disabled', false);
+    }
+    function disableConfirm() {
+        $('#confirm_order').attr('src', '/images/confirm_order_button_disabled.png').attr('disabled', true);
+    }
+</script>

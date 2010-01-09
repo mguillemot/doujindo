@@ -11,6 +11,9 @@
   </ul>
 </div>
 <%= render :partial => 'partials/order', :object => @order %>
+<div id="shipping_address">
+  <%= render :partial => 'partials/shipping_address', :object => @order %>
+</div>
 <div class="bottom_button">
   <%= button_to t('user.orders.detail.back_button'), { :action => 'orders' }, :method => :get %>
 </div>

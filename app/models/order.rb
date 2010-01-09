@@ -4,6 +4,7 @@ Order < ActiveRecord::Base
   belongs_to :client, { :class_name => 'User' }
   belongs_to :currency
   belongs_to :ship_to_country, { :class_name => 'Country' }
+  belongs_to :shipping_calculated_for_country, { :class_name => 'Country' }
 
   def total_price
     total = items_total_price

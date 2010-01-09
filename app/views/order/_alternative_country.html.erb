@@ -1,0 +1,4 @@
+<%= t('checkout.review.paypal_alternative_country', :alternative_country => order.ship_to_country.name, :current_country => order.shipping_calculated_for_country.name) -%>
+<div class="warning_box_button">
+  <%= button_to_remote t('checkout.review.recompute_shipping', :alternative_country => order.ship_to_country.name), :url => { :action => 'recompute_shipping' } -%>
+</div>

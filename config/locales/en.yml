@@ -81,6 +81,7 @@ en:
         status:
           paid: "paid"
           sent: "sent"
+        none: "(none)"
       detail:
         title: "Order #{{id}}"
         nav: "Order #{{id}}"
@@ -134,14 +135,14 @@ en:
     review:
       title: "Checkout - Final review"
       nav: "Review"
-      paypal_alternative_country: "WARNING: the shipping address you have entered in your PayPal payment form is located in another country ({{alternative_country}}) than the one you selected for computing shipping costs ({{current_country}}). You have to recompute shipping costs before you can confirm your order."
+      paypal_alternative_country: "WARNING: the shipping address you have entered is located in another country ({{alternative_country}}) than the one you selected for computing shipping costs ({{current_country}}). You have to recompute shipping costs before you can confirm your order."
       recompute_shipping: "Recompute shipping to {{alternative_country}}"
       confirm_button: "Confirm order"
       confirm_button_explain: "By clicking this button, you will authorize the money transfer from PayPal to us.<br/>Be sure to review your order (including shipping address!) one last time before clicking."
     confirmation:
       title: "Order confirmed"
       nav: "Order confirmed"
-      msg: "Your order has been validated successfully. An e-mail confirmation has been sent to {{email}}. We will send you another e-mail when we ship your order. You can also view the status of your order in <strong>My Home</strong> any time. Thank you for purchasing at Touhou Shop!"
+      msg: "Your order has been validated successfully. An e-mail confirmation has been sent to {{email}}. We will send you another e-mail when we ship your order. You can also view the status of your order any time in the <strong>My orders</strong> section of the user menu on your right. Thank you for purchasing at Touhou Shop!"
 
   alerts:
     logged_out: "Logged out."
@@ -163,6 +164,7 @@ en:
     invalid_category: "Invalid category."
     invalid_blog_post: "Invalid blog post."
     invalid_order: "Invalid order."
+    empty_cart: "Empty cart."
     cart_creation_error: "Impossible to create a new shopping cart."
     item_added_to_cart: "<strong>{{name}}</strong> added to your cart."
     cart_emptied: "Shopping cart emptied."
@@ -170,6 +172,7 @@ en:
     paypal_error_wrong_token: "wrong token"
     paypal_error_wrong_payer_id: "wrong payer ID"
     paypal_cancelled: "PayPal payment cancelled."
+    shipping_method_not_available: "{{shipping_method}} is not available for {{country}}."
     impossible_to_send_order_confirm_mail: "An error occured while trying to send the confirmation mail to {{email}}."
     order_already_confirmed: "This order has already been confirmed."
     contact_form_message_sent: "Message sent."
@@ -195,6 +198,7 @@ en:
         title: "Shopping cart"
         chekout_button: "Edit or Checkout"
         empty: "(empty)"
+        condition_and_quantity: "Condition: new - Quantity: {{quantity}}"
       user_menu:
         title: "User menu"
         username: "Username:"

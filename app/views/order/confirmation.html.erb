@@ -5,3 +5,6 @@
 <div><%= t('checkout.confirmation.msg', :email => @user.email) %></div>
 <div>&nbsp;</div>
 <%= render :partial => 'partials/order', :object => @order %>
+<div id="shipping_address">
+  <%= render :partial => 'partials/shipping_address', :object => @order %>
+</div>

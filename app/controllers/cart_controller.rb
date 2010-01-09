@@ -1,6 +1,7 @@
 class CartController < ApplicationController
   before_filter :login_required, :only => :checkout
   before_filter :cart_required
+  before_filter :non_empty_cart_required, :except => [ :add ]
 
   def index
   end
@@ -88,6 +89,15 @@ class CartController < ApplicationController
       end
     end
     if !@cart
+      redirect_to :controller => 'home'
+      return false
+    end
+    return true
+  end
+
+  def non_empty_cart_required
+    if @cart.cart_items.length == 0
+      add_error t('alerts.empty_cart')
       redirect_to :controller => 'home'
       return false
     end

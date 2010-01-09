@@ -1,15 +1,91 @@
 <div class="shipping_address_box">
-  <div class="title"><%= t('user.orders.detail.shipping_address.title') -%></div>
+  <table class="title_bar">
+    <tr>
+      <td class="title"><%= t('user.orders.detail.shipping_address.title') -%></td>
+      <% if defined? editable_address -%>
+          <td id="edit_link" class="edit">
+            [<%= link_to_function "Edit", "$('#address_display').hide(); $('#edit_link').hide(); $('#address_edit').show(); disableConfirm();" -%>
+            ]
+          </td>
+      <% end -%>
+    </tr>
+  </table>
   <div class="hr"></div>
-  <div><%= h shipping_address.ship_to_name %></div>
-  <div><%= nl2br h shipping_address.ship_to_street %></div>
-  <div><%= h shipping_address.ship_to_zip %> <%= h shipping_address.ship_to_city %></div>
-  <% if shipping_address.ship_to_state -%>
-      <div><%= h shipping_address.ship_to_state %></div>
-  <% end -%>
-  <div><%= Country.find_by_paypal_code(shipping_address.ship_to_country_code).name %></div>
-  <% if shipping_address.notes && shipping_address.notes.size > 0 -%>
-      <div class="hr"></div>
-      <div><span style="text-decoration:underline"><%= t('user.orders.detail.shipping_address.note') -%></span> <%= h shipping_address.notes %></div>
+  <div id="address_display">
+    <div><%= h shipping_address.ship_to_name %></div>
+    <div><%= nl2br h(shipping_address.ship_to_street) %></div>
+    <div><%= h shipping_address.ship_to_zip %> <%= h shipping_address.ship_to_city %></div>
+    <% if shipping_address.ship_to_state -%>
+        <div><%= h shipping_address.ship_to_state %></div>
+    <% end -%>
+    <div><%= shipping_address.ship_to_country.name %></div>
+    <div class="hr"></div>
+    <div>
+      <span style="text-decoration:underline"><%= t('user.orders.detail.shipping_address.note') -%></span> <%= h shipping_address.notes %>
+    </div>
+  </div>
+  <% if defined? editable_address -%>
+      <div id="address_edit" style="display:none;">
+        <% form_remote_tag :url => { :action => 'change_address' } do -%>
+            <table>
+              <tr>
+                <td class="address_field">
+                  <label class="address_field" for="order_ship_to_name">Name:</label>
+                </td>
+                <td>
+                  <%= text_field :order, :ship_to_name %>
+                </td>
+              </tr>
+              <tr>
+                <td class="address_field">
+                  <label class="address_field" for="order_ship_to_street">Street:</label>
+                </td>
+                <td>
+                  <%= text_field :order, :ship_to_street %>
+                </td>
+              </tr>
+              <tr>
+                <td class="address_field">
+                  <label class="address_field" for="order_ship_to_zip">Zip code:</label>
+                </td>
+                <td>
+                  <%= text_field :order, :ship_to_zip %>
+                </td>
+              </tr>
+              <tr>
+                <td class="address_field">
+                  <label class="address_field" for="order_ship_to_city">City:</label>
+                </td>
+                <td>
+                  <%= text_field :order, :ship_to_city %>
+                </td>
+              </tr>
+              <tr>
+                <td class="address_field">
+                  <label class="address_field" for="order_ship_to_state">State:</label>
+                </td>
+                <td>
+                  <%= text_field :order, :ship_to_state %>
+                </td>
+              </tr>
+              <tr>
+                <td class="address_field">
+                  <label class="address_field" for="order_ship_to_country_id">Country:</label>
+                </td>
+                <td>
+                  <%= collection_select :order, :ship_to_country_id, Country.available_for_shipping, :id, :name, { :include_blank => t('user.orders.detail.choose_a_country') } %>
+                </td>
+              </tr>
+            </table>
+            <br/>
+            <label for="order_notes">Notes:</label>
+            <br/>
+            <%= text_area :order, :notes, :class => 'address_text' %>
+            <div class="hr"></div>
+            <div class="button">
+              <%= submit_tag 'Done' %>
+            </div>
+        <% end -%>
+      </div>
   <% end -%>
 </div>

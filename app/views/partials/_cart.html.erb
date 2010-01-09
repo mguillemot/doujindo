@@ -8,7 +8,7 @@
               <% end %>
             </div>
             <div class="sidebar_cart_item_details">
-              Condition: new - Quantity: <%= cartItem.quantity %>
+              <%= t('layout.sidebar.cart.condition_and_quantity', :quantity => cartItem.quantity) %>
             </div>
           </div>
           <div class="hr"></div>

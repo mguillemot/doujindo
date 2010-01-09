@@ -1,6 +1,10 @@
-page.remove "paypal_alternative_country"
-page.replace_html "shipping_country", @order.ship_to_country.name
-page.replace_html "shipping_price",  @order.currency.format_value(@order.shipping_price)
-page.replace_html "total_price_with_shipping", @order.currency.format_value(@order.total_price)
-page.replace_html "shipping_address", render(:partial => 'partials/shipping_address', :object => @order)
-page << "enableConfirm();"
+unless @order.shipping_price == nil
+  page['paypal_alternative_country'].hide
+  page.replace_html "shipping_country", @order.ship_to_country.name
+  page.replace_html "shipping_price",  @order.currency.format_value(@order.shipping_price)
+  page.replace_html "total_price_with_shipping", @order.currency.format_value(@order.total_price)
+  page.replace_html "shipping_address", render(:partial => 'partials/shipping_address', :object => @order, :locals => { :editable_address => true })
+  page << "enableConfirm();"
+else
+  page.redirect_to :action => 'index'  
+end
