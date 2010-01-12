@@ -1,0 +1,42 @@
+<% @nav = [ [ 'Orders' ] ] %>
+<h1>Orders</h1>
+<table id="all_items">
+  <tbody>
+  <% @orders.each_with_index do |order, i| -%>
+      <% if i % 10 == 0 -%>
+          <tr>
+            <th>Action</th>
+            <th>ID</th>
+            <th>Client</th>
+            <th>Items</th>
+            <th>Shipping</th>
+            <th>Destination</th>
+            <th>Total</th>
+            <th>Status</th>
+            <th>Created</th>
+            <th>Paid</th>
+            <th>Sent</th>
+            <th>Tracking</th>
+            <th>User notes</th>
+            <th>Shipping notes</th>
+          </tr>
+      <% end -%>
+      <tr class="<%= cycle('odd', 'even') %>">
+        <td><%= link_to 'Details', :controller => 'admin', :action => 'order', :id => order %></td>
+        <td><%= order.id %></td>
+        <td><%= order.client.login %></td>
+        <td><%= order.order_items.length %> items<br/><%= order.currency.format_value(order.items_total_price) %></td>
+        <td><%= order.shipping_type.upcase %><br/><%= order.currency.format_value(order.shipping_price) %></td>
+        <td><%= order.ship_to_country.name %></td>
+        <td><%= order.currency.format_value(order.total_price) %></td>
+        <td><%= order.status %></td>
+        <td><%= order.created_at.to_s(:short) %></td>
+        <td><%= order.payment_date.to_s(:short) %></td>
+        <td><%= order.shipping_sent_date ? order.shipping_sent_date.to_s(:short) : '-' %></td>
+        <td><%= order.shipping_tracking_number %></td>
+        <td><%= truncate order.notes %></td>
+        <td><%= truncate order.shipping_notes %></td>
+      </tr>
+  <% end -%>
+  </tbody>
+</table>

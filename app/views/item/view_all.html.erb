@@ -19,7 +19,7 @@
           </tr>
       <% end -%>
       <tr class="<%= item.show? ? cycle('odd', 'even') : 'hidden' %>">
-        <td><%= link_to 'Edit', :action => 'edit', :id => item %></td>
+        <td><%= link_to 'Edit', :controller => 'item', :action => 'edit', :id => item %></td>
         <td><%= item.id %></td>
         <td><%= item.ident %></td>
         <td><%= item.category.title %></td>

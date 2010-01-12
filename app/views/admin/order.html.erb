@@ -1,0 +1,84 @@
+<% @nav = [ [ 'Orders', { :controller => 'admin', :action => 'orders' } ], [ "Order ##{@order.id}" ] ] %>
+<h1>Order #<%= @order.id %></h1>
+<% form_for :item, @item do |f| -%>
+    <!--<div>-->
+      <!--<%= f.submit 'Submit' %>-->
+    <!--</div>-->
+
+    <div class="item_detail">
+      <div class="item_detail_name">Client</div>
+      <div class="item_detail_content">
+        Login: <strong><%= @order.client.login %></strong>
+        <br/>
+        Subscribed on <%= @order.client.created_at.to_s(:long) %>
+        <br/>
+        E-mail: <strong><%= @order.client.email %></strong>
+        <% if @order.client.email_confirmation_date -%>
+            (validated on <%= @order.client.email_confirmation_date.to_s(:long) %>)
+        <% else -%>
+            (not validated)
+        <% end -%>
+        <br/>
+        Preferred language: <strong><%= @order.client.preferred_language %></strong>
+        / Preferred currency: <strong><%= Currency.find(@order.client.preferred_currency).description %></strong>
+        <br/>
+        Login count: <strong><%= @order.client.login_count %></strong> (last
+        on <%= @order.client.last_login.to_s(:long) %>)
+        <br/>
+        Newsletter? <strong><%= @order.client.newsletter? %></strong>
+      </div>
+    </div>
+
+    <div class="item_detail">
+      <div class="item_detail_name">Items</div>
+      <div class="item_detail_content">
+        <% for oi in @order.order_items do -%>
+            <%= link_to oi.item.title, :controller => 'item', :action => 'index', :ident => oi.item.ident %>
+            x<%= oi.quantity %>
+            (<%= @order.currency.format_value(oi.unit_price) %> x <%= oi.quantity %>
+            = <%= @order.currency.format_value(oi.total_price) %>)
+            <br/>
+        <% end -%>
+        TOTAL items: <strong><%= @order.currency.format_value(@order.items_total_price) %></strong>
+      </div>
+    </div>
+
+    <div class="item_detail">
+      <div class="item_detail_name">Shipping</div>
+      <div class="item_detail_content">
+        Type: <strong><%= @order.shipping_type.upcase %></strong>
+        <br/>
+        Price: <strong><%= @order.currency.format_value(@order.shipping_price) %></strong>
+        <br/>
+        <br/>
+        Address:
+        <br/>
+        <strong>
+          <div><%= h @order.ship_to_name %></div>
+          <div><%= nl2br h(@order.ship_to_street) %></div>
+          <div><%= h @order.ship_to_zip %> <%= h @order.ship_to_city %></div>
+          <% if @order.ship_to_state -%>
+              <div><%= h @order.ship_to_state %></div>
+          <% end -%>
+          <div><%= @order.ship_to_country.name %></div>
+        </strong>
+        <br/>
+        Notes (by client):
+        <br/>
+        <div><strong><%= h @order.notes %></strong></div>
+        <br/>
+        Notes (by system):
+        <div><strong><%= nl2br @order.shipping_notes %></strong></div>
+      </div>
+    </div>
+
+    <div class="item_detail">
+      <div class="item_detail_name">Payment</div>
+      <div class="item_detail_content">
+        TOTAL price: <strong><%= @order.currency.format_value(@order.total_price) %></strong>
+        <br/>
+        Paid on <%= @order.payment_date.to_s(:long) %> by PayPal (transaction ID = <%= @order.paypal_transaction_id %>)
+      </div>
+    </div>
+
+<% end -%>

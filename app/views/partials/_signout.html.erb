@@ -4,6 +4,8 @@
   <!--<%= link_to t('layout.sidebar.user_menu.user_home'), :controller => 'user', :action => 'index' -%>-->
   <!--<div class="hr"></div>-->
   <% if admin? -%>
+      (ADMIN) <%= link_to 'Orders', :controller => 'admin', :action => 'orders' -%>
+      <div class="hr"></div>
       (ADMIN) <%= link_to 'Assets', :controller => 'assets', :action => 'index' -%>
       <div class="hr"></div>
       (ADMIN) <%= link_to 'All items', :controller => 'item', :action => 'view_all' -%>
