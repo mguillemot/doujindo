@@ -363,7 +363,6 @@ a:visited.navbar_link {
 }
 
 .warning_box img {
-    float: left;
     margin-right: 15px;
     vertical-align: middle;
 }
@@ -371,7 +370,7 @@ a:visited.navbar_link {
 .warning_box_signature {
     margin-top: 10px;
     position: relative;
-    left: 350px;
+    left: 150px;
     width: 200px;
 }
 

@@ -193,6 +193,8 @@ fr:
   layout:
     meta:
       description: "Boutique en ligne spécialisée dans les Touhou et autres doujin japonais : jeux, goodies, figurines... En direct du Japon !"
+    warning:
+      translation: "Cette section sera traduite en français très prochainement."
     sidebar:
       cart:
         title: "Panier"

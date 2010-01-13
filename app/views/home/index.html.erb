@@ -1,15 +1,5 @@
 <% @title = t('home.title') -%>
-<div class="warning_box">
-  <div>
-    <%= image_tag 'warning_utsuho.png', :width => 151, :height => 100, :alt => t('home.warning.title') %>
-  </div>
-  <div>
-    <%= t('home.warning.content', :contact_link => url_for(:action => 'contact')) %>
-    <div class="warning_box_signature">
-      <%= t('home.warning.signature') %>
-    </div>
-  </div>
-</div>
+<%= warning_box t('home.warning.content', :contact_link => url_for(:action => 'contact')), t('home.warning.signature') %>
 <table id="home_twocols">
   <tr>
     <td id="home_left">

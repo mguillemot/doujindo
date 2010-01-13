@@ -45,4 +45,19 @@ module ApplicationHelper
     this_year = DateTime.now.strftime('%Y')
     (this_year == from_year.to_s) ? from_year : "#{from_year}-#{this_year}"
   end
+
+  def warning_box(content, signature = nil)
+    signature = "<div class=\"warning_box_signature\">#{signature}</div>" if signature
+    "<div class=\"warning_box\">
+      <table>
+        <tr>
+          <td>#{image_tag 'warning_utsuho.png', :width => 151, :height => 100, :alt => t('home.warning.title')}</td>
+          <td>
+            #{content}
+            #{signature}
+          </td>
+        </tr>
+      </table>
+    </div>"
+  end
 end

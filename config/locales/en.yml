@@ -193,6 +193,8 @@ en:
   layout:
     meta:
       description: "Web shop for Touhou items and Japanese doujin stuff: games, goods, figures... Coming direct from Japan!"
+    warning:
+      translation: "This section of the site will be translated in English very soon."
     sidebar:
       cart:
         title: "Shopping cart"

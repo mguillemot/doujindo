@@ -1,6 +1,7 @@
 <% @title = t('faq.title') -%>
 <% @nav = [ [ t('faq.nav') ] ] -%>
 <h1><%= @title %></h1>
+<%= warning_box t('layout.warning.translation') if I18n.locale == 'fr' %>
 <div id="table">
   <ol class="table_of_contents">
     <% for cat in @categories -%>
