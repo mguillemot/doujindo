@@ -46,17 +46,22 @@ module ApplicationHelper
     (this_year == from_year.to_s) ? from_year : "#{from_year}-#{this_year}"
   end
 
-  def warning_box(content, signature = nil)
-    signature = "<div class=\"warning_box_signature\">#{signature}</div>" if signature
-    "<div class=\"warning_box\">
+  def warning_box(id, params)
+    content = "<div>#{params[:content]}</div>"
+    signature = params[:signature] ? "<div class=\"warning_box_signature\">#{params[:signature]}</div>" : nil
+    button = params[:button] ? "<div class=\"warning_box_button\">#{params[:button]}</div>" : nil 
+    "<div class=\"warning_box\" id=\"#{id}\">
       <table>
+        <tbody>
         <tr>
           <td>#{image_tag 'warning_utsuho.png', :width => 151, :height => 100, :alt => t('home.warning.title')}</td>
           <td>
             #{content}
             #{signature}
+            #{button}
           </td>
         </tr>
+        </tbody>
       </table>
     </div>"
   end

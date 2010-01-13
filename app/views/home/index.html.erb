@@ -1,5 +1,5 @@
 <% @title = t('home.title') -%>
-<%= warning_box t('home.warning.content', :contact_link => url_for(:action => 'contact')), t('home.warning.signature') %>
+<%= warning_box 'beta_warning', :content => t('home.warning.content', :contact_link => url_for(:action => 'contact')), :signature => t('home.warning.signature') %>
 <table id="home_twocols">
   <tr>
     <td id="home_left">

@@ -2,6 +2,17 @@
 <% @nav = cart_index_nav -%>
 <% @hide_cart = true -%>
 <h1><%= @title -%></h1>
+<% unless @cart.items_out_of_stock.empty? -%>
+    <%= warning_box 'invalid_stocks', :content => t('cart.edit.fix_explain'), :button => button_to_remote(t('cart.edit.fix_button'), :url => { :action => 'fix_all' }) %>
+    <script type="text/javascript">
+        $(function() {
+            $('#checkout_button').attr('disabled', true);
+        <% @cart.items_out_of_stock.each do |ci| -%>
+            $('#item_<%= ci.item_id %>').addClass('invalid_cart_item').css('background-color', 'red');
+        <% end -%>
+        });
+    </script>
+<% end -%>
 <table cellpadding="0" cellspacing="1" border="0" class="cart">
   <thead>
   <tr class="cart_item even">

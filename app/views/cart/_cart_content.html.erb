@@ -37,19 +37,3 @@
     <% end -%>
   </td>
 </tr>
-<% unless @cart.items_out_of_stock.empty? -%>
-    <div class="warning_box" id="invalid_stocks">
-      <%= t('cart.edit.fix_explain') %>
-      <div class="warning_box_button">
-        <%= button_to_remote t('cart.edit.fix_button'), :url => { :action => 'fix_all' } %>
-      </div>
-    </div>
-    <script type="text/javascript">
-        $(function() {
-            $('#checkout_button').attr('disabled', true);
-        <% @cart.items_out_of_stock.each do |ci| -%>
-            $('#item_<%= ci.item_id %>').addClass('invalid_cart_item').css('background-color', 'red');
-        <% end -%>
-        });
-    </script>
-<% end -%>

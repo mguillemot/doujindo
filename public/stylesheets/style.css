@@ -340,7 +340,7 @@ a:visited.navbar_link {
 
 /* --- WARNING BOXES --- */
 
-.warning_box {
+div.warning_box {
     margin: 15px auto;
     color: white;
     padding: 10px;
@@ -353,9 +353,16 @@ a:visited.navbar_link {
     -webkit-border-radius: 10px;
 }
 
-.warning_box_button {
+div.warning_box div.warning_box_button {
     margin-top: 10px;
     text-align: center;
+}
+
+div.warning_box div.warning_box_signature {
+    margin-top: 10px;
+    position: relative;
+    left: 150px;
+    width: 200px;
 }
 
 .warning_box a {
@@ -365,13 +372,6 @@ a:visited.navbar_link {
 .warning_box img {
     margin-right: 15px;
     vertical-align: middle;
-}
-
-.warning_box_signature {
-    margin-top: 10px;
-    position: relative;
-    left: 150px;
-    width: 200px;
 }
 
 /* --- SIDEBAR CART --- */
