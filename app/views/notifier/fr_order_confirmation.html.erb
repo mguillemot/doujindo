@@ -1,0 +1,8 @@
+Cher <%= @user.login -%>,
+
+Votre commande n°<%= @order.id -%> vient d'être confirmée pour un montant total de <%= @order.currency.format_value(@order.total_price) -%>. Nous vous enverrons un autre e-mail lors de l'expédition de votre commande. Vous pouvez également suivre son état à tout moment dans la section "Mes commandes" du menu utilisateur du site de Touhou Shop.
+
+Merci de nous avoir fait confiance, et profitez bien de vos achats !
+
+--
+Touhou Shop

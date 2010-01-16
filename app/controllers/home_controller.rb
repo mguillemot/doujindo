@@ -18,4 +18,7 @@ class HomeController < ApplicationController
       @email = params[:email]
     end
   end
+
+  def legal
+  end
 end

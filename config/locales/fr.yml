@@ -41,6 +41,10 @@ fr:
     content: "Message :"
     submit: "Envoyer"
 
+  legal:
+    title: "Mentions légales"
+    nav: "Mentions légales"
+
   rss:
     items:
       title: "Catalogue Touhou Shop"
@@ -223,7 +227,7 @@ fr:
         search: "Rechercher"
         search_phantom: "(rechercher)"
       language: "Langue &amp; devise"
-    footer: "Site © {{shop_c}} {{shop_link}} - Touhou Project © {{touhou_c}} {{touhou_link}} - Personnages par {{walfas_link}} - Tous les articles du catalogue sont © de leurs auteurs respectifs."
+    footer: "Ce site est © {{shop_c}} {{shop_link}} - Touhou Project © {{touhou_c}} {{touhou_link}} - [ {{legal_link}} ]"
 
   item:
     title: "Titre"

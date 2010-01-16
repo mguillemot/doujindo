@@ -38,7 +38,7 @@ module Paypal
       GetExpressCheckoutDetails.new call.response
     end
 
-    def self.do_express_checkout_payment(token, payer_id, amount, currency)
+    def self.do_express_checkout_payment(order)
       call = ApiCall.new
       call.add_param 'USER', PAYPAL_USER
       call.add_param 'PWD', PAYPAL_PWD
@@ -46,10 +46,17 @@ module Paypal
       call.add_param 'METHOD', 'DoExpressCheckoutPayment'
       call.add_param 'VERSION', '56.0'
       call.add_param 'PAYMENTACTION', 'Sale'
-      call.add_param 'TOKEN', token
-      call.add_param 'PAYERID', payer_id
-      call.add_param 'AMT', '%.2f' % amount
-      call.add_param 'CURRENCYCODE', currency.paypal_code
+      call.add_param 'TOKEN', order.paypal_token
+      call.add_param 'PAYERID', order.paypal_payer_id
+      order.order_items.each_with_index do |oi,i|
+        call.add_param "L_NAME#{i}", oi.item.title
+        call.add_param "L_AMT#{i}", '%.2f' % oi.unit_price
+        call.add_param "L_QTY#{i}", "#{oi.quantity}"
+      end
+      call.add_param 'ITEMAMT', '%.2f' % order.items_total_price
+      call.add_param 'SHIPPINGAMT', '%.2f' % order.shipping_price
+      call.add_param 'AMT', '%.2f' % (order.items_total_price + order.shipping_price)
+      call.add_param 'CURRENCYCODE', order.currency.paypal_code
       call.send_request
       DoExpressCheckoutPayment.new call.response
     end

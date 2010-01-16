@@ -1,0 +1,40 @@
+<% @title = t('legal.title') -%>
+<% @nav = [ [ t('legal.nav') ] ] -%>
+<h1><%= @title %></h1>
+<%= warning_box 'translation_warning', :content => t('layout.warning.translation') if I18n.locale == 'fr' %>
+<div>
+  <div>The following are copyrighted (<%= copyright_time(2009) %>) by Touhou Shop:
+    <ul>
+      <li>the <em>Touhou Shop</em> name</li>
+      <li>the site design &amp; content, including item descriptions (except when marked with a different copyright),
+        blog content, misc. articles
+      </li>
+      <li>the photographs (except when marked with a different copyright)</li>
+    </ul>
+  </div>
+  <br/>
+
+  <div>The following are copyrighted (<%= copyright_time(1996) %>) by
+    <a href="http://www16.big.or.jp/~zun/" target="_blank">Team Shanghai Alice</a> and are used in quality of doujin
+    shop accordingly to the terms
+    of usage available <a href="http://www.geocities.co.jp/Playtown-Yoyo/1736/t-081.html" target="_blank">here</a>:
+    <ul>
+      <li>the <em>Touhou</em> &amp; <em>Touhou Project</em> names</li>
+      <li>design and names of characters of Touhou Project</li>
+      <li>Touhou universe</li>
+      <li>Touhou music</li>
+      <li>official Touhou games</li>
+    </ul>
+  </div>
+  <br/>
+
+  <div><strong>Please note that Touhou Shop is by NO WAY related to Team Shanghai Alice.</strong></div>
+  <br/>
+
+  <div>The representations of the Touhou characters used throughout this website are created using <a href="http://www.walfas.org/" target="_blank">KirbyM's create.swf</a> and used with permission.</div>
+  <br/>
+
+  <div>
+    All items in the catalog are copyrighted of their respective authors, which are indicated on each item page.
+  </div>
+</div>

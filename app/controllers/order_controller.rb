@@ -14,9 +14,7 @@ class OrderController < ApplicationController
   def choose_country
     @order.shipping_calculated_for_country = Country.find params[:countryid]
     @order.shipping_type = nil
-    @order.save!
     compute_shipping_to @order.shipping_calculated_for_country, @order.currency
-    # Debug:
     @order.shipping_notes = @packing_debug
     @order.save!
   end
@@ -109,7 +107,7 @@ class OrderController < ApplicationController
   end
 
   def confirmation
-    response = Paypal::Api.do_express_checkout_payment(@order.paypal_token, @order.paypal_payer_id, @order.total_price, @order.currency)
+    response = Paypal::Api.do_express_checkout_payment(@order)
     if response.success
       @order.decrease_stocks!
       @order.payment_status = 'paid'

@@ -73,7 +73,7 @@
   </div>
   <table cellpadding="0" cellspacing="0" id="footer">
     <tr>
-      <td id="footer_content"><%= t('layout.footer', :shop_c => copyright_time(2009), :shop_link => link_to('Touhou Shop', :controller => 'home'), :touhou_c => copyright_time(1996), :touhou_link => link_to('Team Shanghai Alice', 'http://www16.big.or.jp/~zun', :popup => true), :walfas_link => link_to('KirbyM', 'http://www.walfas.org', :popup => true)) %></td>
+      <td id="footer_content"><%= t('layout.footer', :shop_c => copyright_time(2009), :shop_link => link_to('Touhou Shop', :controller => 'home'), :touhou_c => copyright_time(1996), :touhou_link => link_to('Team Shanghai Alice', 'http://www16.big.or.jp/~zun', :popup => true), :legal_link => link_to(t('legal.title'), url_for(:controller => 'home', :action => 'legal'))) %></td>
     </tr>
   </table>
 </div>
