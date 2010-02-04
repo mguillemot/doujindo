@@ -25,10 +25,10 @@ config.action_view.cache_template_loading            = true
 config.action_mailer.raise_delivery_errors = true
 config.action_mailer.delivery_method = :smtp
 config.action_mailer.smtp_settings = {
-        :address => 'smtp.touhou-shop.com',
+        :address => 'smtp.doujindo.com',
         :domain => '127.0.0.1',
         :port => 5025,
-        :user_name => 'postmaster@touhou-shop.com',
+        :user_name => 'postmaster@doujindo.com',
         :password => 'Ez3p7f8gAt2N',
         :authentication => :login
 }
@@ -38,11 +38,11 @@ config.action_mailer.default_charset = 'utf-8'
 # config.threadsafe!
 
 # Cookies
-DOMAIN = 'touhou-shop.com'
+DOMAIN = 'doujindo.com'
 
 # Sitemap
-STATIC_ROOT_PATH = 'C:/erhune/touhou-shop-static'
-STATIC_ROOT_URL = 'http://static.touhou-shop.com'
+STATIC_ROOT_PATH = 'C:/erhune/doujindo-static'
+STATIC_ROOT_URL = 'http://static.doujindo.com'
 
 # PayPal
 PAYPAL_API_URL = 'https://api-3t.paypal.com/nvp'
